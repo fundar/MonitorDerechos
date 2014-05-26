@@ -1,4 +1,5 @@
-MonitorDerechos
-===============
+Grocery CRUD
+=============
+Grocery CRUD is a PHP and Codeigniter Framework library that creates a full functional CRUD system without the need to customise JavaScript or CSS.
 
-Una plataforma web de sistematización de violaciones a DDHH
+For more information, visit http://www.grocerycrud.com
