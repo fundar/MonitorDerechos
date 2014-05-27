@@ -44,7 +44,7 @@ class Admin extends CI_Controller {
 		$crud->set_relation_n_n('violaciones_derechos', 'violacion_derechos2denuncias', 'violacion_derechos', 'id_denuncia', 'id_violacion', 'nombre');
 		
 		/*Columnas(Vista), campos y campos obligatorios*/
-		$crud->columns('id_denuncia', 'numero_queja', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja');
+		$crud->columns('numero_queja', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes');
 		$crud->fields(
 			'numero_queja', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes', 'intentos', 
 			'motivo_migracion', 'viaja_solo', 'deportado', 'momento_deportado', 'separacion_familiar', 'familiar_separado',
@@ -167,7 +167,7 @@ class Admin extends CI_Controller {
 		$crud->set_subject('Migrantes');
 		
 		/*Columnas(Vista), campos y campos obligatorios*/
-		$crud->columns('id_migrante', 'nombre', 'id_pais', 'id_estado', 'municipio', 'edad');
+		$crud->columns('nombre', 'id_pais', 'id_estado', 'municipio', 'edad');
 		$crud->required_fields('nombre');
 		
 		
