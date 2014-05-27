@@ -29,15 +29,87 @@ class Admin extends CI_Controller {
 		$crud->set_table('denuncias');
 		$crud->set_subject('Denuncias');
 		
+		/*Relaciones n_n*/
+		/*Migrantes*/
+		$crud->set_relation_n_n('migrantes', 'migrantes2denuncias', 'migrantes', 'id_denuncia', 'id_migrante', 'nombre');
+		/*Autoridades*/
+		$crud->set_relation_n_n('autoridades_viaje', 'autoridades2denuncias', 'autoridades', 'id_denuncia', 'id_autoridad', 'nombre');
+		/*Paquete pago coyote*/
+		$crud->set_relation_n_n('paquete_pago', 'paquetes2denuncias', 'paquete_pago', 'id_denuncia', 'id_paquete', 'nombre');
+		
 		/*Columnas(Vista), campos y campos obligatorios*/
-		//$crud->columns('id_estado', 'id_pais', 'nombre');
+		$crud->columns('id_denuncia', 'numero_queja', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja');
+		$crud->fields(
+			'numero_queja', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes', 'intentos', 
+			'motivo_migracion', 'viaja_solo', 'deportado', 'momento_deportado', 'separacion_familiar', 'familiar_separado',
+			'acto_siguiente', 'autoridades_viaje', 'dano_autoridad', 'id_autoridad_dano', 'coyote_guia', 'monto_coyote', 'paquete_pago',
+			'conocimineto_punto_fronterizo', 'nombre_punto_fronterizo', 'lugar_de_usa'
+		);
+		
 		$crud->required_fields('fecha_creada');
 
 		/*Relaciones con tablas*/
+		/*Set displays campos*/
+		$this->display_as_denuncias($crud);
 		
 		$output = $crud->render();
 		
 		$this->_example_output($output);
+	}
+	
+	/*Nombres en español de los campos*/
+	public function display_as_denuncias($crud) {
+		/*Lugar denuncia*/
+		$crud->display_as('id_lugar_denuncia', 'Lugar de denuncia');
+		$crud->set_relation('id_lugar_denuncia', 'lugares_denuncia', 'nombre');
+		/*Lugar denuncia*/
+		$crud->display_as('id_tipo_queja', 'Tipo de queja');
+		$crud->set_relation('id_tipo_queja', 'tipos_quejas', 'nombre');
+		
+		/*Datos sobre cruce de la frontera*/
+		$crud->display_as('intentos', 'Cuántas veces has intentado cruzar la frontera');
+		$crud->display_as('motivo_migracion', 'Cuál es el motivo de migración');
+		$crud->field_type('viaja_solo', 'dropdown', array(1 => 'Si', 2 => 'No'));
+		/*Lugar deportado*/
+		$crud->field_type('deportado', 'dropdown', array(1 => 'Si', 2 => 'No'));
+		$crud->display_as('momento_deportado', 'Donde fue deportado');
+		$crud->field_type('momento_deportado', 'dropdown', array(1 => 'Al cruzar', 2 => 'vivías en USA', 3 => 'Otro'));
+		/*Separacion familiar*/
+		$crud->display_as('separacion_familiar', 'Te separaron de algún familiar');
+		$crud->field_type('separacion_familiar', 'dropdown', array(1 => 'Si', 2 => 'No'));
+		$crud->display_as('familiar_separado', 'Que familiar');
+		$crud->display_as('situacion_familiar', 'Sabes que paso con tu familiar');
+		$crud->display_as('acto_siguiente', 'Qué piensa hacer ahora');
+		
+		/*Antecedentes de autoridades*/
+		$crud->display_as('autoridades_viaje', 'Durante el viaje con que autoridades te encontraste');
+		$crud->display_as('dano_autoridad', 'Alguna de las autoridades te causaron daño');
+		$crud->field_type('dano_autoridad', 'dropdown', array(1 => 'Si', 2 => 'No'));
+		$crud->display_as('id_autoridad_dano', 'Que autoridad lo hizo');
+		$crud->set_relation('id_autoridad_dano', 'autoridades', 'nombre');
+		/*Coyote*/
+		$crud->display_as('coyote_guia', 'Cuando salióm de sus comunidad había contactado al coyote o guía que lo pasaría');
+		$crud->field_type('coyote_guia', 'dropdown', array(1 => 'Si', 2 => 'No'));
+		$crud->display_as('monto_coyote', 'Cuanto le cobraría');
+		$crud->display_as('paquete_pago', 'Que incluía el pago');
+		$crud->display_as('conocimineto_punto_fronterizo', 'Sabías el punto fronterizo por donde el coyote o guía te iba a cruzar a USA');
+		$crud->field_type('conocimineto_punto_fronterizo', 'dropdown', array(1 => 'Si', 2 => 'No'));
+		$crud->display_as('nombre_punto_fronterizo', 'Nombre del punto fronterizo');
+		$crud->display_as('lugar_de_usa', 'A donde lo llevaría');
+		
+		
+		/*
+		$crud->display_as('description', 'Descripción');
+		$crud->display_as('presented_by', 'Presentada por');
+		$crud->display_as('additional_resources', 'Recursos adicionales');
+		$crud->display_as('additional_resources_url', 'Url de recursos adicionales');
+		$crud->display_as('official_vote_up', 'Votos a favor');
+		$crud->display_as('official_vote_down', 'Votos en contrar');
+		$crud->display_as('official_vote_abstentions', 'Abstenciones');
+		$crud->display_as('voted_at', 'Fecha votada');
+		*/
+		
+		return true;
 	}
 	
 	/*Metodo de migrantes*/
@@ -274,23 +346,6 @@ class Admin extends CI_Controller {
 	function unique_field_name($field_name) {
 		return 's'.substr(md5($field_name),0,8); //This s is because is better for a string to begin with a letter and not with a number
     }
-	
-	/*Nombres en español de los campos*/
-	public function display_as_i($crud) {
-		$crud->display_as('id_initiative', 'ID Iniciativa');
-		$crud->display_as('title', 'Título');
-		$crud->display_as('short_title', 'Título Corto');
-		$crud->display_as('description', 'Descripción');
-		$crud->display_as('presented_by', 'Presentada por');
-		$crud->display_as('additional_resources', 'Recursos adicionales');
-		$crud->display_as('additional_resources_url', 'Url de recursos adicionales');
-		$crud->display_as('official_vote_up', 'Votos a favor');
-		$crud->display_as('official_vote_down', 'Votos en contrar');
-		$crud->display_as('official_vote_abstentions', 'Abstenciones');
-		$crud->display_as('voted_at', 'Fecha votada');
-		
-		return true;
-	}
 	
 	/*metodo index - redirect a denuncias*/
 	public function index() {
