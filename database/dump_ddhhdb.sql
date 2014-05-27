@@ -94,7 +94,7 @@ CREATE TABLE `denuncias` (
   `id_denuncia` int(11) NOT NULL AUTO_INCREMENT,
   `numero_queja` varchar(255) DEFAULT NULL,
   `fecha_creada` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `id_lugar_denuncia` varchar(255) DEFAULT NULL,
+  `id_lugar_denuncia` int(11) DEFAULT NULL,
   `id_tipo_queja` int(11) DEFAULT NULL,
   `intentos` int(11) DEFAULT NULL,
   `motivo_migracion` varchar(255) DEFAULT NULL,
@@ -347,7 +347,7 @@ CREATE TABLE `migrantes` (
   `nombre_pueblo_indigena` varchar(255) DEFAULT NULL,
   `espanol` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id_migrante`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -356,7 +356,6 @@ CREATE TABLE `migrantes` (
 
 LOCK TABLES `migrantes` WRITE;
 /*!40000 ALTER TABLE `migrantes` DISABLE KEYS */;
-INSERT INTO `migrantes` VALUES (1,'Carlos Hugo',1,6,'Colima',1,26,'1988-03-07 18:00:00','Programador','1','Licenciatura',2,NULL,1);
 /*!40000 ALTER TABLE `migrantes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -556,4 +555,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-27 11:50:31
+-- Dump completed on 2014-05-27 13:29:45
