@@ -2,13 +2,13 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `ddhhdb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+USE `ddhhdb` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`migrantes`
+-- Table `ddhhdb`.`migrantes`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`migrantes` (
+CREATE TABLE IF NOT EXISTS `ddhhdb`.`migrantes` (
   `id_migrante` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(255) NOT NULL,
   `id_pais` INT NULL,
@@ -28,9 +28,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`etados_casos`
+-- Table `ddhhdb`.`etados_casos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`etados_casos` (
+CREATE TABLE IF NOT EXISTS `ddhhdb`.`etados_casos` (
   `id_estado_caso` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id_estado_caso`))
@@ -38,9 +38,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`denuncias`
+-- Table `ddhhdb`.`denuncias`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`denuncias` (
+CREATE TABLE IF NOT EXISTS `ddhhdb`.`denuncias` (
   `id_denuncia` INT NOT NULL AUTO_INCREMENT,
   `numero_queja` VARCHAR(255) NULL,
   `fecha_creada` TIMESTAMP NOT NULL DEFAULT now(),
@@ -99,9 +99,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`estados`
+-- Table `ddhhdb`.`estados`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`estados` (
+CREATE TABLE IF NOT EXISTS `ddhhdb`.`estados` (
   `id_estado` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id_estado`))
@@ -109,9 +109,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`lugares_denuncia`
+-- Table `ddhhdb`.`lugares_denuncia`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`lugares_denuncia` (
+CREATE TABLE IF NOT EXISTS `ddhhdb`.`lugares_denuncia` (
   `id_lugar_denuncia` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id_lugar_denuncia`))
@@ -119,9 +119,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`tipos_quejas`
+-- Table `ddhhdb`.`tipos_quejas`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`tipos_quejas` (
+CREATE TABLE IF NOT EXISTS `ddhhdb`.`tipos_quejas` (
   `id_tipo_queja` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id_tipo_queja`))
@@ -129,9 +129,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`paises`
+-- Table `ddhhdb`.`paises`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`paises` (
+CREATE TABLE IF NOT EXISTS `ddhhdb`.`paises` (
   `id_pais` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id_pais`))
@@ -139,9 +139,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`generos`
+-- Table `ddhhdb`.`generos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`generos` (
+CREATE TABLE IF NOT EXISTS `ddhhdb`.`generos` (
   `id_genero` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id_genero`))
@@ -149,9 +149,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`estado_civil`
+-- Table `ddhhdb`.`estado_civil`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`estado_civil` (
+CREATE TABLE IF NOT EXISTS `ddhhdb`.`estado_civil` (
   `id_estado_civil` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_estado_civil`))
@@ -159,18 +159,18 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`migrantes2denuncias`
+-- Table `ddhhdb`.`migrantes2denuncias`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`migrantes2denuncias` (
+CREATE TABLE IF NOT EXISTS `ddhhdb`.`migrantes2denuncias` (
   `id_migrante` INT NOT NULL,
   `id_denuncia` INT NOT NULL)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`autoridades`
+-- Table `ddhhdb`.`autoridades`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`autoridades` (
+CREATE TABLE IF NOT EXISTS `ddhhdb`.`autoridades` (
   `id_autoridad` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(255) NULL,
   PRIMARY KEY (`id_autoridad`))
@@ -178,18 +178,18 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`autoridades2denuncias`
+-- Table `ddhhdb`.`autoridades2denuncias`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`autoridades2denuncias` (
+CREATE TABLE IF NOT EXISTS `ddhhdb`.`autoridades2denuncias` (
   `id_autoridad` INT NOT NULL,
   `id_denuncia` INT NULL)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`paquete_pago`
+-- Table `ddhhdb`.`paquete_pago`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`paquete_pago` (
+CREATE TABLE IF NOT EXISTS `ddhhdb`.`paquete_pago` (
   `id_paquete` INT NOT NULL,
   `nombre` VARCHAR(45) NULL,
   PRIMARY KEY (`id_paquete`))
@@ -197,18 +197,18 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`paquetes2denuncias`
+-- Table `ddhhdb`.`paquetes2denuncias`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`paquetes2denuncias` (
+CREATE TABLE IF NOT EXISTS `ddhhdb`.`paquetes2denuncias` (
   `id_paquete` INT NOT NULL,
   `id_denuncia` INT NULL)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`transportes`
+-- Table `ddhhdb`.`transportes`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`transportes` (
+CREATE TABLE IF NOT EXISTS `ddhhdb`.`transportes` (
   `id_transporte` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(255) NULL,
   PRIMARY KEY (`id_transporte`))
@@ -216,18 +216,18 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`autoridades_responables2denuncias`
+-- Table `ddhhdb`.`autoridades_responables2denuncias`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`autoridades_responables2denuncias` (
+CREATE TABLE IF NOT EXISTS `ddhhdb`.`autoridades_responables2denuncias` (
   `id_autoridad` INT NOT NULL,
   `id_denuncia` INT NOT NULL)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`derechos`
+-- Table `ddhhdb`.`derechos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`derechos` (
+CREATE TABLE IF NOT EXISTS `ddhhdb`.`derechos` (
   `id_derecho` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`id_derecho`))
@@ -235,9 +235,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`violacion_derechos`
+-- Table `ddhhdb`.`violacion_derechos`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`violacion_derechos` (
+CREATE TABLE IF NOT EXISTS `ddhhdb`.`violacion_derechos` (
   `id_violacion` INT NOT NULL AUTO_INCREMENT,
   `id_derecho` INT NOT NULL,
   `nombre` VARCHAR(255) NOT NULL,
@@ -246,18 +246,18 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`derechos_violados2denuncias`
+-- Table `ddhhdb`.`derechos_violados2denuncias`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`derechos_violados2denuncias` (
+CREATE TABLE IF NOT EXISTS `ddhhdb`.`derechos_violados2denuncias` (
   `id_derecho` INT NOT NULL,
   `id_denuncia` INT NOT NULL)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`violacion_derechos2denuncias`
+-- Table `ddhhdb`.`violacion_derechos2denuncias`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`violacion_derechos2denuncias` (
+CREATE TABLE IF NOT EXISTS `ddhhdb`.`violacion_derechos2denuncias` (
   `id_violacion` INT NOT NULL,
   `id_denuncia` INT NOT NULL)
 ENGINE = InnoDB;
