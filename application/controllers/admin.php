@@ -36,6 +36,12 @@ class Admin extends CI_Controller {
 		$crud->set_relation_n_n('autoridades_viaje', 'autoridades2denuncias', 'autoridades', 'id_denuncia', 'id_autoridad', 'nombre');
 		/*Paquete pago coyote*/
 		$crud->set_relation_n_n('paquete_pago', 'paquetes2denuncias', 'paquete_pago', 'id_denuncia', 'id_paquete', 'nombre');
+		/*Autoridades responsables*/
+		$crud->set_relation_n_n('autoridades_responables', 'autoridades_responables2denuncias', 'autoridades', 'id_denuncia', 'id_autoridad', 'nombre');
+		/*Derechos violados*/
+		$crud->set_relation_n_n('derechos_violados', 'derechos_violados2denuncias', 'derechos', 'id_denuncia', 'id_derecho', 'nombre');
+		/*Violaciones a derechos*/
+		$crud->set_relation_n_n('violaciones_derechos', 'violacion_derechos2denuncias', 'violacion_derechos', 'id_denuncia', 'id_violacion', 'nombre');
 		
 		/*Columnas(Vista), campos y campos obligatorios*/
 		$crud->columns('id_denuncia', 'numero_queja', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja');
@@ -45,7 +51,11 @@ class Admin extends CI_Controller {
 			'acto_siguiente', 'autoridades_viaje', 'dano_autoridad', 'id_autoridad_dano', 'coyote_guia', 'monto_coyote', 'paquete_pago',
 			'conocimineto_punto_fronterizo', 'nombre_punto_fronterizo', 'lugar_de_usa', 'fecha_injusticia', 'id_pais_injusticia',
 			'id_estado_injusticia', 'municipio_injusticia', 'espacio_fisico_injusticia', 'detonante_injusticia', 'numero_migrantes_injusticia',
-			'id_transporte_viaje_injusticia', 'lugar_abordaje_transporte', 'destino_transporte'
+			'id_transporte_viaje_injusticia', 'lugar_abordaje_transporte', 'destino_transporte', 'autoridades_responables',
+			'numero_oficiales_responsables', 'algun_nombre_responsables', 'apodos_responsables', 'color_uniforme_responsables',
+			'insignias_responsables', 'id_tipo_transporte_responsables', 'placas_vehiculos_responsables',
+			'descripcion_evento', 'monto_extorsion', 'derechos_violados', 'violaciones_derechos', 'id_estado_caso',
+			'nombre_persona_atendio_seguimiento', 'telefono_seguimiento', 'documento1_seguimiento', 'documento2_seguimiento'
 		);
 		
 		$crud->required_fields('fecha_creada');
@@ -115,16 +125,33 @@ class Admin extends CI_Controller {
 		$crud->display_as('lugar_abordaje_transporte', 'Donde abordo el transporte');
 		$crud->display_as('destino_transporte', 'Destino del transporte');
 		
-		/*
-		$crud->display_as('description', 'Descripción');
-		$crud->display_as('presented_by', 'Presentada por');
-		$crud->display_as('additional_resources', 'Recursos adicionales');
-		$crud->display_as('additional_resources_url', 'Url de recursos adicionales');
-		$crud->display_as('official_vote_up', 'Votos a favor');
-		$crud->display_as('official_vote_down', 'Votos en contrar');
-		$crud->display_as('official_vote_abstentions', 'Abstenciones');
-		$crud->display_as('voted_at', 'Fecha votada');
-		*/
+		/*Datos de la autoridad responsable*/
+		$crud->display_as('autoridades_responables', 'Nombre de las instituciones involucradas');
+		$crud->display_as('numero_oficiales_responsables', 'Número de oficiales responsables');
+		$crud->display_as('algun_nombre_responsables', 'Nombres de oficiales responsables');
+		$crud->display_as('apodos_responsables', 'Apodos de oficiales responsables');
+		$crud->display_as('color_uniforme_responsables', 'Color de uniforme de oficiales responsables');
+		$crud->display_as('insignias_responsables', 'Insignias de uniforme de oficiales responsables');
+		$crud->display_as('numero_vehiculos_responsables', 'Número de vehículos');
+		$crud->display_as('id_tipo_transporte_responsables', 'Tipo de vehículo');
+		$crud->set_relation('id_tipo_transporte_responsables', 'transportes', 'nombre');
+		$crud->display_as('placas_vehiculos_responsables', 'Placas');
+		
+		/*descipción del evento*/
+		$crud->display_as('descripcion_evento', 'Descipción del evento');
+		
+		/*Monto de la extorsion*/
+		$crud->display_as('monto_extorsion', 'En caso de extorsión mencione el monto');
+		
+		/*Derechos violados*/
+		
+		/*Estado actual del caso*/
+		$crud->display_as('id_estado_caso', 'Estado actual del caso');
+		$crud->set_relation('id_estado_caso', 'etados_casos', 'nombre');
+		$crud->display_as('nombre_persona_atendio_seguimiento', 'Nombre de la personaq que atendio el seguimiento');
+		$crud->display_as('telefono_seguimiento', 'Teléfono de contacto para seguimiento');
+		$crud->display_as('documento1_seguimiento', 'Documento adicional 1');
+		$crud->display_as('documento2_seguimiento', 'Documento adicional 2');
 		
 		return true;
 	}
