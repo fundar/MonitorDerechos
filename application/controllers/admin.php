@@ -152,7 +152,8 @@ class Admin extends CI_Controller {
 		$crud->display_as('telefono_seguimiento', 'Teléfono de contacto para seguimiento');
 		$crud->display_as('documento1_seguimiento', 'Documento adicional 1');
 		$crud->display_as('documento2_seguimiento', 'Documento adicional 2');
-		
+		$crud->set_field_upload('documento1_seguimiento', 'assets/uploads/files');
+		$crud->set_field_upload('documento2_seguimiento', 'assets/uploads/files');
 		return true;
 	}
 	
