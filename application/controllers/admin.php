@@ -22,7 +22,22 @@ class Admin extends CI_Controller {
 	
 	/*Metodo de denuncias*/
 	public function denuncias() {
-		echo "hola mundo!";
+		$crud = new grocery_CRUD();
+		
+		/*Tabla y título*/
+		$crud->set_theme('datatables');
+		$crud->set_table('denuncias');
+		$crud->set_subject('Denuncias');
+		
+		/*Columnas(Vista), campos y campos obligatorios*/
+		//$crud->columns('id_estado', 'id_pais', 'nombre');
+		$crud->required_fields('fecha_creada');
+
+		/*Relaciones con tablas*/
+		
+		$output = $crud->render();
+		
+		$this->_example_output($output);
 	}
 	
 	/*Metodo de migrantes*/
@@ -52,7 +67,203 @@ class Admin extends CI_Controller {
 		/*Estado civil*/
 		$crud->display_as('id_estado_civil', 'Estado Civil');
 		$crud->set_relation('id_estado_civil', 'estado_civil', 'nombre');
+		/*Pueblo indigena*/
+		$crud->display_as('pueblo_indigena', 'Pertenece a algún pueblo indígena');
+		$crud->field_type('pueblo_indigena', 'dropdown', array(1 => 'Si', 2 => 'No'));
+		/*Español*/
+		$crud->display_as('espanol', 'Dominio del español');
+		$crud->field_type('espanol', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		
+		$output = $crud->render();
+		
+		$this->_example_output($output);
+	}
+	
+	/*Autoridades*/
+	public function autoridades() {
+		$crud = new grocery_CRUD();
+		
+		/*Tabla y título*/
+		$crud->set_theme('datatables');
+		$crud->set_table('autoridades');
+		$crud->set_subject('Autoridades');
+		
+		/*Columnas(Vista), campos y campos obligatorios*/
+		$crud->columns('id_autoridad', 'nombre');
+		$crud->required_fields('nombre');
+		
+		$output = $crud->render();
+		
+		$this->_example_output($output);
+	}
+	
+	/*Derechos*/
+	public function derechos() {
+		$crud = new grocery_CRUD();
+		
+		/*Tabla y título*/
+		$crud->set_theme('datatables');
+		$crud->set_table('derechos');
+		$crud->set_subject('Derechos');
+		
+		/*Columnas(Vista), campos y campos obligatorios*/
+		$crud->columns('id_derecho', 'nombre');
+		$crud->required_fields('nombre');
+		
+		$output = $crud->render();
+		
+		$this->_example_output($output);
+	}
+	
+	/*Violaciones a los Derechos*/
+	public function violaciones_derechos() {
+		$crud = new grocery_CRUD();
+		
+		/*Tabla y título*/
+		$crud->set_theme('datatables');
+		$crud->set_table('violacion_derechos');
+		$crud->set_subject('Violaciónes a derechos');
+		
+		/*Columnas(Vista), campos y campos obligatorios*/
+		$crud->columns('id_violacion', 'id_derecho', 'nombre');
+		$crud->required_fields('id_derecho', 'nombre');
+		
+		/*Relaciones con tablas*/
+		/*Derechos*/
+		$crud->display_as('nombre', 'Violación a derecho');
+		$crud->display_as('id_derecho', 'Derecho');
+		$crud->set_relation('id_derecho', 'derechos', 'nombre');
+		
+		$output = $crud->render();
+		
+		$this->_example_output($output);
+	}
+	
+	/*Paises*/
+	public function paises() {
+		$crud = new grocery_CRUD();
+		
+		/*Tabla y título*/
+		$crud->set_theme('datatables');
+		$crud->set_table('paises');
+		$crud->set_subject('Paises');
+		
+		/*Columnas(Vista), campos y campos obligatorios*/
+		$crud->columns('id_pais', 'nombre');
+		$crud->required_fields('nombre');
+
+		$output = $crud->render();
+		
+		$this->_example_output($output);
+	}
+	
+	/*Estados*/
+	public function estados() {
+		$crud = new grocery_CRUD();
+		
+		/*Tabla y título*/
+		$crud->set_theme('datatables');
+		$crud->set_table('estados');
+		$crud->set_subject('Estados');
+		
+		/*Columnas(Vista), campos y campos obligatorios*/
+		$crud->columns('id_estado', 'id_pais', 'nombre');
+		$crud->required_fields('id_pais', 'nombre');
+
+		/*Relaciones con tablas*/
+		/*Estados*/
+		$crud->display_as('id_pais', 'Pais');
+		$crud->set_relation('id_pais', 'paises', 'nombre');
+		
+		$output = $crud->render();
+		
+		$this->_example_output($output);
+	}
+	
+	/*Estado de los casos/denuncias*/
+	public function estados_casos() {
+		$crud = new grocery_CRUD();
+		
+		/*Tabla y título*/
+		$crud->set_theme('datatables');
+		$crud->set_table('etados_casos');
+		$crud->set_subject('Estado de los casos/denuncias');
+		
+		/*Columnas(Vista), campos y campos obligatorios*/
+		$crud->columns('id_estado_caso', 'nombre');
+		$crud->required_fields('nombre');
+		
+		$output = $crud->render();
+		
+		$this->_example_output($output);
+	}
+	
+	/*Lugares de las denuncias*/
+	public function lugares_denuncia() {
+		$crud = new grocery_CRUD();
+		
+		/*Tabla y título*/
+		$crud->set_theme('datatables');
+		$crud->set_table('lugares_denuncia');
+		$crud->set_subject('Lugares de las denuncias');
+		
+		/*Columnas(Vista), campos y campos obligatorios*/
+		$crud->columns('id_lugar_denuncia', 'nombre');
+		$crud->required_fields('nombre');
+		
+		$output = $crud->render();
+		
+		$this->_example_output($output);
+	}
+	
+	/*Que incluia el pago*/
+	public function paquete_pago() {
+		$crud = new grocery_CRUD();
+		
+		/*Tabla y título*/
+		$crud->set_theme('datatables');
+		$crud->set_table('paquete_pago');
+		$crud->set_subject('Que incluia el pago');
+		
+		/*Columnas(Vista), campos y campos obligatorios*/
+		$crud->columns('id_paquete', 'nombre');
+		$crud->required_fields('nombre');
+		
+		$output = $crud->render();
+		
+		$this->_example_output($output);
+	}
+	
+	/*Tipo de quejas*/
+	public function tipos_quejas() {
+		$crud = new grocery_CRUD();
+		
+		/*Tabla y título*/
+		$crud->set_theme('datatables');
+		$crud->set_table('tipos_quejas');
+		$crud->set_subject('Tipo de quejas');
+		
+		/*Columnas(Vista), campos y campos obligatorios*/
+		$crud->columns('id_tipo_queja', 'nombre');
+		$crud->required_fields('nombre');
+		
+		$output = $crud->render();
+		
+		$this->_example_output($output);
+	}
+	
+	/*Transportes*/
+	public function transportes() {
+		$crud = new grocery_CRUD();
+		
+		/*Tabla y título*/
+		$crud->set_theme('datatables');
+		$crud->set_table('transportes');
+		$crud->set_subject('Transportes');
+		
+		/*Columnas(Vista), campos y campos obligatorios*/
+		$crud->columns('id_transporte', 'nombre');
+		$crud->required_fields('nombre');
 		
 		$output = $crud->render();
 		
