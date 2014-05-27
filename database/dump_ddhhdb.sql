@@ -26,7 +26,7 @@ CREATE TABLE `autoridades` (
   `id_autoridad` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_autoridad`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,6 +35,7 @@ CREATE TABLE `autoridades` (
 
 LOCK TABLES `autoridades` WRITE;
 /*!40000 ALTER TABLE `autoridades` DISABLE KEYS */;
+INSERT INTO `autoridades` VALUES (1,'Patrulla Fronteriza');
 /*!40000 ALTER TABLE `autoridades` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -167,7 +168,7 @@ CREATE TABLE `derechos` (
   `id_derecho` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) NOT NULL,
   PRIMARY KEY (`id_derecho`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -176,6 +177,7 @@ CREATE TABLE `derechos` (
 
 LOCK TABLES `derechos` WRITE;
 /*!40000 ALTER TABLE `derechos` DISABLE KEYS */;
+INSERT INTO `derechos` VALUES (1,'Derecho a la Libertad Personal');
 /*!40000 ALTER TABLE `derechos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -235,6 +237,7 @@ DROP TABLE IF EXISTS `estados`;
 CREATE TABLE `estados` (
   `id_estado` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) NOT NULL,
+  `id_pais` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_estado`)
 ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -245,7 +248,7 @@ CREATE TABLE `estados` (
 
 LOCK TABLES `estados` WRITE;
 /*!40000 ALTER TABLE `estados` DISABLE KEYS */;
-INSERT INTO `estados` VALUES (1,'Aguascalientes'),(2,'Baja California'),(3,'Baja California Sur'),(4,'Campeche'),(5,'Coahuila'),(6,'Colima'),(7,'Chiapas'),(8,'Chihuahua'),(9,'Distrito Federal'),(10,'Durango'),(11,'Guanajuato'),(12,'Guerrero'),(13,'Hidalgo'),(14,'Jalisco'),(15,'Edo. De México'),(16,'Michoacán'),(17,'Morelos'),(18,'Nayarit'),(19,'Nuevo León'),(20,'Oaxaca'),(21,'Puebla'),(22,'Querétaro'),(23,'Quintana Roo'),(24,'San Luis Potosí'),(25,'Sinaloa'),(26,'Sonora'),(27,'Tabasco'),(28,'Tamaulipas'),(29,'Tlaxcala'),(30,'Veracruz'),(31,'Yucatán'),(32,'Zacatecas');
+INSERT INTO `estados` VALUES (1,'Aguascalientes',1),(2,'Baja California',1),(3,'Baja California Sur',1),(4,'Campeche',1),(5,'Coahuila',1),(6,'Colima',1),(7,'Chiapas',1),(8,'Chihuahua',1),(9,'Distrito Federal',1),(10,'Durango',1),(11,'Guanajuato',1),(12,'Guerrero',1),(13,'Hidalgo',1),(14,'Jalisco',1),(15,'Edo. De México',1),(16,'Michoacán',1),(17,'Morelos',1),(18,'Nayarit',1),(19,'Nuevo León',1),(20,'Oaxaca',1),(21,'Puebla',1),(22,'Querétaro',1),(23,'Quintana Roo',1),(24,'San Luis Potosí',1),(25,'Sinaloa',1),(26,'Sonora',1),(27,'Tabasco',1),(28,'Tamaulipas',1),(29,'Tlaxcala',1),(30,'Veracruz',1),(31,'Yucatán',1),(32,'Zacatecas',1);
 /*!40000 ALTER TABLE `estados` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -260,7 +263,7 @@ CREATE TABLE `etados_casos` (
   `id_estado_caso` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) NOT NULL,
   PRIMARY KEY (`id_estado_caso`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -269,6 +272,7 @@ CREATE TABLE `etados_casos` (
 
 LOCK TABLES `etados_casos` WRITE;
 /*!40000 ALTER TABLE `etados_casos` DISABLE KEYS */;
+INSERT INTO `etados_casos` VALUES (1,'Trámite'),(2,'Cerrado - desistimiento ');
 /*!40000 ALTER TABLE `etados_casos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -307,7 +311,7 @@ CREATE TABLE `lugares_denuncia` (
   `id_lugar_denuncia` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) NOT NULL,
   PRIMARY KEY (`id_lugar_denuncia`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -316,6 +320,7 @@ CREATE TABLE `lugares_denuncia` (
 
 LOCK TABLES `lugares_denuncia` WRITE;
 /*!40000 ALTER TABLE `lugares_denuncia` DISABLE KEYS */;
+INSERT INTO `lugares_denuncia` VALUES (1,'Nogales, Sonora'),(2,'Agua Prieta, Sonora');
 /*!40000 ALTER TABLE `lugares_denuncia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -342,7 +347,7 @@ CREATE TABLE `migrantes` (
   `nombre_pueblo_indigena` varchar(255) DEFAULT NULL,
   `espanol` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id_migrante`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -351,6 +356,7 @@ CREATE TABLE `migrantes` (
 
 LOCK TABLES `migrantes` WRITE;
 /*!40000 ALTER TABLE `migrantes` DISABLE KEYS */;
+INSERT INTO `migrantes` VALUES (1,'Carlos Hugo',1,6,'Colima',1,26,'1988-03-07 18:00:00','Programador','1','Licenciatura',2,NULL,1);
 /*!40000 ALTER TABLE `migrantes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -408,10 +414,10 @@ DROP TABLE IF EXISTS `paquete_pago`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `paquete_pago` (
-  `id_paquete` int(11) NOT NULL,
+  `id_paquete` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_paquete`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -420,6 +426,7 @@ CREATE TABLE `paquete_pago` (
 
 LOCK TABLES `paquete_pago` WRITE;
 /*!40000 ALTER TABLE `paquete_pago` DISABLE KEYS */;
+INSERT INTO `paquete_pago` VALUES (1,'Hospedaje'),(2,'Transporte'),(3,'Alimentación'),(4,'Pago de cuotas a la mafia');
 /*!40000 ALTER TABLE `paquete_pago` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -456,7 +463,7 @@ CREATE TABLE `tipos_quejas` (
   `id_tipo_queja` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) NOT NULL,
   PRIMARY KEY (`id_tipo_queja`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -465,6 +472,7 @@ CREATE TABLE `tipos_quejas` (
 
 LOCK TABLES `tipos_quejas` WRITE;
 /*!40000 ALTER TABLE `tipos_quejas` DISABLE KEYS */;
+INSERT INTO `tipos_quejas` VALUES (1,'Indivudual'),(2,'Grupal');
 /*!40000 ALTER TABLE `tipos_quejas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -479,7 +487,7 @@ CREATE TABLE `transportes` (
   `id_transporte` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_transporte`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -488,6 +496,7 @@ CREATE TABLE `transportes` (
 
 LOCK TABLES `transportes` WRITE;
 /*!40000 ALTER TABLE `transportes` DISABLE KEYS */;
+INSERT INTO `transportes` VALUES (1,'Autobús de la Central'),(2,'Autobús de turismo'),(3,'Taxi'),(4,'Tren'),(5,'Camion'),(6,'Otro'),(7,'Vehículos oficiales'),(8,'Vehículos particulares'),(9,'Patrulla');
 /*!40000 ALTER TABLE `transportes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -503,7 +512,7 @@ CREATE TABLE `violacion_derechos` (
   `id_derecho` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
   PRIMARY KEY (`id_violacion`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -512,6 +521,7 @@ CREATE TABLE `violacion_derechos` (
 
 LOCK TABLES `violacion_derechos` WRITE;
 /*!40000 ALTER TABLE `violacion_derechos` DISABLE KEYS */;
+INSERT INTO `violacion_derechos` VALUES (1,1,'Detención ilegal y/o arbitraria'),(2,1,'Omisión de poner inmediatamente');
 /*!40000 ALTER TABLE `violacion_derechos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -546,4 +556,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-26 20:21:06
+-- Dump completed on 2014-05-27 11:50:31
