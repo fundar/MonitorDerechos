@@ -43,7 +43,9 @@ class Admin extends CI_Controller {
 			'numero_queja', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes', 'intentos', 
 			'motivo_migracion', 'viaja_solo', 'deportado', 'momento_deportado', 'separacion_familiar', 'familiar_separado',
 			'acto_siguiente', 'autoridades_viaje', 'dano_autoridad', 'id_autoridad_dano', 'coyote_guia', 'monto_coyote', 'paquete_pago',
-			'conocimineto_punto_fronterizo', 'nombre_punto_fronterizo', 'lugar_de_usa'
+			'conocimineto_punto_fronterizo', 'nombre_punto_fronterizo', 'lugar_de_usa', 'fecha_injusticia', 'id_pais_injusticia',
+			'id_estado_injusticia', 'municipio_injusticia', 'espacio_fisico_injusticia', 'detonante_injusticia', 'numero_migrantes_injusticia',
+			'id_transporte_viaje_injusticia', 'lugar_abordaje_transporte', 'destino_transporte'
 		);
 		
 		$crud->required_fields('fecha_creada');
@@ -97,6 +99,21 @@ class Admin extends CI_Controller {
 		$crud->display_as('nombre_punto_fronterizo', 'Nombre del punto fronterizo');
 		$crud->display_as('lugar_de_usa', 'A donde lo llevaría');
 		
+		
+		/*Hechos violatorios a derechos humanos*/
+		$crud->display_as('fecha_injusticia', 'Cuándo se cometió la injusticia');
+		$crud->display_as('id_pais_injusticia', 'País donde se cometió la injusticia');
+		$crud->set_relation('id_pais_injusticia', 'paises', 'nombre');
+		$crud->display_as('id_estado_injusticia', 'Estado donde se cometió la injusticia');
+		$crud->set_relation('id_estado_injusticia', 'estados', 'nombre');
+		$crud->display_as('municipio_injusticia', 'Municipio donde se cometió la injusticia');
+		$crud->display_as('espacio_fisico_injusticia', 'Espacio físico de la injusticia');
+		$crud->display_as('detonante_injusticia', 'Situación que detona la injusticia');
+		$crud->display_as('numero_migrantes_injusticia', 'Número de victimas detectadas');
+		$crud->display_as('id_transporte_viaje_injusticia', 'En que viajaba');
+		$crud->set_relation('id_transporte_viaje_injusticia', 'transportes', 'nombre');
+		$crud->display_as('lugar_abordaje_transporte', 'Donde abordo el transporte');
+		$crud->display_as('destino_transporte', 'Destino del transporte');
 		
 		/*
 		$crud->display_as('description', 'Descripción');
