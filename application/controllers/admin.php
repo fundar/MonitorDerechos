@@ -85,7 +85,7 @@ class Admin extends CI_Controller {
 		/*Lugar deportado*/
 		$crud->field_type('deportado', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		$crud->display_as('momento_deportado', 'Donde fue deportado');
-		$crud->field_type('momento_deportado', 'dropdown', array(1 => 'Al cruzar', 2 => 'vivías en USA', 3 => 'Otro'));
+		$crud->field_type('momento_deportado', 'dropdown', array('Al cruzar la frontera' => 'Al cruzar la frontera', 'Vivías en USA' => 'Vivías en USA', 'Otro' => 'Otro'));
 		/*Separacion familiar*/
 		$crud->display_as('separacion_familiar', 'Te separaron de algún familiar');
 		$crud->field_type('separacion_familiar', 'dropdown', array(1 => 'Si', 2 => 'No'));
@@ -148,7 +148,7 @@ class Admin extends CI_Controller {
 		/*Estado actual del caso*/
 		$crud->display_as('id_estado_caso', 'Estado actual del caso');
 		$crud->set_relation('id_estado_caso', 'etados_casos', 'nombre');
-		$crud->display_as('nombre_persona_atendio_seguimiento', 'Nombre de la personaq que atendio el seguimiento');
+		$crud->display_as('nombre_persona_atendio_seguimiento', 'Nombre de la personaq que atendio el caso');
 		$crud->display_as('telefono_seguimiento', 'Teléfono de contacto para seguimiento');
 		$crud->display_as('documento1_seguimiento', 'Documento adicional 1');
 		$crud->display_as('documento2_seguimiento', 'Documento adicional 2');
@@ -394,7 +394,7 @@ class Admin extends CI_Controller {
 	
 	/*metodo index - redirect a denuncias*/
 	public function index() {
-		header('Location: /admin/denuncias');
+		header('Location: admin/denuncias');
 		
 		return false;
 	}

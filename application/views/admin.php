@@ -41,7 +41,6 @@ a:hover
 		<a href='<?php echo site_url('admin/estados_casos')?>'>Estado de los casos</a> |
 		<a href='<?php echo site_url('admin/lugares_denuncia')?>'>Lugares de denuncia</a> |
 		<a href='<?php echo site_url('admin/paquete_pago')?>'>Cosas que incluye el pago</a> |
-		<a href='<?php echo site_url('admin/tipos_quejas')?>'>Tipos de quejas</a> |
 		<a href='<?php echo site_url('admin/transportes')?>'>Transportes</a>
 	</div>
 	<div style='height:20px;'></div>  
