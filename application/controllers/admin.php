@@ -47,7 +47,7 @@ class Admin extends CI_Controller {
 		$crud->columns('numero_queja', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes');
 		$crud->fields(
 			'numero_queja', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes', 'intentos', 
-			'motivo_migracion', 'viaja_solo', 'deportado', 'momento_deportado', 'separacion_familiar', 'familiar_separado',
+			'motivo_migracion', 'viaja_solo', 'con_quien_viaja', 'deportado', 'momento_deportado', 'separacion_familiar', 'familiar_separado', 'situacion_familiar',
 			'acto_siguiente', 'autoridades_viaje', 'dano_autoridad', 'id_autoridad_dano', 'coyote_guia', 'monto_coyote', 'paquete_pago',
 			'conocimineto_punto_fronterizo', 'nombre_punto_fronterizo', 'lugar_de_usa', 'fecha_injusticia', 'id_pais_injusticia',
 			'id_estado_injusticia', 'municipio_injusticia', 'espacio_fisico_injusticia', 'detonante_injusticia', 'numero_migrantes_injusticia',
@@ -82,6 +82,7 @@ class Admin extends CI_Controller {
 		$crud->display_as('intentos', 'Cuántas veces has intentado cruzar la frontera');
 		$crud->display_as('motivo_migracion', 'Cuál es el motivo de migración');
 		$crud->field_type('viaja_solo', 'dropdown', array(1 => 'Si', 2 => 'No'));
+		$crud->display_as('con_quien_viaja', 'Con quien viaja');
 		/*Lugar deportado*/
 		$crud->field_type('deportado', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		$crud->display_as('momento_deportado', 'Donde fue deportado');
@@ -148,6 +149,8 @@ class Admin extends CI_Controller {
 		/*Estado actual del caso*/
 		$crud->display_as('id_estado_caso', 'Estado actual del caso');
 		$crud->set_relation('id_estado_caso', 'etados_casos', 'nombre');
+		$crud->display_as('estado_seguimiento', 'Seguimiento');
+		$crud->display_as('notas_seguimiento', 'Notas sobre el seguimiento');
 		$crud->display_as('nombre_persona_atendio_seguimiento', 'Nombre de la personaq que atendio el caso');
 		$crud->display_as('telefono_seguimiento', 'Teléfono de contacto para seguimiento');
 		$crud->display_as('documento1_seguimiento', 'Documento adicional 1');
