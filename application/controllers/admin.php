@@ -117,9 +117,9 @@ class Admin extends CI_Controller {
 		$crud->columns('numero_queja', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes');
 		$crud->fields(
 			'nombre_persona_atendio_seguimiento', 'numero_queja', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes', 'intentos', 
-			'motivo_migracion', 'viaja_solo', 'con_quien_viaja', 'deportado', 'momento_deportado', 'separacion_familiar', 'familiar_separado', 'situacion_familiar',
-			'acto_siguiente', 'coyote_guia', 'monto_coyote', 'paquete_pago',
-			'conocimineto_punto_fronterizo', 'nombre_punto_fronterizo', 'lugar_de_usa', 'autoridades_viaje', 'dano_autoridad', 'id_autoridad_dano', 'fecha_injusticia', 'id_pais_injusticia',
+			'motivo_migracion', 'coyote_guia', 'monto_coyote', 'paquete_pago',
+			'conocimineto_punto_fronterizo', 'nombre_punto_fronterizo', 'lugar_de_usa', 'viaja_solo', 'con_quien_viaja', 'deportado', 'momento_deportado', 'separacion_familiar', 'familiar_separado', 'situacion_familiar',
+			'acto_siguiente', 'autoridades_viaje', 'dano_autoridad', 'id_autoridad_dano', 'fecha_injusticia', 'id_pais_injusticia',
 			'id_estado_injusticia', 'municipio_injusticia', 'espacio_fisico_injusticia', 'detonante_injusticia', 'numero_migrantes_injusticia',
 			'id_transporte_viaje_injusticia', 'lugar_abordaje_transporte', 'destino_transporte', 'autoridades_responables',
 			'numero_oficiales_responsables', 'algun_nombre_responsables', 'carcteristicas_ficias_policia_responsable', 'apodos_responsables', 'color_uniforme_responsables',
