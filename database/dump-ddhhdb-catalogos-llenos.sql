@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.37, for debian-linux-gnu (i686)
+-- MySQL dump 10.13  Distrib 5.5.29, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: ddhhdb
 -- ------------------------------------------------------
--- Server version	5.5.37-0ubuntu0.12.04.1
+-- Server version	5.5.29-0ubuntu0.12.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -26,7 +26,7 @@ CREATE TABLE `autoridades` (
   `id_autoridad` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_autoridad`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,7 +35,7 @@ CREATE TABLE `autoridades` (
 
 LOCK TABLES `autoridades` WRITE;
 /*!40000 ALTER TABLE `autoridades` DISABLE KEYS */;
-INSERT INTO `autoridades` VALUES (1,'Patrulla Fronteriza'),(2,'Policía'),(3,'Grupo Beta'),(4,'Agente del instituto nacional de migración'),(5,'El Ejército'),(6,'Marina'),(7,'Migración'),(8,'Policía Federal'),(9,'Policía Municipal');
+INSERT INTO `autoridades` VALUES (1,'Patrulla Fronteriza'),(2,'Policía'),(3,'Grupo Beta'),(4,'Agente del instituto nacional de migración'),(5,'El Ejército'),(6,'Marina'),(7,'Migración'),(8,'Policía Federal'),(9,'Policía Municipal'),(10,'Otro actor / Coyote'),(11,'Otro actor / Mafia');
 /*!40000 ALTER TABLE `autoridades` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,6 +58,7 @@ CREATE TABLE `autoridades2denuncias` (
 
 LOCK TABLES `autoridades2denuncias` WRITE;
 /*!40000 ALTER TABLE `autoridades2denuncias` DISABLE KEYS */;
+INSERT INTO `autoridades2denuncias` VALUES (1,1);
 /*!40000 ALTER TABLE `autoridades2denuncias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -99,12 +100,12 @@ CREATE TABLE `denuncias` (
   `intentos` int(11) DEFAULT NULL,
   `motivo_migracion` varchar(255) DEFAULT NULL,
   `viaja_solo` tinyint(1) DEFAULT NULL,
-  `con_quien_viaja` varchar(255) DEFAULT NULL,
+  `con_quien_viaja` varchar(255) NOT NULL DEFAULT 'No aplica',
   `deportado` tinyint(1) DEFAULT NULL,
   `momento_deportado` varchar(255) DEFAULT NULL,
   `separacion_familiar` tinyint(1) DEFAULT NULL,
-  `familiar_separado` varchar(255) DEFAULT NULL,
-  `situacion_familiar` varchar(255) DEFAULT NULL,
+  `familiar_separado` varchar(255) NOT NULL DEFAULT 'No aplica',
+  `situacion_familiar` varchar(255) NOT NULL DEFAULT 'No aplica',
   `acto_siguiente` varchar(255) DEFAULT NULL,
   `dano_autoridad` tinyint(1) DEFAULT NULL,
   `id_autoridad_dano` int(11) DEFAULT NULL,
@@ -112,8 +113,8 @@ CREATE TABLE `denuncias` (
   `tiempo_contrato_coyote` varchar(255) DEFAULT NULL,
   `monto_coyote` varchar(255) DEFAULT NULL,
   `conocimineto_punto_fronterizo` tinyint(1) DEFAULT NULL,
-  `nombre_punto_fronterizo` varchar(255) DEFAULT NULL,
-  `lugar_de_usa` varchar(255) DEFAULT NULL,
+  `nombre_punto_fronterizo` varchar(255) NOT NULL DEFAULT 'No aplica',
+  `lugar_de_usa` varchar(255) NOT NULL DEFAULT 'No aplica',
   `fecha_injusticia` timestamp NULL DEFAULT NULL,
   `hora_injusticia` varchar(255) DEFAULT NULL,
   `municipio_injusticia` varchar(255) DEFAULT NULL,
@@ -127,10 +128,10 @@ CREATE TABLE `denuncias` (
   `lugar_abordaje_transporte` varchar(255) DEFAULT NULL,
   `destino_transporte` varchar(255) DEFAULT NULL,
   `numero_oficiales_responsables` varchar(255) DEFAULT NULL,
-  `algun_nombre_responsables` varchar(255) DEFAULT NULL,
-  `apodos_responsables` varchar(255) DEFAULT NULL,
-  `color_uniforme_responsables` varchar(255) DEFAULT NULL,
-  `insignias_responsables` varchar(255) DEFAULT NULL,
+  `algun_nombre_responsables` varchar(255) NOT NULL DEFAULT 'No aplica',
+  `apodos_responsables` varchar(255) NOT NULL DEFAULT 'No aplica',
+  `color_uniforme_responsables` varchar(255) NOT NULL DEFAULT 'No aplica',
+  `insignias_responsables` varchar(255) NOT NULL DEFAULT 'No aplica',
   `responsables_abordo_vehiculos_responsables` tinyint(1) DEFAULT NULL,
   `id_tipo_transporte_responsables` int(11) DEFAULT NULL,
   `numero_vehiculos_responsables` int(11) DEFAULT NULL,
@@ -144,8 +145,18 @@ CREATE TABLE `denuncias` (
   `telefono_seguimiento` varchar(45) DEFAULT NULL,
   `documento1_seguimiento` varchar(255) DEFAULT NULL,
   `documento2_seguimiento` varchar(255) DEFAULT NULL,
+  `carcteristicas_ficias_policia_responsable` varchar(255) NOT NULL DEFAULT 'No aplica',
+  `notas_seguimiento` varchar(255) DEFAULT NULL,
+  `documento3_seguimiento` varchar(255) DEFAULT NULL,
+  `documento4_seguimiento` varchar(255) DEFAULT NULL,
+  `documento5_seguimiento` varchar(255) DEFAULT NULL,
+  `documento6_seguimiento` varchar(255) DEFAULT NULL,
+  `documento7_seguimiento` varchar(255) DEFAULT NULL,
+  `documento8_seguimiento` varchar(255) DEFAULT NULL,
+  `documento9_seguimiento` varchar(255) DEFAULT NULL,
+  `documento10_seguimiento` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_denuncia`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -154,6 +165,7 @@ CREATE TABLE `denuncias` (
 
 LOCK TABLES `denuncias` WRITE;
 /*!40000 ALTER TABLE `denuncias` DISABLE KEYS */;
+INSERT INTO `denuncias` VALUES (1,'Q-03-14','2014-02-16 12:00:00',1,1,1,'Falta de trabajo',2,'',1,'1',1,'amigo','','Regresar a mi comunidad',1,10,1,NULL,'6000 dolares',1,'Sonoita','','2014-02-06 12:00:00',NULL,'Sonora',26,1,'Desierto','Cansancio',NULL,2,3,NULL,NULL,NULL,'','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Engracia Robles',NULL,NULL,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `denuncias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -200,6 +212,7 @@ CREATE TABLE `derechos_violados2denuncias` (
 
 LOCK TABLES `derechos_violados2denuncias` WRITE;
 /*!40000 ALTER TABLE `derechos_violados2denuncias` DISABLE KEYS */;
+INSERT INTO `derechos_violados2denuncias` VALUES (2,1),(4,1);
 /*!40000 ALTER TABLE `derechos_violados2denuncias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -272,7 +285,7 @@ CREATE TABLE `etados_casos` (
 
 LOCK TABLES `etados_casos` WRITE;
 /*!40000 ALTER TABLE `etados_casos` DISABLE KEYS */;
-INSERT INTO `etados_casos` VALUES (1,'Trámite'),(2,'Cerrado por desistimiento estan en transito'),(3,'Cerrado por desistimiento por temor a represalias');
+INSERT INTO `etados_casos` VALUES (1,'Trámite'),(2,'Cerrado por desistimiento estan en transito'),(3,'Cerrado por desistimiento por temor a represalias'),(4,'Cerrado por canalización a una instancia');
 /*!40000 ALTER TABLE `etados_casos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -347,7 +360,7 @@ CREATE TABLE `migrantes` (
   `nombre_pueblo_indigena` varchar(255) DEFAULT NULL,
   `espanol` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id_migrante`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -356,6 +369,7 @@ CREATE TABLE `migrantes` (
 
 LOCK TABLES `migrantes` WRITE;
 /*!40000 ALTER TABLE `migrantes` DISABLE KEYS */;
+INSERT INTO `migrantes` VALUES (1,'Jonatan Morales',1,2,'Tijuana',1,21,NULL,'Chofer','1','Primaria',2,NULL,NULL);
 /*!40000 ALTER TABLE `migrantes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -378,6 +392,7 @@ CREATE TABLE `migrantes2denuncias` (
 
 LOCK TABLES `migrantes2denuncias` WRITE;
 /*!40000 ALTER TABLE `migrantes2denuncias` DISABLE KEYS */;
+INSERT INTO `migrantes2denuncias` VALUES (1,1);
 /*!40000 ALTER TABLE `migrantes2denuncias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -448,6 +463,7 @@ CREATE TABLE `paquetes2denuncias` (
 
 LOCK TABLES `paquetes2denuncias` WRITE;
 /*!40000 ALTER TABLE `paquetes2denuncias` DISABLE KEYS */;
+INSERT INTO `paquetes2denuncias` VALUES (3,1),(1,1),(4,1),(2,1);
 /*!40000 ALTER TABLE `paquetes2denuncias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -462,7 +478,7 @@ CREATE TABLE `tipos_quejas` (
   `id_tipo_queja` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) NOT NULL,
   PRIMARY KEY (`id_tipo_queja`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -471,7 +487,7 @@ CREATE TABLE `tipos_quejas` (
 
 LOCK TABLES `tipos_quejas` WRITE;
 /*!40000 ALTER TABLE `tipos_quejas` DISABLE KEYS */;
-INSERT INTO `tipos_quejas` VALUES (1,'Indivudual'),(2,'Grupal');
+INSERT INTO `tipos_quejas` VALUES (1,'Indivudual'),(2,'Grupal'),(3,'Comunitaria');
 /*!40000 ALTER TABLE `tipos_quejas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -511,7 +527,7 @@ CREATE TABLE `violacion_derechos` (
   `id_derecho` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
   PRIMARY KEY (`id_violacion`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -520,7 +536,7 @@ CREATE TABLE `violacion_derechos` (
 
 LOCK TABLES `violacion_derechos` WRITE;
 /*!40000 ALTER TABLE `violacion_derechos` DISABLE KEYS */;
-INSERT INTO `violacion_derechos` VALUES (1,1,'Detención ilegal y/o arbitraria'),(2,1,'Omisión de poner inmediatamente'),(3,1,'A disposición de la autoridad competente'),(4,1,'A la persona'),(5,1,'Restricción al libre tránsito'),(6,3,'Falta de una defensa adecuada'),(7,3,'Falta de protección consular'),(8,3,'Falta de seguimiento a casos de abusos'),(9,2,'Tortura'),(10,2,'Tratos crueles Inhumanos y degradantes'),(11,2,'Amenazas'),(12,2,'Desaparición forzada'),(13,2,'Incomunicación'),(14,2,'Secuestro'),(15,2,'Trata de personas'),(16,4,'Multa indebida'),(17,4,'Multa excesiva'),(18,4,'Robo'),(19,4,'Daños'),(20,4,'Extorsión'),(21,5,'Despido injustificado'),(22,5,'Riesgo de trabajo'),(23,5,'Falta de herramientas técnicas'),(24,5,'Falta de equipamiento'),(25,5,'Salario digno, justo y equitativo'),(26,6,'Ejecución extrajudicial');
+INSERT INTO `violacion_derechos` VALUES (1,1,'Detención ilegal y/o arbitraria'),(2,1,'Omisión de poner inmediatamente a disposición de la autoridad competente a la persona'),(5,1,'Restricción al libre tránsito'),(6,3,'Falta de una defensa adecuada'),(7,3,'Falta de protección consular'),(8,3,'Falta de seguimiento a casos de abusos'),(9,2,'Tortura'),(10,2,'Tratos crueles Inhumanos y degradantes'),(11,2,'Amenazas'),(12,1,'Desaparición forzada'),(13,2,'Incomunicación'),(14,1,'Secuestro'),(15,2,'Trata de personas'),(16,4,'Multa indebida'),(17,4,'Multa excesiva'),(18,4,'Robo'),(19,4,'Daños'),(20,4,'Extorsión'),(21,5,'Despido injustificado'),(22,5,'Riesgo de trabajo'),(23,5,'Falta de herramientas técnicas'),(24,5,'Falta de equipamiento'),(25,5,'Salario digno, justo y equitativo'),(26,6,'Ejecución extrajudicial'),(27,3,'Falta de investigación a casos de abuso'),(28,5,'Trato discriminatorio');
 /*!40000 ALTER TABLE `violacion_derechos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -543,6 +559,7 @@ CREATE TABLE `violacion_derechos2denuncias` (
 
 LOCK TABLES `violacion_derechos2denuncias` WRITE;
 /*!40000 ALTER TABLE `violacion_derechos2denuncias` DISABLE KEYS */;
+INSERT INTO `violacion_derechos2denuncias` VALUES (19,1),(10,1);
 /*!40000 ALTER TABLE `violacion_derechos2denuncias` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -555,4 +572,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-27 15:54:31
+-- Dump completed on 2014-05-28 15:53:45

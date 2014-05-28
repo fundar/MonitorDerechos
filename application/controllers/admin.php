@@ -52,10 +52,12 @@ class Admin extends CI_Controller {
 			'conocimineto_punto_fronterizo', 'nombre_punto_fronterizo', 'lugar_de_usa', 'fecha_injusticia', 'id_pais_injusticia',
 			'id_estado_injusticia', 'municipio_injusticia', 'espacio_fisico_injusticia', 'detonante_injusticia', 'numero_migrantes_injusticia',
 			'id_transporte_viaje_injusticia', 'lugar_abordaje_transporte', 'destino_transporte', 'autoridades_responables',
-			'numero_oficiales_responsables', 'algun_nombre_responsables', 'apodos_responsables', 'color_uniforme_responsables',
+			'numero_oficiales_responsables', 'algun_nombre_responsables', 'carcteristicas_ficias_policia_responsable', 'apodos_responsables', 'color_uniforme_responsables',
 			'insignias_responsables', 'id_tipo_transporte_responsables', 'placas_vehiculos_responsables',
-			'descripcion_evento', 'monto_extorsion', 'derechos_violados', 'violaciones_derechos', 'id_estado_caso',
-			'nombre_persona_atendio_seguimiento', 'telefono_seguimiento', 'documento1_seguimiento', 'documento2_seguimiento'
+			'descripcion_evento', 'monto_extorsion', 'derechos_violados', 'violaciones_derechos', 'id_estado_caso', 'estado_seguimiento', 'notas_seguimiento',
+			'nombre_persona_atendio_seguimiento', 'telefono_seguimiento', 'documento1_seguimiento', 'documento2_seguimiento', 'documento3_seguimiento',
+			'documento4_seguimiento', 'documento5_seguimiento', 'documento6_seguimiento', 'documento7_seguimiento', 'documento8_seguimiento',
+			'documento9_seguimiento', 'documento10_seguimiento'
 		);
 		
 		$crud->required_fields('fecha_creada');
@@ -130,6 +132,7 @@ class Admin extends CI_Controller {
 		$crud->display_as('autoridades_responables', 'Nombre de las instituciones involucradas');
 		$crud->display_as('numero_oficiales_responsables', 'Número de oficiales responsables');
 		$crud->display_as('algun_nombre_responsables', 'Nombres de oficiales responsables');
+		$crud->display_as('carcteristicas_ficias_policia_responsable', 'Características fìsicas');
 		$crud->display_as('apodos_responsables', 'Apodos de oficiales responsables');
 		$crud->display_as('color_uniforme_responsables', 'Color de uniforme de oficiales responsables');
 		$crud->display_as('insignias_responsables', 'Insignias de uniforme de oficiales responsables');
@@ -155,8 +158,26 @@ class Admin extends CI_Controller {
 		$crud->display_as('telefono_seguimiento', 'Teléfono de contacto para seguimiento');
 		$crud->display_as('documento1_seguimiento', 'Documento adicional 1');
 		$crud->display_as('documento2_seguimiento', 'Documento adicional 2');
+		$crud->display_as('documento3_seguimiento', 'Documento adicional 3');
+		$crud->display_as('documento4_seguimiento', 'Documento adicional 4');
+		$crud->display_as('documento5_seguimiento', 'Documento adicional 5');
+		
+		$crud->display_as('documento6_seguimiento', 'Multimedia adicional 1');
+		$crud->display_as('documento7_seguimiento', 'Multimedia adicional 2');
+		$crud->display_as('documento8_seguimiento', 'Multimedia adicional 3');
+		$crud->display_as('documento9_seguimiento', 'Multimedia adicional 4');
+		$crud->display_as('documento10_seguimiento', 'Multimedia adicional 5');
+		
 		$crud->set_field_upload('documento1_seguimiento', 'assets/uploads/files');
 		$crud->set_field_upload('documento2_seguimiento', 'assets/uploads/files');
+		$crud->set_field_upload('documento3_seguimiento', 'assets/uploads/files');
+		$crud->set_field_upload('documento4_seguimiento', 'assets/uploads/files');
+		$crud->set_field_upload('documento5_seguimiento', 'assets/uploads/files');
+		$crud->set_field_upload('documento6_seguimiento', 'assets/uploads/files');
+		$crud->set_field_upload('documento7_seguimiento', 'assets/uploads/files');
+		$crud->set_field_upload('documento8_seguimiento', 'assets/uploads/files');
+		$crud->set_field_upload('documento9_seguimiento', 'assets/uploads/files');
+		$crud->set_field_upload('documento10_seguimiento', 'assets/uploads/files');
 		return true;
 	}
 	
