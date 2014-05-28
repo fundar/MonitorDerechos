@@ -116,16 +116,16 @@ class Admin extends CI_Controller {
 		/*Columnas(Vista), campos y campos obligatorios*/
 		$crud->columns('numero_queja', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes');
 		$crud->fields(
-			'numero_queja', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes', 'intentos', 
+			'nombre_persona_atendio_seguimiento', 'numero_queja', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes', 'intentos', 
 			'motivo_migracion', 'viaja_solo', 'con_quien_viaja', 'deportado', 'momento_deportado', 'separacion_familiar', 'familiar_separado', 'situacion_familiar',
-			'acto_siguiente', 'autoridades_viaje', 'dano_autoridad', 'id_autoridad_dano', 'coyote_guia', 'monto_coyote', 'paquete_pago',
-			'conocimineto_punto_fronterizo', 'nombre_punto_fronterizo', 'lugar_de_usa', 'fecha_injusticia', 'id_pais_injusticia',
+			'acto_siguiente', 'coyote_guia', 'monto_coyote', 'paquete_pago',
+			'conocimineto_punto_fronterizo', 'nombre_punto_fronterizo', 'lugar_de_usa', 'autoridades_viaje', 'dano_autoridad', 'id_autoridad_dano', 'fecha_injusticia', 'id_pais_injusticia',
 			'id_estado_injusticia', 'municipio_injusticia', 'espacio_fisico_injusticia', 'detonante_injusticia', 'numero_migrantes_injusticia',
 			'id_transporte_viaje_injusticia', 'lugar_abordaje_transporte', 'destino_transporte', 'autoridades_responables',
 			'numero_oficiales_responsables', 'algun_nombre_responsables', 'carcteristicas_ficias_policia_responsable', 'apodos_responsables', 'color_uniforme_responsables',
-			'insignias_responsables', 'id_tipo_transporte_responsables', 'placas_vehiculos_responsables',
+			'insignias_responsables', 'numero_vehiculos_responsables', 'id_tipo_transporte_responsables', 'placas_vehiculos_responsables',
 			'descripcion_evento', 'monto_extorsion', 'derechos_violados', 'violaciones_derechos', 'id_estado_caso', 'estado_seguimiento', 'notas_seguimiento',
-			'nombre_persona_atendio_seguimiento', 'telefono_seguimiento', 'documento1_seguimiento', 'documento2_seguimiento', 'documento3_seguimiento',
+			'telefono_seguimiento', 'documento1_seguimiento', 'documento2_seguimiento', 'documento3_seguimiento',
 			'documento4_seguimiento', 'documento5_seguimiento', 'documento6_seguimiento', 'documento7_seguimiento', 'documento8_seguimiento',
 			'documento9_seguimiento', 'documento10_seguimiento'
 		);
@@ -166,14 +166,8 @@ class Admin extends CI_Controller {
 		$crud->display_as('situacion_familiar', 'Sabes que paso con tu familiar');
 		$crud->display_as('acto_siguiente', 'Qué piensa hacer ahora');
 		
-		/*Antecedentes de autoridades*/
-		$crud->display_as('autoridades_viaje', 'Durante el viaje con que autoridades te encontraste');
-		$crud->display_as('dano_autoridad', 'Alguna de las autoridades te causaron daño');
-		$crud->field_type('dano_autoridad', 'dropdown', array(1 => 'Si', 2 => 'No'));
-		$crud->display_as('id_autoridad_dano', 'Que autoridad lo hizo');
-		$crud->set_relation('id_autoridad_dano', 'autoridades', 'nombre');
 		/*Coyote*/
-		$crud->display_as('coyote_guia', 'Cuando salióm de sus comunidad había contactado al coyote o guía que lo pasaría');
+		$crud->display_as('coyote_guia', 'Cuando salió de sus comunidad había contactado al coyote o guía que lo pasaría');
 		$crud->field_type('coyote_guia', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		$crud->display_as('monto_coyote', 'Cuanto le cobraría');
 		$crud->display_as('paquete_pago', 'Que incluía el pago');
@@ -182,6 +176,12 @@ class Admin extends CI_Controller {
 		$crud->display_as('nombre_punto_fronterizo', 'Nombre del punto fronterizo');
 		$crud->display_as('lugar_de_usa', 'A donde lo llevaría');
 		
+		/*Antecedentes de autoridades*/
+		$crud->display_as('autoridades_viaje', 'Durante el viaje con que autoridades te encontraste');
+		$crud->display_as('dano_autoridad', 'Alguna de las autoridades te causaron daño');
+		$crud->field_type('dano_autoridad', 'dropdown', array(1 => 'Si', 2 => 'No'));
+		$crud->display_as('id_autoridad_dano', 'Que autoridad lo hizo');
+		$crud->set_relation('id_autoridad_dano', 'autoridades', 'nombre');
 		
 		/*Hechos violatorios a derechos humanos*/
 		$crud->display_as('fecha_injusticia', 'Cuándo se cometió la injusticia');
@@ -224,7 +224,7 @@ class Admin extends CI_Controller {
 		$crud->set_relation('id_estado_caso', 'etados_casos', 'nombre');
 		$crud->display_as('estado_seguimiento', 'Seguimiento');
 		$crud->display_as('notas_seguimiento', 'Notas sobre el seguimiento');
-		$crud->display_as('nombre_persona_atendio_seguimiento', 'Nombre de la personaq que atendio el caso');
+		$crud->display_as('nombre_persona_atendio_seguimiento', 'Nombre de la persona que atendio el caso');
 		$crud->display_as('telefono_seguimiento', 'Teléfono de contacto para seguimiento');
 		$crud->display_as('documento1_seguimiento', 'Documento adicional 1');
 		$crud->display_as('documento2_seguimiento', 'Documento adicional 2');
