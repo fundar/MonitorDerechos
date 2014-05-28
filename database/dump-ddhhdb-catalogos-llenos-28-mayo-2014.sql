@@ -534,7 +534,7 @@ CREATE TABLE `users` (
   `type` varchar(45) NOT NULL DEFAULT 'normal',
   `date_create` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -543,7 +543,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,1,1,'peromaty@yahoo.com.mx','Maty','Perez','113ccfaca0989846116d91abe9d20dc8','peromaty@yahoo.com.mx','admin','2014-05-28 16:26:46'),(2,1,1,'carlos@fundar.org.mx','Carlos Hugo','Gonzalez Castell','113ccfaca0989846116d91abe9d20dc8','carlos@fundar.org.mx','admin','2014-05-28 16:27:24');
+INSERT INTO `users` VALUES (1,1,1,'peromaty@yahoo.com.mx','Maty','Perez','113ccfaca0989846116d91abe9d20dc8','peromaty@yahoo.com.mx','admin','2014-05-28 16:26:46'),(2,1,1,'carlos@fundar.org.mx','Carlos Hugo','Gonzalez Castell','113ccfaca0989846116d91abe9d20dc8','carlos@fundar.org.mx','admin','2014-05-28 16:27:24'),(3,1,1,'silvia@fundar.org.mx','Silvia','Ruiz','113ccfaca0989846116d91abe9d20dc8','silvia@fundar.org.mx','admin','2014-05-28 16:43:35');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -604,4 +604,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-28 16:39:30
+-- Dump completed on 2014-05-28 16:44:50
