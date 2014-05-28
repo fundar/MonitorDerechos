@@ -42,6 +42,10 @@ a:hover
 		<a href='<?php echo site_url('admin/lugares_denuncia')?>'>Lugares de denuncia</a> |
 		<a href='<?php echo site_url('admin/paquete_pago')?>'>Cosas que incluye el pago</a> |
 		<a href='<?php echo site_url('admin/transportes')?>'>Transportes</a>
+		
+		<?php if(isset($_SESSION['user_id'])) { ?>
+			| <a href='<?php echo site_url('admin/logout')?>'>Cerrar sesión</a>
+		<?php } ?>
 	</div>
 	<div style='height:20px;'></div>  
     <div>

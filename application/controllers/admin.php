@@ -13,6 +13,8 @@ class Admin extends CI_Controller {
 		$this->load->helper('date');
 
 		$this->load->library('grocery_CRUD');
+		
+		session_start();
 	}
 
 	/*Salida de las vistas*/
@@ -20,8 +22,76 @@ class Admin extends CI_Controller {
 		$this->load->view('admin.php', $output);
 	}
 	
+	/*Users metodo para verificar si es usuario*/
+	private function isUser($redirect = true, $admin = false) {
+		if(isset($_SESSION['user_id'])) {
+			$user_id = $_SESSION['user_id'];
+			
+			$this->load->model('migracion_model');
+			$user = $this->migracion_model->getUser($_SESSION['user_id']);
+			
+			if($user) {
+				
+				return $user;
+				
+				if($redirect) {
+					header('Location: ' . site_url('admin/denuncias'));
+				}
+				
+				return $user;
+			} else {
+				if($redirect) {
+					header('Location: ' . site_url('admin/login'));
+				}
+				
+				return false;
+			}
+		} else {
+			if($redirect) {
+				header('Location: ' . site_url('admin/login'));
+			}
+			
+			return false;
+		}
+	}
+	
+	/*Metodo para hacer login*/
+	public function login() {
+		if($this->isUser(false)) {
+			header('Location: ' . site_url('admin/denuncias'));
+		} else {
+			$vars["error"] = false;
+			
+			if(isset($_POST["submit"])) {
+				$this->load->model('migracion_model');
+				$user = $this->migracion_model->isUser(trim(str_replace("'","",$_POST["email"])), md5($_POST["pwd"]));
+				
+				if($user) {
+					$_SESSION['user_id'] = $user->id_user;
+					$_SESSION['email']   = $user->email;
+					
+					header('Location: ' . site_url('admin/denuncias'));
+				}
+				
+				$vars["error"] = "datos incorrectos";
+			}
+			
+			$this->load->view('login.php', $vars);
+		}
+	}
+	
+	/*Metodo para cerrar session*/
+	public function logout() {
+		session_unset(); 
+		session_destroy();
+		
+		header('Location: ' . site_url('admin/login'));
+	}
+	
+	
 	/*Metodo de denuncias*/
 	public function denuncias() {
+		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
 		/*Tabla y título*/
@@ -183,6 +253,7 @@ class Admin extends CI_Controller {
 	
 	/*Metodo de migrantes*/
 	public function migrantes() {
+		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
 		/*Tabla y título*/
@@ -222,6 +293,7 @@ class Admin extends CI_Controller {
 	
 	/*Autoridades*/
 	public function autoridades() {
+		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
 		/*Tabla y título*/
@@ -240,6 +312,7 @@ class Admin extends CI_Controller {
 	
 	/*Derechos*/
 	public function derechos() {
+		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
 		/*Tabla y título*/
@@ -258,6 +331,7 @@ class Admin extends CI_Controller {
 	
 	/*Violaciones a los Derechos*/
 	public function violaciones_derechos() {
+		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
 		/*Tabla y título*/
@@ -282,6 +356,7 @@ class Admin extends CI_Controller {
 	
 	/*Paises*/
 	public function paises() {
+		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
 		/*Tabla y título*/
@@ -300,6 +375,7 @@ class Admin extends CI_Controller {
 	
 	/*Estados*/
 	public function estados() {
+		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
 		/*Tabla y título*/
@@ -323,6 +399,7 @@ class Admin extends CI_Controller {
 	
 	/*Estado de los casos/denuncias*/
 	public function estados_casos() {
+		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
 		/*Tabla y título*/
@@ -341,6 +418,7 @@ class Admin extends CI_Controller {
 	
 	/*Lugares de las denuncias*/
 	public function lugares_denuncia() {
+		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
 		/*Tabla y título*/
@@ -359,6 +437,7 @@ class Admin extends CI_Controller {
 	
 	/*Que incluia el pago*/
 	public function paquete_pago() {
+		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
 		/*Tabla y título*/
@@ -377,6 +456,7 @@ class Admin extends CI_Controller {
 	
 	/*Tipo de quejas*/
 	public function tipos_quejas() {
+		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
 		/*Tabla y título*/
@@ -395,6 +475,7 @@ class Admin extends CI_Controller {
 	
 	/*Transportes*/
 	public function transportes() {
+		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
 		/*Tabla y título*/
