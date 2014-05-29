@@ -212,7 +212,7 @@ class Admin extends CI_Controller {
 		$crud->display_as('color_uniforme_responsables', 'Color de uniforme de oficiales responsables');
 		$crud->display_as('insignias_responsables', 'Insignias de uniforme de oficiales responsables');
 		
-		$crud->display_as('responsables_abordo_vehiculos_responsables', 'Iban a bordo de Vehículoss');
+		$crud->display_as('responsables_abordo_vehiculos_responsables', 'Iban a bordo de Vehículos');
 		$crud->field_type('responsables_abordo_vehiculos_responsables', 'dropdown', array('Si' => 'Si', 'No' => 'No'));
 		
 		$crud->display_as('id_tipo_transporte_responsables', 'Tipo de vehículo');
@@ -231,7 +231,10 @@ class Admin extends CI_Controller {
 		/*Estado actual del caso*/
 		$crud->display_as('id_estado_caso', 'Estado actual del caso');
 		$crud->set_relation('id_estado_caso', 'etados_casos', 'nombre');
+		
 		$crud->display_as('estado_seguimiento', 'Seguimiento');
+		$crud->field_type('estado_seguimiento', 'dropdown', array('Defensa' => 'Defensa', 'Canalización a una instancia' => 'Canalización a una instancia'));
+		
 		$crud->display_as('notas_seguimiento', 'Notas sobre el seguimiento');
 		$crud->display_as('nombre_persona_atendio_seguimiento', 'Nombre de la persona que atendio el caso');
 		$crud->display_as('telefono_seguimiento', 'Teléfono de contacto para seguimiento');
