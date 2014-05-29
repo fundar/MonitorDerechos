@@ -46,7 +46,7 @@ a:hover
 		<?php if(isset($_SESSION['user_id'])) { ?>
 			&nbsp;&nbsp;&nbsp;&nbsp;
 			| <a href='<?php echo site_url('admin/logout')?>'>Cerrar sesión</a>
-			| <a href='<?php echo site_url('exportar.php')?>' target="_blank">Descargar Base de Datos</a>
+			| <a href='/exportar.php' target="_blank">Descargar Base de Datos</a>
 		<?php } ?>
 	</div>
 	<div style='height:20px;'></div>  
