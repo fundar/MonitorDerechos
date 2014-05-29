@@ -122,8 +122,8 @@ class Admin extends CI_Controller {
 			'acto_siguiente', 'autoridades_viaje', 'dano_autoridad', 'id_autoridad_dano', 'fecha_injusticia', 'id_pais_injusticia',
 			'id_estado_injusticia', 'municipio_injusticia', 'espacio_fisico_injusticia', 'detonante_injusticia', 'numero_migrantes_injusticia',
 			'id_transporte_viaje_injusticia', 'lugar_abordaje_transporte', 'destino_transporte', 'autoridades_responables',
-			'numero_oficiales_responsables', 'algun_nombre_responsables', 'carcteristicas_ficias_policia_responsable', 'apodos_responsables', 'color_uniforme_responsables',
-			'insignias_responsables', 'numero_vehiculos_responsables', 'id_tipo_transporte_responsables', 'placas_vehiculos_responsables',
+			'numero_oficiales_responsables', 'algun_nombre_responsables', 'carcteristicas_ficias_policia_responsable', 'apodos_responsables', 'uniformado_responsables', 'color_uniforme_responsables',
+			'insignias_responsables', 'responsables_abordo_vehiculos_responsables', 'id_tipo_transporte_responsables', 'numero_vehiculos_responsables', 'placas_vehiculos_responsables',
 			'descripcion_evento', 'monto_extorsion', 'derechos_violados', 'violaciones_derechos', 'id_estado_caso', 'estado_seguimiento', 'notas_seguimiento',
 			'telefono_seguimiento', 'documento1_seguimiento', 'documento2_seguimiento', 'documento3_seguimiento',
 			'documento4_seguimiento', 'documento5_seguimiento', 'documento6_seguimiento', 'documento7_seguimiento', 'documento8_seguimiento',
@@ -204,10 +204,18 @@ class Admin extends CI_Controller {
 		$crud->display_as('algun_nombre_responsables', 'Nombres de oficiales responsables');
 		$crud->display_as('carcteristicas_ficias_policia_responsable', 'Características fìsicas');
 		$crud->display_as('apodos_responsables', 'Apodos de oficiales responsables');
+		
+		$crud->display_as('uniformado_responsables', 'Los responsables estaban uniformados');
+		$crud->field_type('uniformado_responsables', 'dropdown', array('Si' => 'Si', 'No' => 'No'));
+		
 		$crud->display_as('color_uniforme_responsables', 'Color de uniforme de oficiales responsables');
 		$crud->display_as('insignias_responsables', 'Insignias de uniforme de oficiales responsables');
-		$crud->display_as('numero_vehiculos_responsables', 'Número de vehículos');
+		
+		$crud->display_as('responsables_abordo_vehiculos_responsables', 'Iban a bordo de Vehículoss');
+		$crud->field_type('responsables_abordo_vehiculos_responsables', 'dropdown', array('Si' => 'Si', 'No' => 'No'));
+		
 		$crud->display_as('id_tipo_transporte_responsables', 'Tipo de vehículo');
+		$crud->display_as('numero_vehiculos_responsables', 'Número de vehículos');
 		$crud->set_relation('id_tipo_transporte_responsables', 'transportes', 'nombre');
 		$crud->display_as('placas_vehiculos_responsables', 'Placas');
 		
