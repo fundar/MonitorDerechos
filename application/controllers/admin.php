@@ -98,7 +98,6 @@ class Admin extends CI_Controller {
 		$crud->set_theme('datatables');
 		$crud->set_table('denuncias');
 		$crud->set_subject('Denuncias');
-		$crud->order_by('fecha_creada','desc');
 		
 		/*Relaciones n_n*/
 		/*Migrantes*/
@@ -137,6 +136,7 @@ class Admin extends CI_Controller {
 		/*Set displays campos*/
 		$this->display_as_denuncias($crud);
 		
+		$crud->order_by('fecha_creada','desc');
 		$output = $crud->render();
 		
 		$this->_example_output($output);
