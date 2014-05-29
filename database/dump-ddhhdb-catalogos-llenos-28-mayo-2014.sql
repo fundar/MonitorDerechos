@@ -26,7 +26,7 @@ CREATE TABLE `autoridades` (
   `id_autoridad` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_autoridad`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,7 +35,7 @@ CREATE TABLE `autoridades` (
 
 LOCK TABLES `autoridades` WRITE;
 /*!40000 ALTER TABLE `autoridades` DISABLE KEYS */;
-INSERT INTO `autoridades` VALUES (1,'Patrulla Fronteriza'),(2,'Policía'),(3,'Grupo Beta'),(4,'Agente del instituto nacional de migración'),(5,'El Ejército'),(6,'Marina'),(7,'Migración'),(8,'Policía Federal'),(9,'Policía Municipal'),(10,'Otro actor / Coyote'),(11,'Otro actor / Mafia');
+INSERT INTO `autoridades` VALUES (1,'Patrulla Fronteriza'),(2,'Policía'),(3,'Grupo Beta'),(4,'Agente del instituto nacional de migración'),(5,'El Ejército'),(6,'Marina'),(7,'Migración'),(8,'Policía Federal'),(9,'Policía Municipal'),(10,'Otro actor / Coyote'),(11,'Otro actor / Mafia'),(12,'Policía preventiva');
 /*!40000 ALTER TABLE `autoridades` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,7 +58,7 @@ CREATE TABLE `autoridades2denuncias` (
 
 LOCK TABLES `autoridades2denuncias` WRITE;
 /*!40000 ALTER TABLE `autoridades2denuncias` DISABLE KEYS */;
-INSERT INTO `autoridades2denuncias` VALUES (1,1);
+INSERT INTO `autoridades2denuncias` VALUES (1,1),(2,2),(4,3),(2,3),(2,4),(2,5),(2,6),(2,7);
 /*!40000 ALTER TABLE `autoridades2denuncias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,6 +81,7 @@ CREATE TABLE `autoridades_responables2denuncias` (
 
 LOCK TABLES `autoridades_responables2denuncias` WRITE;
 /*!40000 ALTER TABLE `autoridades_responables2denuncias` DISABLE KEYS */;
+INSERT INTO `autoridades_responables2denuncias` VALUES (8,2),(2,3),(9,4),(9,5),(8,6),(9,7);
 /*!40000 ALTER TABLE `autoridades_responables2denuncias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -132,7 +133,7 @@ CREATE TABLE `denuncias` (
   `apodos_responsables` varchar(255) NOT NULL DEFAULT 'No aplica',
   `color_uniforme_responsables` varchar(255) NOT NULL DEFAULT 'No aplica',
   `insignias_responsables` varchar(255) NOT NULL DEFAULT 'No aplica',
-  `responsables_abordo_vehiculos_responsables` tinyint(1) DEFAULT NULL,
+  `responsables_abordo_vehiculos_responsables` varchar(15) DEFAULT 'No Aplica',
   `id_tipo_transporte_responsables` int(11) DEFAULT NULL,
   `numero_vehiculos_responsables` int(11) DEFAULT NULL,
   `placas_vehiculos_responsables` varchar(45) DEFAULT NULL,
@@ -155,8 +156,9 @@ CREATE TABLE `denuncias` (
   `documento8_seguimiento` varchar(255) DEFAULT NULL,
   `documento9_seguimiento` varchar(255) DEFAULT NULL,
   `documento10_seguimiento` varchar(255) DEFAULT NULL,
+  `uniformado_responsables` varchar(15) DEFAULT 'No Aplica',
   PRIMARY KEY (`id_denuncia`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -165,7 +167,7 @@ CREATE TABLE `denuncias` (
 
 LOCK TABLES `denuncias` WRITE;
 /*!40000 ALTER TABLE `denuncias` DISABLE KEYS */;
-INSERT INTO `denuncias` VALUES (1,'Q-03-14','2014-02-16 12:00:00',1,1,1,'Falta de trabajo',2,'',1,'1',1,'amigo','','Regresar a mi comunidad',1,10,1,NULL,'6000 dolares',1,'Sonoita','','2014-02-06 12:00:00',NULL,'Sonora',26,1,'Desierto','Cansancio',NULL,2,3,NULL,NULL,NULL,'','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Engracia Robles',NULL,NULL,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `denuncias` VALUES (1,'Q-05-14','2014-02-16 12:00:00',1,1,1,'Falta de trabajo',2,'',1,NULL,1,'amigo','','Regresar a mi comunidad',1,10,1,NULL,'6000 dolares',1,'Sonoita','','2014-02-06 12:00:00',NULL,'Sonora',26,1,'Desierto','Cansancio',NULL,2,3,NULL,NULL,NULL,'','','','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Engracia Robles',NULL,NULL,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'No Aplica'),(2,'Q-01-14','2014-02-28 00:00:00',2,2,NULL,'Falta de trabajo',NULL,'',1,'Al cruzar la frontera',2,'','','regresar a mi comunidad',1,8,NULL,NULL,NULL,NULL,'','','2014-02-26 09:00:00',NULL,'Agua Prieta',26,1,'carretera','retén',NULL,11,1,'Torreón','Naco, Sonora',NULL,'4','','azul marino','',NULL,8,NULL,NULL,'<div>\n	Mi nombre es Juan Manuel Gonz&aacute;lez S&aacute;nchez, ven&iacute;amos en el autob&uacute;s An&aacute;huac y se detuvo en un ret&eacute;n que tiene un cuartito con una virgen y ah&iacute; se subieron los polic&iacute;as, una mujer nos dijo que baj&aacute;ramos para chequear y nos metieron al cuartito donde est&aacute; la virgen y adentro estaba un polic&iacute;a gordito y chaparro, era el que nos dec&iacute;a que d&oacute;nde tra&iacute;amos el dinero, y yo saqu&eacute; 1200 pesos y me dijo que cu&aacute;nto le iba a dejar, que si quinientos, yo le dije que los quer&iacute;a para un hotel y &eacute;l dijo que le dejara 200 y a otros diez que ven&iacute;an les hizo lo mismo. Eran una mujer, el gordito y otros dos, uno de ellos tra&iacute;a una van guinda y la ten&iacute;a estacionada a un lado del cuarto donde estaba la virgen, despu&eacute;s que nos chequearon nos dejaron ir, esto fue el d&iacute;a mi&eacute;rcoles 26 de febrero a las 9:15 de la noche. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</div>\n<div>\n	&nbsp;</div>\n','200 pesos',2,NULL,NULL,NULL,NULL,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'No Aplica'),(3,'Q-02-14','2014-02-11 12:00:00',1,1,1,'falta de trabajo',1,'',2,NULL,NULL,'','','esperar en esta ciudad',1,2,NULL,NULL,NULL,NULL,'','','2014-01-12 11:00:00',NULL,'Hermosillo',26,1,'A lado de la estación del ferrocarril','verme sucio',NULL,NULL,4,NULL,NULL,'3','','','','',NULL,9,NULL,NULL,NULL,NULL,NULL,'Canalización a otra instancia','Engracia Robles',NULL,NULL,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'No Aplica'),(4,'Q-04-14','2014-02-14 12:00:00',1,2,1,'falta de trabajo ',2,'Amigos',2,NULL,2,'','','intentar cruzar otra vez',1,2,NULL,NULL,NULL,NULL,'','','2014-02-04 12:00:00',NULL,'Celaya',11,1,'a bordo del tren ','Hacer parada en la estación',NULL,2,4,NULL,NULL,'1','','','','',NULL,9,1,NULL,NULL,NULL,NULL,'canalización a otra instancia','Engracia Robles',NULL,NULL,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'No Aplica'),(5,'Q-06-14','2014-02-26 12:00:00',1,1,1,'falta de trabajo',1,'',2,NULL,NULL,'','','esperar en esta ciudad',1,2,2,NULL,NULL,NULL,'','','2014-02-23 05:00:00',NULL,'Benjamín Gil',26,1,'calle','bajar a comer',NULL,NULL,4,NULL,NULL,'4','','','','',NULL,9,1,NULL,'<div>\n	Yo estaba sentado en la estaci&oacute;n. Lleg&oacute; uno y me orden&oacute; subir a la Patrulla. Yo me negu&eacute; a subir. Me agarr&oacute; a patadas y me subi&oacute; y me llevaron a Benjam&iacute;n Gil. Me tuvieron encerrado hasta a otro d&iacute;a. Cuando me detuvieron me quitaron $ 100.00</div>\n<div>\n	&nbsp;</div>\n<div>\n	&nbsp;</div>\n',NULL,NULL,NULL,'Engracia Robles',NULL,NULL,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'No Aplica'),(6,'Q-07-14','2014-02-27 12:00:00',1,2,9,'falta de trabajo',2,'sobrino',1,'Al cruzar la frontera',1,'sobrino','si','intentar cruzar otra vez',1,8,1,NULL,NULL,1,'Naco','','2014-01-15 06:00:00',NULL,'Casas Grandes',8,1,'retén ','revisión',NULL,1,1,NULL,NULL,'varios','','','','',NULL,7,NULL,NULL,'<div>\n	en&iacute;amos en el bus. Subieron y nos bajaron a todos so pretexto de revisi&oacute;n. Iban de uno en uno a una especie de capilla- ten-ia imagen y veladoras-chica como para 4 personas. Me dijeron que sacara todo de las bolsas y uno abri&oacute; mi cartera, sac&oacute; todos los billetes, luego hizo como que me revisaba la cintura con los billetes en la mano. Otro polic&iacute;a le jal&oacute; los billetes y los guard&oacute;. M&aacute;s o menos era $ 1 400.00 Me robaron 800.00.</div>\n<div>\n	&nbsp;</div>\n',NULL,NULL,'canalización a otra instancia','Engracia Robles',NULL,NULL,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'No Aplica'),(7,'Q-08-14','2014-02-28 12:00:00',1,2,2,'falta de trabajo',NULL,'',1,'Al cruzar la frontera',2,'','','regresar a mi comunidad',1,12,NULL,NULL,NULL,NULL,'','','2014-02-25 12:00:00',NULL,'Santa Cruz',26,1,'Calle','Caminando',NULL,5,10,NULL,NULL,'3','','','azul','',NULL,9,1,NULL,'<div>\n	Nos bajamos del autob&uacute;s para ir caminando a Santa Cruz. La polic&iacute;a, antes de llegar a Santa Cruz nos agarraron- &eacute;ramos cinco- nos encerraron toda la noche y en la ma&ntilde;ana nos subieron a un camioncito y nos mandaron a Nogales. Esa noche nos hab&iacute;an dicho que sac&aacute;ramos todo lo que tra&iacute;amos y nos robaron. A m&iacute; mil pesos, a otro tambi&eacute;n mil y a otro 20000. Papeles de identificaci&oacute;n y credenciales nos las regresaron pero el dinero no.</div>\n<div>\n	&nbsp;</div>\n',NULL,NULL,'canalización a otra instancia','Engracia Robles',NULL,NULL,NULL,NULL,'',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'No Aplica');
 /*!40000 ALTER TABLE `denuncias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -212,7 +214,7 @@ CREATE TABLE `derechos_violados2denuncias` (
 
 LOCK TABLES `derechos_violados2denuncias` WRITE;
 /*!40000 ALTER TABLE `derechos_violados2denuncias` DISABLE KEYS */;
-INSERT INTO `derechos_violados2denuncias` VALUES (2,1),(4,1);
+INSERT INTO `derechos_violados2denuncias` VALUES (2,1),(4,1),(1,2),(4,2),(1,3),(2,4),(2,5),(1,5),(4,6),(1,7),(4,7);
 /*!40000 ALTER TABLE `derechos_violados2denuncias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -360,7 +362,7 @@ CREATE TABLE `migrantes` (
   `nombre_pueblo_indigena` varchar(255) DEFAULT NULL,
   `espanol` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id_migrante`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -369,7 +371,7 @@ CREATE TABLE `migrantes` (
 
 LOCK TABLES `migrantes` WRITE;
 /*!40000 ALTER TABLE `migrantes` DISABLE KEYS */;
-INSERT INTO `migrantes` VALUES (1,'Jonatan Morales',1,2,'Tijuana',1,21,NULL,'Chofer','1','Primaria',2,NULL,NULL);
+INSERT INTO `migrantes` VALUES (1,'Jonatan Morales',1,2,'Tijuana',1,21,NULL,'Chofer','1','Primaria',2,NULL,NULL),(2,'Juan Manuel González Sánchez',1,32,'Noria de Ángeles',1,34,NULL,'campesino','2','primaria',2,NULL,NULL),(3,'Ricardo Martínez',1,30,'Pánuco',1,35,NULL,'campesino','2','primaria',2,NULL,NULL),(4,'José Hernández Velázquez',3,NULL,NULL,1,52,NULL,'comerciante','2','primaria',2,NULL,NULL),(5,'Hector Mejía',3,NULL,NULL,1,44,NULL,'comerciante','2','primaria',2,NULL,NULL),(7,'Kader Orellana Flores',3,NULL,NULL,1,26,NULL,'comerciante','2','primaria',2,NULL,NULL),(8,'Guillermo',1,14,'Tuxpan',1,43,NULL,'empledo','2','preparatoria',2,NULL,NULL),(9,'Apolinar Pacheco Reyes',1,11,'León',1,40,NULL,'campesino ','2','primaria',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `migrantes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -392,7 +394,7 @@ CREATE TABLE `migrantes2denuncias` (
 
 LOCK TABLES `migrantes2denuncias` WRITE;
 /*!40000 ALTER TABLE `migrantes2denuncias` DISABLE KEYS */;
-INSERT INTO `migrantes2denuncias` VALUES (1,1);
+INSERT INTO `migrantes2denuncias` VALUES (1,1),(2,2),(3,3),(5,4),(4,4),(7,5),(8,6),(9,7);
 /*!40000 ALTER TABLE `migrantes2denuncias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -591,7 +593,7 @@ CREATE TABLE `violacion_derechos2denuncias` (
 
 LOCK TABLES `violacion_derechos2denuncias` WRITE;
 /*!40000 ALTER TABLE `violacion_derechos2denuncias` DISABLE KEYS */;
-INSERT INTO `violacion_derechos2denuncias` VALUES (19,1),(10,1);
+INSERT INTO `violacion_derechos2denuncias` VALUES (19,1),(10,1),(20,2),(5,2),(1,3),(5,3),(11,4),(5,4),(1,5),(5,5),(18,5),(10,5),(18,6),(1,7),(5,7),(18,7);
 /*!40000 ALTER TABLE `violacion_derechos2denuncias` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -604,4 +606,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-28 16:44:50
+-- Dump completed on 2014-05-29  0:47:06
