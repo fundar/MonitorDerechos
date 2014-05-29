@@ -94,10 +94,11 @@ class Admin extends CI_Controller {
 		$user = $this->isUser();
 		$crud = new grocery_CRUD();
 		
-		/*Tabla y título*/
+		/*Tabla, Título y Orden*/
 		$crud->set_theme('datatables');
 		$crud->set_table('denuncias');
 		$crud->set_subject('Denuncias');
+		$crud->order_by('fecha_creada','desc');
 		
 		/*Relaciones n_n*/
 		/*Migrantes*/
