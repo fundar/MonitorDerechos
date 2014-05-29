@@ -536,7 +536,7 @@ CREATE TABLE `users` (
   `type` varchar(45) NOT NULL DEFAULT 'normal',
   `date_create` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -545,7 +545,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,1,1,'peromaty@yahoo.com.mx','Maty','Perez','113ccfaca0989846116d91abe9d20dc8','peromaty@yahoo.com.mx','admin','2014-05-28 16:26:46'),(2,1,1,'carlos@fundar.org.mx','Carlos Hugo','Gonzalez Castell','113ccfaca0989846116d91abe9d20dc8','carlos@fundar.org.mx','admin','2014-05-28 16:27:24'),(3,1,1,'silvia@fundar.org.mx','Silvia','Ruiz','113ccfaca0989846116d91abe9d20dc8','silvia@fundar.org.mx','admin','2014-05-28 16:43:35');
+INSERT INTO `users` VALUES (1,1,1,'peromaty@yahoo.com.mx','Maty','Perez','113ccfaca0989846116d91abe9d20dc8','peromaty@yahoo.com.mx','admin','2014-05-28 16:26:46'),(2,1,1,'carlos@fundar.org.mx','Carlos Hugo','Gonzalez Castell','113ccfaca0989846116d91abe9d20dc8','carlos@fundar.org.mx','admin','2014-05-28 16:27:24'),(3,1,1,'silvia@fundar.org.mx','Silvia','Ruiz','113ccfaca0989846116d91abe9d20dc8','silvia@fundar.org.mx','admin','2014-05-28 16:43:35'),(4,2,1,'rimahr2001@yahoo.com','Ricardo Machuca','Iniciativa Kino para la Frontera','e75046f641dedb2bf476b3b76535db96','rimahr2001@yahoo.com','nomrmal','2014-05-29 18:57:54'),(5,3,1,'p.delangel@pdib.org','Perla del Ángel','Centro de Recursos para Migrantes','faed97a25e7cc27472ba902a9ff1148e','p.delangel@pdib.org','nomrmal','2014-05-29 18:58:05'),(6,4,1,'ccamyn_altar@hotmail.com','Denisse López','Centro Comunitario de Atención al Migrante y ','ac632469b5be45670aae567d1c844604','ccamyn_altar@hotmail.com','nomrmal','2014-05-29 18:58:42');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -606,4 +606,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-05-29  0:50:52
+-- Dump completed on 2014-05-29 18:59:53
