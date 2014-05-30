@@ -145,6 +145,8 @@ class Admin extends CI_Controller {
 	/*Nombres en español de los campos*/
 	public function display_as_denuncias($crud) {
 		/*Lugar denuncia*/
+		$crud->display_as('fecha_creada', 'Fecha que se recibió la queja');
+		
 		$crud->display_as('id_lugar_denuncia', 'Lugar de denuncia');
 		$crud->set_relation('id_lugar_denuncia', 'lugares_denuncia', 'nombre');
 		/*Lugar denuncia*/
