@@ -170,7 +170,7 @@ class Admin extends CI_Controller {
 		$crud->display_as('acto_siguiente', 'Qué piensa hacer ahora');
 		
 		/*Coyote*/
-		$crud->display_as('coyote_guia', 'Cuando salió de sus comunidad había contactado al coyote o guía que lo pasaría');
+		$crud->display_as('coyote_guia', 'Cuando salió de su comunidad había contactado al coyote o guía que lo pasaría');
 		$crud->field_type('coyote_guia', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		$crud->display_as('monto_coyote', 'Cuanto le cobraría');
 		$crud->display_as('paquete_pago', 'Que incluía el pago');
