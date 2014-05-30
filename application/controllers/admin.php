@@ -204,12 +204,12 @@ class Admin extends CI_Controller {
 		/*Datos de la autoridad responsable*/
 		$crud->display_as('autoridades_responables', 'Nombre de las instituciones involucradas');
 		$crud->display_as('numero_oficiales_responsables', 'Número de oficiales responsables');
-		$crud->display_as('algun_nombre_responsables', 'Nombres de oficiales responsables');
+		$crud->display_as('algun_nombre_responsables', 'Escucho o sabe algún nombre de  los oficiales involucrados');
 		$crud->display_as('carcteristicas_ficias_policia_responsable', 'Características fìsicas');
-		$crud->display_as('apodos_responsables', 'Apodos de oficiales responsables');
+		$crud->display_as('apodos_responsables', 'Escucho o sabe algún apodo de  los oficiales involucrados');
 		
 		$crud->display_as('uniformado_responsables', 'Los responsables estaban uniformados');
-		$crud->field_type('uniformado_responsables', 'dropdown', array('Si' => 'Si', 'No' => 'No'));
+		$crud->field_type('uniformado_responsables', 'dropdown', array('Si' => 'Si', 'No' => 'No', 'No vio' => 'No vio'));
 		
 		$crud->display_as('color_uniforme_responsables', 'Color de uniforme de oficiales responsables');
 		$crud->display_as('insignias_responsables', 'Insignias de uniforme de oficiales responsables');
