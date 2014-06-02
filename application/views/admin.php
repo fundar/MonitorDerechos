@@ -28,8 +28,9 @@ a:hover
 </head>
 <body>
 	<div>
+		<a href='<?php echo site_url('admin/migrantes')?>'>Migrantes</a> |
 		<a href='<?php echo site_url('admin/denuncias')?>'>Denuncias</a> |
-		<a href='<?php echo site_url('admin/migrantes')?>'>Migrantes</a>
+		<a href='<?php echo site_url('admin/estados')?>'>Estados/Departamentos</a>
 		
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		
@@ -37,7 +38,6 @@ a:hover
 		<a href='<?php echo site_url('admin/derechos')?>'>Derechos</a> | 
 		<a href='<?php echo site_url('admin/violaciones_derechos')?>'>Violaciónes a derechos</a> |
 		<a href='<?php echo site_url('admin/paises')?>'>Paises</a> |
-		<a href='<?php echo site_url('admin/estados')?>'>Estados/Departamentos</a> |
 		<a href='<?php echo site_url('admin/estados_casos')?>'>Estado de los casos</a> |
 		<a href='<?php echo site_url('admin/lugares_denuncia')?>'>Lugares de denuncia</a> |
 		<a href='<?php echo site_url('admin/paquete_pago')?>'>Cosas que incluye el pago</a> |
