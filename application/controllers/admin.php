@@ -396,7 +396,7 @@ class Admin extends CI_Controller {
 		/*Tabla y título*/
 		$crud->set_theme('datatables');
 		$crud->set_table('estados');
-		$crud->set_subject('Estados');
+		$crud->set_subject('Estados/Departamentos');
 		
 		/*Columnas(Vista), campos y campos obligatorios*/
 		$crud->columns('id_estado', 'id_pais', 'nombre');
