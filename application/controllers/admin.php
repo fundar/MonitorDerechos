@@ -283,7 +283,7 @@ class Admin extends CI_Controller {
 		$crud->display_as('id_pais', 'País');
 		$crud->set_relation('id_pais', 'paises', 'nombre');
 		/*Estado*/
-		$crud->display_as('id_estado', 'Estado');
+		$crud->display_as('id_estado', 'Estado/Departamento');
 		$crud->set_relation('id_estado', 'estados', 'nombre');
 		/*Genero*/
 		$crud->display_as('id_genero', 'Género');
