@@ -514,7 +514,7 @@ class Admin extends CI_Controller {
 	
 	/*metodo index - redirect a denuncias*/
 	public function index() {
-		header('Location: ' . site_url('admin/denuncias'));
+		header('Location: ' . site_url('admin/migrantes'));
 		
 		return false;
 	}
