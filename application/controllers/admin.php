@@ -35,7 +35,7 @@ class Admin extends CI_Controller {
 				return $user;
 				
 				if($redirect) {
-					header('Location: ' . site_url('admin/denuncias'));
+					header('Location: ' . site_url('admin/migrantes'));
 				}
 				
 				return $user;
@@ -58,7 +58,7 @@ class Admin extends CI_Controller {
 	/*Metodo para hacer login*/
 	public function login() {
 		if($this->isUser(false)) {
-			header('Location: ' . site_url('admin/denuncias'));
+			header('Location: ' . site_url('admin/migrantes'));
 		} else {
 			$vars["error"] = false;
 			
@@ -70,7 +70,7 @@ class Admin extends CI_Controller {
 					$_SESSION['user_id'] = $user->id_user;
 					$_SESSION['email']   = $user->email;
 					
-					header('Location: ' . site_url('admin/denuncias'));
+					header('Location: ' . site_url('admin/migrantes'));
 				}
 				
 				$vars["error"] = "datos incorrectos";
