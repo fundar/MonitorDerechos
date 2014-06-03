@@ -114,9 +114,9 @@ class Admin extends CI_Controller {
 		$crud->set_relation_n_n('violaciones_derechos', 'violacion_derechos2denuncias', 'violacion_derechos', 'id_denuncia', 'id_violacion', 'nombre');
 		
 		/*Columnas(Vista), campos y campos obligatorios*/
-		$crud->columns('numero_queja', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes');
+		$crud->columns('ID', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes');
 		$crud->fields(
-			'nombre_persona_atendio_seguimiento', 'numero_queja', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes', 'intentos', 
+			'nombre_persona_atendio_seguimiento', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes', 'intentos', 
 			'motivo_migracion', 'coyote_guia', 'monto_coyote', 'paquete_pago',
 			'conocimineto_punto_fronterizo', 'nombre_punto_fronterizo', 'lugar_de_usa', 'viaja_solo', 'con_quien_viaja', 'deportado', 'momento_deportado', 'separacion_familiar', 'familiar_separado', 'situacion_familiar',
 			'acto_siguiente', 'autoridades_viaje', 'dano_autoridad', 'id_autoridad_dano', 'fecha_injusticia', 'id_pais_injusticia',
@@ -146,6 +146,7 @@ class Admin extends CI_Controller {
 	public function display_as_denuncias($crud) {
 		/*Lugar denuncia*/
 		$crud->display_as('fecha_creada', 'Fecha que se recibió la queja');
+		$crud->display_as('ID', 'Número de queja');
 		
 		$crud->display_as('id_lugar_denuncia', 'Lugar de denuncia');
 		$crud->set_relation('id_lugar_denuncia', 'lugares_denuncia', 'nombre');
