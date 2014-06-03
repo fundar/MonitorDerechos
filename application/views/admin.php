@@ -40,7 +40,6 @@ a:hover
 		<a href='<?php echo site_url('admin/transportes')?>'>Transportes</a>
 		
 		<?php if(isset($_SESSION['user_id'])) { ?>
-			&nbsp;&nbsp;&nbsp;&nbsp;
 			| <a href='<?php echo site_url('admin/logout')?>'>Cerrar sesión</a>
 		<?php } ?>
 	</div>
