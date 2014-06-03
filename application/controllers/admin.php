@@ -196,7 +196,7 @@ class Admin extends CI_Controller {
 		$crud->display_as('municipio_injusticia', 'Municipio donde se cometió la injusticia');
 		$crud->display_as('espacio_fisico_injusticia', 'Espacio físico de la injusticia');
 		$crud->display_as('detonante_injusticia', 'Situación que detona la injusticia');
-		$crud->display_as('numero_migrantes_injusticia', 'Número de victimas detectadas');
+		$crud->display_as('numero_migrantes_injusticia', 'Número de migrantes que habia con usted cuando se cometio el abuso');
 		$crud->display_as('id_transporte_viaje_injusticia', 'En que viajaba');
 		$crud->set_relation('id_transporte_viaje_injusticia', 'transportes', 'nombre');
 		$crud->display_as('lugar_abordaje_transporte', 'Donde abordo el transporte');
