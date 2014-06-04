@@ -28,24 +28,33 @@ a:hover
 </head>
 <body>
 	<div>
-		<a href='<?php echo site_url('admin/migrantes')?>'>Migrantes</a> |
-		<a href='<?php echo site_url('admin/denuncias')?>'>Denuncias</a> |
-		<a href='<?php echo site_url('admin/estados')?>'>Estados/Departamentos</a>
+		<a onclick="javascript: return confirmacion('<?php echo site_url('admin/migrantes')?>')" href="javascript:void(0)">Migrantes</a> |
+		<a onclick="javascript: return confirmacion('<?php echo site_url('admin/denuncias')?>')" href="javascript:void(0)">Denuncias</a> |
+		<a onclick="javascript: return confirmacion('<?php echo site_url('admin/estados')?>')" href="javascript:void(0)">Estados/Departamentos</a>
 		
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		
-		<a href='<?php echo site_url('admin/autoridades')?>'>Autoridades</a> |
-		<a href='<?php echo site_url('admin/paises')?>'>Paises</a> |
-		<a href='<?php echo site_url('admin/estados_casos')?>'>Estado de los casos</a> |
-		<a href='<?php echo site_url('admin/transportes')?>'>Transportes</a>
+		<a onclick="javascript: return confirmacion('<?php echo site_url('admin/autoridades')?>')" href="javascript:void(0)">Autoridades</a> |
+		<a onclick="javascript: return confirmacion('<?php echo site_url('admin/paises')?>')" href="javascript:void(0)">Paises</a> |
+		<a onclick="javascript: return confirmacion('<?php echo site_url('admin/estados_casos')?>')" href="javascript:void(0)">Estado de los casos</a> |
+		<a onclick="javascript: return confirmacion('<?php echo site_url('admin/transportes')?>')" href="javascript:void(0)">Transportes</a>
 		
 		<?php if(isset($_SESSION['user_id'])) { ?>
-			| <a href='<?php echo site_url('admin/logout')?>'>Cerrar sesión</a>
+			| <a onclick="javascript: return confirmacion('<?php echo site_url('admin/logout')?>')" href="javascript:void(0)">Cerrar sesión</a>
 		<?php } ?>
 	</div>
 	<div style='height:20px;'></div>  
     <div>
 		<?php echo $output; ?>
     </div>
+    <script type="text/javascript">
+		function confirmacion(url) {
+			if(confirm('¿Esta segura/o que desea salir (verifique que ha guardado la información)?')) {
+				document.location = url;
+			} else {
+				return false;
+			}
+		}
+    </script>
 </body>
 </html>
