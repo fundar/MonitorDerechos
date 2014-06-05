@@ -57,75 +57,98 @@ a:hover
 		}
 		
 		$(document).ready( function () {
-			/*Guia-Coyote*/
-			$("#monto_coyote_field_box").css("margin-left", "50px");
-			$("#paquete_pago_field_box").css("margin-left", "50px");
-			$("#monto_coyote_field_box").hide();
-			$("#paquete_pago_field_box").hide();
-			
-			$("#field-coyote_guia").change( function () {
-				if($("#field-coyote_guia").val() == 1) {
-					$("#monto_coyote_field_box").show();
-					$("#paquete_pago_field_box").show();
-				} else {
-					$("#monto_coyote_field_box").hide();
-					$("#paquete_pago_field_box").hide();
-				}
-			});
-			
-			/*Viajaba solo*/
-			$("#con_quien_viaja_field_box").css("margin-left", "50px");
-			$("#con_quien_viaja_field_box").hide();
-	
-			$("#field-viaja_solo").change( function () {
-				if($("#field-viaja_solo").val() == 2) {
-					$("#con_quien_viaja_field_box").show();
-					$("#con_quien_viaja_field_box").show();
-				} else {
-					$("#con_quien_viaja_field_box").hide();
-					$("#con_quien_viaja_field_box").hide();
-				}
-			});
-			
-			/*Momento de deportado*/
-			$("#momento_deportado_field_box").css("margin-left", "50px");
-			$("#momento_deportado_field_box").hide();
-	
-			$("#field-deportado").change( function () {
-				if($("#field-deportado").val() == 1) {
-					$("#momento_deportado_field_box").show();
-					$("#momento_deportado_field_box").show();
-				} else {
-					$("#momento_deportado_field_box").hide();
-					$("#momento_deportado_field_box").hide();
-				}
-			});
-			
-			/*Familiar separacion*/
-			$("#familiar_separado_field_box").css("margin-left", "50px");
-			$("#familiar_separado_field_box").hide();
-			$("#situacion_familiar_field_box").css("margin-left", "50px");
-			$("#situacion_familiar_field_box").hide();
-	
-			$("#field-separacion_familiar").change( function () {
-				if($("#field-separacion_familiar").val() == 1) {
-					$("#familiar_separado_field_box").show();
-					$("#familiar_separado_field_box").show();
-					
-					$("#situacion_familiar_field_box").show();
-					$("#situacion_familiar_field_box").show();
-				} else {
-					$("#situacion_familiar_field_box").hide();
-					$("#situacion_familiar_field_box").hide();
-					
-					$("#familiar_separado_field_box").hide();
-					$("#familiar_separado_field_box").hide();
-				}
-			});
-			
+			<?php if($this->uri->segment(3) != "read") { ?>
+				/*Guia-Coyote*/
+				$("#monto_coyote_field_box").css("margin-left", "50px");
+				$("#paquete_pago_field_box").css("margin-left", "50px");
+				$("#monto_coyote_field_box").hide();
+				$("#paquete_pago_field_box").hide();
+				
+				$("#field-coyote_guia").change( function () {
+					if($("#field-coyote_guia").val() == 1) {
+						$("#monto_coyote_field_box").show();
+						$("#paquete_pago_field_box").show();
+					} else {
+						$("#monto_coyote_field_box").hide();
+						$("#paquete_pago_field_box").hide();
+					}
+				});
+				
+				/*Viajaba solo*/
+				$("#con_quien_viaja_field_box").css("margin-left", "50px");
+				$("#con_quien_viaja_field_box").hide();
+		
+				$("#field-viaja_solo").change( function () {
+					if($("#field-viaja_solo").val() == 2) {
+						$("#con_quien_viaja_field_box").show();
+						$("#con_quien_viaja_field_box").show();
+					} else {
+						$("#con_quien_viaja_field_box").hide();
+						$("#con_quien_viaja_field_box").hide();
+					}
+				});
+				
+				/*Momento de deportado*/
+				$("#momento_deportado_field_box").css("margin-left", "50px");
+				$("#momento_deportado_field_box").hide();
+		
+				$("#field-deportado").change( function () {
+					if($("#field-deportado").val() == 1) {
+						$("#momento_deportado_field_box").show();
+						$("#momento_deportado_field_box").show();
+					} else {
+						$("#momento_deportado_field_box").hide();
+						$("#momento_deportado_field_box").hide();
+					}
+				});
+				
+				/*Familiar separacion*/
+				$("#familiar_separado_field_box").css("margin-left", "50px");
+				$("#familiar_separado_field_box").hide();
+				$("#situacion_familiar_field_box").css("margin-left", "50px");
+				$("#situacion_familiar_field_box").hide();
+		
+				$("#field-separacion_familiar").change( function () {
+					if($("#field-separacion_familiar").val() == 1) {
+						$("#familiar_separado_field_box").show();
+						$("#familiar_separado_field_box").show();
+						
+						$("#situacion_familiar_field_box").show();
+						$("#situacion_familiar_field_box").show();
+					} else {
+						$("#situacion_familiar_field_box").hide();
+						$("#situacion_familiar_field_box").hide();
+						
+						$("#familiar_separado_field_box").hide();
+						$("#familiar_separado_field_box").hide();
+					}
+				});
+				
+				/*Migrante - Pueblo indigena*/
+				$("#nombre_pueblo_indigena_field_box").css("margin-left", "50px");
+				$("#nombre_pueblo_indigena_field_box").hide();
+				$("#espanol_field_box").css("margin-left", "50px");
+				$("#espanol_field_box").hide();
+		
+				$("#field-pueblo_indigena").change( function () {
+					if($("#field-pueblo_indigena").val() == 1) {
+						$("#nombre_pueblo_indigena_field_box").show();
+						$("#nombre_pueblo_indigena_field_box").show();
+						
+						$("#espanol_field_box").show();
+						$("#espanol_field_box").show();
+					} else {
+						$("#nombre_pueblo_indigena_field_box").hide();
+						$("#nombre_pueblo_indigena_field_box").hide();
+						
+						$("#espanol_field_box").hide();
+						$("#espanol_field_box").hide();
+					}
+				});
+			<?php } ?>
 			
 			<?php if($this->uri->segment(3) == "read") { ?>
-				/*Mostrando 1 y 2*/
+				/*Mostrando 1 y 2 - Denuncias*/
 				$(".readonly_label").css("margin-left", "30px");
 			
 				if($("#field-separacion_familiar").text() == "1") {
@@ -156,6 +179,19 @@ a:hover
 					$("#field-dano_autoridad").text("Si");
 				} else {
 					$("#field-dano_autoridad").text("No");
+				}
+				
+				/*Migrantes*/
+				if($("#field-pueblo_indigena").text() == "1") {
+					$("#field-pueblo_indigena").text("Si");
+				} else {
+					$("#field-pueblo_indigena").text("No");
+				}
+				
+				if($("#field-espanol").text() == "1") {
+					$("#field-espanol").text("Si");
+				} else {
+					$("#field-espanol").text("No");
 				}
 			<?php } ?>
 		});
