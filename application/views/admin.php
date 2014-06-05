@@ -123,6 +123,41 @@ a:hover
 					$("#familiar_separado_field_box").hide();
 				}
 			});
+			
+			/*Mostrando 1 y 2*/
+			$(".readonly_label").css("margin-left", "30px");
+			
+			$(".readonly_label").each( function () {
+				if($("#field-separacion_familiar").text() == 1) {
+					$("#field-separacion_familiar").text("Si");
+				} else {
+					$("#field-separacion_familiar").text("No");
+				}
+				
+				if($("#field-deportado").text() == 1) {
+					$("#field-deportado").text("Si");
+				} else {
+					$("#field-deportado").text("No");
+				}
+				
+				if($("#field-viaja_solo").text() == 1) {
+					$("#field-viaja_solo").text("Si");
+				} else {
+					$("#field-viaja_solo").text("No");
+				}
+				
+				if($("#field-coyote_guia").text() == 1) {
+					$("#field-coyote_guia").text("Si");
+				} else {
+					$("#field-coyote_guia").text("No");
+				}
+				
+				if($("#field-dano_autoridad").text() == 1) {
+					$("#field-dano_autoridad").text("Si");
+				} else {
+					$("#field-dano_autoridad").text("No");
+				}
+			});
 		});
     </script>
 </body>
