@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<title>Migración y transparencia - Login</title>
+	<title>Sistematización de información Migración - Login</title>
 	<meta name="keywords" content="Migración, transparencia" />
     <meta name="description" content="Migración y transparencia" />
 <style type='text/css'>
