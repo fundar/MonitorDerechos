@@ -14,6 +14,8 @@ class Admin extends CI_Controller {
 
 		$this->load->library('grocery_CRUD');
 		
+		ini_set("session.cookie_lifetime", "14400");
+		ini_set("session.gc_maxlifetime",  "14400");
 		session_start();
 	}
 
@@ -118,7 +120,7 @@ class Admin extends CI_Controller {
 		$crud->fields(
 			'nombre_persona_atendio_seguimiento', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes', 'intentos', 
 			'motivo_migracion', 'coyote_guia', 'monto_coyote', 'paquete_pago',
-			'conocimineto_punto_fronterizo', 'nombre_punto_fronterizo', 'lugar_de_usa', 'viaja_solo', 'con_quien_viaja', 'deportado', 'momento_deportado', 'separacion_familiar', 'familiar_separado', 'situacion_familiar',
+			'nombre_punto_fronterizo', 'lugar_de_usa', 'viaja_solo', 'con_quien_viaja', 'deportado', 'momento_deportado', 'separacion_familiar', 'familiar_separado', 'situacion_familiar',
 			'acto_siguiente', 'autoridades_viaje', 'dano_autoridad', 'id_autoridad_dano', 'fecha_injusticia', 'id_pais_injusticia',
 			'id_estado_injusticia', 'municipio_injusticia', 'espacio_fisico_injusticia', 'detonante_injusticia', 'numero_migrantes_injusticia',
 			'id_transporte_viaje_injusticia', 'lugar_abordaje_transporte', 'destino_transporte', 'autoridades_responables',
@@ -156,7 +158,11 @@ class Admin extends CI_Controller {
 		
 		/*Datos sobre cruce de la frontera*/
 		$crud->display_as('intentos', 'Cuántas veces has intentado cruzar la frontera');
+		
+		/*Falta de trabajo, Violencia/Seguridad, Ramificación familiar, Otro*/
 		$crud->display_as('motivo_migracion', 'Cuál es el motivo de migración');
+		$crud->field_type('motivo_migracion', 'dropdown', array('Falta de trabajo' => 'Falta de trabajo', 'Violencia/Seguridad' => 'Violencia/Seguridad', 'Ramificación familiar' => 'Ramificación familiar', 'Otro' => 'Otro'));
+		
 		$crud->field_type('viaja_solo', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		$crud->display_as('con_quien_viaja', 'Con quien viaja');
 		/*Lugar deportado*/
@@ -175,10 +181,12 @@ class Admin extends CI_Controller {
 		$crud->field_type('coyote_guia', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		$crud->display_as('monto_coyote', 'Cuanto le cobraría');
 		$crud->display_as('paquete_pago', 'Que incluía el pago');
-		$crud->display_as('conocimineto_punto_fronterizo', 'Sabías el punto fronterizo por donde el coyote o guía te iba a cruzar a USA');
+		
+		$crud->display_as('conocimineto_punto_fronterizo', 'Porque punto fronterizo cruzaste o vas a cruzar a USA');
 		$crud->field_type('conocimineto_punto_fronterizo', 'dropdown', array(1 => 'Si', 2 => 'No'));
-		$crud->display_as('nombre_punto_fronterizo', 'Nombre del punto fronterizo');
-		$crud->display_as('lugar_de_usa', 'A donde lo llevaría');
+		
+		$crud->display_as('nombre_punto_fronterizo', 'Porque punto fronterizo cruzaste o vas a cruzar a USA');
+		$crud->display_as('lugar_de_usa', 'A que lugar de USA vas');
 		
 		/*Antecedentes de autoridades*/
 		$crud->display_as('autoridades_viaje', 'Durante el viaje con que autoridades te encontraste');

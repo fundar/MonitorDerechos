@@ -55,6 +55,75 @@ a:hover
 				return false;
 			}
 		}
+		
+		$(document).ready( function () {
+			/*Guia-Coyote*/
+			$("#monto_coyote_field_box").css("margin-left", "50px");
+			$("#paquete_pago_field_box").css("margin-left", "50px");
+			$("#monto_coyote_field_box").hide();
+			$("#paquete_pago_field_box").hide();
+			
+			$("#field-coyote_guia").change( function () {
+				if($("#field-coyote_guia").val() == 1) {
+					$("#monto_coyote_field_box").show();
+					$("#paquete_pago_field_box").show();
+				} else {
+					$("#monto_coyote_field_box").hide();
+					$("#paquete_pago_field_box").hide();
+				}
+			});
+			
+			/*Viajaba solo*/
+			$("#con_quien_viaja_field_box").css("margin-left", "50px");
+			$("#con_quien_viaja_field_box").hide();
+	
+			$("#field-viaja_solo").change( function () {
+				if($("#field-viaja_solo").val() == 2) {
+					$("#con_quien_viaja_field_box").show();
+					$("#con_quien_viaja_field_box").show();
+				} else {
+					$("#con_quien_viaja_field_box").hide();
+					$("#con_quien_viaja_field_box").hide();
+				}
+			});
+			
+			
+			/*Momento de deportado*/
+			$("#momento_deportado_field_box").css("margin-left", "50px");
+			$("#momento_deportado_field_box").hide();
+	
+			$("#field-deportado").change( function () {
+				if($("#field-deportado").val() == 1) {
+					$("#momento_deportado_field_box").show();
+					$("#momento_deportado_field_box").show();
+				} else {
+					$("#momento_deportado_field_box").hide();
+					$("#momento_deportado_field_box").hide();
+				}
+			});
+			
+			/*Familiar separacion*/
+			$("#familiar_separado_field_box").css("margin-left", "50px");
+			$("#familiar_separado_field_box").hide();
+			$("#situacion_familiar_field_box").css("margin-left", "50px");
+			$("#situacion_familiar_field_box").hide();
+	
+			$("#field-separacion_familiar").change( function () {
+				if($("#field-separacion_familiar").val() == 1) {
+					$("#familiar_separado_field_box").show();
+					$("#familiar_separado_field_box").show();
+					
+					$("#situacion_familiar_field_box").show();
+					$("#situacion_familiar_field_box").show();
+				} else {
+					$("#situacion_familiar_field_box").hide();
+					$("#situacion_familiar_field_box").hide();
+					
+					$("#familiar_separado_field_box").hide();
+					$("#familiar_separado_field_box").hide();
+				}
+			});
+		});
     </script>
 </body>
 </html>
