@@ -87,7 +87,6 @@ a:hover
 				}
 			});
 			
-			
 			/*Momento de deportado*/
 			$("#momento_deportado_field_box").css("margin-left", "50px");
 			$("#momento_deportado_field_box").hide();
@@ -124,39 +123,41 @@ a:hover
 				}
 			});
 			
-			/*Mostrando 1 y 2*/
-			$(".readonly_label").css("margin-left", "30px");
-		
-			if($("#field-separacion_familiar").text() == "1") {
-				$("#field-separacion_familiar").text("Si");
-			} else {
-				$("#field-separacion_familiar").text("No");
-			}
 			
-			if($("#field-deportado").text() == "1") {
-				$("#field-deportado").text("Si");
-			} else {
-				$("#field-deportado").text("No");
-			}
+			<?php if($this->uri->segment(3) == "read") { ?>
+				/*Mostrando 1 y 2*/
+				$(".readonly_label").css("margin-left", "30px");
 			
-			if($("#field-viaja_solo").text() == "1") {
-				$("#field-viaja_solo").text("Si");
-			} else {
-				$("#field-viaja_solo").text("No");
-			}
-			
-			if($("#field-coyote_guia").text() == "1") {
-				$("#field-coyote_guia").text("Si");
-			} else {
-				$("#field-coyote_guia").text("No");
-			}
+				if($("#field-separacion_familiar").text() == "1") {
+					$("#field-separacion_familiar").text("Si");
+				} else {
+					$("#field-separacion_familiar").text("No");
+				}
+				
+				if($("#field-deportado").text() == "1") {
+					$("#field-deportado").text("Si");
+				} else {
+					$("#field-deportado").text("No");
+				}
+				
+				if($("#field-viaja_solo").text() == "1") {
+					$("#field-viaja_solo").text("Si");
+				} else {
+					$("#field-viaja_solo").text("No");
+				}
+				
+				if($("#field-coyote_guia").text() == "1") {
+					$("#field-coyote_guia").text("Si");
+				} else {
+					$("#field-coyote_guia").text("No");
+				}
 
-			if($("#field-dano_autoridad").text() == "1") {
-				$("#field-dano_autoridad").text("Si");
-			} else {
-				$("#field-dano_autoridad").text("No");
-			}
-			
+				if($("#field-dano_autoridad").text() == "1") {
+					$("#field-dano_autoridad").text("Si");
+				} else {
+					$("#field-dano_autoridad").text("No");
+				}
+			<?php } ?>
 		});
     </script>
 </body>
