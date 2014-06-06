@@ -303,6 +303,22 @@ class Admin extends CI_Controller {
 		/*Estado civil*/
 		$crud->display_as('id_estado_civil', 'Estado Civil');
 		$crud->set_relation('id_estado_civil', 'estado_civil', 'nombre');
+		/*Escolaridad*/
+		$crud->display_as('escolaridad', 'Escolaridad');
+		$crud->field_type('escolaridad', 'dropdown', array(
+			'Sin instrucción' => 'Sin instrucción',
+			'Primaria' => 'Primaria',
+			'Primaria inconclusa' => 'Primaria inconclusa',
+			'Secundaria' => 'Secundaria',
+			'Secundaria inconclusa' => 'Secundaria inconclusa',
+			'Preparatoria' => 'Preparatoria',
+			'Preparatoria inconclusa' => 'Preparatoria inconclusa',
+			'Licenciatura' => 'Licenciatura',
+			'Licenciatura inconlusa' => 'Licenciatura inconlusa',
+			'Maestria' => 'Maestria',
+			'Doctorado' => 'Doctorado'
+		));
+			
 		/*Pueblo indigena*/
 		$crud->display_as('pueblo_indigena', 'Pertenece a algún pueblo indígena');
 		$crud->field_type('pueblo_indigena', 'dropdown', array(1 => 'Si', 2 => 'No'));
