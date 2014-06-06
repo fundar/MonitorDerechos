@@ -26,6 +26,8 @@ a:hover
 	text-decoration: underline;
 }
 strong { font-size:16px; }
+.link { cursor:pointer; color:blue; font-size:14px; }
+#catalogos { display:none; padding:0;}
 </style>
 </head>
 <body>
@@ -36,29 +38,35 @@ strong { font-size:16px; }
 		<a onclick="javascript: return confirmacion('<?php echo site_url('admin/denuncias')?>')" href="javascript:void(0)">
 			<?php if($this->uri->segment(2) == "denuncias") { ?><strong>Denuncias</strong><?php } else { ?>Denuncias<?php } ?>
 		</a> |
-		<a onclick="javascript: return confirmacion('<?php echo site_url('admin/estados')?>')" href="javascript:void(0)">
-			<?php if($this->uri->segment(2) == "estados") { ?><strong>Estados/Departamentos</strong><?php } else { ?>Estados/Departamentos<?php } ?>
-		</a>
-		
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		
-		<a onclick="javascript: return confirmacion('<?php echo site_url('admin/autoridades')?>')" href="javascript:void(0)">
-			<?php if($this->uri->segment(2) == "autoridades") { ?><strong>Autoridades</strong><?php } else { ?>Autoridades<?php } ?>
-		</a> |
-		<a onclick="javascript: return confirmacion('<?php echo site_url('admin/paises')?>')" href="javascript:void(0)">
-			<?php if($this->uri->segment(2) == "paises") { ?><strong>Paises</strong><?php } else { ?>Paises<?php } ?>
-		</a> |
-		<a onclick="javascript: return confirmacion('<?php echo site_url('admin/estados_casos')?>')" href="javascript:void(0)">
-			<?php if($this->uri->segment(2) == "estados_casos") { ?><strong>Estado de los casos</strong><?php } else { ?>Estado de los casos<?php } ?>
-		</a> |
-		<a onclick="javascript: return confirmacion('<?php echo site_url('admin/transportes')?>')" href="javascript:void(0)">
-			<?php if($this->uri->segment(2) == "transportes") { ?><strong>Transportes</strong><?php } else { ?>Transportes<?php } ?>
-		</a>
 		
 		<?php if(isset($_SESSION['user_id'])) { ?>
-			| <a onclick="javascript: return confirmacion('<?php echo site_url('admin/logout')?>')" href="javascript:void(0)">Cerrar sesión</a>
+			<a onclick="javascript: return confirmacion('<?php echo site_url('admin/logout')?>')" href="javascript:void(0)">Cerrar sesión</a> | 
 		<?php } ?>
+		
+		<span class="link" id="ver-catalogos">Mostrar/Ocultar Catalogos</span>
+		
+		<span id="catalogos" class="hide">
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a onclick="javascript: return confirmacion('<?php echo site_url('admin/estados')?>')" href="javascript:void(0)">
+				<?php if($this->uri->segment(2) == "estados") { ?><strong>Estados/Departamentos</strong><?php } else { ?>Estados/Departamentos<?php } ?>
+			</a> |
+			<a onclick="javascript: return confirmacion('<?php echo site_url('admin/autoridades')?>')" href="javascript:void(0)">
+				<?php if($this->uri->segment(2) == "autoridades") { ?><strong>Autoridades</strong><?php } else { ?>Autoridades<?php } ?>
+			</a> |
+			<a onclick="javascript: return confirmacion('<?php echo site_url('admin/paises')?>')" href="javascript:void(0)">
+				<?php if($this->uri->segment(2) == "paises") { ?><strong>Paises</strong><?php } else { ?>Paises<?php } ?>
+			</a> |
+			<a onclick="javascript: return confirmacion('<?php echo site_url('admin/estados_casos')?>')" href="javascript:void(0)">
+				<?php if($this->uri->segment(2) == "estados_casos") { ?><strong>Estado de los casos</strong><?php } else { ?>Estado de los casos<?php } ?>
+			</a> |
+			<a onclick="javascript: return confirmacion('<?php echo site_url('admin/transportes')?>')" href="javascript:void(0)">
+				<?php if($this->uri->segment(2) == "transportes") { ?><strong>Transportes</strong><?php } else { ?>Transportes<?php } ?>
+			</a>
+		</span>
 	</div>
+	
+	
+		
 	<div style='height:20px;'></div>  
     <div>
 		<?php echo $output; ?>
@@ -73,6 +81,10 @@ strong { font-size:16px; }
 		}
 		
 		$(document).ready( function () {
+			$("#ver-catalogos").click( function () {
+				$("#catalogos").toggle();
+			});
+			
 			<?php if($this->uri->segment(3) != "read") { ?>
 				/*Guia-Coyote*/
 				$("#monto_coyote_field_box").css("margin-left", "50px");
