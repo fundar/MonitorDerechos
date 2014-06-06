@@ -212,13 +212,13 @@ strong { font-size:16px; }
 				/*Migrantes*/
 				if($("#field-pueblo_indigena").text() == "1") {
 					$("#field-pueblo_indigena").text("Si");
-				} else {
+				} else if($("#field-pueblo_indigena").text() == "2") {
 					$("#field-pueblo_indigena").text("No");
 				}
 				
 				if($("#field-espanol").text() == "1") {
 					$("#field-espanol").text("Si");
-				} else {
+				} else if($("#field-espanol").text() == "2") {
 					$("#field-espanol").text("No");
 				}
 			<?php } ?>
