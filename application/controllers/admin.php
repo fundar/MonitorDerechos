@@ -285,11 +285,13 @@ class Admin extends CI_Controller {
 		$crud->set_subject('Migrantes');
 		
 		/*Columnas(Vista), campos y campos obligatorios*/
-		$crud->columns('id_migrante', 'nombre', 'id_pais', 'id_estado', 'municipio', 'edad');
+		$crud->columns('id_migrante', 'id_lugar_denuncia', 'nombre', 'id_pais', 'id_estado', 'municipio', 'edad');
 		$crud->required_fields('nombre');
 		
 		
 		/*Relaciones con tablas*/
+		$crud->display_as('id_lugar_denuncia', 'Lugar de la organización');
+		$crud->set_relation('id_lugar_denuncia', 'lugares_denuncia', 'nombre');
 		/*Pais*/
 		$crud->display_as('id_migrante', 'ID');
 		$crud->display_as('id_pais', 'País');
