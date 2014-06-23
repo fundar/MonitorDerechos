@@ -128,7 +128,7 @@ strong { font-size:16px; }
 				$("#insignias_responsables_field_box").hide();
 		
 				$("#field-uniformado_responsables").change( function () {
-					if($("#field-uniformado_responsables").val() == 1) {
+					if($("#field-uniformado_responsables").val() == 'Si') {
 						$("#color_uniforme_responsables_field_box").show();
 						$("#insignias_responsables_field_box").show();
 					} else {
