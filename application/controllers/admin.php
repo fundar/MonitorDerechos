@@ -124,7 +124,7 @@ class Admin extends CI_Controller {
 			'acto_siguiente', 'autoridades_viaje', 'dano_autoridad', 'id_autoridad_dano', 'id_pais_injusticia',
 			'id_estado_injusticia', 'municipio_injusticia', 'espacio_fisico_injusticia', 'detonante_injusticia', 'numero_migrantes_injusticia',
 			'fecha_injusticia', 'id_transporte_viaje_injusticia', 'lugar_abordaje_transporte', 'destino_transporte', 'autoridades_responables',
-			'numero_oficiales_responsables', 'algun_nombre_responsables', 'carcteristicas_ficias_policia_responsable', 'apodos_responsables', 'uniformado_responsables', 'color_uniforme_responsables',
+			'numero_oficiales_responsables', 'algun_nombre_responsables', 'carcteristicas_ficias_policia_responsable', 'carcteristicas_ficias_policia_responsable2', 'carcteristicas_ficias_policia_responsable3', 'apodos_responsables', 'uniformado_responsables', 'color_uniforme_responsables',
 			'insignias_responsables', 'responsables_abordo_vehiculos_responsables', 'id_tipo_transporte_responsables', 'numero_vehiculos_responsables', 'placas_vehiculos_responsables',
 			'descripcion_evento', 'monto_extorsion', 'derechos_violados', 'violaciones_derechos', 'id_estado_caso', 'estado_seguimiento', 'notas_seguimiento',
 			'telefono_seguimiento', 'documento1_seguimiento', 'documento2_seguimiento', 'documento3_seguimiento',
@@ -218,7 +218,9 @@ class Admin extends CI_Controller {
 		$crud->display_as('autoridades_responables', 'Nombre de las instituciones involucradas');
 		$crud->display_as('numero_oficiales_responsables', 'Número de oficiales responsables');
 		$crud->display_as('algun_nombre_responsables', 'Escucho o sabe algún nombre de  los oficiales involucrados');
-		$crud->display_as('carcteristicas_ficias_policia_responsable', 'Características fìsicas');
+		$crud->display_as('carcteristicas_ficias_policia_responsable', 'Características fìsicas oficial 1');
+		$crud->display_as('carcteristicas_ficias_policia_responsable2', 'Características fìsicas oficial 3');
+		$crud->display_as('carcteristicas_ficias_policia_responsable3', 'Características fìsicas oficial 4');
 		$crud->display_as('apodos_responsables', 'Escucho o sabe algún apodo de  los oficiales involucrados');
 		
 		$crud->display_as('uniformado_responsables', 'Los responsables estaban uniformados');
