@@ -2,6 +2,7 @@
     $('.datetime-input').datetime({
 		userLang	: 'en',
 		americanMode: true,
+		yearRange: '-100:+0'
 	});
     
 	$('.datetime-input-clear').button();
