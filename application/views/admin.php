@@ -87,16 +87,20 @@ strong { font-size:16px; }
 			
 			<?php if($this->uri->segment(3) != "read") { ?>
 				/*Guia-Coyote*/
+				$("#lugar_contrato_coyote_field_box").css("margin-left", "50px");
 				$("#monto_coyote_field_box").css("margin-left", "50px");
 				$("#paquete_pago_field_box").css("margin-left", "50px");
+				$("#lugar_contrato_coyote_field_box").hide();
 				$("#monto_coyote_field_box").hide();
 				$("#paquete_pago_field_box").hide();
 				
 				$("#field-coyote_guia").change( function () {
 					if($("#field-coyote_guia").val() == 1) {
+						$("#lugar_contrato_coyote_field_box").show();
 						$("#monto_coyote_field_box").show();
 						$("#paquete_pago_field_box").show();
 					} else {
+						$("#lugar_contrato_coyote_field_box").hide();
 						$("#monto_coyote_field_box").hide();
 						$("#paquete_pago_field_box").hide();
 					}
@@ -115,6 +119,24 @@ strong { font-size:16px; }
 						$("#con_quien_viaja_field_box").hide();
 					}
 				});
+				
+				
+				/*Color uniformome responsables*/
+				$("#color_uniforme_responsables_field_box").css("margin-left", "50px");
+				$("#insignias_responsables_field_box").css("margin-left", "50px");
+				$("#color_uniforme_responsables_field_box").hide();
+				$("#insignias_responsables_field_box").hide();
+		
+				$("#field-uniformado_responsables").change( function () {
+					if($("#field-uniformado_responsables").val() == 1) {
+						$("#color_uniforme_responsables_field_box").show();
+						$("#insignias_responsables_field_box").show();
+					} else {
+						$("#color_uniforme_responsables_field_box").hide();
+						$("#insignias_responsables_field_box").hide();
+					}
+				});
+				
 				
 				/*Momento de deportado*/
 				$("#momento_deportado_field_box").css("margin-left", "50px");
