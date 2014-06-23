@@ -219,8 +219,8 @@ class Admin extends CI_Controller {
 		$crud->display_as('numero_oficiales_responsables', 'Número de oficiales responsables');
 		$crud->display_as('algun_nombre_responsables', 'Escucho o sabe algún nombre de  los oficiales involucrados');
 		$crud->display_as('carcteristicas_ficias_policia_responsable', 'Características fìsicas oficial 1');
-		$crud->display_as('carcteristicas_ficias_policia_responsable2', 'Características fìsicas oficial 3');
-		$crud->display_as('carcteristicas_ficias_policia_responsable3', 'Características fìsicas oficial 4');
+		$crud->display_as('carcteristicas_ficias_policia_responsable2', 'Características fìsicas oficial 2');
+		$crud->display_as('carcteristicas_ficias_policia_responsable3', 'Características fìsicas oficial 3');
 		$crud->display_as('apodos_responsables', 'Escucho o sabe algún apodo de  los oficiales involucrados');
 		
 		$crud->display_as('uniformado_responsables', 'Los responsables estaban uniformados');
