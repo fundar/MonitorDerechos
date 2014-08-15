@@ -25,6 +25,26 @@ class Admin extends CI_Controller {
 	}
 	
 	/*Export csv*/
+	public function export_estados() {
+		$user = $this->isUser();
+		
+		$this->load->model('migracion_model');
+		$csv_file  = $this->migracion_model->exportEstados();
+		
+		die("archivo descargado");
+	}
+	
+	/*Export csv*/
+	public function export_paises() {
+		$user = $this->isUser();
+		
+		$this->load->model('migracion_model');
+		$csv_file  = $this->migracion_model->exportPaises();
+		
+		die("archivo descargado");
+	}
+	
+	/*Export csv*/
 	public function export() {
 		$user = $this->isUser();
 		

@@ -40,4 +40,27 @@ class migracion_Model extends CI_Model  {
 		force_download("base_de_datos_denuncias.csv", $data);
 		exit;
 	}
+	
+	public function exportEstados() {
+		$this->load->dbutil();
+		
+		$query = $this->db->query("select id_estado, paises.id_pais, estados.nombre as estado, paises.nombre as pais from estados left join paises on estados.id_pais=paises.id_pais");
+		$data  = $this->dbutil->csv_from_result($query);
+
+		$this->load->helper('download');
+		force_download("base_de_datos_denuncias.csv", $data);
+		exit;
+	}
+	
+	
+	public function exportPaises() {
+		$this->load->dbutil();
+		
+		$query = $this->db->query("select * from paises");
+		$data  = $this->dbutil->csv_from_result($query);
+
+		$this->load->helper('download');
+		force_download("base_de_datos_denuncias.csv", $data);
+		exit;
+	}
 }
