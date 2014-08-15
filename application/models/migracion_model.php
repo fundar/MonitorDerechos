@@ -37,7 +37,7 @@ class migracion_Model extends CI_Model  {
 		$data  = $this->dbutil->csv_from_result($query);
 
 		$this->load->helper('download');
-		force_download("viviendas_sin_plomeras.csv", $data);
+		force_download("base_de_datos_denuncias.csv", $data);
 		exit;
 	}
 }
