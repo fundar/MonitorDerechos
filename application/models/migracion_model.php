@@ -48,7 +48,7 @@ class migracion_Model extends CI_Model  {
 		$data  = $this->dbutil->csv_from_result($query);
 
 		$this->load->helper('download');
-		force_download("base_de_datos_denuncias.csv", $data);
+		force_download("base_de_datos_estados.csv", $data);
 		exit;
 	}
 	
@@ -60,7 +60,7 @@ class migracion_Model extends CI_Model  {
 		$data  = $this->dbutil->csv_from_result($query);
 
 		$this->load->helper('download');
-		force_download("base_de_datos_denuncias.csv", $data);
+		force_download("base_de_datos_paises.csv", $data);
 		exit;
 	}
 }
