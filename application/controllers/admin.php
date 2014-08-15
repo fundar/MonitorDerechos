@@ -24,6 +24,16 @@ class Admin extends CI_Controller {
 		$this->load->view('admin.php', $output);
 	}
 	
+	/*Export csv*/
+	public function export() {
+		$user = $this->isUser();
+		
+		$this->load->model('migracion_model');
+		$csv_file  = $this->migracion_model->exportCSV();
+		
+		die("archivo descargado");
+	}
+	
 	/*Users metodo para verificar si es usuario*/
 	private function isUser($redirect = true, $admin = false) {
 		if(isset($_SESSION['user_id'])) {

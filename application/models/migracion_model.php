@@ -28,4 +28,16 @@ class migracion_Model extends CI_Model  {
 			return false;
 		}
 	}
+	
+	/*Export CSV*/
+	public function exportCSV() {
+		$this->load->dbutil();
+		
+		$query = $this->db->query("select denuncias.*, migrantes.* from denuncias left join migrantes on id_migrante in (select id_migrante from migrantes2denuncias where denuncias.id_denuncia=migrantes2denuncias.id_denuncia) where id_denuncia in (select id_denuncia from migrantes2denuncias)");
+		$data  = $this->dbutil->csv_from_result($query);
+
+		$this->load->helper('download');
+		force_download("viviendas_sin_plomeras.csv", $data);
+		exit;
+	}
 }
