@@ -307,7 +307,7 @@ class Admin extends CI_Controller {
 		$crud->set_field_upload('documento8_seguimiento', 'assets/uploads/files');
 		$crud->set_field_upload('documento9_seguimiento', 'assets/uploads/files');
 		$crud->set_field_upload('documento10_seguimiento', 'assets/uploads/files');
-		return true;
+		return true;ex
 	}
 	
 	/*Metodo de migrantes*/
@@ -363,6 +363,8 @@ class Admin extends CI_Controller {
 		/*Español*/
 		$crud->display_as('espanol', 'Dominio del español');
 		$crud->field_type('espanol', 'dropdown', array(1 => 'Si', 2 => 'No'));
+
+		$crud->unset_export();
 		
 		$output = $crud->render();
 		
