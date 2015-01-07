@@ -364,6 +364,8 @@ class Admin extends CI_Controller {
 		$crud->display_as('espanol', 'Dominio del español');
 		$crud->field_type('espanol', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		
+		 $crud->unset_export();
+		
 		$output = $crud->render();
 		
 		$this->_example_output($output);
