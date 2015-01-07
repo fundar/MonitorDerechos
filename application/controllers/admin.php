@@ -189,9 +189,9 @@ class Admin extends CI_Controller {
 		/*Datos sobre cruce de la frontera*/
 		$crud->display_as('intentos', 'Cuántas veces has intentado cruzar la frontera');
 		
-		/*Falta de trabajo, Violencia/Seguridad, Ramificación familiar, Otro*/
+		/*Falta de trabajo, Violencia/Seguridad, Reunificación familiar, Otro*/
 		$crud->display_as('motivo_migracion', 'Cuál es el motivo de migración');
-		$crud->field_type('motivo_migracion', 'dropdown', array('Falta de trabajo' => 'Falta de trabajo', 'Violencia/Seguridad' => 'Violencia/Seguridad', 'Ramificación familiar' => 'Ramificación familiar', 'Otro' => 'Otro'));
+		$crud->field_type('motivo_migracion', 'dropdown', array('Falta de trabajo' => 'Falta de trabajo', 'Violencia/Seguridad' => 'Violencia/Seguridad', 'Reunificación familiar' => 'Reunificación familiar', 'Otro' => 'Otro'));
 		
 		$crud->field_type('viaja_solo', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		$crud->display_as('con_quien_viaja', 'Con quien viaja');
@@ -364,8 +364,8 @@ class Admin extends CI_Controller {
 		$crud->display_as('espanol', 'Dominio del español');
 		$crud->field_type('espanol', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		
-		 $crud->unset_export();
-		
+		$crud->unset_export();
+
 		$output = $crud->render();
 		
 		$this->_example_output($output);

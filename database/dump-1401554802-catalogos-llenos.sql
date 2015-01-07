@@ -489,7 +489,7 @@ CREATE TABLE `tipos_quejas` (
 
 LOCK TABLES `tipos_quejas` WRITE;
 /*!40000 ALTER TABLE `tipos_quejas` DISABLE KEYS */;
-INSERT INTO `tipos_quejas` VALUES (1,'Indivudual'),(2,'Grupal'),(3,'Comunitaria');
+INSERT INTO `tipos_quejas` VALUES (1,'Individual'),(2,'Grupal'),(3,'Comunitaria');
 /*!40000 ALTER TABLE `tipos_quejas` ENABLE KEYS */;
 UNLOCK TABLES;
 
