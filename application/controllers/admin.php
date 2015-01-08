@@ -371,7 +371,8 @@ class Admin extends CI_Controller {
 			return site_url('admin/denuncias') . '/read/' . $row->id_denuncia;
 		}
 
-		$crud->add_action('DDenuncia', '', '','algo',array($this,'link_denuncia'));
+		//$crud->add_action('DDenuncia', '', '','algo',array($this,'link_denuncia'));
+		$crud->add_action('More', '', 'demo/action_more','ui-icon-plus');
 
 		$crud->unset_add_fields('denuncia');
 		//$crud->unset_edit_fields('denuncia');
