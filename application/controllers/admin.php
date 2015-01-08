@@ -389,7 +389,7 @@ class Admin extends CI_Controller {
 		$this->_example_output($output);
 	}
 
-	private function just_a_test($primary_key , $row) {
+	public function just_a_test($primary_key , $row) {
 		return site_url('demo/action/action_photos').'?country='.$row->country;
 	}
 	
