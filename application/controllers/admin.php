@@ -369,7 +369,6 @@ class Admin extends CI_Controller {
 		$crud->add_action('Denuncia', '', '','.algo',array($this,'link_denuncia'));
 
 		$crud->unset_columns('Denuncia');
-		$crud->unset_columns('denuncia');
 		$crud->unset_fields('denuncia');
 
 
