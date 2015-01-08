@@ -367,7 +367,8 @@ class Admin extends CI_Controller {
 		/*Id Denuncia*/
 		//$crud->display_as('id_migrante', 'ID Denuncia');
 		$crud->set_relation_n_n('denuncia', 'migrantes2denuncias','denuncias', 'id_migrante', 'id_denuncia', 'numero_queja');
-		$crud->unset_fields('denuncia');
+		$crud->unset_add_fields('denuncia');
+		$crud->unset_edit_fields('denuncia');
 
 
 		/*Columnas(Vista), campos y campos obligatorios*/
