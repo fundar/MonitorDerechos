@@ -367,7 +367,7 @@ class Admin extends CI_Controller {
 		$crud->field_type('espanol', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		
 		/*Id Denuncia*/
-		$crud->display_as('ID Denuncia', 'ID Denuncia');
+		$crud->display_as('ID_Denuncia', 'ID_Denuncia');
 		$crud->set_relation('id_migrante', 'migrantes2denuncias', '{id_denuncia}');
 
 		$crud->unset_export();
