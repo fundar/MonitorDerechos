@@ -367,16 +367,12 @@ class Admin extends CI_Controller {
 		/*Denuncia*/
 		$crud->set_relation_n_n('denuncia', 'migrantes2denuncias','denuncias', 'id_migrante', 'id_denuncia', 'numero_queja');
 
-		function link_denuncia($primary_key , $row) { 
-			return site_url('admin/denuncias') . '/read/' . $row->id_denuncia;
-		}
-
-		//$crud->add_action('DDenuncia', '', '','algo',array($this,'link_denuncia'));
-		$crud->add_action('More', '', 'demo/action_more','ui-icon-plus');
-		$crud->add_action('Photos', '', '','ui-icon-image',array($this,'just_a_test'));
+		$crud->add_action('DDenuncia', '', '','.algo',array($this,'link_denuncia'));
 
 		$crud->unset_add_fields('denuncia');
 		//$crud->unset_edit_fields('denuncia');
+
+
 		/*Columnas(Vista), campos y campos obligatorios*/
 		$crud->columns('id_migrante', 'id_lugar_denuncia', 'nombre', 'id_pais', 'id_estado', 'municipio', 'edad', 'denuncia');
 		
@@ -389,9 +385,10 @@ class Admin extends CI_Controller {
 		$this->_example_output($output);
 	}
 
-	public function just_a_test($primary_key , $row) {
-		return site_url('demo/action/action_photos').'?country='.$row->country;
+	public function link_denuncia($primary_key , $row) { 
+		return site_url('admin/denuncias') . '/read/' . $row->id_denuncia;
 	}
+
 	
 	/*Autoridades*/
 	public function autoridades() {
