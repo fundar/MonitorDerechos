@@ -385,7 +385,11 @@ class Admin extends CI_Controller {
 	}
 
 	public function link_denuncia($primary_key , $row) { 
-		return site_url('admin/denuncias') . '/read/' . $row->denuncia;
+		if ( $row->denuncia != "") {
+			return site_url('admin/denuncias') . '/read/' . $row->denuncia;
+		}
+
+		return "#";
 	}
 
 	
