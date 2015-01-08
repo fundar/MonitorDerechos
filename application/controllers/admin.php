@@ -389,7 +389,7 @@ class Admin extends CI_Controller {
 			return site_url('admin/denuncias') . '/read/' . $row->denuncia;
 		}
 
-		return "#"
+		return "#";
 	}
 
 	
