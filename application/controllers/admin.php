@@ -318,6 +318,8 @@ class Admin extends CI_Controller {
 		/*Tabla y título*/
 		$crud->set_theme('datatables');
 		$crud->set_table('migrantes');
+		$crud->set_relation('id_migrante', 'migrantes2denuncias', '{id_denuncia}');
+
 		$crud->set_subject('Migrantes');
 		
 		/*Columnas(Vista), campos y campos obligatorios*/
@@ -364,6 +366,10 @@ class Admin extends CI_Controller {
 		$crud->display_as('espanol', 'Dominio del español');
 		$crud->field_type('espanol', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		
+		/*Id Denuncia*/
+		$crud->display_as('ID Denuncia', 'ID Denuncia');
+		$crud->set_relation('id_denuncia', 'id_denuncia', 'nombre');
+
 		$crud->unset_export();
 
 		$output = $crud->render();
