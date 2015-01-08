@@ -377,13 +377,6 @@ class Admin extends CI_Controller {
 
 		$crud->unset_add_fields('denuncia');
 		//$crud->unset_edit_fields('denuncia');
-
-		function just_a_test($primary_key , $row) {
-    		return site_url('demo/action/action_photos').'?country='.$row->country;
-		}
- 
-
-
 		/*Columnas(Vista), campos y campos obligatorios*/
 		$crud->columns('id_migrante', 'id_lugar_denuncia', 'nombre', 'id_pais', 'id_estado', 'municipio', 'edad', 'denuncia');
 		
@@ -394,6 +387,10 @@ class Admin extends CI_Controller {
 		$output = $crud->render();
 		
 		$this->_example_output($output);
+	}
+
+	private function just_a_test($primary_key , $row) {
+		return site_url('demo/action/action_photos').'?country='.$row->country;
 	}
 	
 	/*Autoridades*/
