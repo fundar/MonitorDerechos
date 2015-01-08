@@ -318,7 +318,7 @@ class Admin extends CI_Controller {
 		/*Tabla y título*/
 		$crud->set_theme('datatables');
 		$crud->set_table('migrantes');
-		$crud->set_relation('id_migrante', 'migrantes2denuncias', '{id_denuncia}');
+		
 
 		$crud->set_subject('Migrantes');
 		
@@ -368,7 +368,7 @@ class Admin extends CI_Controller {
 		
 		/*Id Denuncia*/
 		$crud->display_as('ID Denuncia', 'ID Denuncia');
-		$crud->set_relation('id_denuncia', 'denuncia', 'nombre');
+		$crud->set_relation('id_migrante', 'migrantes2denuncias', '{id_denuncia}');
 
 		$crud->unset_export();
 
