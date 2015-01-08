@@ -369,7 +369,7 @@ class Admin extends CI_Controller {
 		$crud->add_action('Denuncia', '', '','.algo',array($this,'link_denuncia'));
 
 		$crud->unset_fields('denuncia');
-		$crud->unset_list('denuncia');
+
 
 		/*Columnas(Vista), campos y campos obligatorios*/
 		$crud->columns('id_migrante', 'id_lugar_denuncia', 'nombre', 'id_pais', 'id_estado', 'municipio', 'edad', 'denuncia');
