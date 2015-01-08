@@ -378,7 +378,7 @@ class Admin extends CI_Controller {
 		$crud->unset_add_fields('denuncia');
 		//$crud->unset_edit_fields('denuncia');
 
-		function just_a_test($primary_key , $row){
+		function just_a_test($row){
     		return site_url('demo/action/action_photos').'?country='.$row->country;
 		}
  
