@@ -366,6 +366,13 @@ class Admin extends CI_Controller {
 		
 		/*Denuncia*/
 		$crud->set_relation_n_n('denuncia', 'migrantes2denuncias','denuncias', 'id_migrante', 'id_denuncia', 'numero_queja');
+
+		$crud->add_action('DDenuncia', '', '','.algo',array($this,'link_denuncia'));
+
+		function link_denuncia($primary_key , $row) { 
+			return site_url('admin/denuncias') . '/read/' . $row->id_denuncia;
+		}
+
 		$crud->unset_add_fields('denuncia');
 		//$crud->unset_edit_fields('denuncia');
 
