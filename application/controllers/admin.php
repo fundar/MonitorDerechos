@@ -329,7 +329,7 @@ class Admin extends CI_Controller {
 		$crud->display_as('id_lugar_denuncia', 'Lugar de la organización');
 		$crud->set_relation('id_lugar_denuncia', 'lugares_denuncia', 'nombre');
 		/*Pais*/
-		//$crud->display_as('id_migrante', 'ID');
+		$crud->display_as('id_migrante', 'ID');
 		$crud->display_as('id_pais', 'País');
 		$crud->set_relation('id_pais', 'paises', 'nombre');
 		/*Estado*/
@@ -366,14 +366,9 @@ class Admin extends CI_Controller {
 		
 		/*Denuncia*/
 		$crud->set_relation_n_n('denuncia', 'migrantes2denuncias','denuncias', 'id_migrante', 'id_denuncia', 'id_denuncia');
+		$crud->add_action('Denuncia', '', '','.algo',array($this,'link_denuncia'));
 
-
-		//$crud->set_relation('id_migrante','denuncias','id_denuncia');
-		//$crud->display_as('id_migrante', 'Denuncia');
-
-		$crud->add_action('denuncia', '', '','algo',array($this,'link_denuncia'));
-
-		$crud->unset_columns('denuncia');
+		$crud->unset_columns('Denuncia');
 		$crud->unset_fields('denuncia');
 
 
@@ -391,10 +386,10 @@ class Admin extends CI_Controller {
 
 	public function link_denuncia($primary_key , $row) { 
 		if ( $row->denuncia != "") {
-			return site_url('admin/denuncias') . '/read/' . $row->id_denuncia;
+			return site_url('admin/denuncias') . '/read/' . $row->denuncia;
 		}
 
-		return "#";
+		return "#"
 	}
 
 	
