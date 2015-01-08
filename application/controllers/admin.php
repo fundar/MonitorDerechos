@@ -373,9 +373,15 @@ class Admin extends CI_Controller {
 
 		//$crud->add_action('DDenuncia', '', '','algo',array($this,'link_denuncia'));
 		$crud->add_action('More', '', 'demo/action_more','ui-icon-plus');
+		 $crud->add_action('Photos', '', '','ui-icon-image',array($this,'just_a_test'));
 
 		$crud->unset_add_fields('denuncia');
 		//$crud->unset_edit_fields('denuncia');
+
+		function just_a_test($primary_key , $row){
+    		return site_url('demo/action/action_photos').'?country='.$row->country;
+		}
+ 
 
 
 		/*Columnas(Vista), campos y campos obligatorios*/
