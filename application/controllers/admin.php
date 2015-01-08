@@ -372,7 +372,7 @@ class Admin extends CI_Controller {
 		//$crud->display_as('id_migrante', 'Denuncia');
 
 		$crud->add_action('denuncia', '', '','algo',array($this,'link_denuncia'));
-		
+
 		$crud->unset_columns('denuncia');
 		$crud->unset_fields('denuncia');
 
@@ -391,7 +391,7 @@ class Admin extends CI_Controller {
 
 	public function link_denuncia($primary_key , $row) { 
 		if ( $row->denuncia != "") {
-			return site_url('admin/denuncias') . '/read/' . $row->denuncia;
+			return site_url('admin/denuncias') . '/read/' . $row->id_denuncia;
 		}
 
 		return "#";
