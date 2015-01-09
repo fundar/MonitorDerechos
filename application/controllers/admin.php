@@ -372,7 +372,7 @@ class Admin extends CI_Controller {
 
 
 		/*Columnas(Vista), campos y campos obligatorios*/
-		$crud->columns('id_lugar_denuncia', 'nombre', 'id_pais', 'id_estado', 'municipio', 'edad', 'id_migrante','Denuncia');
+		$crud->columns('id_lugar_denuncia', 'nombre', 'id_pais', 'id_estado', 'municipio', 'edad', 'ID','Denuncia');
 		$crud->unset_columns('id_migrante');
 		$crud->unset_fields('denuncia');
 		
