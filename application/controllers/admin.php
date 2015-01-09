@@ -327,7 +327,7 @@ class Admin extends CI_Controller {
 		$crud->display_as('id_lugar_denuncia', 'Lugar de la organización');
 		$crud->set_relation('id_lugar_denuncia', 'lugares_denuncia', 'nombre');
 		/*Pais*/
-		$crud->display_as('id_migrante', 'ID');
+		//$crud->display_as('id_migrante', 'ID');
 		//$crud->display_as('id_migrante','Denuncia');
 
 		$crud->set_relation('id_migrante','migrantes2denuncias','id_denuncia');
@@ -368,7 +368,7 @@ class Admin extends CI_Controller {
 		
 		/*Denuncia*/
 		//$crud->select('id_migrante, nombre, id_pais, id_estado, municipio, id_genero, edad, fecha_nacimiento, ocupacion, id_estado_civil, escolaridad, pueblo_indigena, nombre_pueblo_indigena, espanol, id_lugar_denuncia, denuncias.id_denuncia');
-		$crud->set_relation_n_n('denuncia', 'migrantes2denuncias','denuncias', 'id_migrante', 'id_denuncia', 'id_denuncia' );
+		$crud->set_relation_n_n('denuncia', 'migrantes2denuncias','denuncias', 'id_migrante', 'id_denuncia' );
 		//$crud->add_action('Denuncia', '', '','.algo',array($this,'link_denuncia'));
 
 
