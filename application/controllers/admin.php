@@ -375,7 +375,7 @@ class Admin extends CI_Controller {
 
 
 		/*Columnas(Vista), campos y campos obligatorios*/
-		$crud->columns('id_lugar_denuncia', 'nombre', 'id_pais', 'id_estado', 'municipio', 'edad', 'denuncia');
+		$crud->columns('id_lugar_denuncia', 'nombre', 'id_pais', 'id_estado', 'municipio', 'edad', 'id_migrante');
 		
 		$crud->required_fields('nombre');
 
@@ -387,7 +387,7 @@ class Admin extends CI_Controller {
 	}
 
 	public function link_denuncia($primary_key , $row) { 
-		if ( $row->denuncia != "") {
+		if ( $row->id_denuncia != "") {
 			return site_url('admin/denuncias') . '/read/' . $row->id_denuncia;
 		}
 
