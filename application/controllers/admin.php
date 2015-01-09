@@ -329,7 +329,8 @@ class Admin extends CI_Controller {
 		/*Pais*/
 		$crud->display_as('id_migrante', 'ID');
 		//$crud->display_as('id_migrante','Denuncia');
-		//$crud->set_relation('id_migrante','denuncias','id_denuncia');
+
+		$crud->set_relation('id_denuncia','denuncias','id_migrante');
 
 		$crud->display_as('id_pais', 'País');
 		$crud->set_relation('id_pais', 'paises', 'nombre');
