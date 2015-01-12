@@ -63,4 +63,17 @@ class migracion_Model extends CI_Model  {
 		force_download("base_de_datos_paises.csv", $data);
 		exit;
 	}
+
+	public function allMigrantes() {
+		$this->load->dbutil();
+		
+		$query = $this->db->query("select * from migrantes");
+
+        return $query->result();
+
+		//$this->load->helper('download');
+		//force_download("base_de_datos_paises.csv", $data);
+		exit;
+	}
+
 }
