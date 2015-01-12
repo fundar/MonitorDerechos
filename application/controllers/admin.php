@@ -324,11 +324,11 @@ class Admin extends CI_Controller {
 		
 		
 		/*Relaciones con tablas*/
-		$crud->display_as('lugar_denuncia', 'Lugar de la organización');
-		$crud->display_as('pais', 'País');
-		$crud->display_as('estado', 'Estado/Departamento');
-		$crud->display_as('genero', 'Género');
-		$crud->display_as('estado_civil', 'Estado Civil');
+		$crud->display_as('id_lugar_denuncia', 'Lugar de la organización');
+		$crud->display_as('id_pais', 'País');
+		$crud->display_as('id_estado', 'Estado/Departamento');
+		$crud->display_as('id_genero', 'Género');
+		$crud->display_as('id_estado_civil', 'Estado Civil');
 		$crud->display_as('escolaridad', 'Escolaridad');
 		$crud->display_as('pueblo_indigena', 'Pertenece a algún pueblo indígena');
 		$crud->display_as('espanol', 'Dominio del español');
@@ -345,7 +345,13 @@ class Admin extends CI_Controller {
 		$query .= " AND migrantes.id_migrante = migrantes2denuncias.id_migrante";
 
 		//$crud->basic_model->set_query_str($query);
+   
 		
+		$crud->set_relation('id_lugar_denuncia', 'lugares_denuncia', 'nombre');
+		$crud->set_relation('id_pais', 'paises', 'nombre');
+		$crud->set_relation('id_estado', 'estados', 'nombre');
+		$crud->set_relation('id_genero', 'generos', 'nombre');
+		$crud->set_relation('id_estado_civil', 'estado_civil', 'nombre');
 			
 		$crud->field_type('escolaridad', 'dropdown', array(
 			'Sin instrucción' => 'Sin instrucción',
@@ -363,7 +369,7 @@ class Admin extends CI_Controller {
 		$crud->field_type('pueblo_indigena', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		$crud->field_type('espanol', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		
-		$crud->columns('id_migrante', 'id_lugar_denuncia', 'nombre', 'id_pais', 'id_estado', 'municipio', 'edad'/*, 'denuncia'*/);
+		$crud->columns('id_migrante', 'id_lugar_denuncia', 'nombre', 'id_pais', 'id_estado', 'municipio', 'edad', 'denuncia');
 		
 		$crud->required_fields('nombre');
 
