@@ -65,7 +65,6 @@ class migracion_Model extends CI_Model  {
 	}
 
 	public function allMigrantes() {
-		$this->load->dbutil();
 		
 		$query = $this->db->query("select * from migrantes");
 
