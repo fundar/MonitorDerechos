@@ -366,7 +366,7 @@ class Admin extends CI_Controller {
 		$crud->field_type('espanol', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		
 		/*Denuncia*/
-		$crud->set_relation_n_n('denuncia', 'migrantes', 'migrantes2denuncias', 'id_migrante', 'id_migrante', 'id_migrante' );
+		$crud->set_relation_n_n('denuncia', 'migrantes', 'migrantes2denuncias', 'id_migrante', 'id_migrante', 'numero_queja' );
 		//$crud->add_action('Denuncia', '', '','.algo',array($this,'link_denuncia'));
 
 
