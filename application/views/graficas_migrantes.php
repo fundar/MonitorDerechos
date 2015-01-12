@@ -1,3 +1,6 @@
 <?php  foreach ($query->result() as $row) {?>
-	<li><?php $row->nombre; ?></li>
+	<li><?php echo $row->nombre; ?></li>
 <?php }?>
+
+
+<?php var_dump($query);?>
