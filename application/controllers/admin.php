@@ -329,7 +329,7 @@ class Admin extends CI_Controller {
 		/*Pais*/
 		$crud->display_as('id_migrante', 'ID');
 		//$crud->display_as('id_migrante','Denuncia');
-		//$crud->set_relation('id_migrante','migrantes2denuncias','id_denuncia');
+		$crud->set_relation('id_migrante','migrantes2denuncias','id_denuncia');
 
 		$crud->display_as('id_pais', 'País');
 		$crud->set_relation('id_pais', 'paises', 'nombre');
@@ -366,7 +366,7 @@ class Admin extends CI_Controller {
 		$crud->field_type('espanol', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		
 		/*Denuncia*/
-		$crud->set_relation_n_n('denuncia', 'migrantes2denuncias', 'denuncias', 'id_migrante', 'id_denuncia', 'id_denuncia' );
+		$crud->set_relation_n_n('denuncia', 'migrantes', 'migrantes2denuncias', 'id_migrante', 'id_denuncia', 'id_denuncia' );
 		//$crud->add_action('Denuncia', '', '','.algo',array($this,'link_denuncia'));
 
 
