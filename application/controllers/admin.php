@@ -324,20 +324,28 @@ class Admin extends CI_Controller {
 		
 		
 		/*Relaciones con tablas*/
-		$crud->display_as('id_lugar_denuncia', 'Lugar de la organización');
-		$crud->display_as('id_pais', 'País');
-		$crud->display_as('id_estado', 'Estado/Departamento');
-		$crud->display_as('id_genero', 'Género');
-		$crud->display_as('id_estado_civil', 'Estado Civil');
+		$crud->display_as('lugar_denuncia', 'Lugar de la organización');
+		$crud->display_as('pais', 'País');
+		$crud->display_as('estado', 'Estado/Departamento');
+		$crud->display_as('genero', 'Género');
+		$crud->display_as('estado_civil', 'Estado Civil');
 		$crud->display_as('escolaridad', 'Escolaridad');
 		$crud->display_as('pueblo_indigena', 'Pertenece a algún pueblo indígena');
 		$crud->display_as('espanol', 'Dominio del español');
+
+		$query  = " SELECT migrantes.id_migrante, migrantes.nombre, migrantes.municipio, migrantes.edad, migrantes.escolaridad, 
+						   migrantes.pueblo_indigena, migrantes.espanol, lugares_denuncia.nombre AS lugar_denuncia, paises.nombre AS pais, 
+						   estados.nombre AS estado, generos.nombre AS genero, estado_civil.nombre AS estado_civil, migrantes2denuncias.id_denuncia";
+		$query .= " FROM migrantes, lugares_denuncia, paises, estados, generos, estado_civil, migrantes2denuncias";
+		$query .= " WHERE migrante.id_lugar_denuncia = lugares_denuncia.id_lugar_denuncia";
+		$query .= " AND migrantes.id_pais = paises.id_pais";
+		$query .= " AND migrantes.id_estado = estados.id_estado";
+		$query .= " AND migrantes.id_genero = generos.id_genero";
+		$query .= " AND migrantes.id_estado_civil = generos.id_estado_civil";
+		$query .= " AND migrantes.id_migrante = migrantes2denuncias.id_migrante";
+
+		//$crud->basic_model->set_query_str($query);
 		
-		$crud->set_relation('id_lugar_denuncia', 'lugares_denuncia', 'nombre');
-		$crud->set_relation('id_pais', 'paises', 'nombre');
-		$crud->set_relation('id_estado', 'estados', 'nombre');
-		$crud->set_relation('id_genero', 'generos', 'nombre');
-		$crud->set_relation('id_estado_civil', 'estado_civil', 'nombre');
 			
 		$crud->field_type('escolaridad', 'dropdown', array(
 			'Sin instrucción' => 'Sin instrucción',
