@@ -1,7 +1,4 @@
-<?php  foreach ($query->result() as $row) {?>
+<?php foreach($query as $row){ ?>
 	<li><?php echo $row->nombre; ?></li>
 <?php }?>
-
-
-<?php var_dump($query);?>
 sdfk
