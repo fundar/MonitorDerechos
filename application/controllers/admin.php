@@ -327,7 +327,7 @@ class Admin extends CI_Controller {
 		$crud->display_as('id_lugar_denuncia', 'Lugar de la organización');
 		$crud->set_relation('id_lugar_denuncia', 'lugares_denuncia', 'nombre');
 		/*Pais*/
-		$crud->display_as('id_migrante', 'ID');
+		//$crud->display_as('id_migrante', 'ID');
 		//$crud->display_as('id_migrante','Denuncia');
 		$crud->set_relation('id_migrante','migrantes2denuncias','id_denuncia');
 
@@ -372,7 +372,7 @@ class Admin extends CI_Controller {
 
 
 		/*Columnas(Vista), campos y campos obligatorios*/
-		$crud->columns('id_pais', 'id_migrante', 'id_lugar_denuncia', 'nombre', 'id_estado', 'municipio', 'edad', 'denuncia');
+		$crud->columns('id_migrante', 'id_lugar_denuncia', 'nombre', 'id_pais', 'id_estado', 'municipio', 'edad', 'denuncia');
 		//$crud->unset_fields('denuncia');
 		
 		$crud->required_fields('nombre');
