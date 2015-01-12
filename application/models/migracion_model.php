@@ -73,7 +73,6 @@ class migracion_Model extends CI_Model  {
 
 		//$this->load->helper('download');
 		//force_download("base_de_datos_paises.csv", $data);
-		exit;
 	}
 
 }
