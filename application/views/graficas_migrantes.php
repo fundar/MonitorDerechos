@@ -4,6 +4,6 @@
 
 <script type="text/javascript">
 	
-	var data = "<?php echo json_encode($query);?>";
+	var data = <?php echo json_encode($query);?>;
 	console.log(data);
 </script>
