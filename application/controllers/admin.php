@@ -325,25 +325,20 @@ class Admin extends CI_Controller {
 		
 		/*Relaciones con tablas*/
 		$crud->display_as('id_lugar_denuncia', 'Lugar de la organización');
-		$crud->set_relation('id_lugar_denuncia', 'lugares_denuncia', 'nombre');
-		/*Pais*/
-		$crud->display_as('id_migrante', 'ID');
-		//$crud->display_as('id_migrante','Denuncia');
-		$crud->set_relation('id_migrante','migrantes2denuncias','id_denuncia');
-
 		$crud->display_as('id_pais', 'País');
-		$crud->set_relation('id_pais', 'paises', 'nombre');
-		/*Estado*/
 		$crud->display_as('id_estado', 'Estado/Departamento');
-		$crud->set_relation('id_estado', 'estados', 'nombre');
-		/*Genero*/
 		$crud->display_as('id_genero', 'Género');
-		$crud->set_relation('id_genero', 'generos', 'nombre');
-		/*Estado civil*/
 		$crud->display_as('id_estado_civil', 'Estado Civil');
-		$crud->set_relation('id_estado_civil', 'estado_civil', 'nombre');
-		/*Escolaridad*/
 		$crud->display_as('escolaridad', 'Escolaridad');
+		$crud->display_as('pueblo_indigena', 'Pertenece a algún pueblo indígena');
+		$crud->display_as('espanol', 'Dominio del español');
+		
+		$crud->set_relation('id_lugar_denuncia', 'lugares_denuncia', 'nombre');
+		$crud->set_relation('id_pais', 'paises', 'nombre');
+		$crud->set_relation('id_estado', 'estados', 'nombre');
+		$crud->set_relation('id_genero', 'generos', 'nombre');
+		$crud->set_relation('id_estado_civil', 'estado_civil', 'nombre');
+			
 		$crud->field_type('escolaridad', 'dropdown', array(
 			'Sin instrucción' => 'Sin instrucción',
 			'Primaria' => 'Primaria',
@@ -357,23 +352,10 @@ class Admin extends CI_Controller {
 			'Maestria' => 'Maestria',
 			'Doctorado' => 'Doctorado'
 		));
-			
-		/*Pueblo indigena*/
-		$crud->display_as('pueblo_indigena', 'Pertenece a algún pueblo indígena');
 		$crud->field_type('pueblo_indigena', 'dropdown', array(1 => 'Si', 2 => 'No'));
-		/*Español*/
-		$crud->display_as('espanol', 'Dominio del español');
 		$crud->field_type('espanol', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		
-		/*Denuncia*/
-		$crud->set_relation_n_n('denuncia', 'migrantes2denuncias', 'migrantes', 'id_migrante', 'id_migrante', 'id_denuncia' );
-		//$crud->add_action('Denuncia', '', '','.algo',array($this,'link_denuncia'));
-
-
-
-		/*Columnas(Vista), campos y campos obligatorios*/
 		$crud->columns('id_migrante', 'id_lugar_denuncia', 'nombre', 'id_pais', 'id_estado', 'municipio', 'edad', 'denuncia');
-		//$crud->unset_fields('denuncia');
 		
 		$crud->required_fields('nombre');
 
