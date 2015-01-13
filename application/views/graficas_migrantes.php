@@ -2,12 +2,12 @@
 <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
 <html ng-app="graficasMigracion">
 <head>
-	<link rel="stylesheet" type="text/css" href="assets/css/angular-chart.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/angular-chart.css">
 
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
-	<script type="text/javascript" src="assets/js/Chart.min.js"></script>
-	<script type="text/javascript" src="assets/js/angular-chart.js"></script>
-	<script type="text/javascript" src="assets/js/migrantes.js"></script>
+	<script type="text/javascript" src="../assets/js/Chart.min.js"></script>
+	<script type="text/javascript" src="../assets/js/angular-chart.js"></script>
+	<script type="text/javascript" src="../assets/js/migrantes.js"></script>
 	<title></title>
 
 	<style type="text/css">
