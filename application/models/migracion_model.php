@@ -65,9 +65,9 @@ class migracion_Model extends CI_Model  {
 	}
 
 	public function allMigrantes() {
-		$sq  = " SELECT paises.nombre AS pais, estados.nombre AS estado, migrantes.municipio, generos.nombre AS genero"; 
+		$sq  = " SELECT paises.nombre AS pais, estados.nombre AS estado, migrantes.municipio, generos.nombre AS genero,"; 
 		$sq	.= " migrantes.edad, migrantes.ocupacion, estado_civil.nombre AS estado_civil, migrantes.escolaridad,";
-		$sq	.= " migrantes.nombre_pueblo_indigena, migrantes.espanol, migrantes.id_lugar_denuncia  ";
+		$sq	.= " migrantes.nombre_pueblo_indigena, migrantes.espanol, migrantes.id_lugar_denuncia";
 		$sq .= " FROM migrantes, lugares_denuncia, paises, estados, generos, estado_civil ";
 		$sq .= " WHERE migrantes.id_lugar_denuncia = lugares_denuncia.id_lugar_denuncia";
 		$sq .= " AND migrantes.id_pais = paises.id_pais";
