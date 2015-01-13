@@ -1,5 +1,5 @@
 <?php foreach($query as $row){ ?>
-	<li><?php echo $row->nombre; ?></li>
+	<li><?php echo $row->pais; ?></li>
 <?php }?>
 
 <script type="text/javascript">
