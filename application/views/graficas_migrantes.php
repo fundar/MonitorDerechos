@@ -7,6 +7,16 @@
 	<title></title>
 
 </head>
+
+<style type="text/css">
+	#migrantes #div, .highcharts-container {
+		max-width: 30%;
+		width: 30%;
+		float: left;
+	}
+
+</style>
+
 <body>
 	<section id="migrantes">	
 		<h2> Estadísticas de Migrantes </h2>
@@ -51,8 +61,9 @@
 			}
 			return histograma;
 		}
-		
-		var migrantes = <?php echo json_encode($query);?>;
+
+		var migrantes = <?php echo json_encode($migrantes);?>;
+		var denuncias = <?php echo json_encode($denuncias);?>;
 		var histograma = generar_histograma(migrantes)
 
 		var tags = {
