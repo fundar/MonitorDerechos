@@ -79,7 +79,7 @@ class migracion_Model extends CI_Model  {
 
         return $query->result();
 	}
-	
+	/*
 	public function allDenuncias() {
 		$sq  = " SELECT tipos_quejas.nombre AS queja, intentos, motivo_migracion, coyote_guia, lugar_de_usa,"; 
 		$sq	.= "   viaja_solo, deportado, autoridades.nombre, paises.nombre AS pais, estados.nombre AS estado,";
@@ -98,6 +98,6 @@ class migracion_Model extends CI_Model  {
 
         return $query->result();
 	}
-	
+	*/
 
 }
