@@ -63,7 +63,7 @@
 			return histograma;
 		}
 
-		var migrantes = <?php echo json_encode($migrantes);?>;
+		//var migrantes = <?php echo json_encode($migrantes);?>;
 		var denuncias = <?php echo json_encode($denuncias);?>;
 
 		var histograma = generar_histograma(migrantes)
