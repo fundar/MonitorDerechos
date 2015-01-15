@@ -132,7 +132,7 @@
 			numero_migrantes_injusticia: "Número de inmigrantes presentes durante la injusticia", 
 			algun_nombre_responsables: "Conoce algun nombre de los responsables", 
 			uniformado_responsables: "Usaban uniforme los responsables", 
-			responsables_abordo_vehiculos: "Estaban a bordo los responsables", 
+			responsables_abordo_vehiculos: "Los responsables estaban a bordo de algún vehículo", 
 			derecho_violado: "Derecho violado"
 		}
 
