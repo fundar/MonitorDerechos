@@ -9,12 +9,13 @@
 </head>
 
 <style type="text/css">
+/*
 	#migrantes #div, .highcharts-container {
 		max-width: 50%;
 		width: 50%;
 		float: left;
 	}
-
+*/
 </style>
 
 <body>
