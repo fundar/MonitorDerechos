@@ -44,7 +44,7 @@
 		<div id="viaja_solo"></div>
 		<div id="deportado"></div>
 		<div id="autoridad"></div>
-		<div id="pais_injusticia"></div>
+		<!--div id="pais_injusticia"></div-->
 		<div id="estado_injusticia"></div>
 		<div id="espacio_fisico_injusticia"></div>
 		<div id="detonante_injusticia"></div>
