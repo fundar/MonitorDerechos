@@ -88,7 +88,7 @@ class migracion_Model extends CI_Model  {
 		$sq	.= "   derechos.nombre AS derecho_violado";
 		$sq .= " FROM denuncias, tipos_quejas, autoridades, autoridades_responables2denuncias, paises, estados,";
 		$sq .= "   derechos, derechos_violados2denuncias";
-		$sq .= " WHERE migrantes.id_tipo_queja = tipos_quejas.id_tipo_queja";
+		$sq .= " WHERE denuncias.id_tipo_queja = tipos_quejas.id_tipo_queja";
 		$sq .= "   AND denuncias.id_autoridad_dano = autoridades_responables2denuncias.id_denuncia";
 		$sq .= "   AND autoridades_responables2denuncias.id_autoridad = autoridades.id_autoridad";
 		$sq .= "   AND denuncias.id_denuncia = derechos_violados2denuncias.id_denuncia";
