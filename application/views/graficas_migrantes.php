@@ -83,7 +83,7 @@
 			}
 			return histograma;
 		}
-		var createChart = function(key, data){
+		var createChart = function(key, data, tags){
 			$('#' + key).highcharts({
 	        title: { text: tags[key] },
 	        plotOptions: {
@@ -136,8 +136,8 @@
 			derecho_violado: "Derecho violado"
 		}
 
-		for(key in tags_migrantes){ createChart(key, histograma_migrantes[key]) }
-		for(key in tags_denuncias){ createChart(key, histograma_denuncias[key]) }
+		for(key in tags_migrantes){ createChart(key, histograma_migrantes[key], tags_migrantes) }
+		for(key in tags_denuncias){ createChart(key, histograma_denuncias[key], tags_denuncias) }
 
 });
 
