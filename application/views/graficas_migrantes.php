@@ -33,7 +33,6 @@
   	<div id="espanol"></div>
   	<div id="lugar_denuncia"></div>
 	</section>
-	<?php var_dump($denuncias); ?>
 </body>
 
 <script type="text/javascript">
