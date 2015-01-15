@@ -33,6 +33,7 @@
   	<div id="espanol"></div>
   	<div id="lugar_denuncia"></div>
 	</section>
+	<?php var_dump($denuncias); ?>
 </body>
 
 <script type="text/javascript">
@@ -65,6 +66,7 @@
 
 		var migrantes = <?php echo json_encode($migrantes);?>;
 		var denuncias = <?php echo json_encode($denuncias);?>;
+
 		var histograma = generar_histograma(migrantes)
 
 		var tags = {
