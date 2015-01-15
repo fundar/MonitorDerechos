@@ -136,6 +136,29 @@
 			derecho_violado: "Derecho violado"
 		}
 
+		var n_topico_edad = [ 
+			{ name: "0 - 14 años", visible:true, y:0 },
+			{ name: "15 - 28 años", visible:true, y:0 },
+			{ name: "29 - 43 años", visible:true, y:0 },
+			{ name: "44 - 58 años", visible:true, y:0 },
+			{ name: "59 años en adelante", visible:true, y:0 }
+		]
+
+		var topico_edad = histograma_migrantes.edad
+		
+		for(var i in topico_edad){
+			var e = parseInt(topico_edad[i][0]);
+			var c = topico_edad[i][1];
+			console.log(e, c)
+			if( e > 0 && e < 14) n_topico_edad[0].y += c
+			else if ( e > 15 && e < 28) n_topico_edad[1].y += c
+			else if ( e > 29 && e < 43) n_topico_edad[2].y += c
+			else if ( e > 44 && e < 58) n_topico_edad[2].y += c
+			else if ( e > 59) n_topico_edad[3].y += c
+		}
+
+		histograma_migrantes.edad = n_topico_edad
+		
 		for(key in tags_migrantes){ createChart(key, histograma_migrantes[key], tags_migrantes) }
 		for(key in tags_denuncias){ createChart(key, histograma_denuncias[key], tags_denuncias) }
 
