@@ -65,15 +65,16 @@ class migracion_Model extends CI_Model  {
 	}
 
 	public function allMigrantes() {
-		$sq  = " SELECT paises.nombre AS pais, estados.nombre AS estado, migrantes.municipio, generos.nombre AS genero,"; 
-		$sq	.= " migrantes.edad, migrantes.ocupacion, estado_civil.nombre AS estado_civil, migrantes.escolaridad,";
-		$sq	.= " migrantes.nombre_pueblo_indigena, migrantes.espanol, migrantes.id_lugar_denuncia AS lugar_denuncia";
+		$sq  = " SELECT paises.nombre AS pais_origen, estados.nombre AS estado_origen, migrantes.municipio AS municipio_origen,"; 
+		$sq	.= "   generos.nombre AS genero, migrantes.edad, migrantes.ocupacion, estado_civil.nombre AS estado_civil,";
+		$sq	.= "   migrantes.escolaridad, migrantes.nombre_pueblo_indigena, migrantes.espanol,";
+		$sq	.= "   migrantes.id_lugar_denuncia AS lugar_denuncia";
 		$sq .= " FROM migrantes, lugares_denuncia, paises, estados, generos, estado_civil ";
 		$sq .= " WHERE migrantes.id_lugar_denuncia = lugares_denuncia.id_lugar_denuncia";
-		$sq .= " AND migrantes.id_pais = paises.id_pais";
-		$sq .= " AND migrantes.id_estado = estados.id_estado";
-		$sq .= " AND migrantes.id_genero = generos.id_genero";
-		$sq .= " AND migrantes.id_estado_civil = estado_civil.id_estado_civil";
+		$sq .= "   AND migrantes.id_pais = paises.id_pais";
+		$sq .= "   AND migrantes.id_estado = estados.id_estado";
+		$sq .= "   AND migrantes.id_genero = generos.id_genero";
+		$sq .= "   AND migrantes.id_estado_civil = estado_civil.id_estado_civil";
 
 		$query = $this->db->query($sq);
 
@@ -81,11 +82,11 @@ class migracion_Model extends CI_Model  {
 	}
 	
 	public function allDenuncias() {
-		$sq  = " SELECT tipos_quejas.nombre AS queja, intentos, motivo_migracion, coyote_guia, lugar_de_usa,"; 
-		$sq	.= "   viaja_solo, deportado, autoridades.nombre AS autoridad, paises.nombre AS pais, estados.nombre AS estado,";
-		$sq	.= "   espacio_fisico_injusticia, detonante_injusticia, numero_migrantes_injusticia, algun_nombre_responsables,";
-		$sq	.= "   uniformado_responsables, responsables_abordo_vehiculos_responsables AS responsables_abordo_vehiculos,";
-		$sq	.= "   derechos.nombre AS derecho_violado";
+		$sq  = " SELECT tipos_quejas.nombre AS queja, intentos, motivo_migracion, coyote_guia, lugar_de_usa, viaja_solo,"; 
+		$sq	.= "   deportado,autoridades.nombre AS autoridad, paises.nombre AS pais_injusticia, espacio_fisico_injusticia,";
+		$sq	.= "   estados.nombre AS estado_injusticia, detonante_injusticia, numero_migrantes_injusticia,";
+		$sq	.= "   algun_nombre_responsables, uniformado_responsables, derechos.nombre AS derecho_violado,";
+		$sq	.= "   responsables_abordo_vehiculos_responsables AS responsables_abordo_vehiculos";
 		$sq .= " FROM denuncias, tipos_quejas, autoridades, autoridades_responables2denuncias, paises, estados,";
 		$sq .= "   derechos, derechos_violados2denuncias";
 		$sq .= " WHERE denuncias.id_tipo_queja = tipos_quejas.id_tipo_queja";

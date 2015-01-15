@@ -21,9 +21,9 @@
 <body>
 	<section id="migrantes">	
 		<h2> Estadísticas de Migrantes </h2>
-  	<div id="pais"></div>
-  	<div id="estado"></div>
-  	<div id="municipio"></div>
+  	<div id="pais_origen"></div>
+  	<div id="estado_origen"></div>
+  	<div id="municipio_origen"></div>
   	<div id="genero"></div>
   	<div id="edad"></div>
   	<div id="ocupacion"></div>
@@ -44,8 +44,8 @@
 		<div id="viaja_solo"></div>
 		<div id="deportado"></div>
 		<div id="autoridad"></div>
-		<div id="pais"></div>
-		<div id="estado"></div>
+		<div id="pais_injusticia"></div>
+		<div id="estado_injusticia"></div>
 		<div id="espacio_fisico_injusticia"></div>
 		<div id="detonante_injusticia"></div>
 		<div id="numero_migrantes_injusticia"></div>
@@ -103,9 +103,9 @@
 		var histograma_denuncias = generar_histograma(<?php echo json_encode($denuncias);?>)
 
 		var tags_migrantes = {
-			pais: "Pais de Origen",
-			estado: "Estado",
-			municipio: "Municipio",
+			pais_origen: "Pais de Origen",
+			estado_origen: "Estado",
+			municipio_origen: "Municipio",
 			genero: "Género",
 			edad: "Edad",
 			ocupacion: "Ocupacion",
@@ -125,8 +125,8 @@
 			viaja_solo: "Viaja Solo", 
 			deportado: "Fue deportado", 
 			autoridad: "Autoridad que cometio el abuso", 
-			pais: "Pais donde se cometio la injusticia", 
-			estado: "Estado donde se cometio la injusticia", 
+			pais_injusticia: "Pais donde se cometio la injusticia", 
+			estado_injusticia: "Estado donde se cometio la injusticia", 
 			espacio_fisico_injusticia: "Espacio físico donde se cometio la injusticia", 
 			detonante_injusticia: "Detonante de la Injusticia", 
 			numero_migrantes_injusticia: "Número de inmigrantes presentes durante la injusticia", 
