@@ -79,7 +79,7 @@ class migracion_Model extends CI_Model  {
 
         return $query->result();
 	}
-	/*
+	
 	public function allDenuncias() {
 		$sq  = " SELECT tipos_quejas.nombre AS queja, intentos, motivo_migracion, coyote_guia, lugar_de_usa,"; 
 		$sq	.= "   viaja_solo, deportado, autoridades.nombre, paises.nombre AS pais, estados.nombre AS estado,";
@@ -91,6 +91,8 @@ class migracion_Model extends CI_Model  {
 		$sq .= " WHERE denuncias.id_tipo_queja = tipos_quejas.id_tipo_queja";
 		$sq .= "   AND denuncias.id_autoridad_dano = autoridades_responables2denuncias.id_denuncia";
 		$sq .= "   AND autoridades_responables2denuncias.id_autoridad = autoridades.id_autoridad";
+		$sq .= "   AND denuncias.id_pais_injusticia = paises.id_pais";
+		$sq .= "   AND denuncias.id_estado_injusticia = estados.id_estado";
 		$sq .= "   AND denuncias.id_denuncia = derechos_violados2denuncias.id_denuncia";
 		$sq .= "   AND derechos_violados2denuncias.id_derecho = derechos.id_derecho";
 
@@ -98,6 +100,5 @@ class migracion_Model extends CI_Model  {
 
         return $query->result();
 	}
-	*/
 
 }
