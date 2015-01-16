@@ -124,7 +124,7 @@
 			lugar_de_usa: "Lugar de E.U.A al que se dirigía", 
 			viaja_solo: "Viaja Solo", 
 			deportado: "Fue deportado", 
-			autoridad: "Autoridad que cometio el abuso", 
+			autoridad: "Autoridad que cometio la violación a Derechos Humanos", 
 			pais_injusticia: "País donde se cometio la violación a Derechos Humanos", 
 			estado_injusticia: "Estado donde se cometio la violación a Derechos Humanos", 
 			espacio_fisico_injusticia: "Espacio físico donde se cometio la violación a Derechos Humanos", 
