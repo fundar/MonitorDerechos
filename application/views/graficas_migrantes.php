@@ -163,10 +163,20 @@
 		histograma_migrantes.espanol[0][0] = "Si";
 		histograma_migrantes.espanol[1][0] = "No";
 		
+		/* Modificar las etiquetas en el campo coyote */
 		histograma_denuncias.coyote_guia[0][0] = "Si"; // 1 como tag original
 		histograma_denuncias.coyote_guia[1][0] = "NO SABE"; // 0 como tag original
 		histograma_denuncias.coyote_guia[2][0] = "No"; // 2 como tag original
 
+		/* Modificar las etiquetas en el campo viaja_solo */
+		histograma_denuncias.viaja_solo[0][0] = "Si"; // 1 como tag original
+		histograma_denuncias.viaja_solo[1][0] = "NO SABE"; // 0 como tag original
+		histograma_denuncias.viaja_solo[2][0] = "No"; // 2 como tag original
+
+		/* Modificar las etiquetas en el campo deportado */
+		histograma_denuncias.deportado[0][0] = "Si"; // 1 como tag original
+		histograma_denuncias.deportado[1][0] = "NO SABE"; // 0 como tag original
+		histograma_denuncias.deportado[2][0] = "No"; // 2 como tag original
 
 		for(key in tags_migrantes){ createChart(key, histograma_migrantes[key], tags_migrantes) }
 		for(key in tags_denuncias){ createChart(key, histograma_denuncias[key], tags_denuncias) }
