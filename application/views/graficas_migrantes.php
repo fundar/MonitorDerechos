@@ -30,7 +30,7 @@
   	<div id="estado_civil"></div>
   	<div id="escolaridad"></div>
   	<div id="nombre_pueblo_indigena"></div>
-  	<div id="espanol"></div>
+  	<!--div id="espanol"></div-->
   	<div id="lugar_denuncia"></div>
 	</section>
 
@@ -146,10 +146,10 @@
 
 		var topico_edad = histograma_migrantes.edad
 		
+		/* Crear rangos de edad */
 		for(var i in topico_edad){
 			var e = parseInt(topico_edad[i][0]);
 			var c = topico_edad[i][1];
-
 			if( e > 0 && e < 14) n_topico_edad[0].y += c
 			else if ( e > 15 && e < 28) n_topico_edad[1].y += c
 			else if ( e > 29 && e < 43) n_topico_edad[2].y += c
@@ -158,6 +158,11 @@
 		}
 
 		histograma_migrantes.edad = n_topico_edad
+
+		/* Modificar las etiquetas en el campo habla español */
+		histograma_migrantes.espanol[0][0] = "Si";
+		histograma_migrantes.espanol[1][0] = "No";
+
 
 		for(key in tags_migrantes){ createChart(key, histograma_migrantes[key], tags_migrantes) }
 		for(key in tags_denuncias){ createChart(key, histograma_denuncias[key], tags_denuncias) }
