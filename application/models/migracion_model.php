@@ -130,10 +130,9 @@ class migracion_Model extends CI_Model  {
 
         return $query->result();
 	}
-
+*/
 }
 
-*/
 // SELECT pais.nombre AS pais 
 // FROM pais, migrantes2denuncias, migrantes
 // Where migrantes2denuncias.id_denuncia = denuncias.id_denuncia
