@@ -105,7 +105,7 @@ class migracion_Model extends CI_Model  {
 	public function denuncias_x_migrantes() {
 		$ssq  = " SELECT paises.nombre AS pais ";
 		$ssq .= " FROM paises, migrantes2denuncias, migrantes";
-		$ssq .= " WHERE migrantes2denuncias.id_denuncia = id_denuncia";
+		$ssq .= " WHERE migrantes2denuncias.id_denuncia = d.id_denuncia";
 		$ssq .= " AND migrantes.id_migrante = migrantes2denuncias.id_migrante";
 		$ssq .= " AND paises.id_pais = migrantes.id_pais";
 
@@ -115,7 +115,7 @@ class migracion_Model extends CI_Model  {
 		$sq	.= "   estados.nombre AS estado_injusticia, detonante_injusticia, numero_migrantes_injusticia,";
 		$sq	.= "   algun_nombre_responsables, uniformado_responsables, derechos.nombre AS derecho_violado,";
 		$sq	.= "   responsables_abordo_vehiculos_responsables AS responsables_abordo_vehiculos, datos_migrante.pais as pais_origen";
-		$sq .= " FROM denuncias, tipos_quejas, autoridades, autoridades_responables2denuncias, paises, estados,";
+		$sq .= " FROM denuncias AS d, tipos_quejas, autoridades, autoridades_responables2denuncias, paises, estados,";
 		$sq .= "   derechos, derechos_violados2denuncias, (" . $ssq . ") AS datos_migrante";
 		$sq .= " WHERE denuncias.id_tipo_queja = tipos_quejas.id_tipo_queja";
 		$sq .= "   AND denuncias.id_denuncia = autoridades_responables2denuncias.id_denuncia";
