@@ -162,6 +162,10 @@
 		/* Modificar las etiquetas en el campo habla español */
 		histograma_migrantes.espanol[0][0] = "Si";
 		histograma_migrantes.espanol[1][0] = "No";
+		
+		histograma_denuncias.coyote_guia[0][0] = "Si"; // 1 como tag original
+		histograma_denuncias.coyote_guia[1][0] = "NO SABE"; // 0 como tag original
+		histograma_denuncias.coyote_guia[2][0] = "No"; // 2 como tag original
 
 
 		for(key in tags_migrantes){ createChart(key, histograma_migrantes[key], tags_migrantes) }
