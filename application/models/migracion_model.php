@@ -68,7 +68,7 @@ class migracion_Model extends CI_Model  {
 		$sq  = " SELECT paises.nombre AS pais_origen, estados.nombre AS estado_origen, migrantes.municipio AS municipio_origen,"; 
 		$sq	.= "   generos.nombre AS genero, migrantes.edad, migrantes.ocupacion, estado_civil.nombre AS estado_civil,";
 		$sq	.= "   migrantes.escolaridad, migrantes.nombre_pueblo_indigena, migrantes.espanol,";
-		$sq	.= "   migrantes.id_lugar_denuncia AS lugar_denuncia";
+		$sq	.= "   lugares_denuncia.nombre AS lugar_denuncia";
 		$sq .= " FROM migrantes, lugares_denuncia, paises, estados, generos, estado_civil ";
 		$sq .= " WHERE migrantes.id_lugar_denuncia = lugares_denuncia.id_lugar_denuncia";
 		$sq .= "   AND migrantes.id_pais = paises.id_pais";

@@ -30,7 +30,7 @@
   	<div id="estado_civil"></div>
   	<div id="escolaridad"></div>
   	<div id="nombre_pueblo_indigena"></div>
-  	<div id="espanol"></div>
+  	<!--div id="espanol"></div-->
   	<div id="lugar_denuncia"></div>
 	</section>
 
