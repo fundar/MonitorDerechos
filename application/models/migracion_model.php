@@ -105,7 +105,7 @@ class migracion_Model extends CI_Model  {
 	public function denuncias_x_migrantes() {
 		$ssq  = " SELECT paises.nombre AS pais ";
 		$ssq .= " FROM paises, migrantes2denuncias, migrantes";
-		$ssq .= " WHERE migrantes2denuncias.id_denuncia = denuncias.id_denuncia";
+		$ssq .= " WHERE migrantes2denuncias.id_denuncia = id_denuncia";
 		$ssq .= " AND migrantes.id_migrante = migrantes2denuncias.id_migrante";
 		$ssq .= " AND paises.id_pais = migrantes.id_pais";
 
