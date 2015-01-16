@@ -178,6 +178,24 @@
 		histograma_denuncias.deportado[1][0] = "NO SABE"; // 0 como tag original
 		histograma_denuncias.deportado[2][0] = "No"; // 2 como tag original
 
+		/* Reducir a dos (SI/NO) categorias la pregunta algun_nombre_responsables */
+		var n_topico_algun_nombre_responsables = [ 
+			{ name: "Si", visible:true, y:0 },
+			{ name: "No", visible:true, y:0 }
+		]
+
+		var topico_algun_nombre_responsables = histograma_denuncias.algun_nombre_responsables
+		
+		for(var i in topico_algun_nombre_responsables){
+			var e = topico_algun_nombre_responsables[i][0];
+			var c = topico_algun_nombre_responsables[i][1];
+
+			if( e == "NO SABE") n_topico_algun_nombre_responsables[1].y += c
+			else n_topico_algun_nombre_responsables[0].y += c
+		}
+
+		histograma_denuncias.algun_nombre_responsables = n_topico_algun_nombre_responsables
+
 		for(key in tags_migrantes){ createChart(key, histograma_migrantes[key], tags_migrantes) }
 		for(key in tags_denuncias){ createChart(key, histograma_denuncias[key], tags_denuncias) }
 
