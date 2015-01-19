@@ -83,16 +83,20 @@ class migracion_Model extends CI_Model  {
 	
 	public function allDenuncias() {
 		$sq  = " SELECT tipos_quejas.nombre AS queja, intentos, motivo_migracion, coyote_guia, lugar_de_usa, viaja_solo,"; 
-		$sq	.= "   deportado,autoridades.nombre AS autoridad, paises.nombre AS pais_injusticia, espacio_fisico_injusticia,";
+		$sq	.= "   deportado,autoridades.nombre AS autoridad, paises.nombre AS pais_origen, espacio_fisico_injusticia,";
 		$sq	.= "   estados.nombre AS estado_injusticia, detonante_injusticia, numero_migrantes_injusticia,";
 		$sq	.= "   algun_nombre_responsables, uniformado_responsables, derechos.nombre AS derecho_violado,";
 		$sq	.= "   responsables_abordo_vehiculos_responsables AS responsables_abordo_vehiculos";
 		$sq .= " FROM denuncias, tipos_quejas, autoridades, autoridades_responables2denuncias, paises, estados,";
-		$sq .= "   derechos, derechos_violados2denuncias";
+		//$sq .= "   derechos, derechos_violados2denuncias";
+		$sq .= "   derechos, migrantes2denuncias, migrantes";
 		$sq .= " WHERE denuncias.id_tipo_queja = tipos_quejas.id_tipo_queja";
 		$sq .= "   AND denuncias.id_denuncia = autoridades_responables2denuncias.id_denuncia";
 		$sq .= "   AND autoridades_responables2denuncias.id_autoridad = autoridades.id_autoridad";
-		$sq .= "   AND denuncias.id_pais_injusticia = paises.id_pais";
+		//$sq .= "   AND denuncias.id_pais_injusticia = paises.id_pais";
+		$sq .= "   AND migrantes2denuncias.id_denuncia = denuncias.id_denuncia";
+		$sq .= "   AND migrantes.id_migrante = migrantes2denuncias.id_migrante";
+		$sq .= "   AND paises.id_pais = migrantes.id_pais";
 		$sq .= "   AND denuncias.id_estado_injusticia = estados.id_estado";
 		$sq .= "   AND denuncias.id_denuncia = derechos_violados2denuncias.id_denuncia";
 		$sq .= "   AND derechos_violados2denuncias.id_derecho = derechos.id_derecho";
