@@ -26,7 +26,7 @@ var generar_histograma = function (data){
 
 var createChart = function(content_tag, data, tags){
   $('#' + content_tag).highcharts({
-    title: { text: tags[content_tag] },
+    title: { text: tags[content_tag], style:{"fontSize": "24px"} },
     plotOptions: {
       pie: { 
         allowPointSelect: true, cursor: 'pointer',
@@ -46,28 +46,28 @@ var generar_histograma_l2 = function (data, l1, l2){
   h.data = []
 
   for( var i in data ){ 
-      var pos_l1 = h.categories.indexOf(data[i][l1]);
-      if( pos_l1 > -1 ){
-          var pos_l2 = h.data[pos_l1].drilldown.categories.indexOf(data[i][l2])
-          if( pos_l2 > -1 ){
-              h.data[pos_l1].drilldown.data[pos_l2] += 1 
-          }else{
-              h.data[pos_l1].drilldown.categories.push(data[i][l2])
-              h.data[pos_l1].drilldown.data.push(1)
-          }
-          h.data[pos_l1].y += 1 
+    var pos_l1 = h.categories.indexOf(data[i][l1]);
+    if( pos_l1 > -1 ){
+      var pos_l2 = h.data[pos_l1].drilldown.categories.indexOf(data[i][l2])
+      if( pos_l2 > -1 ){
+          h.data[pos_l1].drilldown.data[pos_l2] += 1 
       }else{
-          h.categories.push(data[i][l1])
-          h.data.push({
-              y: 1,
-  color: colors[0],
-              drilldown: {
-    name: data[i][l1],
-    categories: [ data[i][l2] ],
-    data: [1]
-  }
-          })                  
+          h.data[pos_l1].drilldown.categories.push(data[i][l2])
+          h.data[pos_l1].drilldown.data.push(1)
       }
+      h.data[pos_l1].y += 1 
+    }else{
+      h.categories.push(data[i][l1])
+      h.data.push({
+        y: 1,
+        color: colors[4],
+        drilldown: {
+          name: data[i][l1],
+          categories: [ data[i][l2] ],
+          data: [1]
+        }
+      })                  
+    }
   }
 
   var histograma = {}, drillDataLen, brightness;
@@ -97,14 +97,14 @@ var generar_histograma_l2 = function (data, l1, l2){
 var createChart_l2 = function(content_tag, histograma, title, l1_label, l2_label){
     $('#' + content_tag).highcharts({
         chart: { type: 'pie' },
-        title: { text: title },
+        title: { text: title, style:{"fontSize": "24px"} },
         plotOptions: { pie: { shadow: false, center: ['50%', '50%'] } },
         tooltip: { valueSuffix: '%' },
         series: [{
           name: l1_label,
           data: histograma.categories,
-          size: '60%',
-          dataLabels: { color: 'black', distance: -30 }
+          size: '80%',
+          dataLabels: { color: 'black', distance: 90, style:{"fontSize": "18px"}}
         }, {
           name: l2_label,
           data: histograma.data,
@@ -113,7 +113,8 @@ var createChart_l2 = function(content_tag, histograma, title, l1_label, l2_label
           dataLabels: {
               formatter: function () {
                 return this.y > 1 ? '<b>' + this.point.name + ':</b> ' + this.y + '%'  : null;
-              }
+              },
+              distance: 10
           }
         }]
     });
