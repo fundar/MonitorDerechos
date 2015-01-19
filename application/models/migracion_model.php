@@ -85,7 +85,7 @@ class migracion_Model extends CI_Model  {
 		$sq  = " SELECT tipos_quejas.nombre AS queja, intentos, motivo_migracion, coyote_guia, lugar_de_usa, viaja_solo,"; 
 		$sq	.= "   generos.nombre AS genero, migrantes.edad, deportado, migrantes.ocupacion, estado_civil.nombre AS estado_civil,";
 		$sq	.= "   migrantes.escolaridad, autoridades.nombre AS autoridad, paises.nombre AS pais_origen, espacio_fisico_injusticia,";
-		$sq	.= "   migrantes.nombre_pueblo_indigena, migrantes.espanol, lugares_denuncia.nombre AS lugar_denuncia";
+		$sq	.= "   migrantes.nombre_pueblo_indigena, migrantes.espanol, lugares_denuncia.nombre AS lugar_denuncia,";
 		$sq	.= "   estados.nombre AS estado_injusticia, detonante_injusticia, numero_migrantes_injusticia,";
 		$sq	.= "   algun_nombre_responsables, uniformado_responsables, derechos.nombre AS derecho_violado,";
 		$sq	.= "   responsables_abordo_vehiculos_responsables AS responsables_abordo_vehiculos";
