@@ -62,11 +62,13 @@
 <script type="text/javascript">
 	$(function () {
 		
-		var histograma_migrantes = generar_histograma(<?php echo json_encode($migrantes);?>)
-		var histograma_denuncias = generar_histograma(<?php echo json_encode($denuncias);?>)
+		var denuncias = <?php echo json_encode($denuncias);?>;
 
-		var h_motivos_x_pais = generar_histograma_l2(<?php echo json_encode($denuncias);?>, "pais_origen", "motivo_migracion")
-		var h_intentos_x_pais = generar_histograma_l2(<?php echo json_encode($denuncias);?>, "pais_origen", "intentos")
+		var histograma_migrantes = generar_histograma(denuncias)
+		var histograma_denuncias = generar_histograma(denuncias)
+
+		var h_motivos_x_pais = generar_histograma_l2(denuncias, "pais_origen", "motivo_migracion")
+		var h_intentos_x_pais = generar_histograma_l2(denuncias, "pais_origen", "intentos")
 
 		createChart_l2("motivos_x_pais", h_motivos_x_pais, 'Motivos de Migración por Pais', 'Paises', 'Motivo')
 		createChart_l2("intentos_x_pais", h_intentos_x_pais, 'Número de Intentos de Migración por Pais', 'Paises', 'No. de Intentos')
@@ -74,8 +76,8 @@
 
 		var tags_migrantes = {
 			pais_origen: "Pais de Origen",
-			estado_origen: "Estado",
-			municipio_origen: "Municipio",
+			//estado_origen: "Estado",
+			//municipio_origen: "Municipio",
 			genero: "Género",
 			edad: "Edad",
 			ocupacion: "Ocupación",
