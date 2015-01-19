@@ -70,6 +70,75 @@
 
 	<input id="button" type="button" onclick="window.print()" value="Imprimir Gráficas">
 
+	<form id="graficar">
+		<select id="l1">
+			<option value="pais_origen" > Pais de Origen </option>
+			<option value="estado_origen"> Estado </option>
+			<option value="municipio_origen"> Municipio </option>
+			<option value="genero"> Género </option>
+			<option value="edad"> Edad </option>
+			<option value="ocupacion"> Ocupacion </option>
+			<option value="estado_civil"> Estado Civil </option>
+			<option value="escolaridad"> Escolaridad </option>
+			<option value="nombre_pueblo_indigena"> Pueblo Indígena </option>
+			<option value="espanol"> Habla Español </option>
+			<option value="lugar_denuncia"> Lugar de Denuncia </option>
+			<option value="queja"> Motivos de queja" </option>
+			<option value="intentos"> Cantidad de Intentos de cruzar la frontera </option>
+			<option value="motivo_migracion"> Motivos de Migracion </option>
+			<option value="coyote_guia"> Uso Coyote </option>
+			<option value="lugar_de_usa"> Lugar de E.U.A al que se dirigía </option>
+			<option value="viaja_solo"> Viaja Solo </option>
+			<option value="deportado"> Fue deportado </option>
+			<option value="autoridad"> Autoridad que cometio el abuso </option>
+			<option value="estado_injusticia"> Estado donde se cometio la injusticia </option>
+			<option value="espacio_fisico_injusticia"> Espacio físico donde se cometio la injusticia </option>
+			<option value="detonante_injusticia"> Detonante de la Injusticia </option>
+			<option value="numero_migrantes_injusticia"> Número de inmigrantes presentes durante la injusticia </option>
+			<option value="algun_nombre_responsables"> Conoce algun nombre de los responsables </option>
+			<option value="uniformado_responsables"> Usaban uniforme los responsables </option>
+			<option value="responsables_abordo_vehiculos"> Los responsables estaban a bordo de algún vehículo </option>
+			<option value="derecho_violado"> Derecho violado </option>
+		</select>
+
+		<select id="l2">
+			<option value="pais_origen" > Pais de Origen </option>
+			<option value="estado_origen"> Estado </option>
+			<option value="municipio_origen"> Municipio </option>
+			<option value="genero"> Género </option>
+			<option value="edad"> Edad </option>
+			<option value="ocupacion"> Ocupacion </option>
+			<option value="estado_civil"> Estado Civil </option>
+			<option value="escolaridad"> Escolaridad </option>
+			<option value="nombre_pueblo_indigena"> Pueblo Indígena </option>
+			<option value="espanol"> Habla Español </option>
+			<option value="lugar_denuncia"> Lugar de Denuncia </option>
+			<option value="queja"> Motivos de queja" </option>
+			<option value="intentos"> Cantidad de Intentos de cruzar la frontera </option>
+			<option value="motivo_migracion"> Motivos de Migracion </option>
+			<option value="coyote_guia"> Uso Coyote </option>
+			<option value="lugar_de_usa"> Lugar de E.U.A al que se dirigía </option>
+			<option value="viaja_solo"> Viaja Solo </option>
+			<option value="deportado"> Fue deportado </option>
+			<option value="autoridad"> Autoridad que cometio el abuso </option>
+			<option value="estado_injusticia"> Estado donde se cometio la injusticia </option>
+			<option value="espacio_fisico_injusticia"> Espacio físico donde se cometio la injusticia </option>
+			<option value="detonante_injusticia"> Detonante de la Injusticia </option>
+			<option value="numero_migrantes_injusticia"> Número de inmigrantes presentes durante la injusticia </option>
+			<option value="algun_nombre_responsables"> Conoce algun nombre de los responsables </option>
+			<option value="uniformado_responsables"> Usaban uniforme los responsables </option>
+			<option value="responsables_abordo_vehiculos"> Los responsables estaban a bordo de algún vehículo </option>
+			<option value="derecho_violado"> Derecho violado </option>
+		</select>
+
+		<input type="submit" value="Graficar">
+	</form>
+
+	<section id="mis_graficas">
+		
+	</section>
+
+
 	<section id="migrantes">	
 		<h2> Estadísticas de Migrantes </h2>
 		<div id="motivos_x_pais"></div>
@@ -219,6 +288,21 @@
 
 		for(key in tags_migrantes){ createChart(key, histograma_denuncias[key], tags_migrantes) }
 		for(key in tags_denuncias){ createChart(key, histograma_denuncias[key], tags_migrantes) }
+
+		$("#graficar").on("submit", function(){
+			var l1 = $("#l1").val();
+			var l2 = $("#l2").val();
+
+			var nombre = $("#nombre").val();
+			var tag = l1 + "_x_" + l2;
+
+			$("#mis_graficas").prepend("<div id='" + tag + "'></div>")
+			var histograma_mxd = generar_histograma_l2(denuncias, l1, l2)
+			var nombre = tags_denuncias[l1] + " por " + tags_denuncias[l1];
+			
+			createChart_l2(tag, histograma_mxd, nombre, tags_denuncias[l1], tags_denuncias[l1])
+			return false;
+		})
 
 });
 
