@@ -9,18 +9,28 @@
 
 </head>
 
-<style type="text/css">
-/*
-	#migrantes #div, .highcharts-container {
-		max-width: 50%;
-		width: 50%;
-		float: left;
+<style type='text/css'>
+	body
+	{
+		font-family: Arial;
+		font-size: 14px;
 	}
-*/
+	a {
+	    color: blue;
+	    text-decoration: none;
+	    font-size: 14px;
+	}
+	a:hover
+	{
+		text-decoration: underline;
+	}
+	strong { font-size:16px; }
+	.link { cursor:pointer; color:blue; font-size:14px; }
+	#catalogos { display:none; padding:0;}
 </style>
 
 <body>
-	<div>
+	<!--div>
 		<a onclick="javascript: return confirmacion('<?php echo site_url('admin/migrantes')?>')" href="javascript:void(0)">
 			<?php if($this->uri->segment(2) == "migrantes") { ?><strong>Migrantes</strong><?php } else { ?>Migrantes<?php } ?>
 		</a> |
@@ -56,7 +66,7 @@
 				<?php if($this->uri->segment(2) == "transportes") { ?><strong>Transportes</strong><?php } else { ?>Transportes<?php } ?>
 			</a>
 		</span>
-	</div>
+	</div-->
 
 	<input id="button" onclick="window.print()"> Imprimir Gráficas </input>
 
