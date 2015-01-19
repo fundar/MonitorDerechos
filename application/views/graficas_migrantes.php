@@ -99,8 +99,7 @@
 	    });
 		}
 
-		var histograma_migrantes = generar_histograma(<?php echo json_encode($migrantes);?>)
-		var histograma_denuncias = generar_histograma(<?php echo json_encode($denuncias);?>)
+		var histograma_denuncias = generar_histograma(<?php echo json_encode($d_x_m);?>)
 
 		var tags_migrantes = {
 			pais_origen: "Pais de Origen",
