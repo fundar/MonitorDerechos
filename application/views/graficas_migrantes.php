@@ -68,7 +68,7 @@
 		</span>
 	</div-->
 
-	<input id="button" onclick="window.print()"> Imprimir Gráficas </input>
+	<input id="button" type="button" onclick="window.print()"> Imprimir Gráficas </input>
 
 	<section id="migrantes">	
 		<h2> Estadísticas de Migrantes </h2>
