@@ -192,7 +192,7 @@
 		createChart_l2("intentos_x_pais", h_intentos_x_pais, 'Número de Intentos de Migración por País', 'Países', 'No. de Intentos')
 
 
-		var tags_migrantes = {
+		var tags_denuncias = {
 			pais_origen: "País de Origen",
 			//estado_origen: "Estado",
 			//municipio_origen: "Municipio",
@@ -203,10 +203,7 @@
 			escolaridad: "Escolaridad",
 			nombre_pueblo_indigena: "Pueblo Indígena",
 			espanol: "Habla Español",
-			lugar_denuncia: "Lugar de Denuncia"
-		}
-
-		var tags_denuncias = {
+			lugar_denuncia: "Lugar de Denuncia",
 			queja: "Motivos de queja", 
 			intentos: "Cantidad de Intentos de cruzar la frontera", 
 			motivo_migracion: "Motivos de Migracion", 
@@ -287,7 +284,6 @@
 		histograma_denuncias.algun_nombre_responsables = n_topico_algun_nombre_responsables
 
 		for(key in tags_migrantes){ createChart(key, histograma_denuncias[key], tags_migrantes) }
-		for(key in tags_denuncias){ createChart(key, histograma_denuncias[key], tags_migrantes) }
 
 		$("#graficar").on("submit", function(){
 			var l1 = $("#l1").val();
