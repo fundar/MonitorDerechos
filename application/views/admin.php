@@ -38,6 +38,10 @@ strong { font-size:16px; }
 		<a onclick="javascript: return confirmacion('<?php echo site_url('admin/denuncias')?>')" href="javascript:void(0)">
 			<?php if($this->uri->segment(2) == "denuncias") { ?><strong>Denuncias</strong><?php } else { ?>Denuncias<?php } ?>
 		</a> |
+
+		<a onclick="javascript: return confirmacion('<?php echo site_url('admin/graficas_migrantes')?>')" href="javascript:void(0)">
+			<?php if($this->uri->segment(2) == "graficas_migrantes") { ?><strong>Gráficas</strong><?php } else { ?>Gráficas<?php } ?>
+		</a> |
 		
 		<?php if(isset($_SESSION['user_id'])) { ?>
 			<a onclick="javascript: return confirmacion('<?php echo site_url('admin/logout')?>')" href="javascript:void(0)">Cerrar sesión</a> | 
