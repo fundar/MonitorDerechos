@@ -283,7 +283,7 @@
 
 		histograma_denuncias.algun_nombre_responsables = n_topico_algun_nombre_responsables
 
-		for(key in tags_migrantes){ createChart(key, histograma_denuncias[key], tags_migrantes) }
+		for(key in tags_denuncias){ createChart(key, histograma_denuncias[key], tags_migrantes) }
 
 		$("#graficar").on("submit", function(){
 			var l1 = $("#l1").val();
