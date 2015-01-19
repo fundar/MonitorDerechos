@@ -4,6 +4,7 @@
 <head>
 	<script type="text/javascript" src="../assets/js/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="../assets/js/highcharts/highcharts.js"></script>
+	<script type="text/javascript" src="../assets/js/chartt_methods.js"></script>
 	<title></title>
 
 </head>
@@ -21,6 +22,7 @@
 <body>
 	<section id="migrantes">	
 		<h2> Estadísticas de Migrantes </h2>
+		<div id="motivos_x_pais"></div>
   	<div id="pais_origen"></div>
   	<div id="estado_origen"></div>
   	<div id="municipio_origen"></div>
@@ -58,50 +60,13 @@
 
 <script type="text/javascript">
 	$(function () {
-		var generar_histograma = function (data){
-			var histograma = {}
-			var tags = {}
-
-			for(var key in data[0]){ 
-				histograma[key] = [] 
-				tags[key] = [] 
-			}
-
-			for(var i in data){
-				for(var key in data[i] ){
-					var tag = (data[i][key] == null) ? "0" : data[i][key];
-					var topico = histograma[key];
-
-					var pos = tags[key].indexOf(tag); 
-					if( pos > -1 ) { 
-						histograma[key][pos][1]++
-					} else {
-						histograma[key].push([tag, 1])
-						tags[key].push(tag)
-					}
-				}
-			}
-			return histograma;
-		}
-		var createChart = function(key, data, tags){
-			$('#' + key).highcharts({
-	        title: { text: tags[key] },
-	        plotOptions: {
-	          pie: { 
-	          	allowPointSelect: true, cursor: 'pointer',
-	            dataLabels: {
-	              enabled: true, format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-	              style: { color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black' }
-	            }
-	          }
-	        },
-	        series: [{ type: 'pie', name: 'Migrantes', data: data }]
-	    });
-		}
-
-		var histograma_denuncias = generar_histograma(<?php echo json_encode($d_x_m);?>)
+		
 		var histograma_migrantes = generar_histograma(<?php echo json_encode($migrantes);?>)
 		var histograma_denuncias = generar_histograma(<?php echo json_encode($denuncias);?>)
+		var h_motivos_x_pais = generar_histograma_l2(<?php echo json_encode($mxd);?>, "pais_origen", "motivo_migracion")
+
+		createChart_l2("motivos_x_pais", h_motivos_x_pais, 'Motivos de Migración por Pais', 'Paises', 'Migrantes')
+
 
 		var tags_migrantes = {
 			pais_origen: "Pais de Origen",
