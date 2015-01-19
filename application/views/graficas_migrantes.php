@@ -64,7 +64,7 @@
 		
 		var denuncias = <?php echo json_encode($denuncias);?>;
 
-		var histograma_migrantes = generar_histograma(denuncias)
+		var histograma_denuncias = generar_histograma(denuncias)
 
 		var h_motivos_x_pais = generar_histograma_l2(denuncias, "pais_origen", "motivo_migracion")
 		var h_intentos_x_pais = generar_histograma_l2(denuncias, "pais_origen", "intentos")
@@ -115,7 +115,7 @@
 			{ name: "59 años en adelante", visible:true, y:0 }
 		]
 
-		var topico_edad = histograma_migrantes.edad
+		var topico_edad = histograma_denuncias.edad
 		
 		/* Crear rangos de edad */
 		for(var i in topico_edad){
@@ -128,11 +128,11 @@
 			else if ( e > 59) n_topico_edad[3].y += c
 		}
 
-		histograma_migrantes.edad = n_topico_edad
+		histograma_denuncias.edad = n_topico_edad
 
 		/* Modificar las etiquetas en el campo habla español */
-		histograma_migrantes.espanol[0][0] = "Si";
-		histograma_migrantes.espanol[1][0] = "No";
+		histograma_denuncias.espanol[0][0] = "Si";
+		histograma_denuncias.espanol[1][0] = "No";
 		
 		/* Modificar las etiquetas en el campo coyote */
 		histograma_denuncias.coyote_guia[0][0] = "Si"; // 1 como tag original
@@ -167,8 +167,7 @@
 
 		histograma_denuncias.algun_nombre_responsables = n_topico_algun_nombre_responsables
 
-		for(key in tags_migrantes){ createChart(key, histograma_migrantes[key], tags_migrantes) }
-		for(key in tags_denuncias){ createChart(key, histograma_denuncias[key], tags_denuncias) }
+		for(key in tags_migrantes){ createChart(key, histograma_denuncias[key], tags_migrantes) }
 
 });
 
