@@ -314,7 +314,7 @@
 			var nombre = $("#nombre").val();
 			var tag = l1 + "_x_" + l2;
 
-			$("#mis_graficas").prepend("<div id='" + tag + "'></div>")
+			$("#mis_graficas").prepend('<div class="grafica" id="' + tag + '"></div>')
 			var histograma_mxd = generar_histograma_l2(denuncias, l1, l2)
 			var nombre = tags_denuncias[l1] + " por " + tags_denuncias[l1];
 			
