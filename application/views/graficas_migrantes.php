@@ -28,7 +28,7 @@
 	.link { cursor:pointer; color:blue; font-size:14px; }
 	#catalogos { display:none; padding:0;}
 
-	section div{
+	section div.grafica{
 		max-width: 600px;
 		width: 600px;
 		border: 6px solid #ddd;
@@ -163,40 +163,40 @@
 
 	<section id="migrantes">	
 		<h2> Estadísticas de Migrantes </h2>
-		<div id="motivos_x_pais"></div>
-		<div id="intentos_x_pais"></div>
-  	<div id="pais_origen"></div>
-  	<div id="estado_origen"></div>
-  	<div id="municipio_origen"></div>
-  	<div id="genero"></div>
-  	<div id="edad"></div>
-  	<div id="ocupacion"></div>
-  	<div id="estado_civil"></div>
-  	<div id="escolaridad"></div>
-  	<div id="nombre_pueblo_indigena"></div>
+		<div class="grafica" id="motivos_x_pais"></div>
+		<div class="grafica" id="intentos_x_pais"></div>
+  	<div class="grafica" id="pais_origen"></div>
+  	<div class="grafica" id="estado_origen"></div>
+  	<div class="grafica" id="municipio_origen"></div>
+  	<div class="grafica" id="genero"></div>
+  	<div class="grafica" id="edad"></div>
+  	<div class="grafica" id="ocupacion"></div>
+  	<div class="grafica" id="estado_civil"></div>
+  	<div class="grafica" id="escolaridad"></div>
+  	<div class="grafica" id="nombre_pueblo_indigena"></div>
   	<!--div id="espanol"></div-->
-  	<div id="lugar_denuncia"></div>
+  	<div class="grafica" id="lugar_denuncia"></div>
 	</section>
 
 	<section id="migrantes">	
 		<h2> Estadísticas de Denuncias </h2>
-		<div id="queja"></div>
-		<div id="intentos"></div>
-		<div id="motivo_migracion"></div>
-		<div id="coyote_guia"></div>
-		<div id="lugar_de_usa"></div>
-		<div id="viaja_solo"></div>
-		<div id="deportado"></div>
-		<div id="autoridad"></div>
+		<div class="grafica" id="queja"></div>
+		<div class="grafica" id="intentos"></div>
+		<div class="grafica" id="motivo_migracion"></div>
+		<div class="grafica" id="coyote_guia"></div>
+		<div class="grafica" id="lugar_de_usa"></div>
+		<div class="grafica" id="viaja_solo"></div>
+		<div class="grafica" id="deportado"></div>
+		<div class="grafica" id="autoridad"></div>
 		<!--div id="pais_injusticia"></div-->
-		<div id="estado_injusticia"></div>
-		<div id="espacio_fisico_injusticia"></div>
-		<div id="detonante_injusticia"></div>
-		<div id="numero_migrantes_injusticia"></div>
-		<div id="algun_nombre_responsables"></div>
-		<div id="uniformado_responsables"></div>
-		<div id="responsables_abordo_vehiculos"></div>
-		<div id="derecho_violado"></div>
+		<div class="grafica" id="estado_injusticia"></div>
+		<div class="grafica" id="espacio_fisico_injusticia"></div>
+		<div class="grafica" id="detonante_injusticia"></div>
+		<div class="grafica" id="numero_migrantes_injusticia"></div>
+		<div class="grafica" id="algun_nombre_responsables"></div>
+		<div class="grafica" id="uniformado_responsables"></div>
+		<div class="grafica" id="responsables_abordo_vehiculos"></div>
+		<div class="grafica" id="derecho_violado"></div>
 	</section>
 </body>
 
