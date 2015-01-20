@@ -604,8 +604,10 @@ class Admin extends CI_Controller {
 	public function graficas_migrantes(){
 		$this->load->model('migracion_model');
 
-        //$data['migrantes'] = $this->migracion_model->allMigrantes();
-        $data['denuncias'] = $this->migracion_model->allDenuncias();
+		$start = $this->input->post("start")
+		$end = $this->input->post("end")
+        
+        $data['denuncias'] = $this->migracion_model->allDenuncias($start, $end);
 		$this->load->view('graficas_migrantes.php', $data);
 	}
 }

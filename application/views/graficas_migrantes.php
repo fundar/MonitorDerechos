@@ -70,6 +70,13 @@
 
 	<input id="button" type="button" onclick="window.print()" value="Imprimir Gráficas">
 
+	<form id="periodo" method="post" action="./admin/graficas_migrantes"> 
+		<input type="date" name="start">
+		<input type="date" name="end">
+		
+		<input type="submit" value="">
+	</form>
+
 	<form id="graficar">
 		<select id="l1">
 			<option value="pais_origen" > Pais de Origen </option>

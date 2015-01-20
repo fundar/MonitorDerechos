@@ -81,7 +81,7 @@ class migracion_Model extends CI_Model  {
         return $query->result();
 	}
 	
-	public function allDenuncias() {
+	public function allDenuncias($start = "01/01/2014", $end = "31/12/2014") {
 		$sq  = " SELECT tipos_quejas.nombre AS queja, intentos, motivo_migracion, coyote_guia, lugar_de_usa, viaja_solo,"; 
 		$sq	.= "   generos.nombre AS genero, migrantes.edad, deportado, migrantes.ocupacion, estado_civil.nombre AS estado_civil,";
 		$sq	.= "   migrantes.escolaridad, autoridades.nombre AS autoridad, paises.nombre AS pais_origen, espacio_fisico_injusticia,";
@@ -104,6 +104,7 @@ class migracion_Model extends CI_Model  {
 		$sq .= "   AND denuncias.id_estado_injusticia = estados.id_estado";
 		$sq .= "   AND denuncias.id_denuncia = derechos_violados2denuncias.id_denuncia";
 		$sq .= "   AND derechos_violados2denuncias.id_derecho = derechos.id_derecho";
+		$sq .= "   AND fecha_injusticia BETWEEN '" . $start . "' AND '" . $end . "';"
 
 		$query = $this->db->query($sq);
 
