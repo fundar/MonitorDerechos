@@ -95,8 +95,8 @@
 	<form id="graficar">
 		<select id="l1">
 			<option value="pais_origen" > Pais de Origen </option>
-			<!--option value="estado_origen"> Estado </option-->
-			<!--option value="municipio_origen"> Municipio </option-->
+			<option value="estado_origen"> Estado </option>
+			<option value="municipio_origen"> Municipio </option>
 			<option value="genero"> Género </option>
 			<option value="edad"> Edad </option>
 			<option value="ocupacion"> Ocupacion </option>
@@ -166,8 +166,8 @@
 		<div class="grafica" id="motivos_x_pais"></div>
 		<div class="grafica" id="intentos_x_pais"></div>
   	<div class="grafica" id="pais_origen"></div>
-  	<div class="grafica" id="estado_origen"></div>
-  	<div class="grafica" id="municipio_origen"></div>
+  	<!--div class="grafica" id="estado_origen"></div-->
+  	<!--div class="grafica" id="municipio_origen"></div-->
   	<div class="grafica" id="genero"></div>
   	<div class="grafica" id="edad"></div>
   	<div class="grafica" id="ocupacion"></div>
