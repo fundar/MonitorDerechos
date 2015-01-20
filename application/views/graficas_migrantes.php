@@ -43,11 +43,14 @@
 	#cabecera, #personalizar{ 
 		display:block;
 		width: 100%;
+		height: 60px;
+		margin:10px;
 	}
 	#periodo{ float:left;}
 	#graficar{ float:right;}
 
-	#imprimir{float:right;}
+	#cabecera h2{float:left;}
+	#cabecera #imprimir{float:right;}
 
 </style>
 
