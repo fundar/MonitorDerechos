@@ -73,7 +73,7 @@
 	<?php var_dump($start); ?>
 	<?php var_dump($end); ?>
 
-	<form id="periodo" method="post" action=""> 
+	<form id="periodo"> 
 		Inicio del Periodo: <input type="date" name="start" id="start">
 		Fin del Periodo: <input type="date" name="end" id="end">
 		
@@ -314,6 +314,7 @@
 			var start = $("start").val().split("-");
 			var end = $("end").val().split("-");
 			alert(start + ", " + end)
+			return false
 			$.ajax({
 			  url: "http://ddhh.fundarlabs.org.mx/admin/graficas_migrantes",
 			  data:{
@@ -322,7 +323,6 @@
 			  },
 			  async: false
 			})//.done(function() {});
-			return false
 		})
 
 });
