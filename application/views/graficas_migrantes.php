@@ -72,10 +72,10 @@
 
 	<?php var_dump($start); ?>
 	<?php var_dump($end); ?>
-	
-	<form id="periodo" method="post" action="http://ddhh.fundarlabs.org.mx/admin/graficas_migrantes"> 
-		Inicio del Periodo: <input type="date" name="start">
-		Fin del Periodo: <input type="date" name="end">
+
+	<form id="periodo" method="post" action=""> 
+		Inicio del Periodo: <input type="date" name="start" id="start">
+		Fin del Periodo: <input type="date" name="end" id="end">
 		
 		<input type="submit" value="Rango de Fechas">
 	</form>
@@ -308,6 +308,21 @@
 			
 			createChart_l2(tag, histograma_mxd, nombre, tags_denuncias[l1], tags_denuncias[l1])
 			return false;
+		})
+
+		$("#periodo").on("submit", function(){
+			var start = $("start").val().split("-");
+			var end = $("end").val().split("-");
+
+			$.ajax({
+			  url: "http://ddhh.fundarlabs.org.mx/admin/graficas_migrantes",
+			  data:{
+			  	"start": [start[2], start[1], start[0]].join("-"), 
+			  	"end": [end[2], end[1], end[0]].join("-")
+			  },
+			  async: false
+			})//.done(function() {});
+
 		})
 
 });
