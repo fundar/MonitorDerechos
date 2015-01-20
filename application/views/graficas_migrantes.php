@@ -108,7 +108,7 @@
 		<input id="imprimir" type="button" onclick="window.print()" value="Imprimir Gráficas">
 	</div>
 
-	<div div="personalizar">
+	<div id="personalizar">
 		<form id="periodo"> 
 			<h4>Definir Periodo</h4>
 			Inicio del Periodo: <input type="date" name="start" id="start" value="<?php echo $start;?>">
