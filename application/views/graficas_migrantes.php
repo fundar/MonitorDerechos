@@ -38,9 +38,10 @@
 
 	section{
 		margin:6px;
-
 	}
 
+	#periodo{ float:left;}
+	#graficar{ float:right;}
 
 </style>
 
