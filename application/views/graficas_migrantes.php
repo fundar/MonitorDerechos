@@ -71,10 +71,10 @@
 	<input id="button" type="button" onclick="window.print()" value="Imprimir Gráficas">
 
 	<form id="periodo" method="post" action="http://ddhh.fundarlabs.org.mx/admin/graficas_migrantes"> 
-		<input type="date" name="start">
-		<input type="date" name="end">
+		Inicio del Periodo: <input type="date" name="start">
+		Fin del Periodo: <input type="date" name="end">
 		
-		<input type="submit" value="">
+		<input type="submit" value="Rango de Fechas">
 	</form>
 
 	<form id="graficar">

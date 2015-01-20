@@ -605,7 +605,7 @@ class Admin extends CI_Controller {
 		$this->load->model('migracion_model');
 
 		$start = $this->input->post("start") || "2014-01-01";
-		$end = $this->input->post("start") || "2014-12-31";
+		$end = $this->input->post("end") || "2014-12-31";
 		//$start = "2014-01-01";
 		//$end = "2014-12-01";
         
