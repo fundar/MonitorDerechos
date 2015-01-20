@@ -43,21 +43,21 @@
 	#cabecera, #personalizar{ 
 		display:block;
 		width: 100%;
+		height: 60px;
 		margin:20px;
 	}
 	
-	#cabecera, #personalizar{ 
-		height: 60px;
-	}
-	
 	#periodo{ float:left;}
-	#graficar{ float:right;}
+	#graficar{ 
+		float:right;
+		margin-right: 30px;
+	}
 
 	#cabecera h1{float:left;}
 	#cabecera #imprimir{
 		float:right;
+		margin-right: 30px;
 		margin-top: 10px;
-		margin-right: 20px;
 	}
 
 </style>
