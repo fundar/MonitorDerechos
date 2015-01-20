@@ -70,12 +70,9 @@
 
 	<input id="button" type="button" onclick="window.print()" value="Imprimir Gráficas">
 
-	<?php var_dump($start); ?>
-	<?php var_dump($end); ?>
-
 	<form id="periodo"> 
-		Inicio del Periodo: <input type="date" name="start" id="start">
-		Fin del Periodo: <input type="date" name="end" id="end">
+		Inicio del Periodo: <input type="date" name="start" id="start" value="<?php echo $start;?>">
+		Fin del Periodo: <input type="date" name="end" id="end" value="<?php echo $end;?>">
 		
 		<input type="submit" value="Rango de Fechas">
 	</form>
