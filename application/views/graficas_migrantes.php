@@ -40,6 +40,10 @@
 		margin:6px;
 	}
 
+	#imprimir{ 
+		display:block;
+		width: 100%;
+	}
 	#periodo{ float:left;}
 	#graficar{ float:right;}
 
@@ -83,10 +87,12 @@
 			</a>
 		</span>
 	</div-->
-
-	<input id="button" type="button" onclick="window.print()" value="Imprimir Gráficas">
+	<div id="imprimir">
+		<input id="button" type="button" onclick="window.print()" value="Imprimir Gráficas">
+	</div>
 
 	<form id="periodo"> 
+		<h4>Definir Periodo</h4>
 		Inicio del Periodo: <input type="date" name="start" id="start" value="<?php echo $start;?>">
 		Fin del Periodo: <input type="date" name="end" id="end" value="<?php echo $end;?>">
 		
@@ -94,6 +100,7 @@
 	</form>
 
 	<form id="graficar">
+		<h4> Añadir gráfica personalizada </h4>
 		<select id="l1">
 			<option value="pais_origen" > Pais de Origen </option>
 			<option value="estado_origen"> Estado </option>
