@@ -40,12 +40,14 @@
 		margin:6px;
 	}
 
-	#imprimir{ 
+	#cabecera{ 
 		display:block;
 		width: 100%;
 	}
 	#periodo{ float:left;}
 	#graficar{ float:right;}
+
+	#imprimir{float:right;}
 
 </style>
 
@@ -87,10 +89,6 @@
 			</a>
 		</span>
 	</div-->
-	<div id="imprimir">
-		<input id="button" type="button" onclick="window.print()" value="Imprimir Gráficas">
-	</div>
-
 	<form id="periodo"> 
 		<h4>Definir Periodo</h4>
 		Inicio del Periodo: <input type="date" name="start" id="start" value="<?php echo $start;?>">
@@ -164,7 +162,12 @@
 		<input type="submit" value="Graficar">
 	</form>
 
-	<h2> Estadísticas de Migrantes y Denuncias por Violaciones a los derechos Humanos</h2>
+	<div id="cabecera">
+		<h2> Estadísticas de Migrantes y Denuncias por Violaciones a los derechos Humanos</h2>
+		<input id="imprimir" type="button" onclick="window.print()" value="Imprimir Gráficas">
+	</div>
+
+
 
 
 	<section id="mis_graficas">
