@@ -70,6 +70,9 @@
 
 	<input id="button" type="button" onclick="window.print()" value="Imprimir Gráficas">
 
+	<?php var_dump($start); ?>
+	<?php var_dump($end); ?>
+	
 	<form id="periodo" method="post" action="http://ddhh.fundarlabs.org.mx/admin/graficas_migrantes"> 
 		Inicio del Periodo: <input type="date" name="start">
 		Fin del Periodo: <input type="date" name="end">
