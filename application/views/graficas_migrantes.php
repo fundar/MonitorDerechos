@@ -317,7 +317,7 @@
 
 			$("#mis_graficas").prepend('<div class="grafica" id="' + tag + '"></div>')
 			var histograma_mxd = generar_histograma_l2(denuncias, l1, l2)
-			var nombre = tags_denuncias[l1] + " por " + tags_denuncias[l1];
+			var nombre = tags_denuncias[l1] + " por " + tags_denuncias[l2];
 			
 			createChart_l2(tag, histograma_mxd, nombre, tags_denuncias[l1], tags_denuncias[l1])
 			return false;
