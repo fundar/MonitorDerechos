@@ -311,8 +311,8 @@
 		})
 
 		$("#periodo").on("submit", function(){
-			var start = $("start").val().split("-");
-			var end = $("end").val().split("-");
+			var start = $("#start").val().split("-");
+			var end = $("#end").val().split("-");
 			alert(start + ", " + end)
 			$.ajax({
 				type:"post",
