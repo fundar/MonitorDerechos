@@ -104,7 +104,7 @@ class migracion_Model extends CI_Model  {
 		$sq .= "   AND denuncias.id_estado_injusticia = estados.id_estado";
 		$sq .= "   AND denuncias.id_denuncia = derechos_violados2denuncias.id_denuncia";
 		$sq .= "   AND derechos_violados2denuncias.id_derecho = derechos.id_derecho";
-		$sq .= "   AND fecha_injusticia BETWEEN '" . $start . "' AND '" . $end . "';"
+		$sq .= "   AND fecha_injusticia BETWEEN '" . $start . "' AND '" . $end . "';";
 
 		$query = $this->db->query($sq);
 
