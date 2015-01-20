@@ -27,6 +27,13 @@
 	strong { font-size:16px; }
 	.link { cursor:pointer; color:blue; font-size:14px; }
 	#catalogos { display:none; padding:0;}
+
+	section div{
+		max-width: 600px;
+		width: 600px;
+		border: 6px solid #ddd;
+		float: left;
+	}
 </style>
 
 <body>
