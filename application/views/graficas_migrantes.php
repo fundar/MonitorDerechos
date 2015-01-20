@@ -314,15 +314,16 @@
 			var start = $("start").val().split("-");
 			var end = $("end").val().split("-");
 			alert(start + ", " + end)
-			return false
 			$.ajax({
+				type:"post",
 			  url: "http://ddhh.fundarlabs.org.mx/admin/graficas_migrantes",
 			  data:{
 			  	"start": [start[2], start[1], start[0]].join("-"), 
 			  	"end": [end[2], end[1], end[0]].join("-")
 			  },
 			  async: false
-			})//.done(function() {});
+			}).done(function() {});
+			return false
 		})
 
 });
