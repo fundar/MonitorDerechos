@@ -70,7 +70,7 @@
 
 	<input id="button" type="button" onclick="window.print()" value="Imprimir Gráficas">
 
-	<form id="periodo" method="post" action="./admin/graficas_migrantes"> 
+	<form id="periodo" method="post" action="http://ddhh.fundarlabs.org.mx/admin/graficas_migrantes"> 
 		<input type="date" name="start">
 		<input type="date" name="end">
 		
