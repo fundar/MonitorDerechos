@@ -156,13 +156,15 @@
 		<input type="submit" value="Graficar">
 	</form>
 
+	<h2> Estadísticas de Migrantes y Denuncias por Violaciones a los derechos Humanos</h2>
+
+
 	<section id="mis_graficas">
 		
 	</section>
 
 
 	<section id="migrantes">	
-		<h2> Estadísticas de Migrantes </h2>
 		<div class="grafica" id="motivos_x_pais"></div>
 		<div class="grafica" id="intentos_x_pais"></div>
   	<div class="grafica" id="pais_origen"></div>
@@ -179,7 +181,6 @@
 	</section>
 
 	<section id="migrantes">	
-		<h2> Estadísticas de Denuncias </h2>
 		<div class="grafica" id="queja"></div>
 		<div class="grafica" id="intentos"></div>
 		<div class="grafica" id="motivo_migracion"></div>
