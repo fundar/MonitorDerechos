@@ -49,7 +49,7 @@
 	#periodo{ float:left;}
 	#graficar{ float:right;}
 
-	#cabecera h2{float:left;}
+	#cabecera h1{float:left;}
 	#cabecera #imprimir{float:right;}
 
 </style>
@@ -92,6 +92,12 @@
 			</a>
 		</span>
 	</div-->
+
+	<div id="cabecera">
+		<h1> Estadísticas de Migrantes y Denuncias por Violaciones a los derechos Humanos</h1>
+		<input id="imprimir" type="button" onclick="window.print()" value="Imprimir Gráficas">
+	</div>
+
 	<div div="personalizar">
 		<form id="periodo"> 
 			<h4>Definir Periodo</h4>
@@ -167,14 +173,6 @@
 		</form>
 		
 	</div>
-
-	<div id="cabecera">
-		<h2> Estadísticas de Migrantes y Denuncias por Violaciones a los derechos Humanos</h2>
-		<input id="imprimir" type="button" onclick="window.print()" value="Imprimir Gráficas">
-	</div>
-
-
-
 
 	<section id="mis_graficas">
 		
