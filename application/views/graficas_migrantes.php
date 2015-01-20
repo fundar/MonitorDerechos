@@ -33,7 +33,15 @@
 		width: 600px;
 		border: 6px solid #ddd;
 		float: left;
+		margin:6px;
 	}
+
+	section{
+		margin:6px;
+		
+	}
+
+
 </style>
 
 <body>
