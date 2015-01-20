@@ -604,9 +604,10 @@ class Admin extends CI_Controller {
 	public function graficas_migrantes(){
 		$this->load->model('migracion_model');
 
-		$start = $this->input->post("start") or "01/01/2014";
-		$start = "2014-01-01";
-		$end = "2014-12-01";
+		$start = $this->input->post("start") or "2014-01-01";
+		$end = $this->input->post("start") or "2014-12-01";
+		//$start = "2014-01-01";
+		//$end = "2014-12-01";
         
         $data['denuncias'] = $this->migracion_model->allDenuncias($start, $end);
 		$this->load->view('graficas_migrantes.php', $data);
