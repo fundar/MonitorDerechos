@@ -38,7 +38,7 @@
 
 	section{
 		margin:6px;
-		
+
 	}
 
 
@@ -95,8 +95,8 @@
 	<form id="graficar">
 		<select id="l1">
 			<option value="pais_origen" > Pais de Origen </option>
-			<option value="estado_origen"> Estado </option>
-			<option value="municipio_origen"> Municipio </option>
+			<!--option value="estado_origen"> Estado </option-->
+			<!--option value="municipio_origen"> Municipio </option-->
 			<option value="genero"> Género </option>
 			<option value="edad"> Edad </option>
 			<option value="ocupacion"> Ocupacion </option>
