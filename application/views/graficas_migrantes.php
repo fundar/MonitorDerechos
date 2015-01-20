@@ -313,7 +313,7 @@
 		$("#periodo").on("submit", function(){
 			var start = $("start").val().split("-");
 			var end = $("end").val().split("-");
-
+			alert(start + ", " + end)
 			$.ajax({
 			  url: "http://ddhh.fundarlabs.org.mx/admin/graficas_migrantes",
 			  data:{
@@ -322,7 +322,7 @@
 			  },
 			  async: false
 			})//.done(function() {});
-
+			return false
 		})
 
 });
