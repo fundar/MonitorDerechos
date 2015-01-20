@@ -103,7 +103,7 @@
 
 	<div id="cabecera">
 		<h1> Estadísticas de Migrantes y Denuncias por Violaciones a los derechos Humanos</h1>
-		<input id="imprimir" type="button" onclick="window.print()" value="Imprimir Gráficas">
+		<input id="imprimir" type="button" onclick="window.print()" value="Imprimir todo como PDF">
 	</div>
 
 	<div id="personalizar">
