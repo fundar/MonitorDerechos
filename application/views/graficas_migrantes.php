@@ -46,13 +46,10 @@
 		margin:20px;
 	}
 	
-	#cabecera{ 
+	#cabecera, #personalizar{ 
 		height: 60px;
 	}
 	
-	#personalizar{ 
-		height: 120px;
-	}
 	#periodo{ float:left;}
 	#graficar{ float:right;}
 
@@ -60,6 +57,7 @@
 	#cabecera #imprimir{
 		float:right;
 		margin-top: 10px;
+		margin-right: 20px;
 	}
 
 </style>
