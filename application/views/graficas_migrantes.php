@@ -67,7 +67,7 @@
 	#periodo_tit{ 
 		float:right;
 		margin-right: 30px;
-		margin-bottom: 0px;
+		margin-bottom: -8px;
 	}
 
 	@media print { 
