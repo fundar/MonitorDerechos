@@ -118,7 +118,7 @@
 
 	<div id="cabecera">
 		<h4 class="printable" id="periodo_tit"> De <?php echo $start;?> a <?php echo $end;?> </h4>
-		<h1> Estadísticas de Migrantes y Denuncias por Violaciones a los derechos Humanos</h1>
+		<h2> Estadísticas de Denuncias por Violaciones a los derechos Humanos en Migrantes</h2>
 		<input id="imprimir" class="non-printable" type="button" onclick="window.print()" value="Imprimir todo como PDF">
 	</div>
 
