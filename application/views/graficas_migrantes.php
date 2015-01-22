@@ -64,7 +64,10 @@
 	
 	.printable { display: none; }
 
-	#periodo_tit{ float:right; }
+	#periodo_tit{ 
+		float:right;
+		margin-right: 30px;
+	}
 
 	@media print { 
 		.non-printable { display: none; }
