@@ -4,8 +4,8 @@
 <head>
 	<script type="text/javascript" src="../assets/js/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="../assets/js/highcharts/highcharts.js"></script>
-	<script type="text/javascript" src="../assets/js/modules/exporting.js"></script>
-	
+	<script type="text/javascript" src="../assets/js/highcharts/modules/exporting.js"></script>
+
 	<script type="text/javascript" src="../assets/js/chart_methods.js"></script>
 	<title></title>
 
