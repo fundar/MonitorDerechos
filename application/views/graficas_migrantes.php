@@ -107,13 +107,13 @@
 		</span>
 	</div-->
 
-	<div id="cabecera" class="non-printable">
+	<div id="cabecera">
 		<h1> Estadísticas de Migrantes y Denuncias por Violaciones a los derechos Humanos</h1>
-		<input id="imprimir" type="button" onclick="window.print()" value="Imprimir todo como PDF">
+		<input id="imprimir" class="non-printable" type="button" onclick="window.print()" value="Imprimir todo como PDF">
 	</div>
 
 	<div id="personalizar" class="non-printable">
-		<form id="periodo"> 
+		<form id="periodo" class="non-printable"> 
 			<h4>Definir Periodo</h4>
 			Inicio del Periodo: <input type="date" name="start" id="start" value="<?php echo $start;?>">
 			Fin del Periodo: <input type="date" name="end" id="end" value="<?php echo $end;?>">
@@ -121,7 +121,7 @@
 			<input type="submit" value="Rango de Fechas">
 		</form>
 
-		<form id="graficar">
+		<form id="graficar" class="non-printable">
 			<h4> Añadir gráfica personalizada </h4>
 			<select id="l1">
 				<option value="pais_origen" > Pais de Origen </option>
