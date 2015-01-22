@@ -148,18 +148,19 @@ class Admin extends CI_Controller {
 		/*Columnas(Vista), campos y campos obligatorios*/
 		$crud->columns('id_denuncia', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes');
 		$crud->fields(
-			'nombre_persona_atendio_seguimiento', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes', 'intentos', 
-			'motivo_migracion', 'coyote_guia', 'lugar_contrato_coyote', 'monto_coyote', 'paquete_pago',
-			'nombre_punto_fronterizo', 'lugar_de_usa', 'viaja_solo', 'con_quien_viaja', 'deportado', 'momento_deportado', 'separacion_familiar', 'familiar_separado', 'situacion_familiar',
-			'acto_siguiente', 'autoridades_viaje', 'dano_autoridad', 'fecha_injusticia', 'id_autoridad_dano', 'id_pais_injusticia',
-			'id_estado_injusticia', 'municipio_injusticia', 'espacio_fisico_injusticia', 'id_transporte_viaje_injusticia', 'detonante_injusticia', 'numero_migrantes_injusticia',
-			'lugar_abordaje_transporte', 'destino_transporte', 'autoridades_responables',
-			'numero_oficiales_responsables', 'algun_nombre_responsables', 'carcteristicas_ficias_policia_responsable', 'carcteristicas_ficias_policia_responsable2', 'carcteristicas_ficias_policia_responsable3', 'apodos_responsables', 'uniformado_responsables', 'color_uniforme_responsables',
-			'insignias_responsables', 'responsables_abordo_vehiculos_responsables', 'id_tipo_transporte_responsables', 'numero_vehiculos_responsables', 'placas_vehiculos_responsables',
-			'descripcion_evento', 'monto_extorsion', 'derechos_violados', 'violaciones_derechos', 'id_estado_caso', 'estado_seguimiento', 'notas_seguimiento',
-			'telefono_seguimiento', 'documento1_seguimiento', 'documento2_seguimiento', 'documento3_seguimiento',
-			'documento4_seguimiento', 'documento5_seguimiento', 'documento6_seguimiento', 'documento7_seguimiento', 'documento8_seguimiento',
-			'documento9_seguimiento', 'documento10_seguimiento'
+			'nombre_persona_atendio_seguimiento', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes', 'intentos', 'motivo_migracion', 
+			'coyote_guia', 'lugar_contrato_coyote', 'monto_coyote', 'paquete_pago', 'nombre_punto_fronterizo', 'lugar_de_usa', 'viaja_solo', 
+			'con_quien_viaja', 'deportado', 'momento_deportado', 'separacion_familiar', 'familiar_separado', 'situacion_familiar','acto_siguiente', 
+			'autoridades_viaje', 'dano_autoridad', 'fecha_injusticia', 'id_autoridad_dano', 'id_pais_injusticia', 'id_estado_injusticia', 
+			'municipio_injusticia', 'espacio_fisico_injusticia', 'espacio_fisico_injusticia_homologada', 'id_transporte_viaje_injusticia', 
+			'detonante_injusticia', 'detonante_injusticia_homologada','numero_migrantes_injusticia', 'lugar_abordaje_transporte', 'destino_transporte', 
+			'autoridades_responables', 'numero_oficiales_responsables', 'algun_nombre_responsables', 'carcteristicas_ficias_policia_responsable', 
+			'carcteristicas_ficias_policia_responsable2', 'carcteristicas_ficias_policia_responsable3', 'apodos_responsables', 'uniformado_responsables', 
+			'color_uniforme_responsables', 'insignias_responsables', 'responsables_abordo_vehiculos_responsables', 'id_tipo_transporte_responsables', 
+			'numero_vehiculos_responsables', 'placas_vehiculos_responsables', 'descripcion_evento', 'monto_extorsion', 'derechos_violados', 
+			'violaciones_derechos', 'id_estado_caso', 'estado_seguimiento', 'notas_seguimiento', 'telefono_seguimiento', 'documento1_seguimiento', 
+			'documento2_seguimiento', 'documento3_seguimiento', 'documento4_seguimiento', 'documento5_seguimiento', 'documento6_seguimiento', 
+			'documento7_seguimiento', 'documento8_seguimiento','documento9_seguimiento', 'documento10_seguimiento'
 		);
 		
 		$crud->required_fields('fecha_creada');
@@ -235,8 +236,35 @@ class Admin extends CI_Controller {
 		$crud->display_as('id_estado_injusticia', 'Estado donde se cometió la injusticia');
 		$crud->set_relation('id_estado_injusticia', 'estados', 'nombre');
 		$crud->display_as('municipio_injusticia', 'Municipio donde se cometió la injusticia');
+
 		$crud->display_as('espacio_fisico_injusticia', 'Espacio físico de la injusticia');
+		$crud->display_as('espacio_fisico_injusticia_homologada', 'Espacio físico de la injusticia (Categoría)');
+		$crud->field_type('espacio_fisico_injusticia_homologada', 
+			'dropdown', array(
+				1 => 'A bordo del propio transporte', 
+				2 => 'Afuera de la terminal de transporte',
+				3 => 'Cerca de oficina de gobierno',
+				4 => 'Domicilio',
+				5 => 'Oficinas de gobierno',
+				6 => 'Retén',
+				7 => 'Vía pública',
+				8 => 'Otro'
+			)
+		);
+
 		$crud->display_as('detonante_injusticia', 'Situación que detona la injusticia');
+		$crud->display_as('detonante_injusticia_homologada', 'Situación que detona la injusticia (Categoría)');
+		$crud->field_type('detonante_injusticia_homologada', 
+			'dropdown', array(
+				1 => 'Atención a migrantes', 
+				2 => 'Detectaron su aspecto de migrante',
+				3 => 'Falta administrativa',
+				4 => 'Falta de documentos',
+				5 => 'Intentar viajar',
+				8 => 'Revisión'
+			)
+		);
+
 		$crud->display_as('numero_migrantes_injusticia', 'Número de migrantes que habia con usted cuando se cometio el abuso');
 		$crud->display_as('fecha_injusticia', 'Cuándo se cometió la injusticia');
 		$crud->display_as('id_transporte_viaje_injusticia', 'En que viajaba');
@@ -328,6 +356,7 @@ class Admin extends CI_Controller {
 		$crud->display_as('id_pais', 'País');
 		$crud->display_as('id_estado', 'Estado/Departamento');
 		$crud->display_as('id_genero', 'Género');
+		$crud->display_as('ocupacion_homologada', 'Ocupacion (categoría)');
 		$crud->display_as('id_estado_civil', 'Estado Civil');
 		$crud->display_as('escolaridad', 'Escolaridad');
 		$crud->display_as('pueblo_indigena', 'Pertenece a algún pueblo indígena');
@@ -366,6 +395,20 @@ class Admin extends CI_Controller {
 			'Maestria' => 'Maestria',
 			'Doctorado' => 'Doctorado'
 		));
+
+		$crud->field_type('ocupacion_homologada', 
+			'dropdown', array(
+				1 => 'Al hogar', 
+				2 => 'Albañil',
+				3 => 'Campesino',
+				4 => 'Comerciante',
+				5 => 'Empleado',
+				6 => 'Empleado de gobierno',
+				7 => 'Jornalero',
+				8 => 'Peón'
+			)
+		);
+		
 		$crud->field_type('pueblo_indigena', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		$crud->field_type('espanol', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		
