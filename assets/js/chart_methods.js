@@ -36,7 +36,8 @@ var createChart = function(content_tag, data, tags){
         }
       }
     },
-    series: [{ type: 'pie', name: 'Migrantes', data: data }]
+    series: [{ type: 'pie', name: 'Migrantes', data: data }],
+    exporting: { filename: 'content_tag'}
   });
 }
 
@@ -95,27 +96,29 @@ var generar_histograma_l2 = function (data, l1, l2){
 }
 
 var createChart_l2 = function(content_tag, histograma, title, l1_label, l2_label){
-    $('#' + content_tag).highcharts({
-        chart: { type: 'pie' },
-        title: { text: title, style:{"fontSize": "24px"} },
-        plotOptions: { pie: { shadow: false, center: ['50%', '50%'] } },
-        tooltip: { valueSuffix: '%' },
-        series: [{
-          name: l1_label,
-          data: histograma.categories,
-          size: '80%',
-          dataLabels: { color: 'black', distance: 90, style:{"fontSize": "18px"}}
-        }, {
-          name: l2_label,
-          data: histograma.data,
-          size: '80%',
-          innerSize: '60%',
-          dataLabels: {
-              formatter: function () {
-                return this.y > 1 ? '<b>' + this.point.name + ':</b> ' + this.y + '%'  : null;
-              },
-              distance: 10
-          }
-        }]
-    });
+  $('#' + content_tag).highcharts({
+    chart: { type: 'pie' },
+    title: { text: title, style:{"fontSize": "24px"} },
+    plotOptions: { pie: { shadow: false, center: ['50%', '50%'] } },
+    tooltip: { valueSuffix: '%' },
+    series: [{
+      name: l1_label,
+      data: histograma.categories,
+      size: '80%',
+      dataLabels: { color: 'black', distance: 90, style:{"fontSize": "18px"}}
+    }, {
+      name: l2_label,
+      data: histograma.data,
+      size: '80%',
+      innerSize: '60%',
+      dataLabels: {
+          formatter: function () {
+            return this.y > 1 ? '<b>' + this.point.name + ':</b> ' + this.y + '%'  : null;
+          },
+          distance: 10
+      }
+    }],
+    exporting: { filename: 'content_tag' }
+
+  });
 }
