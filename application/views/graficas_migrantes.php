@@ -61,9 +61,12 @@
 		margin-right: 30px;
 		margin-top: 10px;
 	}
+	
+	.printable { display: none; }
 
 	@media print { 
 		.non-printable { display: none; }
+		.printable { display: block; }
    }
 
 </style>
@@ -109,6 +112,7 @@
 
 	<div id="cabecera">
 		<h1> Estadísticas de Migrantes y Denuncias por Violaciones a los derechos Humanos</h1>
+		<h3 class="printable"> De <?php echo $start;?> a <?php echo $end;?> </h3>
 		<input id="imprimir" class="non-printable" type="button" onclick="window.print()" value="Imprimir todo como PDF">
 	</div>
 
