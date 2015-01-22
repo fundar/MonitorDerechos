@@ -37,7 +37,7 @@ var createChart = function(content_tag, data, tags){
       }
     },
     series: [{ type: 'pie', name: 'Migrantes', data: data }],
-    exporting: { filename: 'content_tag'}
+    exporting: { filename: content_tag}
   });
 }
 
@@ -118,7 +118,7 @@ var createChart_l2 = function(content_tag, histograma, title, l1_label, l2_label
           distance: 10
       }
     }],
-    exporting: { filename: 'content_tag' }
+    exporting: { filename: content_tag }
 
   });
 }
