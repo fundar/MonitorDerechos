@@ -113,7 +113,7 @@
 	</div-->
 
 	<div id="cabecera">
-		<h3 class="printable" id="periodo_tit"> De <?php echo $start;?> a <?php echo $end;?> </h3>
+		<h4 class="printable" id="periodo_tit"> De <?php echo $start;?> a <?php echo $end;?> </h4>
 		<h1> Estadísticas de Migrantes y Denuncias por Violaciones a los derechos Humanos</h1>
 		<input id="imprimir" class="non-printable" type="button" onclick="window.print()" value="Imprimir todo como PDF">
 	</div>
