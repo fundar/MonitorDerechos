@@ -62,6 +62,10 @@
 		margin-top: 10px;
 	}
 
+	@media print { 
+		.non-printable { display: none; }
+   }
+
 </style>
 
 <body>
@@ -103,12 +107,12 @@
 		</span>
 	</div-->
 
-	<div id="cabecera">
+	<div id="cabecera" class="non-printable">
 		<h1> Estadísticas de Migrantes y Denuncias por Violaciones a los derechos Humanos</h1>
 		<input id="imprimir" type="button" onclick="window.print()" value="Imprimir todo como PDF">
 	</div>
 
-	<div id="personalizar">
+	<div id="personalizar" class="non-printable">
 		<form id="periodo"> 
 			<h4>Definir Periodo</h4>
 			Inicio del Periodo: <input type="date" name="start" id="start" value="<?php echo $start;?>">
