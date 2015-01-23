@@ -66,7 +66,7 @@ class migracion_Model extends CI_Model  {
 
 	public function allMigrantes() {
 		$sq  = " SELECT paises.nombre AS pais_origen, estados.nombre AS estado_origen, migrantes.municipio AS municipio_origen,"; 
-		$sq	.= "   generos.nombre AS genero, migrantes.edad, migrantes.ocupacion, estado_civil.nombre AS estado_civil,";
+		$sq	.= "   generos.nombre AS genero, migrantes.edad, migrantes.ocupacion_homologada AS ocupacion, estado_civil.nombre AS estado_civil,";
 		$sq	.= "   migrantes.escolaridad, migrantes.nombre_pueblo_indigena, migrantes.espanol,";
 		$sq	.= "   lugares_denuncia.nombre AS lugar_denuncia";
 		$sq .= " FROM migrantes, lugares_denuncia, paises, estados, generos, estado_civil ";
@@ -84,9 +84,9 @@ class migracion_Model extends CI_Model  {
 	public function allDenuncias($start = "2014-01-01", $end = "2014-12-31") {
 		$sq  = " SELECT tipos_quejas.nombre AS queja, intentos, motivo_migracion, coyote_guia, lugar_de_usa, viaja_solo,"; 
 		$sq	.= "   generos.nombre AS genero, migrantes.edad, deportado, migrantes.ocupacion, estado_civil.nombre AS estado_civil,";
-		$sq	.= "   migrantes.escolaridad, autoridades.nombre AS autoridad, paises.nombre AS pais_origen, espacio_fisico_injusticia,";
+		$sq	.= "   migrantes.escolaridad, autoridades.nombre AS autoridad, paises.nombre AS pais_origen, espacio_fisico_injusticia_homologada AS espacio_fisico_injusticia,";
 		$sq	.= "   migrantes.nombre_pueblo_indigena, migrantes.espanol, lugares_denuncia.nombre AS lugar_denuncia,";
-		$sq	.= "   estados.nombre AS estado_injusticia, detonante_injusticia, numero_migrantes_injusticia,";
+		$sq	.= "   estados.nombre AS estado_injusticia, detonante_injusticia_homologada as detonante_injusticia, numero_migrantes_injusticia,";
 		$sq	.= "   algun_nombre_responsables, uniformado_responsables, derechos.nombre AS derecho_violado,";
 		$sq	.= "   responsables_abordo_vehiculos_responsables AS responsables_abordo_vehiculos";
 		$sq .= " FROM denuncias, tipos_quejas, autoridades, autoridades_responables2denuncias, paises, estados, generos,";
