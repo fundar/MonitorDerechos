@@ -297,7 +297,7 @@ class Admin extends CI_Controller {
 		$crud->display_as('insignias_responsables', 'Insignias de uniforme de oficiales responsables');
 		
 		$crud->display_as('responsables_abordo_vehiculos_responsables', 'Iban a bordo de Vehículos');
-		$crud->field_type('responsables_abordo_vehiculos_responsables', 'dropdown', array('Si' => 'Si', 'No' => 'No', 'No vi' => 'No vi'));
+		$crud->field_type('responsables_abordo_vehiculos_responsables', 'dropdown', array('Si' => 'Si', 'No' => 'No', 'No vio' => 'No vio'));
 		
 		$crud->display_as('id_tipo_transporte_responsables', 'Tipo de vehículo');
 		$crud->display_as('numero_vehiculos_responsables', 'Número de vehículos');
