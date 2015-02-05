@@ -206,7 +206,15 @@ class Admin extends CI_Controller {
 		$crud->display_as('familiar_separado', 'Que familiar');
 		$crud->display_as('situacion_familiar', 'Sabes que paso con tu familiar');
 		$crud->display_as('acto_siguiente', 'Qué piensa hacer ahora');
+
 		$crud->display_as('acto_siguiente_homologada', 'Qué piensa hacer ahora (categoría)');
+		$crud->field_type('acto_siguiente_homologada', 'dropdown', array(
+			'Intentar cruzar otra vez' => 'Intentar cruzar otra vez',
+			'Regresar a mi comunidad de origen' => 'Regresar a mi comunidad de origen',
+			'Esperar en la frontera' => 'Esperar en la frontera',
+			'No sabe' => 'No sabe'
+		));
+		//intentar cruzar otra vez, regresar a mi comunidad de origen, esperar en la forntera, no sabe
 
 		/*Coyote*/
 		$crud->display_as('coyote_guia', 'Contrato al coyote o guía que lo pasaría');
