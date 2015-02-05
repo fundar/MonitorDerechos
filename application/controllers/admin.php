@@ -151,7 +151,7 @@ class Admin extends CI_Controller {
 			'nombre_persona_atendio_seguimiento', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes', 'intentos', 'motivo_migracion', 
 			'coyote_guia', 'lugar_contrato_coyote', 'monto_coyote', 'paquete_pago', 'nombre_punto_fronterizo', 'lugar_de_usa', 'viaja_solo', 
 			'con_quien_viaja', 'deportado', 'momento_deportado', 'separacion_familiar', 'familiar_separado', 'situacion_familiar','acto_siguiente', 
-			'autoridades_viaje', 'dano_autoridad', 'fecha_injusticia', 'id_autoridad_dano', 'id_pais_injusticia', 'id_estado_injusticia', 
+			'acto_siguiente_homologada','autoridades_viaje', 'dano_autoridad', 'fecha_injusticia', 'id_autoridad_dano', 'id_pais_injusticia', 'id_estado_injusticia', 
 			'municipio_injusticia', 'espacio_fisico_injusticia', 'espacio_fisico_injusticia_homologada', 'id_transporte_viaje_injusticia', 
 			'detonante_injusticia', 'detonante_injusticia_homologada','numero_migrantes_injusticia', 'lugar_abordaje_transporte', 'destino_transporte', 
 			'autoridades_responables', 'numero_oficiales_responsables', 'algun_nombre_responsables', 'carcteristicas_ficias_policia_responsable', 
@@ -206,7 +206,8 @@ class Admin extends CI_Controller {
 		$crud->display_as('familiar_separado', 'Que familiar');
 		$crud->display_as('situacion_familiar', 'Sabes que paso con tu familiar');
 		$crud->display_as('acto_siguiente', 'Qué piensa hacer ahora');
-		
+		$crud->display_as('acto_siguiente_homologada', 'Qué piensa hacer ahora (categoría)');
+
 		/*Coyote*/
 		$crud->display_as('coyote_guia', 'Contrato al coyote o guía que lo pasaría');
 		$crud->field_type('coyote_guia', 'dropdown', array(1 => 'Si', 2 => 'No'));
@@ -288,7 +289,7 @@ class Admin extends CI_Controller {
 		$crud->display_as('insignias_responsables', 'Insignias de uniforme de oficiales responsables');
 		
 		$crud->display_as('responsables_abordo_vehiculos_responsables', 'Iban a bordo de Vehículos');
-		$crud->field_type('responsables_abordo_vehiculos_responsables', 'dropdown', array('Si' => 'Si', 'No' => 'No'));
+		$crud->field_type('responsables_abordo_vehiculos_responsables', 'dropdown', array('Si' => 'Si', 'No' => 'No', 'No vi' => 'No vi'));
 		
 		$crud->display_as('id_tipo_transporte_responsables', 'Tipo de vehículo');
 		$crud->display_as('numero_vehiculos_responsables', 'Número de vehículos');
