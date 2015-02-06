@@ -39,31 +39,31 @@
 	<script type="text/javascript" src="../assets/js/local_storage.js"></script>
 
 <style type='text/css'>
-	body
-	{
-		font-family: Arial;
-		font-size: 14px;
-	}
-	a {
-	    color: blue;
-	    text-decoration: none;
-	    font-size: 14px;
-	}
-	a:hover
-	{
-		text-decoration: underline;
-	}
-	strong { font-size:16px; }
-	.link { cursor:pointer; color:blue; font-size:14px; }
-	#catalogos { display:none; padding:0;}
+body
+{
+	font-family: Arial;
+	font-size: 14px;
+}
+a {
+    color: blue;
+    text-decoration: none;
+    font-size: 14px;
+}
+a:hover
+{
+	text-decoration: underline;
+}
+strong { font-size:16px; }
+.link { cursor:pointer; color:blue; font-size:14px; }
+#catalogos { display:none; padding:0;}
 
-	#addReport-step2{
-		display: none;
-	}
+#addReport-step1{
+	display: none;
+}
 
-	.chosen-select{
-		width:300px;
-	}
+.chosen-select{
+	width:300px;
+}
 </style>
 </head>
 <body>
@@ -398,11 +398,11 @@
 					<div class='buttons-box'>
 
 						<div class='form-button-box'>
-							<input type='button' value='Cancelar' class='ui-input-button' id="cancel-and-go-back-button"/>
+							<input type='button' value='Cancelar' class='ui-input-button cancel-and-go-back-button' />
 						</div>
 
 						<div class='form-button-box'>
-							<input type='submit' value='Guardar y Seguir' class='ui-input-button' id="save-and-go-next-button"/>
+							<input type='submit' value='Guardar y Seguir' ng-click="clear_migrante()" class='ui-input-button' id="save-and-go-next-button"/>
 						</div>
 
 						<div class='form-button-box loading-box'>
@@ -1481,7 +1481,7 @@
 
 				<div class='buttons-box'>
 					<div class='form-button-box'>
-						<input type='button' value='Cancelar' class='ui-input-button' id="cancel-and-go-back-button"/>
+						<input type='button' value='Cancelar' class='ui-input-button cancel-and-go-back-button'/>
 					</div>
 
 					<div class='form-button-box'>
@@ -1531,19 +1531,27 @@
 	$(document).ready( function () {
 
 		$("#addReport-step1").on("submit", function(e){
-			var that = $(this)
 			e.preventDefault();
-			var data = $(this).serialize();
+			var that = $(this)
+			  , scope = angular.element(that).scope()
+			  , data = $(this).serialize();
+
 			$(this).children(".small-loading").css("display","block");
 
 			//proceso para guardar 
 			setTimeout(function(){ 
 				$(this).children(".small-loading").css("display","none");
-			  var dialog = $('<p> El registro del migrante fue correctamente agregado. ¿Quiéres agregar otro migrante o los datos de la denuncia ?</p>').dialog({
-          buttons: {
+				var msg = ' <p> El registro del migrante fue correctamente agregado. \
+						    ¿Quiéres agregar otro migrante o los datos de la denuncia ?</p>';
+		  	var dialog = $(msg).dialog({
+        	buttons: {
             "Agregar otro migrante": function() {
-            	that[0].reset()
-            	dialog.dialog('close');
+            	that[0].reset() // limpia input text
+            	scope.clear_migrante(); // limpia el localstorage de migrante
+            	that.children('select').each(function(){
+            		$(this).val('').trigger('chosen:updated')
+            	});
+        		 	window.location.reload();
             },
             "Capturar datos de la denuncia ":  function() {
             	that.toggle( "slide", function(){
@@ -1553,9 +1561,8 @@
             	dialog.dialog('close');
             }
           }
-        });
-
-			}, 1500);
+      	});
+			}, 1000);
 		})
 		
 		$("#addReport-step2").on("submit", function(e){
@@ -1596,16 +1603,26 @@
     	})
 		})
 
-		$("#cancel-and-go-back-button").on("click", function(e){
+		$(".cancel-and-go-back-button").on("click", function(e){
 			e.preventDefault();
-			var dialog = $('<p> ¿Quiéres eliminar todos los datos ingresados en esta denuncia? </p>').dialog({
+			var msg = '<p> Si cancela, se eliminarán todos los datos. ¿Quiéres Cancelar? </p>';
+			var dialog = $(msg).dialog({
         buttons: {
           "Si": function() {
-          	$("#addReport-step2")[0].reset()
-          	$("#addReport-step1")[0].reset()
-          	//regresar al home
-          	alert('Estamos en inicio :)');
-          	dialog.dialog('close');
+          	var f1 = $("#addReport-step1") // formulario migrante
+          	var f2 = $("#addReport-step2") // formulario denuncia
+
+          	f1[0].reset(); // resetea los forms
+          	f2[0].reset();
+
+          	angular.element(f1).scope().clear_all(); // limpia el localstorage de migrante
+          	angular.element(f2).scope().clear_all(); // limpia el localstorage de denuncia
+
+          	$('select').each(function(){ // resetea los selects
+          		$(this).val('').trigger('chosen:updated')
+          	});
+
+      		 	window.location.replace('/');
           },
           "No":  function() {
           	dialog.dialog('close');
@@ -1652,12 +1669,6 @@
 				$("#con_quien_viaja_field_box").hide();
 			}
 		});
-
-		$("#cancel-and-go-back-button").on("click", function(e){
-			e.preventDefault();
-
-		})
-			
 			
 		/*Color uniformome responsables*/
 		$("#color_uniforme_responsables_field_box").css("margin-left", "50px");

@@ -16,6 +16,8 @@ var StorageMethods = function(ls, $scope){
 StorageMethods.prototype.save_of_input= function(topic){
   var that = this;
   if( that.ls.get(topic) ){   that.scope[topic] = that.ls.get(topic)  }
+
+  // Guardar datos de los inputs
   that.scope.$watch(topic, function(value){ if(value){ that.ls.set(topic, value) }  });
 }
 
@@ -36,12 +38,17 @@ StorageMethods.prototype.save_of_select= function(topic, sufix){
       if( $(this).text() == value ){ num = ++index; return false }
     })
 
-    var tag = jQuery(rtag + " ul.chzn-results li#field_" + topic + "_chzn_o_" + num);
-
     jQuery("#field-" + topic).val( value )
-    jQuery( rtag + " #field_" + topic + "_chzn a.chzn-single span").text( tag.text() )
+    var tag = jQuery(rtag + " ul.chzn-results li#field_" + topic + "_chzn_o_" + num);
+    var show_label = jQuery( rtag + " #field_" + topic + "_chzn a.chzn-single")
+
+    show_label.removeClass("chzn-default")
+    show_label.children("span").text( tag.text() )
+    show_label.children("span").after( '<abbr class="search-choice-close"></abbr>' )
     tag.addClass('result-selected')
   }
+
+  // Guardar datos de los selects
   that.scope.$watch(topic + sufix, function(value){ 
     if(value){
       that.ls.set(topic + sufix, value) 
@@ -50,24 +57,80 @@ StorageMethods.prototype.save_of_select= function(topic, sufix){
   });
 }
 
+StorageMethods.prototype.save_of_multiselect = function(topic){
+  var that = this
+  that.scope.$watch(topic, function(value){ 
+    var rtag = "#" + topic + "_input_box"
+    var ul = jQuery( rtag + " #field_" + topic + "_chzn ul.chzn-choices")
+    if(value){
+      var before = that.ls.get(topic), data = [];
+      ul.children("li.search-choice").each(function(i){ 
+        data.push( jQuery(this).attr("id").split("_c_")[1] )
+      }) 
+
+      var enviado = data.join(",")
+      that.ls.set(topic, enviado)
+      console.log("topic: " + topic + ", valor_enviado: '" + enviado + "', valor_recibido: '" + that.ls.get(topic) + "', valor_anterior:'" + before +"'")
+    } 
+  });
+  
+  if( that.ls.get(topic) ){ 
+    var rtag = "#" + topic + "_input_box"
+      , values = that.ls.get(topic).split(","),  nums = [];
+
+    for(var i in values){
+      if( !isNaN(parseInt(values[i]).toString()) ){
+        jQuery("#field-" + topic + " option").each(function(index) {
+          if( $(this).val() == values[i] ){ 
+            values[i] = $(this).text(); 
+            return false;
+          }
+        })
+      }
+      jQuery( rtag + " ul.chzn-results li").each(function(index) {
+        if( $(this).text() == values[i] ){ nums.push(++index); return false }
+      })
+    }     
+    
+    console.log(nums, values)
+    
+    //var input = jQuery( rtag + " #field_" + topic + "_chzn a.chzn-single span")
+    var ul = jQuery( rtag + " #field_" + topic + "_chzn ul.chzn-choices")
+    
+    for(var j in nums){
+      var tag = jQuery(rtag + " ul.chzn-results li#field_" + topic + "_chzn_o_" + nums[j]);
+      //input.text( tag.text() )
+      var a = '<li class="search-choice" id="field_' + topic + '_chzn_c_' + nums[j] + '"><span>' + values[j] + '</span><a href="javascript:void(0)" class="search-choice-close" rel="' + nums[j] + '"></a></li>';
+      ul.prepend(a)
+    }
+  }
+}
+
 StorageMethods.prototype.clear_all= function(){  
   this.ls.clearAll();
 }
 
+StorageMethods.prototype.clear_theses= function(names, sufix){  
+  for(var i in names) this.ls.remove(names[i] + sufix)
+}
 
 app.controller('MigranteCtrl', [
   '$scope',
   'localStorageService',
   function($scope, localStorageService) {
-    var m_storage = new StorageMethods(localStorageService, $scope);
-   
+    var m_storage = new StorageMethods(localStorageService, $scope)
+      , sufix = '_migrante'
+      , topics = ['nombre', 'municipio', 'ocupacion', 'nombre_pueblo_indigena', 'edad', 'fecha_nac', 'ocupacion']
+      , topics_of_selects = ['id_pais', 'id_estado', 'id_genero', 'ocupacion_homologada', 'id_estado_civil', 
+                             'escolaridad', 'pueblo_indigena', 'espanol', 'id_lugar_denuncia' ];
+    //setup
     $scope.storageType = 'Local storage';
     if (localStorageService.getStorageType().indexOf('session') >= 0) { $scope.storageType = 'Session storage'; }
     if (!localStorageService.isSupported) { $scope.storageType = 'Cookie'; }
     
-    var topics = ['nombre', 'municipio', 'ocupacion', 'nombre_pueblo_indigena', 'edad', 'fecha_nac', 'ocupacion'];
- 
-    for(var i in topics) m_storage.save_of_input(topics[i] + '_migrante')
+     
+    for(var i in topics) m_storage.save_of_input(topics[i] + sufix)
+    for(var j in topics_of_selects){ m_storage.save_of_select(topics_of_selects[j], sufix)}
 
     // Elimina los datos que se guardaron al dar click en si en 'pertenece a un pueblo indigena'
     $scope.$watch('pueblo_indigena_migrante', function(value){ 
@@ -76,12 +139,14 @@ app.controller('MigranteCtrl', [
         localStorageService.remove('espanol_migrante');
       }
     });
+    $scope.clear_migrante = function(){
+      m_storage.clear_theses(topics, sufix)
+      m_storage.clear_theses(topics_of_selects, sufix)
+    }
 
-    var sufix = '_migrante';
-    var topics_of_selects = ['id_pais', 'id_estado', 'id_genero', 'ocupacion_homologada', 'id_estado_civil', 
-                             'escolaridad', 'pueblo_indigena', 'espanol', 'id_lugar_denuncia' ];
-    for(var j in topics_of_selects){ m_storage.save_of_select(topics_of_selects[j], sufix)}
-    
+    $scope.clear_all = function(){
+      m_storage.clear_all()
+    }
   }
 ]).controller('DenunciaCtrl', [
   '$scope',
@@ -117,64 +182,15 @@ app.controller('MigranteCtrl', [
                               'id_transporte_viaje_injusticia', 'estado_seguimiento','responsables_abordo_vehiculos_responsables',
                               'id_tipo_transporte_responsables', 'id_estado_caso', 'detonante_injusticia_homologada' ]     
 
-    //var topics_of_multiselects = [ 'paquete_pago', 'autoridades_viaje', 'autoridades_responables', 
-    //                               'derechos_violados', 'violaciones_derechos' ]
+    var topics_of_multiselects = [ 'paquete_pago', 'autoridades_viaje', 'autoridades_responables', 
+                                   'derechos_violados', 'violaciones_derechos' ]
 
     for(var i in topics) d_storage.save_of_input( topics[i] )         
     for(var j in topics_of_selects){ d_storage.save_of_select(topics_of_selects[j], '')}
+    for(var j in topics_of_multiselects){ d_storage.save_of_select(topics_of_multiselects[j] )}
 
-    var topic = 'autoridades_viaje'
-    /**/
-    $scope.$watch(topic, function(value){ 
-      var rtag = "#" + topic + "_input_box"
-      var ul = jQuery( rtag + " #field_" + topic + "_chzn ul.chzn-choices")
-      if(value){
-        var before = localStorageService.get(topic), data = [];
-        ul.children("li.search-choice").each(function(i){ 
-          data.push( jQuery(this).attr("id").split("_c_")[1] )
-        }) 
-
-        var enviado = data.join(",")
-
-        localStorageService.set(topic, enviado)
-        console.log("topic: " + topic + ", valor_enviado: '" + enviado + "', valor_recibido: '" + localStorageService.get(topic) + "', valor_anterior:'" + before +"'")
-      } 
-    });
-    /**/
-    //d_storage.clear_all()
-
-    /**/
-    if( localStorageService.get(topic) ){ 
-      var rtag = "#" + topic + "_input_box"
-        , values = localStorageService.get(topic).split(","),  nums = [];
-
-      for(var i in values){
-        if( !isNaN(parseInt(values[i]).toString()) ){
-          jQuery("#field-" + topic + " option").each(function(index) {
-            if( $(this).val() == values[i] ){ 
-              values[i] = $(this).text(); return false;
-            }
-          })
-        }
-        jQuery( rtag + " ul.chzn-results li").each(function(index) {
-          if( $(this).text() == values[i] ){ nums.push(++index); return false }
-        })
-      }     
-      
-      console.log(nums, values)
-      
-      //var input = jQuery( rtag + " #field_" + topic + "_chzn a.chzn-single span")
-      var ul = jQuery( rtag + " #field_" + topic + "_chzn ul.chzn-choices")
-      
-      for(var j in nums){
-        var tag = jQuery(rtag + " ul.chzn-results li#field_" + topic + "_chzn_o_" + nums[j]);
-        //input.text( tag.text() )
-        var a = '<li class="search-choice" id="field_' + topic + '_chzn_c_' + nums[j] + '"><span>' + values[j] + '</span><a href="javascript:void(0)" class="search-choice-close" rel="' + nums[j] + '"></a></li>';
-        ul.prepend(a)
-      }
+    $scope.clear_all = function(){
+      d_storage.clear_all()
     }
-    /**/
-
-
   }
 ]);
