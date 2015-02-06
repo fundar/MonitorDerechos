@@ -286,26 +286,27 @@
 		}
 
 		var n_topico_edad = [ 
-			{ name: "0 - 5", visible:true, y:0 },
-			{ name: "6 - 10", visible:true, y:0 },
-			{ name: "11 - 15", visible:true, y:0 },
-			{ name: "16 - 20", visible:true, y:0 },
-			{ name: "21 - 25", visible:true, y:0 },
-			{ name: "26 - 30", visible:true, y:0 },
-			{ name: "31 - 35", visible:true, y:0 },
-			{ name: "36 - 40", visible:true, y:0 },
-			{ name: "41 - 45", visible:true, y:0 },
-			{ name: "46 - 50", visible:true, y:0 },
-			{ name: "51 - 55", visible:true, y:0 },
-			{ name: "56 - 60", visible:true, y:0 },
-			{ name: "61 - 65", visible:true, y:0 },
-			{ name: "66 - 70", visible:true, y:0 },
-			{ name: "71 - 75", visible:true, y:0 },
-			{ name: "76 - 80", visible:true, y:0 },
-			{ name: "81 - 85", visible:true, y:0 },
-			{ name: "86 - 90", visible:true, y:0 },
-			{ name: "91 - 95", visible:true, y:0 },
-			{ name: "96 - 100", visible:true, y:0 }
+			{ name: "0 - 4", visible:true, y:0 },
+			{ name: "5 - 9", visible:true, y:0 },
+			{ name: "10 - 14", visible:true, y:0 },
+			{ name: "15 - 19", visible:true, y:0 },
+			{ name: "20 - 24", visible:true, y:0 },
+			{ name: "25 - 29", visible:true, y:0 },
+			{ name: "30 - 34", visible:true, y:0 },
+			{ name: "35 - 39", visible:true, y:0 },
+			{ name: "40 - 44", visible:true, y:0 },
+			{ name: "45 - 49", visible:true, y:0 },
+			{ name: "50 - 54", visible:true, y:0 },
+			{ name: "55 - 59", visible:true, y:0 },
+			{ name: "60 - 64", visible:true, y:0 },
+			{ name: "65 - 69", visible:true, y:0 },
+			{ name: "70 - 74", visible:true, y:0 },
+			{ name: "75 - 79", visible:true, y:0 },
+			{ name: "80 - 84", visible:true, y:0 },
+			{ name: "85 - 89", visible:true, y:0 },
+			{ name: "90 - 94", visible:true, y:0 },
+			{ name: "95 - 99", visible:true, y:0 },
+			{ name: "100 o más", visible:true, y:0 }
 		]
 
 
@@ -313,15 +314,11 @@
 		
 		/* Crear rangos de edad */
 		for(var i in topico_edad){
-			var e = parseInt(topico_edad[i][0]);
-			var c = topico_edad[i][1];
-
-			for(){}
-			if( e > 0 && e < 14) n_topico_edad[0].y += c
-			else if ( e > 15 && e < 28) n_topico_edad[1].y += c
-			else if ( e > 29 && e < 43) n_topico_edad[2].y += c
-			else if ( e > 44 && e < 58) n_topico_edad[2].y += c
-			else if ( e > 59) n_topico_edad[3].y += c
+			var e = parseInt(topico_edad[i][0])
+			  , index = parseInt(e/5);
+			  
+			if( index > 19) index = 20
+			n_topico_edad[index].y += topico_edad[i][1];
 		}
 
 		histograma_denuncias.edad = n_topico_edad
