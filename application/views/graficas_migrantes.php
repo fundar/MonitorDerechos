@@ -286,27 +286,27 @@
 		}
 
 		var n_topico_edad = [ 
-			{ name: "0 - 4", visible:true, y:0 },
-			{ name: "5 - 9", visible:true, y:0 },
-			{ name: "10 - 14", visible:true, y:0 },
-			{ name: "15 - 19", visible:true, y:0 },
-			{ name: "20 - 24", visible:true, y:0 },
-			{ name: "25 - 29", visible:true, y:0 },
-			{ name: "30 - 34", visible:true, y:0 },
-			{ name: "35 - 39", visible:true, y:0 },
-			{ name: "40 - 44", visible:true, y:0 },
-			{ name: "45 - 49", visible:true, y:0 },
-			{ name: "50 - 54", visible:true, y:0 },
-			{ name: "55 - 59", visible:true, y:0 },
-			{ name: "60 - 64", visible:true, y:0 },
-			{ name: "65 - 69", visible:true, y:0 },
-			{ name: "70 - 74", visible:true, y:0 },
-			{ name: "75 - 79", visible:true, y:0 },
-			{ name: "80 - 84", visible:true, y:0 },
-			{ name: "85 - 89", visible:true, y:0 },
-			{ name: "90 - 94", visible:true, y:0 },
-			{ name: "95 - 99", visible:true, y:0 },
-			{ name: "100 o más", visible:true, y:0 }
+			{ name: "0 a 4 años", visible:true, y:0 },
+			{ name: "5 a 9 años", visible:true, y:0 },
+			{ name: "10 a 14 años", visible:true, y:0 },
+			{ name: "15 a 19 años", visible:true, y:0 },
+			{ name: "20 a 24 años", visible:true, y:0 },
+			{ name: "25 a 29 años", visible:true, y:0 },
+			{ name: "30 a 34 años", visible:true, y:0 },
+			{ name: "35 a 39 años", visible:true, y:0 },
+			{ name: "40 a 44 años", visible:true, y:0 },
+			{ name: "45 a 49 años", visible:true, y:0 },
+			{ name: "50 a 54 años", visible:true, y:0 },
+			{ name: "55 a 59 años", visible:true, y:0 },
+			{ name: "60 a 64 años", visible:true, y:0 },
+			{ name: "65 a 69 años", visible:true, y:0 },
+			{ name: "70 a 74 años", visible:true, y:0 },
+			{ name: "75 a 79 años", visible:true, y:0 },
+			{ name: "80 a 84 años", visible:true, y:0 },
+			{ name: "85 a 89 años", visible:true, y:0 },
+			{ name: "90 a 94 años", visible:true, y:0 },
+			{ name: "95 a 99 años", visible:true, y:0 },
+			{ name: "100 o más años", visible:true, y:0 }
 		]
 
 
