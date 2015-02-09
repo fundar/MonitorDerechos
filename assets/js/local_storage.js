@@ -147,6 +147,11 @@ app.controller('MigranteCtrl', [
     $scope.clear_all = function(){
       m_storage.clear_all()
     }
+
+
+    $scope.clear_theses = function(names){
+      m_storage.clear_theses(names, sufix)
+    }
   }
 ]).controller('DenunciaCtrl', [
   '$scope',
@@ -191,6 +196,10 @@ app.controller('MigranteCtrl', [
 
     $scope.clear_all = function(){
       d_storage.clear_all()
+    }
+
+    $scope.clear_theses = function(names){
+      d_storage.clear_theses(names, "")
     }
   }
 ]);

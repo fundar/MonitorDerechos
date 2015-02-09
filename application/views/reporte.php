@@ -57,7 +57,7 @@ strong { font-size:16px; }
 .link { cursor:pointer; color:blue; font-size:14px; }
 #catalogos { display:none; padding:0;}
 
-#addReport-step2{
+#addReport-step1{
 	display: none;
 }
 
@@ -529,14 +529,14 @@ strong { font-size:16px; }
 						Donde lo contrato :
 					</div>
 					<div class='form-input-box' id="lugar_contrato_coyote_input_box">
-						<select id='field-lugar_contrato_coyote' name='lugar_contrato_coyote' ng-model='lugar_contrato_coyote' class='chosen-select' data-placeholder='Seleccionar Donnde lo contrato'>
+						<select id='field-lugar_contrato_coyote' name='lugar_contrato_coyote' ng-model='lugar_contrato_coyote' class='chosen-select' data-placeholder='Seleccionar Donde lo contrato'>
 							<option value=''  ></option><option value='Cuando salió de su comunidad'  >Cuando salió de su comunidad</option><option value='En  la frontera'  >En  la frontera</option><option value='Otro'  >Otro</option>
 						</select>				
 					</div>
 					<div class='clear'></div>
 				</div>
 
-				<div class='form-field-box even' id="monto_coyote_field_box">
+				<div class='form-field-box even' id="monto_coyote_field3434rfere_box">
 					<div class='form-display-as-box' id="monto_coyote_display_as_box">
 						Cuanto le cobraría :
 					</div>
@@ -1636,7 +1636,21 @@ strong { font-size:16px; }
 			$("#catalogos").toggle();
 		});
 		
-						/*Guia-Coyote*/
+		var fields_hs = function(id, n, fields){
+			if( $("li#field_" + id + "_chzn_o_" + n ).hasClass("result-selected" ) ){
+				for(i in fields) $("#" + fields[i] + "_field_box").show() 
+			}else {
+				for(i in fields) $("#" + fields[i] + "_field_box").hide();
+
+				var f1 = $("#addReport-step1")
+				var f2 = $("#addReport-step2")
+				angular.element(f1).scope().clear_theses(fields)
+				angular.element(f2).scope().clear_theses(fields)
+			}
+		}
+
+		/*Guia-Coyote*/
+		
 		$("#lugar_contrato_coyote_field_box").css("margin-left", "50px");
 		$("#monto_coyote_field_box").css("margin-left", "50px");
 		$("#paquete_pago_field_box").css("margin-left", "50px");
@@ -1644,104 +1658,94 @@ strong { font-size:16px; }
 		$("#monto_coyote_field_box").hide();
 		$("#paquete_pago_field_box").hide();
 		
-		$("#field-coyote_guia").change( function () {
-			if($("#field-coyote_guia").val() == 1) {
-				$("#lugar_contrato_coyote_field_box").show();
-				$("#monto_coyote_field_box").show();
-				$("#paquete_pago_field_box").show();
-			} else {
-				$("#lugar_contrato_coyote_field_box").hide();
-				$("#monto_coyote_field_box").hide();
-				$("#paquete_pago_field_box").hide();
-			}
+		$("#field-coyote_guia").change( function () { 
+			fields_hs( "coyote_guia", 1, 
+								 ["lugar_contrato_coyote", "monto_coyote", "paquete_pago"] )
 		});
 		
+		fields_hs( "coyote_guia", 1,
+							 ["lugar_contrato_coyote", "monto_coyote", "paquete_pago"] )
+
+
+
+
 		/*Viajaba solo*/
 		$("#con_quien_viaja_field_box").css("margin-left", "50px");
 		$("#con_quien_viaja_field_box").hide();
 
-		$("#field-viaja_solo").change( function () {
-			if($("#field-viaja_solo").val() == 2) {
-				$("#con_quien_viaja_field_box").show();
-				$("#con_quien_viaja_field_box").show();
-			} else {
-				$("#con_quien_viaja_field_box").hide();
-				$("#con_quien_viaja_field_box").hide();
-			}
+		$("#field-viaja_solo").change( function () { 
+			fields_hs( "viaja_solo", 2,  ["con_quien_viaja"] )
 		});
+		
+		fields_hs( "viaja_solo", 2, ["con_quien_viaja"] )
+
+
+
 			
 		/*Color uniformome responsables*/
 		$("#color_uniforme_responsables_field_box").css("margin-left", "50px");
 		$("#insignias_responsables_field_box").css("margin-left", "50px");
 		$("#color_uniforme_responsables_field_box").hide();
 		$("#insignias_responsables_field_box").hide();
+		
 
-		$("#field-uniformado_responsables").change( function () {
-			if($("#field-uniformado_responsables").val() == 'Si') {
-				$("#color_uniforme_responsables_field_box").show();
-				$("#insignias_responsables_field_box").show();
-			} else {
-				$("#color_uniforme_responsables_field_box").hide();
-				$("#insignias_responsables_field_box").hide();
-			}
+		$("#field-uniformado_responsables").change( function () { 
+			fields_hs( "uniformado_responsables", 1, 
+								 ["color_uniforme_responsables", "insignias_responsables"] )
 		});
 		
+		fields_hs( "uniformado_responsables", 1, 
+								 ["color_uniforme_responsables", "insignias_responsables"] )
+
+
+
 		
 		/*Momento de deportado*/
 		$("#momento_deportado_field_box").css("margin-left", "50px");
 		$("#momento_deportado_field_box").hide();
 
-		$("#field-deportado").change( function () {
-			if($("#field-deportado").val() == 1) {
-				$("#momento_deportado_field_box").show();
-				$("#momento_deportado_field_box").show();
-			} else {
-				$("#momento_deportado_field_box").hide();
-				$("#momento_deportado_field_box").hide();
-			}
+		$("#field-deportado").change( function () { 
+			fields_hs( "deportado", 1, ["momento_deportado"] )
 		});
 		
+		fields_hs( "deportado", 1, ["momento_deportado"] )
+
+
+
+
 		/*Familiar separacion*/
 		$("#familiar_separado_field_box").css("margin-left", "50px");
 		$("#familiar_separado_field_box").hide();
 		$("#situacion_familiar_field_box").css("margin-left", "50px");
 		$("#situacion_familiar_field_box").hide();
 
-		$("#field-separacion_familiar").change( function () {
-			if($("#field-separacion_familiar").val() == 1) {
-				$("#familiar_separado_field_box").show();
-				$("#familiar_separado_field_box").show();
-				
-				$("#situacion_familiar_field_box").show();
-				$("#situacion_familiar_field_box").show();
-			} else {
-				$("#situacion_familiar_field_box").hide();
-				$("#situacion_familiar_field_box").hide();
-				
-				$("#familiar_separado_field_box").hide();
-				$("#familiar_separado_field_box").hide();
-			}
+
+		$("#field-separacion_familiar").change( function () { 
+			fields_hs( "separacion_familiar", 1,
+								 ["familiar_separado", "situacion_familiar"] )
 		});
 		
+		fields_hs( "separacion_familiar", 1,
+								 ["familiar_separado", "situacion_familiar"] )
+
+
+
+
 		/*Migrante - Pueblo indigena*/
+
 		$("#nombre_pueblo_indigena_field_box").css("margin-left", "50px");
 		$("#nombre_pueblo_indigena_field_box").hide();
 		$("#espanol_field_box").css("margin-left", "50px");
 		$("#espanol_field_box").hide();
 
-		var hide_show_pueblo_indigena  = function(){
-			if( $("li#field_pueblo_indigena_chzn_o_1").hasClass("result-selected" ) ){
-				$("#nombre_pueblo_indigena_field_box").show();
-				$("#espanol_field_box").show();
-			} else {
-				$("#nombre_pueblo_indigena_field_box").hide();
-				$("#espanol_field_box").hide();
-			}
-		}
+		$("#field-pueblo_indigena").change( function () { 
+			fields_hs( "pueblo_indigena", 1,
+								 ["nombre_pueblo_indigena", "espanol"] )
+		});
+		
+		fields_hs( "pueblo_indigena", 1,
+								 ["nombre_pueblo_indigena", "espanol"] )
 
-		hide_show_pueblo_indigena() 
-
-		$("#field-pueblo_indigena").change( function () { hide_show_pueblo_indigena() });
 
 		$(".search-choice-close").on("click", function(e){
 			e.preventDefault()
