@@ -192,7 +192,7 @@ app.controller('MigranteCtrl', [
 
     for(var i in topics) d_storage.save_of_input( topics[i] )         
     for(var j in topics_of_selects){ d_storage.save_of_select(topics_of_selects[j], '')}
-    for(var j in topics_of_multiselects){ d_storage.save_of_select(topics_of_multiselects[j] )}
+    for(var j in topics_of_multiselects){ d_storage.save_of_multiselect(topics_of_multiselects[j] )}
 
     $scope.clear_all = function(){
       d_storage.clear_all()
