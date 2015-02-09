@@ -57,7 +57,7 @@ strong { font-size:16px; }
 .link { cursor:pointer; color:blue; font-size:14px; }
 #catalogos { display:none; padding:0;}
 
-#addReport-step1{
+#addReport-step2{
 	display: none;
 }
 

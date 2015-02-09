@@ -329,17 +329,17 @@
 		
 		/* Modificar las etiquetas en el campo coyote */
 		histograma_denuncias.coyote_guia[0][0] = "Si"; // 1 como tag original
-		histograma_denuncias.coyote_guia[1][0] = "NO SABE"; // 0 como tag original
+		histograma_denuncias.coyote_guia[1][0] = "Dato no disponible"; // 0 como tag original
 		histograma_denuncias.coyote_guia[2][0] = "No"; // 2 como tag original
 
 		/* Modificar las etiquetas en el campo viaja_solo */
 		histograma_denuncias.viaja_solo[0][0] = "Si"; // 1 como tag original
-		histograma_denuncias.viaja_solo[1][0] = "NO SABE"; // 0 como tag original
+		histograma_denuncias.viaja_solo[1][0] = "Dato no disponible"; // 0 como tag original
 		histograma_denuncias.viaja_solo[2][0] = "No"; // 2 como tag original
 
 		/* Modificar las etiquetas en el campo deportado */
 		histograma_denuncias.deportado[0][0] = "Si"; // 1 como tag original
-		histograma_denuncias.deportado[1][0] = "NO SABE"; // 0 como tag original
+		histograma_denuncias.deportado[1][0] = "Dato no disponible"; // 0 como tag original
 		histograma_denuncias.deportado[2][0] = "No"; // 2 como tag original
 
 		/* Reducir a dos (SI/NO) categorias la pregunta algun_nombre_responsables */
@@ -354,7 +354,7 @@
 			var e = topico_algun_nombre_responsables[i][0];
 			var c = topico_algun_nombre_responsables[i][1];
 
-			if( e == "NO SABE") n_topico_algun_nombre_responsables[1].y += c
+			if( e == "Dato no disponible") n_topico_algun_nombre_responsables[1].y += c
 			else n_topico_algun_nombre_responsables[0].y += c
 		}
 
