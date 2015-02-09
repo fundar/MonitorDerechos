@@ -553,13 +553,14 @@ strong { font-size:16px; }
 					<div class='form-input-box' id="paquete_pago_input_box">
 						<select id='field-paquete_pago' name='paquete_pago[]' ng-model='paquete_pago' multiple='multiple' size='8' 
 										class='chosen-multiple-select' data-placeholder='Seleccionar Que incluía el pago' style='width:510px;' >
-							<option value='3'>Alimentación</option>
-							<option value='7'>Cruce</option>
+							<option value=''></option>
 							<option value='1'>Hospedaje</option>
-							<option value='5'>No especificó</option>
-							<option value='4'>Pago de cuotas a la mafia</option>
-							<option value='6'>Sólo cruce</option>
 							<option value='2'>Transporte</option>
+							<option value='3'>Alimentación</option>
+							<option value='4'>Pago de cuotas a la mafia</option>
+							<option value='5'>No especificó</option>
+							<option value='6'>Sólo cruce</option>
+							<option value='7'>Cruce</option>
 						</select>				
 					</div>
 				</div>
