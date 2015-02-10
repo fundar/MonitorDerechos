@@ -429,15 +429,14 @@ class Admin extends CI_Controller {
 
 		$state = $crud->getState();
     	$state_info = $crud->getStateInfo();
-		//$crud->callback_after_insert(array($this, 'log_user_after_insert'));
-		if($state == 'insert') {
-	        //Do your cool stuff here . You don't need any State info you are in add
-	        //Do your cool stuff here . You don't need any State info you are in add
-	        $arr = array('a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5);    
 
-		   //add the header here
-		    header('Content-Type: application/json');
-		    echo json_encode( $arr );
+		if($state == 'insert') {
+	        $crud->callback_after_update(function () {
+	        	$data = array('id' => $primary_key);    
+			    header('Content-Type: application/json');
+			    echo json_encode( $data );
+			    die();
+			});
     	}else{
 			$output = $crud->render();
 			$this->_example_output($output);
