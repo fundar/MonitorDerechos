@@ -433,7 +433,11 @@ class Admin extends CI_Controller {
 		if($state == 'insert') {
 	        //Do your cool stuff here . You don't need any State info you are in add
 	        //Do your cool stuff here . You don't need any State info you are in add
-	        return "la";
+	        $arr = array('a' => 1, 'b' => 2, 'c' => 3, 'd' => 4, 'e' => 5);    
+
+		   //add the header here
+		    header('Content-Type: application/json');
+		    echo json_encode( $arr );
     	}else{
 			$output = $crud->render();
 			$this->_example_output($output);
