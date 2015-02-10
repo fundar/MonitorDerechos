@@ -1543,7 +1543,7 @@ strong { font-size:16px; }
 
 
 			//setTimeout(function(){ 
-		  	$.post(url, data, function(data){
+		  	$.post(url, data, function(res){
 				//proceso para guardar 
 				$(this).children(".small-loading").css("display","block");
 				$(this).children(".small-loading").css("display","none");
@@ -1569,6 +1569,7 @@ strong { font-size:16px; }
 			            }
 			          }
 		      	});
+		      	console.log(res)
 			})
 			//}, 1000);
 		})
