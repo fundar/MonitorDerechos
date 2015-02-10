@@ -430,7 +430,7 @@ class Admin extends CI_Controller {
 		$state = $crud->getState();
     	$state_info = $crud->getStateInfo();
 		//$crud->callback_after_insert(array($this, 'log_user_after_insert'));
-		if($state == 'add') {
+		if($state == 'success') {
 			var_dump($state);
 			var_dump($state_info);
 	        //Do your cool stuff here . You don't need any State info you are in add
