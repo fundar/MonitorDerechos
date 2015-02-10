@@ -433,6 +433,7 @@ class Admin extends CI_Controller {
 		if($state == 'insert') {
 	        //Do your cool stuff here . You don't need any State info you are in add
 	        //Do your cool stuff here . You don't need any State info you are in add
+	        return "la";
     	}else{
 			$output = $crud->render();
 			$this->_example_output($output);
