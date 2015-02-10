@@ -427,9 +427,17 @@ class Admin extends CI_Controller {
 
 		$crud->unset_export();
 
-		$output = $crud->render();
-		
-		$this->_example_output($output);
+		$state = $crud->getState();
+    	$state_info = $crud->getStateInfo();
+		//$crud->callback_after_insert(array($this, 'log_user_after_insert'));
+		if($state == 'add') {
+			var_dump($state)
+			var_dump($state_info)
+	        //Do your cool stuff here . You don't need any State info you are in add
+    	}else{
+			$output = $crud->render();
+			$this->_example_output($output);
+    	}
 	}
 
 	public function link_denuncia($primary_key , $row) { 
