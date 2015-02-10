@@ -197,7 +197,8 @@ strong { font-size:16px; }
 </head>
 
 <div class="container" ng-app="ReporteApp">
-	<form action="http://ddhh.fundarlabs.org.mx/admin/migrantes/insert" method="post" id="addReport-step1" autocomplete="off" enctype="multipart/form-data" accept-charset="utf-8" ng-controller="MigranteCtrl">		
+	<form action="http://ddhh.fundarlabs.org.mx/admin/migrantes/insert" method="post" id="addReport-step1" autocomplete="off" 
+		  enctype="multipart/form-data" accept-charset="utf-8" ng-controller="MigranteCtrl">		
 		
 		<div class='ui-widget-content ui-corner-all datatables' id="migrantes-accordion">
 			<h3 class="ui-accordion-header ui-helper-reset ui-state-default form-title">
@@ -416,7 +417,9 @@ strong { font-size:16px; }
 		</div>
 	</form>
 
-	<form action="http://ddhh.fundarlabs.org.mx/admin/migrantes/insert" method="post" id="addReport-step2" autocomplete="off" enctype="multipart/form-data" accept-charset="utf-8" ng-controller="DenunciaCtrl">		
+	<form action="http://ddhh.fundarlabs.org.mx/admin/migrantes/insert" method="post" id="addReport-step2" autocomplete="off" 
+		  enctype="multipart/form-data" accept-charset="utf-8" ng-controller="DenunciaCtrl">		
+
 		<div class='ui-widget-content ui-corner-all datatables' id="migrantes-accordion">
 			<h3 class="ui-accordion-header ui-helper-reset ui-state-default form-title">
 				<div class='floatL form-title-left'>
@@ -1521,7 +1524,7 @@ strong { font-size:16px; }
 	var default_theme_path = 'http://ddhh.fundarlabs.org.mx/assets/grocery_crud/themes';
 	var base_url = 'http://ddhh.fundarlabs.org.mx/';
 
-	function confirmacion(url) {
+	function confirmacion(url) {addReport-step1
 		if(confirm('¿Esta segura/o que desea salir (verifique que ha guardado la información)?')) {
 			document.location = url;
 		} else {
@@ -1535,35 +1538,39 @@ strong { font-size:16px; }
 			e.preventDefault();
 			var that = $(this)
 			  , scope = angular.element(that).scope()
-			  , data = $(this).serialize();
+			  , data = that.serialize()
+			  , url = that.attr("action");
 
-			$(this).children(".small-loading").css("display","block");
 
-			//proceso para guardar 
-			setTimeout(function(){ 
+			//setTimeout(function(){ 
+		  	$.post(url, data, function(data){
+				//proceso para guardar 
+				$(this).children(".small-loading").css("display","block");
 				$(this).children(".small-loading").css("display","none");
 				var msg = ' <p> El registro del migrante fue correctamente agregado. \
 						    ¿Quiéres agregar otro migrante o los datos de la denuncia ?</p>';
-		  	var dialog = $(msg).dialog({
-        	buttons: {
-            "Agregar otro migrante": function() {
-            	that[0].reset() // limpia input text
-            	scope.clear_migrante(); // limpia el localstorage de migrante
-            	that.children('select').each(function(){
-            		$(this).val('').trigger('chosen:updated')
-            	});
-        		 	window.location.reload();
-            },
-            "Capturar datos de la denuncia ":  function() {
-            	that.toggle( "slide", function(){
-            		that[0].reset()
-            		$("#addReport-step2").toggle( "slide" )
-            	})
-            	dialog.dialog('close');
-            }
-          }
-      	});
-			}, 1000);
+
+			  	var dialog = $(msg).dialog({
+	        		buttons: {
+			            "Agregar otro migrante": function() {
+			            	that[0].reset() // limpia input text
+			            	scope.clear_migrante(); // limpia el localstorage de migrante
+			            	that.children('select').each(function(){
+			            		$(this).val('').trigger('chosen:updated')
+			            	});
+			        		 	window.location.reload();
+			            },
+			            "Capturar datos de la denuncia ":  function() {
+			            	that.toggle( "slide", function(){
+			            		that[0].reset()
+			            		$("#addReport-step2").toggle( "slide" )
+			            	})
+			            	dialog.dialog('close');
+			            }
+			          }
+		      	});
+			})
+			//}, 1000);
 		})
 		
 		$("#addReport-step2").on("submit", function(e){
