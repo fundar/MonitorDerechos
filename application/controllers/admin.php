@@ -433,11 +433,11 @@ class Admin extends CI_Controller {
 		if($state == 'insert') {
 			
 
-			$crud->callback_after_insert(array($this, 'log_user_after_insert'));
+			//$crud->callback_after_insert(array($this, 'log_user_after_insert'));
 	        //$crud->callback_after_insert(function ($post_array, $primary_key ) {
-	        //	$data = array('a' => 1, 'b' => 2, 'ID' => $primary_key );    
-			//    header('Content-Type: application/json');
-			//    echo json_encode( $state_info );
+	        	$data = array('a' => 1, 'b' => 2, 'ID' => $crud->get_primary_key );    
+			    header('Content-Type: application/json');
+			    echo json_encode( $state_info );
 			//    die();
 			//});
 
@@ -452,7 +452,7 @@ class Admin extends CI_Controller {
 				header('Content-Type: application/json');
 	        	$data = array('a' => 1, 'b' => 2, 'ID' => $primary_key );    
 			    echo json_encode( $data );
-			    die();
+			    //die();
 				//return $primary_key; 
 			}
 
