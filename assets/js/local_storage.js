@@ -155,7 +155,7 @@ app.controller('MigranteCtrl', [
       }else{
         localStorageService.set("migrantes_ids", id)
       }
-      console.log( localStorageService.set("migrantes_ids") )
+      console.log( localStorageService.get("migrantes_ids") )
     }
 
     $scope.clear_theses = function(names){
