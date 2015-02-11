@@ -1569,8 +1569,8 @@ strong { font-size:16px; }
 			            }
 			          }
 		      	});
-		      	console.log(JSON.parse(res))
-		      	console.log(res.ID)
+		      	//console.log(JSON.parse(res))
+		      	//console.log(res.ID)
 			})
 			//}, 1000);
 		})
