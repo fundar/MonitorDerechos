@@ -431,28 +431,27 @@ class Admin extends CI_Controller {
     	$state_info = $crud->getStateInfo();
 		//$crud->callback_after_insert(array($this, 'log_user_after_insert'));
 		if($state == 'insert') {
-			
-
-			//$crud->callback_after_insert(array($this, 'log_user_after_insert'));
+			$crud->callback_after_insert(array($this, 'log_user_after_insert'));
 	        //$crud->callback_after_insert(function ($post_array, $primary_key ) {
-	        	$data = array('a' => 1, 'b' => 2, 'ID' => $crud->get_primary_key );    
-			    header('Content-Type: application/json');
-			    echo json_encode( $state_info );
+	        	//$data = array('a' => 1, 'b' => 2, 'ID' => $crud->get_primary_key );    
+			    //header('Content-Type: application/json');
+			    //echo json_encode( $state_info );
 			//    die();
 			//});
 
 
-    	}else{
+    	}//else{
 			$output = $crud->render();
 			$this->_example_output($output);
-    	}
+    	//}
 	}
 
 	function log_user_after_insert($post_array,$primary_key){  
-				header('Content-Type: application/json');
-	        	$data = array('a' => 1, 'b' => 2, 'ID' => $primary_key );    
-			    echo json_encode( $data );
-			    //die();
+				//header('Content-Type: application/json');
+	        	//$data = array('a' => 1, 'b' => 2, 'ID' => $primary_key );    
+			    //echo json_encode( $data );
+			    print_r($primary_key);
+			    die();
 				//return $primary_key; 
 			}
 
