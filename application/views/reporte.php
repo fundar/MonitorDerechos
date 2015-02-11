@@ -1541,8 +1541,6 @@ strong { font-size:16px; }
 			  , data = that.serialize()
 			  , url = that.attr("action");
 
-
-			//setTimeout(function(){ 
 		  	$.post(url, data, function(res){
 		  		var res = JSON.parse(res)
 		  		if(res.status){
@@ -1551,7 +1549,7 @@ strong { font-size:16px; }
 					$(this).children(".small-loading").css("display","none");
 					var msg = ' <p> El registro del migrante fue correctamente agregado. \
 							    ¿Quiéres agregar otro migrante o los datos de la denuncia ?</p>';
-
+					
 				  	var dialog = $(msg).dialog({
 		        		buttons: {
 				            "Agregar otro migrante": function() {
@@ -1571,12 +1569,13 @@ strong { font-size:16px; }
 				            }
 				          }
 			      	});
+
+
 		  		}else{
 		  			alert("No se pudo insertar el registro, verifique los cambios")
 		  		}
 		      	
 			})
-			//}, 1000);
 		})
 		
 		$("#addReport-step2").on("submit", function(e){
