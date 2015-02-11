@@ -429,31 +429,25 @@ class Admin extends CI_Controller {
 
 		$state = $crud->getState();
     	$state_info = $crud->getStateInfo();
-		//$crud->callback_after_insert(array($this, 'log_user_after_insert'));
-		if($state == 'insert') {
+
+		if($state == 'insert') { // si se trata de solo una insercion se devuelve un json
 			$crud->callback_after_insert(array($this, 'log_user_after_insert'));
-	        //$crud->callback_after_insert(function ($post_array, $primary_key ) {
-	        	//$data = array('a' => 1, 'b' => 2, 'ID' => $crud->get_primary_key );    
-			    //header('Content-Type: application/json');
-			    //echo json_encode( $state_info );
-			//    die();
-			//});
+    	}
 
-
-    	}//else{
-			$output = $crud->render();
-			$this->_example_output($output);
-    	//}
+		$output = $crud->render();
+		$this->_example_output($output);
 	}
 
 	function log_user_after_insert($post_array,$primary_key){  
-				//header('Content-Type: application/json');
-	        	$data = array('a' => 1, 'b' => 2, 'ID' => $primary_key );    
-			    echo json_encode( $data );
-			    //print_r($data);
-			    die();
-				//return $primary_key; 
-			}
+		if($primary_key){
+    		$data = array('status' => true, 'id' => $primary_key );    
+		}else{
+    		$data = array('status' => false );    
+		}
+		
+    	echo json_encode($data);
+	    die();
+	}
 
 	public function link_denuncia($primary_key , $row) { 
 		if ( $row->denuncia != "") {
