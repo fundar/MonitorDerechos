@@ -448,9 +448,9 @@ class Admin extends CI_Controller {
 
 	function log_user_after_insert($post_array,$primary_key){  
 				//header('Content-Type: application/json');
-	        	//$data = array('a' => 1, 'b' => 2, 'ID' => $primary_key );    
+	        	$data = array('a' => 1, 'b' => 2, 'ID' => $primary_key );    
 			    //echo json_encode( $data );
-			    print_r($primary_key);
+			    print_r($data);
 			    die();
 				//return $primary_key; 
 			}
