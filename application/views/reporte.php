@@ -1542,7 +1542,7 @@ strong { font-size:16px; }
 
 		  	$.post(url, data, function(res){
 				//proceso para guardar 
-				var res = JSON.parse(res)
+				//var res = JSON.parse(res)
 		  		//if(res.status){
 					$(this).children(".small-loading").css("display","block");
 					$(this).children(".small-loading").css("display","none");
@@ -1568,7 +1568,7 @@ strong { font-size:16px; }
 				            }
 				          }
 			      	});
-		      		console.log(res.id)
+		      		console.log(res)
 		      	//}else{
 		  		//	alert("No se pudo insertar el registro, verifique los cambios")
 		  		//}
