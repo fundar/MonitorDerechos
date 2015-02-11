@@ -1550,6 +1550,9 @@ strong { font-size:16px; }
 					var msg = ' <p> El registro del migrante fue correctamente agregado. \
 							    ¿Quiéres agregar otro migrante o los datos de la denuncia ?</p>';
 
+
+					scope.add_migrante(res,id)
+					
 				  	var dialog = $(msg).dialog({
 		        		buttons: {
 				            "Agregar otro migrante": function() {
@@ -1569,6 +1572,8 @@ strong { font-size:16px; }
 				            }
 				          }
 			      	});
+
+
 		  		}else{
 		  			alert("No se pudo insertar el registro, verifique los cambios")
 		  		}
