@@ -1542,32 +1542,36 @@ strong { font-size:16px; }
 
 		  	$.post(url, data, function(res){
 				//proceso para guardar 
-				$(this).children(".small-loading").css("display","block");
-				$(this).children(".small-loading").css("display","none");
-				var msg = ' <p> El registro del migrante fue correctamente agregado. \
-						    ¿Quiéres agregar otro migrante o los datos de la denuncia ?</p>';
+				var res = JSON.parse(res)
+		  		if(res.status){
+					$(this).children(".small-loading").css("display","block");
+					$(this).children(".small-loading").css("display","none");
+					var msg = ' <p> El registro del migrante fue correctamente agregado. \
+							    ¿Quiéres agregar otro migrante o los datos de la denuncia ?</p>';
 
-			  	var dialog = $(msg).dialog({
-	        		buttons: {
-			            "Agregar otro migrante": function() {
-			            	that[0].reset() // limpia input text
-			            	scope.clear_migrante(); // limpia el localstorage de migrante
-			            	that.children('select').each(function(){
-			            		$(this).val('').trigger('chosen:updated')
-			            	});
-			        		 	window.location.reload();
-			            },
-			            "Capturar datos de la denuncia ":  function() {
-			            	that.toggle( "slide", function(){
-			            		that[0].reset()
-			            		$("#addReport-step2").toggle( "slide" )
-			            	})
-			            	dialog.dialog('close');
-			            }
-			          }
-		      	});
-		      	//console.log(JSON.parse(res))
-		      	//console.log(res.ID)
+				  	var dialog = $(msg).dialog({
+		        		buttons: {
+				            "Agregar otro migrante": function() {
+				            	that[0].reset() // limpia input text
+				            	scope.clear_migrante(); // limpia el localstorage de migrante
+				            	that.children('select').each(function(){
+				            		$(this).val('').trigger('chosen:updated')
+				            	});
+				        		 	window.location.reload();
+				            },
+				            "Capturar datos de la denuncia ":  function() {
+				            	that.toggle( "slide", function(){
+				            		that[0].reset()
+				            		$("#addReport-step2").toggle( "slide" )
+				            	})
+				            	dialog.dialog('close');
+				            }
+				          }
+			      	});
+		      		console.log(res.id)
+		      	}else{
+		  			alert("No se pudo insertar el registro, verifique los cambios")
+		  		}
 
 			})
 		})

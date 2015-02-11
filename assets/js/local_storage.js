@@ -148,6 +148,15 @@ app.controller('MigranteCtrl', [
       m_storage.clear_all()
     }
 
+    $scope.add_migrante = function(id){
+      if( localStorageService.set("migrantes_ids") ){
+        var ids = localStorageService.get("migrantes_ids") + "," + id;
+        localStorageService.set("migrantes_ids", ids)
+      }else{
+        localStorageService.set("migrantes_ids", id)
+      }
+      console.log( localStorageService.set("migrantes_ids") )
+    }
 
     $scope.clear_theses = function(names){
       m_storage.clear_theses(names, sufix)
