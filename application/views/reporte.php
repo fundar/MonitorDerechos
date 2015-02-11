@@ -1569,7 +1569,8 @@ strong { font-size:16px; }
 			            }
 			          }
 		      	});
-		      	console.log(res)
+		      	data = eval(res)
+		      	console.log(data.ID)
 			})
 			//}, 1000);
 		})
