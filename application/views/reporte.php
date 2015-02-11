@@ -1551,8 +1551,8 @@ strong { font-size:16px; }
 							    ¿Quiéres agregar otro migrante o los datos de la denuncia ?</p>';
 
 
-					scope.add_migrante(res,id)
-					
+					scope.add_migrante(res.id)
+
 				  	var dialog = $(msg).dialog({
 		        		buttons: {
 				            "Agregar otro migrante": function() {
