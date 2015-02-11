@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://mddhh.local.org';
+$config['base_url']	= 'http://ddhh.fundarlabs.org.mx/';
 
 /*
 |--------------------------------------------------------------------------

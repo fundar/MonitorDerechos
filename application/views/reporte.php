@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -1541,8 +1540,6 @@ strong { font-size:16px; }
 			  , data = that.serialize()
 			  , url = that.attr("action");
 
-
-			//setTimeout(function(){ 
 		  	$.post(url, data, function(res){
 				//proceso para guardar 
 				$(this).children(".small-loading").css("display","block");
@@ -1571,8 +1568,8 @@ strong { font-size:16px; }
 		      	});
 		      	//console.log(JSON.parse(res))
 		      	//console.log(res.ID)
+
 			})
-			//}, 1000);
 		})
 		
 		$("#addReport-step2").on("submit", function(e){
