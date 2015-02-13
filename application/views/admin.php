@@ -84,10 +84,10 @@ strong { font-size:16px; }
 			}
 		}
 		$(document).ready( function () {
-			$("#report-error").remove()
 			$("#ver-catalogos").click( function () {
 				$("#catalogos").toggle();
 			});
+			$("#report-error").remove()
 
 			$("form#crudForm").on("submit", function(e){
 				e.preventDefault();
