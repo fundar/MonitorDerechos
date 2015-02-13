@@ -88,35 +88,7 @@ strong { font-size:16px; }
 			$("#ver-catalogos").click( function () {
 				$("#catalogos").toggle();
 			});
-			$("#report-error").remove()
-			$("form#crudForm").on("submit", function(e){
-				e.preventDefault();
-				var that = $(this)
-				  , data = that.serialize()
-				  , url = that.attr("action");
-
-			  	$.post(url, data, function(res){
-					//proceso para guardar 
-					var res = JSON.parse(res)
-			  		if(res.status){
-						$(this).children(".small-loading").css("display","block");
-						$(this).children(".small-loading").css("display","none");
-						var msg = ' <p> El registro del migrante fue correctamente agregado. \
-								    ¿Quiéres agregar otro migrante?</p>';
-
-					  	var dialog = $(msg).dialog({
-			        		buttons: {
-					            "Agregar otro migrante": function() { window.location.reload(); },
-					            "Regresar a la página principal ":  function() { window.location.replace('/');  }
-					        }
-				      	});
-
-			      	}else{
-			  			alert("No se pudo insertar el registro, verifique los campos")
-			  		}
-
-				})
-			})
+			
 			<?php if($this->uri->segment(3) != "read") { ?>
 				/*Guia-Coyote*/
 				$("#lugar_contrato_coyote_field_box").css("margin-left", "50px");
