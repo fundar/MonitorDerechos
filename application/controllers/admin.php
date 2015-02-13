@@ -670,8 +670,6 @@ class Admin extends CI_Controller {
 		return false;
 	}
 
-	
-
 	public function graficas_migrantes(){
 		$this->load->model('migracion_model');
 
