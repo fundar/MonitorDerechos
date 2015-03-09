@@ -148,7 +148,7 @@ class Admin extends CI_Controller {
 		/*Columnas(Vista), campos y campos obligatorios*/
 		$crud->columns('id_denuncia', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes');
 		$crud->fields(
-			'nombre_persona_atendio_seguimiento', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes', 'intentos', 'motivo_migracion', 
+			'nombre_persona_atendio_seguimiento', 'fecha_creada', 'id_lugar_denuncia', 'folio', 'id_tipo_queja', 'migrantes', 'intentos', 'motivo_migracion', 
 			'coyote_guia', 'lugar_contrato_coyote', 'monto_coyote', 'paquete_pago', 'nombre_punto_fronterizo', 'lugar_de_usa', 'viaja_solo', 
 			'con_quien_viaja', 'deportado', 'momento_deportado', 'separacion_familiar', 'familiar_separado', 'situacion_familiar','acto_siguiente', 
 			'acto_siguiente_homologada','autoridades_viaje', 'dano_autoridad', 'fecha_injusticia', 'id_autoridad_dano', 'id_pais_injusticia', 'id_estado_injusticia', 
@@ -170,6 +170,14 @@ class Admin extends CI_Controller {
 		$this->display_as_denuncias($crud);
 		
 		$crud->order_by('fecha_creada','desc');
+
+		$state = $crud->getState();
+    	$state_info = $crud->getStateInfo();
+
+		if($state == 'insert') { // si se trata de solo una insercion se devuelve un json
+			$crud->callback_after_insert(array($this, 'denuncia_after_insert'));
+    	}
+
 		$output = $crud->render();
 		
 		$this->_example_output($output);
@@ -183,6 +191,11 @@ class Admin extends CI_Controller {
 		
 		$crud->display_as('id_lugar_denuncia', 'Lugar de denuncia');
 		$crud->set_relation('id_lugar_denuncia', 'lugares_denuncia', 'nombre');
+
+		/* Campo de folio*/
+		$crud->display_as('folio', 'Folio');
+		$crud->field_type('folio', 'hidden', '');
+
 		/*Lugar denuncia*/
 		$crud->display_as('id_tipo_queja', 'Tipo de queja');
 		$crud->set_relation('id_tipo_queja', 'tipos_quejas', 'nombre');
@@ -347,6 +360,17 @@ class Admin extends CI_Controller {
 		return true;
 	}
 	
+	function denuncia_after_insert($post_array,$primary_key){  
+		if($primary_key){
+    		$data = array('status' => true, 'data' => array('id' => $primary_key, 'folio' => $post_array['folio']) );    
+		}else{
+    		$data = array('status' => false );    
+		}
+		
+    	echo json_encode($data);
+	    die();
+	}
+
 	/*Metodo de migrantes*/
 	public function migrantes() {
 		$user = $this->isUser();
@@ -371,6 +395,7 @@ class Admin extends CI_Controller {
 		$crud->display_as('pueblo_indigena', 'Pertenece a algún pueblo indígena');
 		$crud->display_as('espanol', 'Dominio del español');
 
+		/*
 		$query  = " SELECT migrantes.id_migrante, migrantes.nombre, migrantes.municipio, migrantes.edad, migrantes.escolaridad, 
 						   migrantes.pueblo_indigena, migrantes.espanol, lugares_denuncia.nombre AS lugar_denuncia, paises.nombre AS pais, 
 						   estados.nombre AS estado, generos.nombre AS genero, estado_civil.nombre AS estado_civil, migrantes2denuncias.id_denuncia";
@@ -381,6 +406,7 @@ class Admin extends CI_Controller {
 		$query .= " AND migrantes.id_genero = generos.id_genero";
 		$query .= " AND migrantes.id_estado_civil = generos.id_estado_civil";
 		$query .= " AND migrantes.id_migrante = migrantes2denuncias.id_migrante";
+		*/
 
 		//$crud->basic_model->set_query_str($query);
    
@@ -431,16 +457,16 @@ class Admin extends CI_Controller {
     	$state_info = $crud->getStateInfo();
 
 		if($state == 'insert') { // si se trata de solo una insercion se devuelve un json
-			$crud->callback_after_insert(array($this, 'log_user_after_insert'));
+			$crud->callback_after_insert(array($this, 'migrante_after_insert'));
     	}
 
 		$output = $crud->render();
 		$this->_example_output($output);
 	}
 
-	function log_user_after_insert($post_array,$primary_key){  
+	function migrante_after_insert($post_array,$primary_key){  
 		if($primary_key){
-    		$data = array('status' => true, 'id' => $primary_key );    
+    		$data = array('status' => true, 'data' => array('id' => $primary_key, 'nombre' => $post_array['nombre']) );    
 		}else{
     		$data = array('status' => false );    
 		}
@@ -672,6 +698,7 @@ class Admin extends CI_Controller {
 
 	public function graficas_migrantes(){
 		$this->load->model('migracion_model');
+		//$this->load->helper('assets');
 
 		$start = $this->input->get("start")? $this->input->get("start") : "2014-01-01";
 		$end = $this->input->get("end")? $this->input->get("end") : "2014-12-31";
@@ -684,6 +711,20 @@ class Admin extends CI_Controller {
 	}
 
 	public function reporte(){
+		$user = $this->isUser();
 		$this->load->view('reporte.php');
+	}
+
+	public function deleteMigrantes(){
+		$res = array();    
+		$ids = $this->input->post('ids');
+		
+		$this->load->model('migracion_model');
+		foreach ($ids  as $id) {
+			$res[$id] = $this->migracion_model->deleteMigrante($id);
+		}
+
+	    header('Content-Type: application/json');
+	    echo json_encode($res);
 	}
 }

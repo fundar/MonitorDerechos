@@ -15,6 +15,7 @@
 |
 */
 $config['base_url']	= 'http://ddhh.fundarlabs.org.mx/';
+$config['base_url']	= 'http://localhost/mddh/';
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,7 @@ $config['base_url']	= 'http://ddhh.fundarlabs.org.mx/';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = '';
+$config['index_page'] = 'index.php';
 
 /*
 |--------------------------------------------------------------------------

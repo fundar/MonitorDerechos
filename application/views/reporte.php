@@ -1,3 +1,27 @@
+<?php 
+	function getRealIP() {
+	    if (!empty($_SERVER['HTTP_CLIENT_IP']))
+	        return $_SERVER['HTTP_CLIENT_IP'];
+	       
+	    if (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))
+	        return $_SERVER['HTTP_X_FORWARDED_FOR'];
+
+	   	if(!empty($_SERVER['REMOTE_ADDR']))
+	    	return $_SERVER['REMOTE_ADDR'];
+
+	    else return "127.0.0.1";
+	}
+
+	function crearFolio($prefix = ""){
+		$ip = strtoupper( base_convert(str_replace(".", "", getRealIP() ), 10, 36) );
+		$time = explode(" ", str_replace(".","", microtime(false) ));
+		$folio = $prefix . "-" . $time[1] . "-" . $ip;
+		return $folio;
+	}
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,71 +51,49 @@
 	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/themes/flexigrid/js/jquery.form.js"></script>
 	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/themes/datatables/js/datatables-add.js"></script>
 	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/jquery.noty.js"></script>
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/config/jquery.noty.config.js"></script>
 
 	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/config/jquery.noty.config.js"></script>
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/config/jquery.noty.config.js"></script>
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/config/jquery.noty.config.js"></script>
 
-	<script type="text/javascript" src="../assets/js/angular.js"></script>
-	<script type="text/javascript" src="../assets/js/angular-local-storage.js"></script>
-	<script type="text/javascript" src="../assets/js/local_storage.js"></script>
+	<script type="text/javascript" src="../../assets/js/angular.js"></script>
+	<script type="text/javascript" src="../../assets/js/angular-local-storage.js"></script>
+	<script type="text/javascript" src="../../assets/js/local_storage.js"></script>
 
 <style type='text/css'>
-body
-{
-	font-family: Arial;
-	font-size: 14px;
-}
-a {
-    color: blue;
-    text-decoration: none;
-    font-size: 14px;
-}
-a:hover
-{
-	text-decoration: underline;
-}
-strong { font-size:16px; }
-.link { cursor:pointer; color:blue; font-size:14px; }
-#catalogos { display:none; padding:0;}
+	body{
+		font-family: Arial;
+		font-size: 14px;
+	}
+	a {
+	    color: blue;
+	    text-decoration: none;
+	    font-size: 14px;
+	}
+	a:hover{
+		text-decoration: underline;
+	}
+	strong { font-size:16px; }
+	.link { cursor:pointer; color:blue; font-size:14px; }
+	#catalogos { display:none; padding:0;}
 
-#addReport-step2{
-	display: none;
-}
+	#addReport-step2{
+		display: none;
+	}
 
-.chosen-select{
-	width:300px;
-}
+	.chosen-select{
+		width:300px;
+	}
 </style>
 </head>
 <body>
 	<div>
-		<a onclick="javascript: return confirmacion('http://ddhh.fundarlabs.org.mx/admin/migrantes')" href="javascript:void(0)">
-			<strong>Migrantes</strong>		</a> |
-		<a onclick="javascript: return confirmacion('http://ddhh.fundarlabs.org.mx/admin/denuncias')" href="javascript:void(0)">
-			Denuncias		</a> |
-
-		<a onclick="javascript: return confirmacion('http://ddhh.fundarlabs.org.mx/admin/graficas_migrantes')" href="javascript:void(0)">
-			Gráficas		</a> |
+		<a href="<?php echo site_url('admin/migrantes');?>"> Migrantes </a> |
+		<a href="<?php echo site_url('admin/denuncias');?>"> Denuncias </a> |
+		<a href="<?php echo site_url('admin/graficas_migrantes');?>"> Gráficas </a> |
+		<a href="#"> <strong> Reporte </strong> </a> |
+		<?php if(isset($_SESSION['user_id'])) ?>
+			<a href="<?php echo site_url('admin/logout');?>">Cerrar sesión</a> | 
+		<?php ?>
 		
-					<a onclick="javascript: return confirmacion('http://ddhh.fundarlabs.org.mx/admin/logout')" href="javascript:void(0)">Cerrar sesión</a> | 
-				
-		<span class="link" id="ver-catalogos">Mostrar/Ocultar Catalogos</span>
-		
-		<span id="catalogos" class="hide">
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<a onclick="javascript: return confirmacion('http://ddhh.fundarlabs.org.mx/admin/estados')" href="javascript:void(0)">
-				Estados/Departamentos			</a> |
-			<a onclick="javascript: return confirmacion('http://ddhh.fundarlabs.org.mx/admin/autoridades')" href="javascript:void(0)">
-				Autoridades			</a> |
-			<a onclick="javascript: return confirmacion('http://ddhh.fundarlabs.org.mx/admin/paises')" href="javascript:void(0)">
-				Paises			</a> |
-			<a onclick="javascript: return confirmacion('http://ddhh.fundarlabs.org.mx/admin/estados_casos')" href="javascript:void(0)">
-				Estado de los casos			</a> |
-			<a onclick="javascript: return confirmacion('http://ddhh.fundarlabs.org.mx/admin/transportes')" href="javascript:void(0)">
-				Transportes			</a>
-		</span>
 	</div>
 	
 	
@@ -196,7 +198,7 @@ strong { font-size:16px; }
 </head>
 
 <div class="container" ng-app="ReporteApp">
-	<form action="http://ddhh.fundarlabs.org.mx/admin/migrantes/insert" method="post" id="addReport-step1" autocomplete="off" 
+	<form action="http://localhost/mddh/index.php/admin/migrantes/insert" method="post" id="addReport-step1" autocomplete="off" 
 		  enctype="multipart/form-data" accept-charset="utf-8" ng-controller="MigranteCtrl">		
 		
 		<div class='ui-widget-content ui-corner-all datatables' id="migrantes-accordion">
@@ -243,7 +245,49 @@ strong { font-size:16px; }
 						</div>
 						<div class='form-input-box' id="id_estado_input_box">
 							<select id='field-id_estado' name='id_estado' ng-model="id_estado_migrante" class='chosen-select' data-placeholder='Seleccionar Estado/Departamento' style='width:300px'>
-								<option value=''></option><option value='1'  >Aguascalientes</option><option value='37'  >Arizona</option><option value='2'  >Baja California</option><option value='3'  >Baja California Sur</option><option value='4'  >Campeche</option><option value='7'  >Chiapas</option><option value='8'  >Chihuahua</option><option value='36'  >Choluteca</option><option value='5'  >Coahuila</option><option value='6'  >Colima</option><option value='33'  >Comayahua</option><option value='39'  >Cortés</option><option value='9'  >Distrito Federal</option><option value='10'  >Durango</option><option value='15'  >Edo. De México</option><option value='38'  >Escuintla</option><option value='40'  >Francisco Morazán</option><option value='11'  >Guanajuato</option><option value='12'  >Guerrero</option><option value='13'  >Hidalgo</option><option value='35'  >Huehuetenango</option><option value='14'  >Jalisco</option><option value='41'  >Matagalpa</option><option value='16'  >Michoacán</option><option value='17'  >Morelos</option><option value='18'  >Nayarit</option><option value='19'  >Nuevo León</option><option value='20'  >Oaxaca</option><option value='21'  >Puebla</option><option value='22'  >Querétaro</option><option value='23'  >Quintana Roo</option><option value='24'  >San Luis Potosí</option><option value='25'  >Sinaloa</option><option value='26'  >Sonora</option><option value='42'  >Suchitepéquez</option><option value='27'  >Tabasco</option><option value='28'  >Tamaulipas</option><option value='34'  >Tegusigalpa</option><option value='29'  >Tlaxcala</option><option value='30'  >Veracruz</option><option value='31'  >Yucatán</option><option value='32'  >Zacatecas</option>
+								<option value=''></option>
+								<option value='1'  >Aguascalientes</option>
+								<option value='2'  >Baja California</option>
+								<option value='3'  >Baja California Sur</option>
+								<option value='4'  >Campeche</option>
+								<option value='5'  >Coahuila</option>
+								<option value='6'  >Colima</option>
+								<option value='7'  >Chiapas</option>
+								<option value='8'  >Chihuahua</option>
+								<option value='9'  >Distrito Federal</option>
+								<option value='10'  >Durango</option>
+								<option value='11'  >Guanajuato</option>
+								<option value='12'  >Guerrero</option>
+								<option value='13'  >Hidalgo</option>
+								<option value='14'  >Jalisco</option>
+								<option value='15'  >Edo. De México</option>
+								<option value='16'  >Michoacán</option>
+								<option value='17'  >Morelos</option>
+								<option value='18'  >Nayarit</option>
+								<option value='19'  >Nuevo León</option>
+								<option value='20'  >Oaxaca</option>
+								<option value='21'  >Puebla</option>
+								<option value='22'  >Querétaro</option>
+								<option value='23'  >Quintana Roo</option>
+								<option value='24'  >San Luis Potosí</option>
+								<option value='25'  >Sinaloa</option>
+								<option value='26'  >Sonora</option>
+								<option value='27'  >Tabasco</option>
+								<option value='28'  >Tamaulipas</option>
+								<option value='29'  >Tlaxcala</option>
+								<option value='30'  >Veracruz</option>
+								<option value='31'  >Yucatán</option>
+								<option value='32'  >Zacatecas</option>
+								<option value='33'  >Comayahua</option>
+								<option value='34'  >Tegusigalpa</option>
+								<option value='35'  >Huehuetenango</option>
+								<option value='36'  >Choluteca</option>
+								<option value='37'  >Arizona</option>
+								<option value='38'  >Escuintla</option>
+								<option value='39'  >Cortés</option>
+								<option value='40'  >Francisco Morazán</option>
+								<option value='41'  >Matagalpa</option>
+								<option value='42'  >Suchitepéquez</option>
 							</select>				
 						</div>
 						<div class='clear'></div>
@@ -305,7 +349,15 @@ strong { font-size:16px; }
 						<div class='form-display-as-box' id="ocupacion_display_as_box"> </div>
 						<div class='form-input-box' id="ocupacion_homologada_input_box">
 							<select id='field-ocupacion_homologada' name='ocupacion_homologada'  ng-model="ocupacion_homologada_migrante" class='chosen-select' data-placeholder='¿En que categoría ubica esta ocupación?'>
-								<option value=''  ></option><option value='1'  >Al hogar</option><option value='2'  >Albañil</option><option value='3'  >Campesino</option><option value='4'  >Comerciante</option><option value='5'  >Empleado</option><option value='6'  >Empleado de gobierno</option><option value='7'  >Jornalero</option><option value='8'  >Peón</option>
+								<option value=''  ></option>
+								<option value='1'  >Al hogar</option>
+								<option value='2'  >Albañil</option>
+								<option value='3'  >Campesino</option>
+								<option value='4'  >Comerciante</option>
+								<option value='5'  >Empleado</option>
+								<option value='6'  >Empleado de gobierno</option>
+								<option value='7'  >Jornalero</option>
+								<option value='8'  >Peón</option>
 							</select>				
 						</div>
 						<div class='clear'></div>
@@ -335,7 +387,18 @@ strong { font-size:16px; }
 						</div>
 						<div class='form-input-box' id="escolaridad_input_box">
 							<select id='field-escolaridad' name='escolaridad' ng-model="escolaridad_migrante" class='chosen-select' data-placeholder='Seleccionar Escolaridad'>
-								<option value=''  > </option><option value='Sin instrucción'  >Sin instrucción</option><option value='Primaria'  >Primaria</option><option value='Primaria inconclusa'  >Primaria inconclusa</option><option value='Secundaria'  >Secundaria</option><option value='Secundaria inconclusa'  >Secundaria inconclusa</option><option value='Preparatoria'  >Preparatoria</option><option value='Preparatoria inconclusa'  >Preparatoria inconclusa</option><option value='Licenciatura'  >Licenciatura</option><option value='Licenciatura inconlusa'  >Licenciatura inconlusa</option><option value='Maestria'  >Maestria</option><option value='Doctorado'  >Doctorado</option>
+								<option value=''  ></option>
+								<option value='Sin instrucción'  >Sin instrucción</option>
+								<option value='Primaria'  >Primaria</option>
+								<option value='Primaria inconclusa'  >Primaria inconclusa</option>
+								<option value='Secundaria'  >Secundaria</option>
+								<option value='Secundaria inconclusa'  >Secundaria inconclusa</option>
+								<option value='Preparatoria'  >Preparatoria</option>
+								<option value='Preparatoria inconclusa'  >Preparatoria inconclusa</option>
+								<option value='Licenciatura'  >Licenciatura</option>
+								<option value='Licenciatura inconlusa'  >Licenciatura inconlusa</option>
+								<option value='Maestria'  >Maestria</option>
+								<option value='Doctorado'  >Doctorado</option>
 							</select>				
 						</div>
 						<div class='clear'></div>
@@ -416,10 +479,10 @@ strong { font-size:16px; }
 		</div>
 	</form>
 
-	<form action="http://ddhh.fundarlabs.org.mx/admin/migrantes/insert" method="post" id="addReport-step2" autocomplete="off" 
+	<form action="http://localhost/mddh/index.php/admin/denuncias/insert" method="post" id="addReport-step2" autocomplete="off" 
 		  enctype="multipart/form-data" accept-charset="utf-8" ng-controller="DenunciaCtrl">		
 
-		<div class='ui-widget-content ui-corner-all datatables' id="migrantes-accordion">
+		<div class='ui-widget-content ui-corner-all datatables' id="denuncias-accordion">
 			<h3 class="ui-accordion-header ui-helper-reset ui-state-default form-title">
 				<div class='floatL form-title-left'>
 					<a href="#">Añadir Denuncias</a>
@@ -470,22 +533,45 @@ strong { font-size:16px; }
 					</div>
 					<div class='form-input-box' id="id_tipo_queja_input_box">
 						<select id='field-id_tipo_queja'  name='id_tipo_queja' ng-model='id_tipo_queja' class='chosen-select' data-placeholder='Seleccionar Tipo de queja' >
-							<option value=''></option><option value='3'  >Comunitaria</option><option value='2'  >Grupal</option><option value='1'  >Individual</option>
+							<option value=''> </option>
+							<option value='1'>Individual</option>
+							<option value='2'>Grupal</option>
+							<option value='3'>Comunitaria</option>
 						</select>				
 					</div>
 					<div class='clear'></div>
 				</div>
 			
-				<!--div class='form-field-box odd' id="migrantes_field_box">
+				<div class='form-field-box odd' id="migrantes_field_box">
 					<div class='form-display-as-box' id="migrantes_display_as_box">
 						Migrantes :
 					</div>
 					<div class='form-input-box' id="migrantes_input_box">
-						<select id='field-migrantes' name='migrantes[]' multiple='multiple' size='8' class='chosen-multiple-select' data-placeholder='Seleccionar Migrantes' style='width:510px;' >
-							<option value='183'>Abel Chavez Villa</option><option value='72'>Adali Alvarez Flores</option><option value='212'>Adrián García de la Rosa</option><option value='154'>Alejandro Adrián Díaz Quiroz</option><option value='133'>Alex David</option><option value='130'>ALM</option><option value='41'>Álvaro Julián Ochoa Vera</option><option value='129'>Anderson</option><option value='144'>Anderson 2</option><option value='62'>Andrés Romero Alas </option><option value='63'>Andrés Ruiz Mendoza</option><option value='76'>Ángel Rubén Rodríguez González</option><option value='44'>Aniceto Damián</option><option value='196'>Anónimo</option><option value='209'>Anónimo</option><option value='68'>Anonio Canalaes Cabrera</option><option value='22'>Anselmo Calyn Apen</option><option value='43'>Antonio Esteban Sánchez</option><option value='9'>Apolinar Pacheco Reyes</option><option value='135'>Apoloni</option><option value='38'>Armando Hernandez</option><option value='136'>Bairo</option><option value='138'>Bairo Jesús Guevara</option><option value='73'>Cándido Flores  Lorenzo</option><option value='88'>Carlos Antonio Rosales Rosales</option><option value='56'>Carlos Emilio Flores Marte </option><option value='55'>Carlos Humberto Posadas</option><option value='53'>Carlos Márquez</option><option value='198'>Carlos Martínez</option><option value='110'>Carlos Martinez Gonzalez</option><option value='107'>Carlos Morales</option><option value='12'>Carlos Salgado Valdez </option><option value='117'>Cecilia Mones</option><option value='123'>Celvin Antonio</option><option value='124'>Cipriano Rodríguez González</option><option value='37'>Claudia Perez</option><option value='47'>Cristián Goel Meléndez Rivas</option><option value='119'>Damián Pacheco</option><option value='29'>Darwin Canales López</option><option value='193'>David Barrera Álvarez</option><option value='74'>Delvin Arain Hernandez Redondo </option><option value='145'>Denis Roberto Vázquez</option><option value='34'>Elder Díaz</option><option value='184'>Elias Madris Silva</option><option value='35'>Elvin Emilio Vázquez</option><option value='146'>Emilio Vázquez</option><option value='194'>Eric García Aguilar</option><option value='208'>Erik Fernando Salas</option><option value='66'>Erminio Cartagena Hernandez</option><option value='16'>Ever Casco </option><option value='173'>Exel Arnulfo Teque Pivaral</option><option value='126'>Fausto Vidal L.</option><option value='211'>Félix Fernández</option><option value='167'>Florentino Oliva Santiago</option><option value='58'>Fraklin Alexander </option><option value='195'>Francisco Alfredo Hernández Chávez</option><option value='116'>Francisco Javier Martínez</option><option value='147'>Francisco Javier Martínez</option><option value='31'>Franco Eduardo López Domínguez</option><option value='30'>Franklin Ezequiel Alvarado</option><option value='165'>Gabriela Ortega Téllez</option><option value='155'>Gandhi Raúl Cano Cano</option><option value='170'>Gerardo Guzmán Burgos</option><option value='201'>Gladis Cruz</option><option value='52'>Gregorio Gómez Hernández</option><option value='8'>Guillermo</option><option value='42'>Guillermo Gómez Vásques</option><option value='33'>Gustavo Adolfo Molina</option><option value='164'>Horacio Mendoza Torres</option><option value='186'>Ignacio Hernández Hernández</option><option value='169'>iveth diaz hernandez</option><option value='200'>Javier Torres</option><option value='137'>Jesús Ernesto</option><option value='168'>Jesús Gutiérrez Martínez</option><option value='187'>Jibran Felix Pazos</option><option value='25'>Joel Barragán Mendoza</option><option value='148'>Johan Manzanares</option><option value='1'>Jonatan Morales</option><option value='174'>Jorge Antonio</option><option value='175'>Jorge Cadena</option><option value='141'>Jorge Rolando Vargas Cantarero</option><option value='134'>Jorge Vargas</option><option value='181'>José Guadalupe Jiménez Juárez</option><option value='28'>José Guadalupe Ramírez López</option><option value='84'>Jose Hernan Cardenas Rios</option><option value='4'>José Hernández Velázquez</option><option value='60'>José Luis </option><option value='75'>Jose Luis Flores Flores</option><option value='26'>José Luís Herrera Herrera</option><option value='207'>José Ramón Pérez Gómez</option><option value='14'>José Vega </option><option value='120'>José Vega</option><option value='159'>Josue Raul Hernandez Morales</option><option value='188'>Jovany Carrera Hernández</option><option value='23'>Juan Armando Mendez Gonzalez</option><option value='2'>Juan Manuel González Sánchez</option><option value='114'>Juan Manuel Luevano Dávila</option><option value='103'>Juan Manuel Orozco Romero </option><option value='108'>Juan Pablo Castellano Marin</option><option value='24'>Juan Ramírez Martínez</option><option value='82'>Juvencio Hernandez Lopez </option><option value='7'>Kader Orellana Flores</option><option value='40'>Kevin  Argueta </option><option value='13'>Kevin Usiel Pèrez Rodríguez</option><option value='61'>Leonardo García Paz</option><option value='39'>Leoncio Martínez</option><option value='59'>Lilia</option><option value='192'>Luciana Calvo </option><option value='140'>Lucio Castillo</option><option value='158'>Luis Alonso Quintanilla</option><option value='128'>Luis Daniel</option><option value='199'>Ma. Magdalena Díaz Verdugo</option><option value='49'>Manuel de Jesús Hernández</option><option value='204'>Manuel Gubera</option><option value='203'>Manuel Zuniga Mendoza</option><option value='51'>Marco Antonio Morales Río </option><option value='106'>Marcos Rodríguez Oliva</option><option value='157'>Maria Melina </option><option value='160'>María Melina Beltran Victoriano</option><option value='132'>Maricela Silverio Mendoza</option><option value='131'>Marina Arcos</option><option value='180'>Mario Moreno</option><option value='213'>Marvin Antonio Cárdenas Candia</option><option value='46'>Melesio Morán Peña</option><option value='87'>Melvin Geovany Elvir Vega</option><option value='121'>Melvin Waldemar Meza del Cid</option><option value='185'>Miguel</option><option value='11'>Miguel ángel </option><option value='197'>Miguel Angel Diaz Lira</option><option value='21'>Moisés Rivera Rodríguez</option><option value='101'>Moises Rivera Rodriguez</option><option value='191'>Nancy Carolina Galindo Martínez</option><option value='118'>Natividad de Jesús</option><option value='206'>Nelson Ecarro</option><option value='100'>Nelson Enrique Martínez Peralta</option><option value='83'>Nery Ramirez Cardona</option><option value='70'>Nestor Velazquez Ramirez</option><option value='156'>Nicolas Morales Ambrosio</option><option value='142'>Noe Cante Saint</option><option value='27'>Noé Cante Sanit</option><option value='122'>Oscar Armando Benítez</option><option value='152'>Oscar Gael Coronel Morales</option><option value='163'>Oswaldo Ríos Martínez</option><option value='149'>Ovidio Marín </option><option value='85'>Pascual Tomas Arredondo</option><option value='86'>Pascual Tomas Hernandez</option><option value='202'>Pedro Ruiz Rivera</option><option value='109'>Perfecto Cristobal Perez Gonzalez</option><option value='17'>Rafael Mada Lastra </option><option value='115'>Ramón Ramírez Romero</option><option value='45'>Renato Ramírez</option><option value='179'>René Javier Cruz</option><option value='171'>Reyna José Miguel</option><option value='3'>Ricardo Martínez</option><option value='162'>Rigoberto Palafox</option><option value='176'>Roberto Quintero Chávez</option><option value='210'>Rolando Frías</option><option value='151'>Rosa Maria Velez Amaro</option><option value='69'>Rubén Quiñonez Villarreal</option><option value='172'>Sergio Lucio</option><option value='178'>Sergio Manuel Ramirez Gutierrez</option><option value='150'>Simón Costrero Barrán</option><option value='161'>Tomás Eugenio Torres Hernández</option><option value='20'>Toribio Jesús López</option><option value='18'>Toribio Velázquez Santos </option><option value='205'>Víctor</option><option value='112'>Wilbert</option><option value='127'>Wilbert Madrid</option><option value='19'>Wilmer Alexis Montoya </option><option value='32'>Yeims James</option><option value='15'>Zaul Rivas </option>
+						<select id='field-migrantes' name='migrantes[]'  ng-model='migrantes' multiple='multiple' size='8' 
+								class='chosen-multiple-select' data-placeholder='Seleccionar Migrantes' style='width:510px;' >
+							<!--option value=''></option><option value='1'>Abel Chavez Villa</option><option value='72'>Adali Alvarez Flores</option><option value='212'>Adrián García de la Rosa</option><option value='154'>Alejandro Adrián Díaz Quiroz</option><option value='133'>Alex David</option><option value='130'>ALM</option><option value='41'>Álvaro Julián Ochoa Vera</option><option value='129'>Anderson</option><option value='144'>Anderson 2</option><option value='62'>Andrés Romero Alas </option><option value='63'>Andrés Ruiz Mendoza</option><option value='76'>Ángel Rubén Rodríguez González</option><option value='44'>Aniceto Damián</option><option value='196'>Anónimo</option><option value='209'>Anónimo</option><option value='68'>Anonio Canalaes Cabrera</option><option value='22'>Anselmo Calyn Apen</option><option value='43'>Antonio Esteban Sánchez</option><option value='9'>Apolinar Pacheco Reyes</option><option value='135'>Apoloni</option><option value='38'>Armando Hernandez</option><option value='136'>Bairo</option><option value='138'>Bairo Jesús Guevara</option><option value='73'>Cándido Flores  Lorenzo</option><option value='88'>Carlos Antonio Rosales Rosales</option><option value='56'>Carlos Emilio Flores Marte </option><option value='55'>Carlos Humberto Posadas</option><option value='53'>Carlos Márquez</option><option value='198'>Carlos Martínez</option><option value='110'>Carlos Martinez Gonzalez</option><option value='107'>Carlos Morales</option><option value='12'>Carlos Salgado Valdez </option><option value='117'>Cecilia Mones</option><option value='123'>Celvin Antonio</option><option value='124'>Cipriano Rodríguez González</option><option value='37'>Claudia Perez</option><option value='47'>Cristián Goel Meléndez Rivas</option><option value='119'>Damián Pacheco</option><option value='29'>Darwin Canales López</option><option value='193'>David Barrera Álvarez</option><option value='74'>Delvin Arain Hernandez Redondo </option><option value='145'>Denis Roberto Vázquez</option><option value='34'>Elder Díaz</option><option value='184'>Elias Madris Silva</option><option value='35'>Elvin Emilio Vázquez</option><option value='146'>Emilio Vázquez</option><option value='194'>Eric García Aguilar</option><option value='208'>Erik Fernando Salas</option><option value='66'>Erminio Cartagena Hernandez</option><option value='16'>Ever Casco </option><option value='173'>Exel Arnulfo Teque Pivaral</option><option value='126'>Fausto Vidal L.</option><option value='211'>Félix Fernández</option><option value='167'>Florentino Oliva Santiago</option><option value='58'>Fraklin Alexander </option><option value='195'>Francisco Alfredo Hernández Chávez</option><option value='116'>Francisco Javier Martínez</option><option value='147'>Francisco Javier Martínez</option><option value='31'>Franco Eduardo López Domínguez</option><option value='30'>Franklin Ezequiel Alvarado</option><option value='165'>Gabriela Ortega Téllez</option><option value='155'>Gandhi Raúl Cano Cano</option><option value='170'>Gerardo Guzmán Burgos</option><option value='201'>Gladis Cruz</option><option value='52'>Gregorio Gómez Hernández</option><option value='8'>Guillermo</option><option value='42'>Guillermo Gómez Vásques</option><option value='33'>Gustavo Adolfo Molina</option><option value='164'>Horacio Mendoza Torres</option><option value='186'>Ignacio Hernández Hernández</option><option value='169'>iveth diaz hernandez</option><option value='200'>Javier Torres</option><option value='137'>Jesús Ernesto</option><option value='168'>Jesús Gutiérrez Martínez</option><option value='187'>Jibran Felix Pazos</option><option value='25'>Joel Barragán Mendoza</option><option value='148'>Johan Manzanares</option><option value='1'>Jonatan Morales</option><option value='174'>Jorge Antonio</option><option value='175'>Jorge Cadena</option><option value='141'>Jorge Rolando Vargas Cantarero</option><option value='134'>Jorge Vargas</option><option value='181'>José Guadalupe Jiménez Juárez</option><option value='28'>José Guadalupe Ramírez López</option><option value='84'>Jose Hernan Cardenas Rios</option><option value='4'>José Hernández Velázquez</option><option value='60'>José Luis </option><option value='75'>Jose Luis Flores Flores</option><option value='26'>José Luís Herrera Herrera</option><option value='207'>José Ramón Pérez Gómez</option><option value='14'>José Vega </option><option value='120'>José Vega</option><option value='159'>Josue Raul Hernandez Morales</option><option value='188'>Jovany Carrera Hernández</option><option value='23'>Juan Armando Mendez Gonzalez</option><option value='2'>Juan Manuel González Sánchez</option><option value='114'>Juan Manuel Luevano Dávila</option><option value='103'>Juan Manuel Orozco Romero </option><option value='108'>Juan Pablo Castellano Marin</option><option value='24'>Juan Ramírez Martínez</option><option value='82'>Juvencio Hernandez Lopez </option><option value='7'>Kader Orellana Flores</option><option value='40'>Kevin  Argueta </option><option value='13'>Kevin Usiel Pèrez Rodríguez</option><option value='61'>Leonardo García Paz</option><option value='39'>Leoncio Martínez</option><option value='59'>Lilia</option><option value='192'>Luciana Calvo </option><option value='140'>Lucio Castillo</option><option value='158'>Luis Alonso Quintanilla</option><option value='128'>Luis Daniel</option><option value='199'>Ma. Magdalena Díaz Verdugo</option><option value='49'>Manuel de Jesús Hernández</option><option value='204'>Manuel Gubera</option><option value='203'>Manuel Zuniga Mendoza</option><option value='51'>Marco Antonio Morales Río </option><option value='106'>Marcos Rodríguez Oliva</option><option value='157'>Maria Melina </option><option value='160'>María Melina Beltran Victoriano</option><option value='132'>Maricela Silverio Mendoza</option><option value='131'>Marina Arcos</option><option value='180'>Mario Moreno</option><option value='213'>Marvin Antonio Cárdenas Candia</option><option value='46'>Melesio Morán Peña</option><option value='87'>Melvin Geovany Elvir Vega</option><option value='121'>Melvin Waldemar Meza del Cid</option><option value='185'>Miguel</option><option value='11'>Miguel ángel </option><option value='197'>Miguel Angel Diaz Lira</option><option value='21'>Moisés Rivera Rodríguez</option><option value='101'>Moises Rivera Rodriguez</option><option value='191'>Nancy Carolina Galindo Martínez</option><option value='118'>Natividad de Jesús</option><option value='206'>Nelson Ecarro</option><option value='100'>Nelson Enrique Martínez Peralta</option><option value='83'>Nery Ramirez Cardona</option><option value='70'>Nestor Velazquez Ramirez</option><option value='156'>Nicolas Morales Ambrosio</option><option value='142'>Noe Cante Saint</option><option value='27'>Noé Cante Sanit</option><option value='122'>Oscar Armando Benítez</option><option value='152'>Oscar Gael Coronel Morales</option><option value='163'>Oswaldo Ríos Martínez</option><option value='149'>Ovidio Marín </option><option value='85'>Pascual Tomas Arredondo</option><option value='86'>Pascual Tomas Hernandez</option><option value='202'>Pedro Ruiz Rivera</option><option value='109'>Perfecto Cristobal Perez Gonzalez</option><option value='17'>Rafael Mada Lastra </option><option value='115'>Ramón Ramírez Romero</option><option value='45'>Renato Ramírez</option><option value='179'>René Javier Cruz</option><option value='171'>Reyna José Miguel</option><option value='3'>Ricardo Martínez</option><option value='162'>Rigoberto Palafox</option><option value='176'>Roberto Quintero Chávez</option><option value='210'>Rolando Frías</option><option value='151'>Rosa Maria Velez Amaro</option><option value='69'>Rubén Quiñonez Villarreal</option><option value='172'>Sergio Lucio</option><option value='178'>Sergio Manuel Ramirez Gutierrez</option><option value='150'>Simón Costrero Barrán</option><option value='161'>Tomás Eugenio Torres Hernández</option><option value='20'>Toribio Jesús López</option><option value='18'>Toribio Velázquez Santos </option><option value='205'>Víctor</option><option value='112'>Wilbert</option><option value='127'>Wilbert Madrid</option><option value='19'>Wilmer Alexis Montoya </option><option value='32'>Yeims James</option><option value='15'>Zaul Rivas </option-->
 						</select>				
 					</div>
 					<div class='clear'></div>
+				</div>
+
+				<!--div class='form-field-box odd' id="paquete_pago_field_box">
+					<div class='form-display-as-box' id="paquete_pago_display_as_box">
+						Que incluía el pago :
+					</div>
+					<div class='form-input-box' id="paquete_pago_input_box">
+						<select id='field-paquete_pago' name='paquete_pago[]' ng-model='paquete_pago' multiple='multiple' size='8' 
+								class='chosen-multiple-select' data-placeholder='Seleccionar que incluía el pago' style='width:510px;' >
+							<option value=''></option>
+							<option value='1'>Hospedaje</option>
+							<option value='2'>Transporte</option>
+							<option value='3'>Alimentación</option>
+							<option value='4'>Pago de cuotas a la mafia</option>
+							<option value='5'>No especificó</option>
+							<option value='6'>Sólo cruce</option>
+							<option value='7'>Cruce</option>
+						</select>				
+					</div>
 				</div-->
 
 				<div class='form-field-box even' id="intentos_field_box">
@@ -687,7 +773,7 @@ strong { font-size:16px; }
 					</div>
 					<div class='form-input-box' id="autoridades_viaje_input_box">
 						<select id='field-autoridades_viaje' name='autoridades_viaje[]' ng-model='autoridades_viaje' multiple='multiple' size='8' class='chosen-multiple-select' data-placeholder='Seleccionar Durante el viaje con que autoridades te encontraste' style='width:510px;' >
-							<option value='0'></option>
+							<option value=''></option>
 							<option value='1'>Patrulla Fronteriza</option>
 							<option value='2'>Policía</option>
 							<option value='3'>Grupo Beta</option>
@@ -862,7 +948,14 @@ strong { font-size:16px; }
 					</div>
 					<div class='form-input-box' id="espacio_fisico_injusticia_homologada_input_box">
 						<select id='field-espacio_fisico_injusticia_homologada' name='espacio_fisico_injusticia_homologada' ng-model='espacio_fisico_injusticia_homologada' class='chosen-select' data-placeholder='Seleccionar Espacio físico de la injusticia (Categoría)'>
-							<option value=''  ></option><option value='1'  >A bordo del propio transporte</option><option value='2'  >Afuera de la terminal de transporte</option><option value='3'  >Cerca de oficina de gobierno</option><option value='4'  >Domicilio</option><option value='5'  >Oficinas de gobierno</option><option value='6'  >Retén</option><option value='7'  >Vía pública</option><option value='8'  >Otro</option>
+							<option value=''  ></option>
+							<option value='1'  >A bordo del propio transporte</option>
+							<option value='2'  >Afuera de la terminal de transporte</option>
+							<option value='3'  >Cerca de oficina de gobierno</option>
+							<option value='4'  >Domicilio</option><option value='5'  >Oficinas de gobierno</option>
+							<option value='6'  >Retén</option>
+							<option value='7'  >Vía pública</option>
+							<option value='8'  >Otro</option>
 						</select>				
 					</div>
 					<div class='clear'></div>
@@ -877,11 +970,19 @@ strong { font-size:16px; }
 					<div class='form-input-box' id="id_transporte_viaje_injusticia_input_box">
 						<select id='field-id_transporte_viaje_injusticia'  name='id_transporte_viaje_injusticia' ng-model='id_transporte_viaje_injusticia' class='chosen-select' data-placeholder='Seleccionar En que viajaba' style='width:300px'>
 							<option value=''></option>
-							<option value='10'  >A pie</option>
 							<option value='1'  >Autobús de la Central</option>
 							<option value='2'  >Autobús de turismo</option>
+							<option value='3'  >Taxi</option>
+							<option value='4'  >Tren</option>
+							<option value='5'  >Camion</option>
+							<option value='6'  >Otro</option>
+							<option value='7'  >Vehículos oficiales</option>
+							<option value='8'  >Vehículos particulares</option>
+							<option value='9'  >Patrulla</option>
+							<option value='10'  >A pie</option>
+							<option value='11'  >Particulares</option>
+							<option value='12'  >Combi</option>
 							<option value='13'  >Bicicleta</option>
-							<option value='5'  >Camion</option><option value='12'  >Combi</option><option value='6'  >Otro</option><option value='11'  >Particulares</option><option value='9'  >Patrulla</option><option value='3'  >Taxi</option><option value='4'  >Tren</option><option value='7'  >Vehículos oficiales</option><option value='8'  >Vehículos particulares</option>
 						</select>				
 					</div>
 					<div class='clear'></div>
@@ -900,7 +1001,15 @@ strong { font-size:16px; }
 					</div>
 					<div class='form-input-box' id="detonante_injusticia_homologada_input_box">
 						<select id='field-detonante_injusticia_homologada' name='detonante_injusticia_homologada' ng-model='detonante_injusticia_homologada' class='chosen-select' data-placeholder='Seleccionar Situación que detona la injusticia (Categoría)'>
-							<option value=''  ></option><option value='1'  >Atención a migrantes</option><option value='2'  >Detectaron su aspecto de migrante</option><option value='3'  >Falta administrativa</option><option value='4'  >Falta de documentos</option><option value='5'  >Intentar viajar</option><option value='8'  >Revisión</option>
+							<option value=''  ></option>
+							<option value='1'  >Atención a migrantes</option>
+							<option value='2'  >Detectaron su aspecto de migrante</option>
+							<option value='3'  >Falta administrativa</option>
+							<option value='4'  >Falta de documentos</option>
+							<option value='5'  >Intentar viajar</option>
+							<option value=''  ></option>
+							<option value=''  ></option>
+							<option value='8'  >Revisión</option>
 						</select>				
 					</div>
 					<div class='clear'></div>
@@ -943,7 +1052,26 @@ strong { font-size:16px; }
 					</div>
 					<div class='form-input-box' id="autoridades_responables_input_box">
 						<select id='field-autoridades_responables' name='autoridades_responables[]' ng-model='autoridades_responables' multiple='multiple' size='8' class='chosen-multiple-select' data-placeholder='Seleccionar Nombre de las instituciones involucradas' style='width:510px;' >
-							<option value='4'>Agente del instituto nacional de migración</option><option value='5'>El Ejército</option><option value='3'>Grupo Beta</option><option value='6'>Marina</option><option value='7'>Migración</option><option value='19'>Ministerio Público Federal</option><option value='10'>Otro actor / Coyote</option><option value='11'>Otro actor / Mafia</option><option value='16'>Otro actor/ taxista</option><option value='1'>Patrulla Fronteriza</option><option value='18'>PGR</option><option value='2'>Policía</option><option value='13'>Policía Estatal de Seguridad</option><option value='14'>Policía Estatal Investigadora</option><option value='8'>Policía Federal</option><option value='9'>Policía Preventiva y Transito Municipal</option><option value='17'>Policia Turística</option>
+							<option value=""></option>
+							<option value='1'>Patrulla Fronteriza</option>
+							<option value='2'>Policía</option>
+							<option value='3'>Grupo Beta</option>
+							<option value='4'>Agente del instituto nacional de migración</option>
+							<option value='5'>El Ejército</option>
+							<option value='6'>Marina</option>
+							<option value='7'>Migración</option>
+							<option value='8'>Policía Federal</option>
+							<option value='9'>Policía Preventiva y Transito Municipal</option>
+							<option value='10'>Otro actor / Coyote</option>
+							<option value='11'>Otro actor / Mafia</option>
+							<option value=""></option>
+							<option value='13'>Policía Estatal de Seguridad</option>
+							<option value='14'>Policía Estatal Investigadora</option>
+							<option value=""></option>
+							<option value='16'>Otro actor/ taxista</option>
+							<option value='17'>Policia Turística</option>
+							<option value='18'>PGR</option>
+							<option value='19'>Ministerio Público Federal</option>
 						</select>				
 					</div>
 					<div class='clear'></div>
@@ -1112,7 +1240,13 @@ strong { font-size:16px; }
 					</div>
 					<div class='form-input-box' id="derechos_violados_input_box">
 						<select id='field-derechos_violados' name='derechos_violados[]' ng-model='derechos_violados' multiple='multiple' size='8' class='chosen-multiple-select' data-placeholder='Seleccionar Derechos violados' style='width:510px;' >
-							<option value='2'>A la Integridad Personal</option><option value='1'>A la Libertad Personal</option><option value='6'>A la Vida</option><option value='3'>Al debido Proceso Legal</option><option value='4'>Al Patrimonio</option><option value='5'>Al Trabajo</option>
+							<option value=''></option>
+							<option value='1'>A la Libertad Personal</option>
+							<option value='2'>A la Integridad Personal</option>
+							<option value='3'>Al debido Proceso Legal</option>
+							<option value='4'>Al Patrimonio</option>
+							<option value='5'>Al Trabajo</option>
+							<option value='6'>A la Vida</option>
 						</select>				</div>
 						<div class='clear'></div>
 				</div>
@@ -1122,7 +1256,38 @@ strong { font-size:16px; }
 						Violaciones derechos :
 					</div>
 					<div class='form-input-box' id="violaciones_derechos_input_box">
-						<select id='field-violaciones_derechos' name='violaciones_derechos[]' ng-model='violaciones_derechos' multiple='multiple' size='8' class='chosen-multiple-select' data-placeholder='Seleccionar Violaciones derechos' style='width:510px;' ><option value='11'>Amenazas</option><option value='19'>Daños</option><option value='12'>Desaparición forzada</option><option value='21'>Despido injustificado</option><option value='1'>Detención ilegal y/o arbitraria</option><option value='26'>Ejecución extrajudicial</option><option value='20'>Extorsión</option><option value='24'>Falta de equipamiento</option><option value='23'>Falta de herramientas técnicas</option><option value='27'>Falta de investigación a casos de abuso</option><option value='7'>Falta de protección consular</option><option value='8'>Falta de seguimiento a casos de abusos</option><option value='6'>Falta de una defensa adecuada</option><option value='13'>Incomunicación</option><option value='17'>Multa excesiva</option><option value='16'>Multa indebida</option><option value='2'>Omisión de poner inmediatamente a disposición de la autoridad competente a la persona</option><option value='5'>Restricción al libre tránsito</option><option value='22'>Riesgo de trabajo</option><option value='18'>Robo</option><option value='25'>Salario digno, justo y equitativo</option><option value='14'>Secuestro</option><option value='9'>Tortura</option><option value='15'>Trata de personas</option><option value='28'>Trato discriminatorio</option><option value='10'>Tratos crueles Inhumanos y degradantes</option></select>				</div>
+						<select id='field-violaciones_derechos' name='violaciones_derechos[]' ng-model='violaciones_derechos' multiple='multiple' size='8' class='chosen-multiple-select' data-placeholder='Seleccionar Violaciones derechos' style='width:510px;' >
+							<option value=''></option>
+							<option value='1'>Detención ilegal y/o arbitraria</option>
+							<option value='2'>Omisión de poner inmediatamente a disposición de la autoridad competente a la persona</option>
+							<option value=''></option>
+							<option value=''></option>
+							<option value='5'>Restricción al libre tránsito</option>
+							<option value='6'>Falta de una defensa adecuada</option>
+							<option value='7'>Falta de protección consular</option>
+							<option value='8'>Falta de seguimiento a casos de abusos</option>
+							<option value='9'>Tortura</option>
+							<option value='10'>Tratos crueles Inhumanos y degradantes</option>
+							<option value='11'>Amenazas</option>
+							<option value='12'>Desaparición forzada</option>
+							<option value='13'>Incomunicación</option>
+							<option value='14'>Secuestro</option>
+							<option value='15'>Trata de personas</option>
+							<option value='16'>Multa indebida</option>
+							<option value='17'>Multa excesiva</option>
+							<option value='18'>Robo</option>
+							<option value='19'>Daños</option>
+							<option value='20'>Extorsión</option>
+							<option value='21'>Despido injustificado</option>
+							<option value='22'>Riesgo de trabajo</option>
+							<option value='23'>Falta de herramientas técnicas</option>
+							<option value='24'>Falta de equipamiento</option>
+							<option value='25'>Salario digno, justo y equitativo</option>
+							<option value='26'>Ejecución extrajudicial</option>
+							<option value='27'>Falta de investigación a casos de abuso</option>
+							<option value='28'>Trato discriminatorio</option>
+						</select>				
+					</div>
 					<div class='clear'></div>
 				</div>
 
@@ -1132,7 +1297,11 @@ strong { font-size:16px; }
 					</div>
 					<div class='form-input-box' id="id_estado_caso_input_box">
 						<select id='field-id_estado_caso'  name='id_estado_caso' ng-model='id_estado_caso' class='chosen-select' data-placeholder='Seleccionar Estado actual del caso' style='width:300px'>
-							<option value=''></option><option value='4'  >Cerrado por canalización a una instancia</option><option value='2'  >Cerrado por desistimiento estan en transito</option><option value='3'  >Cerrado por desistimiento por temor a represalias</option><option value='1'  >Trámite</option>
+							<option value=''></option>
+							<option value='1'  >Trámite</option>
+							<option value='2'  >Cerrado por desistimiento estan en transito</option>
+							<option value='3'  >Cerrado por desistimiento por temor a represalias</option>
+							<option value='4'  >Cerrado por canalización a una instancia</option>
 						</select>				
 					</div>
 					<div class='clear'></div>
@@ -1477,6 +1646,7 @@ strong { font-size:16px; }
 					</div>
 					<div class='line-1px'></div>
 					<!-- Start of hidden inputs -->
+					<input id="field-folio" type="hidden" name="folio" value="">			
 					<div id='report-error' class='report-div error'></div>
 					<div id='report-success' class='report-div success'></div>
 					<!-- End of hidden inputs -->
@@ -1509,29 +1679,40 @@ strong { font-size:16px; }
 </div>
 
 <script>
-	var validation_url = 'http://ddhh.fundarlabs.org.mx/admin/migrantes/insert_validation';
-	var list_url = 'http://ddhh.fundarlabs.org.mx/admin/migrantes';
-
-	var message_alert_add_form = "Los datos que intentas añadir no se han guardado.\nEstas seguro que quieres volver a la lista?";
-	var message_insert_error = "Ocurrio un error al añadir.";
-
-	
-
-	var default_javascript_path = 'http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js';
-	var default_css_path = 'http://ddhh.fundarlabs.org.mx/assets/grocery_crud/css';
-	var default_texteditor_path = 'http://ddhh.fundarlabs.org.mx/assets/grocery_crud/texteditor';
 	var default_theme_path = 'http://ddhh.fundarlabs.org.mx/assets/grocery_crud/themes';
 	var base_url = 'http://ddhh.fundarlabs.org.mx/';
 
-	function confirmacion(url) {addReport-step1
-		if(confirm('¿Esta segura/o que desea salir (verifique que ha guardado la información)?')) {
-			document.location = url;
-		} else {
-			return false;
-		}
-	}
-		
+	
 	$(document).ready( function () {
+		// obtener datos de un formulario como json
+		$.fn.serializeObject = function() {
+		   var o = {};
+		   var a = this.serializeArray();
+		   $.each(a, function() {
+		       if (o[this.name]) {
+		           if (!o[this.name].push) {
+		               o[this.name] = [o[this.name]];
+		           }
+		           o[this.name].push(this.value || '');
+		       } else {
+		           o[this.name] = this.value || '';
+		       }
+		   });
+		   return o;
+		};
+
+		// convertir un decimal a otra base
+		function toRadix(N,radix) {
+		 var HexN="", Q=Math.floor(Math.abs(N)), R;
+		 while (true) {
+		  R=Q%radix;
+		  HexN = "0123456789abcdefghijklmnopqrstuvwxyz".charAt(R)
+		       + HexN;
+		  Q=(Q-R)/radix; 
+		  if (Q==0) break;
+		 }
+		 return ((N<0) ? "-"+HexN : HexN);
+		}
 
 		$("#addReport-step1").on("submit", function(e){
 			e.preventDefault();
@@ -1540,73 +1721,103 @@ strong { font-size:16px; }
 			  , data = that.serialize()
 			  , url = that.attr("action");
 
+			  //scope.clear_all();  /*
 		  	$.post(url, data, function(res){
 				//proceso para guardar 
-				var res = JSON.parse(res)
+				try { // fallara si no esta logueado
+					var res = JSON.parse(res)
+			  		if(res.status){
+						$(this).children(".small-loading").css("display","block");
+						$(this).children(".small-loading").css("display","none");
+						var msg = ' <p> El registro del migrante fue correctamente agregado. \
+								    ¿Quiéres agregar otro migrante o los datos de la denuncia ?</p>';
 
-		  		if(res.status){
-					$(this).children(".small-loading").css("display","block");
-					$(this).children(".small-loading").css("display","none");
-					var msg = ' <p> El registro del migrante fue correctamente agregado. \
-							    ¿Quiéres agregar otro migrante o los datos de la denuncia ?</p>';
+					  	var dialog = $(msg).dialog({
+			        		buttons: {
+					            "Agregar otro migrante": function() {
+					            	that[0].reset() // limpia input text
+					            	scope.clear_migrante(); // limpia el localstorage de migrante
+					            	that.children('select').each(function(){
+					            		$(this).val('').trigger('chosen:updated')
+					            	});
+					        		 	window.location.reload();
+					            },
+					            "Capturar datos de la denuncia ":  function() {
+					            	that.toggle( "slide", function(){
+					            		that[0].reset()
+					            		$("#addReport-step2").toggle( "slide" )
+					            	})
+					            	dialog.dialog('close');
+					            }
+					          }
+				      	});
+				      	scope.add_migrante(res.data)
+					  	console.log(res.data)
+			      	}else{
+			  			alert("No se pudo insertar el Registro del Migrante, verifique los campos")
+			  		}
+				} catch(e) {
+				    window.location.reload();
+				}
 
-				  	var dialog = $(msg).dialog({
-		        		buttons: {
-				            "Agregar otro migrante": function() {
-				            	that[0].reset() // limpia input text
-				            	scope.clear_migrante(); // limpia el localstorage de migrante
-				            	that.children('select').each(function(){
-				            		$(this).val('').trigger('chosen:updated')
-				            	});
-				        		 	window.location.reload();
-				            },
-				            "Capturar datos de la denuncia ":  function() {
-				            	that.toggle( "slide", function(){
-				            		that[0].reset()
-				            		$("#addReport-step2").toggle( "slide" )
-				            	})
-				            	dialog.dialog('close');
-				            }
-				          }
-			      	});
-
-			      	scope.add_migrante(res.id)
-		      	}else{
-		  			alert("No se pudo insertar el registro, verifique los cambios")
-		  		}
 
 			})
 		})
+
 		
 		$("#addReport-step2").on("submit", function(e){
-			var that = $(this)
 			e.preventDefault();
-			var data = $(this).serialize();
+			var that = $(this)
+			  , scope = angular.element(that).scope()
+			  , data = $(this).serializeObject()
+			  , url = that.attr("action");
+			
 			$(this).children(".small-loading").css("display","block");
-			setTimeout(function(){ 
-				$(this).children(".small-loading").css("display","none");
-			  var dialog = $('<p> La denuncia ha sido dada de alta exitosamente. ¿Quiéres agregar otra denuncia o volver a Inicio ?</p>').dialog({
-          buttons: {
-            "Agregar otra denuncia": function() {
-            	that[0].reset()
-            	that.toggle( "slide", function(){
-            		$("#addReport-step1").toggle( "slide" )
-            	})
-            	dialog.dialog('close');
-            },
-            "Volver a Inicio ":  function() {
-            	that[0].reset()
-            	that.toggle( "slide", function(){
-            		$("#addReport-step1").toggle( "slide" )
-            	})
-            	alert('Estamos en inicio :)');
+		  	
+		  	$.get('http://jsonip.com', function (res) {
+		  	 	if(res && res.ip ){
+			  	 	ip = parseInt( (res.ip).replace(/\./g, "") );
+			  	 	data.folio = 'DEN-' + Math.floor(Date.now() / 1000) + '-' +  toRadix(ip, 36).toUpperCase() 
+		  	 	}else{
+			  		data.folio = "<?php echo crearFolio('DEN'); ?>"
+		  	 	}
 
-            	dialog.dialog('close');
-            }
-          }
-        });
+		  	 	// fallara si no esta logueado
+		  	 	try {
+			  		send_data()	
+		  	 	} catch(e) {
+				    window.location.reload();
+				}
+    		});
 
-			}, 1500);
+
+			var send_data = function(){
+				//scope.clear_all();
+				/**/
+				$.post(url, data, function(res, error){
+					//proceso para guardar 
+					var res = JSON.parse(res)
+					var that = $("#addReport-step2")
+					if(res.status){
+						var f1 = $("#addReport-step1") // formulario migrante
+			          	var f2 = $("#addReport-step2") // formulario denuncia
+
+			          	f1[0].reset(); // resetea los forms
+			          	f2[0].reset();
+
+			          	angular.element(f1).scope().clear_all(); // limpia el localstorage de migrante
+			          	angular.element(f2).scope().clear_all();
+						that.children(".small-loading").css("display","none");
+						alert("Se inserto correctamente la denuncia, con el folio: " + res.data.folio)
+						window.location.reload();
+			    	}else{
+			    		console.log(res)
+			  			alert("No se pudo insertar la Denuncia, verifique los campos")
+			  		}
+
+				})
+				/**/
+			}
 		})
 
 		$("#go-back-button").on("click", function(e){
@@ -1620,28 +1831,37 @@ strong { font-size:16px; }
 			e.preventDefault();
 			var msg = '<p> Si cancela, se eliminarán todos los datos. ¿Quiéres Cancelar? </p>';
 			var dialog = $(msg).dialog({
-        buttons: {
-          "Si": function() {
-          	var f1 = $("#addReport-step1") // formulario migrante
-          	var f2 = $("#addReport-step2") // formulario denuncia
+	        buttons: {
+	          "Si": function() {
+	          	var f1 = $("#addReport-step1") // formulario migrante
+	          	var f2 = $("#addReport-step2") // formulario denuncia
+	          	var migrantes = angular.element(f1).scope().get_migrantes_data().split(",")
+	          	var ids = []
 
-          	f1[0].reset(); // resetea los forms
-          	f2[0].reset();
+	          	var url = "http://localhost/mddh/index.php/admin/deleteMigrantes";
+	          	
+	          	for(var i in migrantes) ids.push( migrantes[i].split(":")[0] )
+	      		$.post(url, { ids : ids}, function(res, error){
+		          	console.log(res)
+		          	
+		          	f1[0].reset(); // resetea los forms
+		          	f2[0].reset();
+		          	angular.element(f1).scope().clear_all(); // limpia el localstorage de migrante
+		          	angular.element(f2).scope().clear_all(); // limpia el localstorage de denuncia
 
-          	angular.element(f1).scope().clear_all(); // limpia el localstorage de migrante
-          	angular.element(f2).scope().clear_all(); // limpia el localstorage de denuncia
-
-          	$('select').each(function(){ // resetea los selects
-          		$(this).val('').trigger('chosen:updated')
-          	});
-
-      		 	window.location.replace('/');
-          },
-          "No":  function() {
-          	dialog.dialog('close');
-          }
-        }
-      });
+		          	$('select').each(function(){ // resetea los selects
+		          		$(this).val('').trigger('chosen:updated')
+		          	});
+		      		 	
+					window.location.reload();
+					
+	      		})
+	          },
+	          "No":  function() {
+	          	dialog.dialog('close');
+	          }
+	        }
+	      });
 		})
 
 			
@@ -1680,8 +1900,6 @@ strong { font-size:16px; }
 							 ["lugar_contrato_coyote", "monto_coyote", "paquete_pago"] )
 
 
-
-
 		/*Viajaba solo*/
 		$("#con_quien_viaja_field_box").css("margin-left", "50px");
 		$("#con_quien_viaja_field_box").hide();
@@ -1691,8 +1909,6 @@ strong { font-size:16px; }
 		});
 		
 		fields_hs( "viaja_solo", 2, ["con_quien_viaja"] )
-
-
 
 			
 		/*Color uniformome responsables*/
@@ -1709,7 +1925,6 @@ strong { font-size:16px; }
 		
 		fields_hs( "uniformado_responsables", 1, 
 								 ["color_uniforme_responsables", "insignias_responsables"] )
-
 
 
 		

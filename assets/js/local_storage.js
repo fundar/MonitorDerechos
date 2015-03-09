@@ -57,6 +57,8 @@ StorageMethods.prototype.save_of_select= function(topic, sufix){
   });
 }
 
+
+
 StorageMethods.prototype.save_of_multiselect = function(topic){
   var that = this
   that.scope.$watch(topic, function(value){ 
@@ -76,33 +78,65 @@ StorageMethods.prototype.save_of_multiselect = function(topic){
   
   if( that.ls.get(topic) ){ 
     var rtag = "#" + topic + "_input_box"
-      , values = that.ls.get(topic).split(","),  nums = [];
+      , nums = that.ls.get(topic).split(","),  textos = [], values = [];
+    for(var i in nums){
+      var texto = jQuery( rtag + " ul.chzn-results").children("li").eq(nums[i] - 1).text()
+      var value = jQuery( "#field-" + topic + " option[text='" + texto + "']").val()//.split("_").pop()
+      textos.push(texto)
+      values.push(value)
+    }
 
-    for(var i in values){
-      if( !isNaN(parseInt(values[i]).toString()) ){
-        jQuery("#field-" + topic + " option").each(function(index) {
-          if( $(this).val() == values[i] ){ 
-            values[i] = $(this).text(); 
-            return false;
-          }
-        })
-      }
-      jQuery( rtag + " ul.chzn-results li").each(function(index) {
-        if( $(this).text() == values[i] ){ nums.push(++index); return false }
-      })
-    }     
-    
-    console.log(nums, values)
-    
-    //var input = jQuery( rtag + " #field_" + topic + "_chzn a.chzn-single span")
     var ul = jQuery( rtag + " #field_" + topic + "_chzn ul.chzn-choices")
     
     for(var j in nums){
-      var tag = jQuery(rtag + " ul.chzn-results li#field_" + topic + "_chzn_o_" + nums[j]);
-      //input.text( tag.text() )
-      var a = '<li class="search-choice" id="field_' + topic + '_chzn_c_' + nums[j] + '"><span>' + values[j] + '</span><a href="javascript:void(0)" class="search-choice-close" rel="' + nums[j] + '"></a></li>';
-      ul.prepend(a)
+      var li = '<li class="search-choice" id="field_' + topic + '_chzn_c_' + nums[j] + '">' + 
+                '<span>' + textos[j] + '</span>' +  
+                '<a href="javascript:void(0)" class="search-choice-close" rel="' + values[j] + '"></a>' +
+              '</li>';
+      ul.prepend(li)
     }
+  }
+}
+
+StorageMethods.prototype.save_of_multiselect_backup = function(topic){
+  var that = this
+  that.scope.$watch(topic, function(value){ 
+    var rtag = "#" + topic + "_input_box"
+    var ul = jQuery( rtag + " #field_" + topic + "_chzn ul.chzn-choices")
+    if(value){
+      var before = that.ls.get(topic), data = [];
+      ul.children("li.search-choice").each(function(i){ 
+        data.push( jQuery(this).attr("id").split("_c_")[1] )
+      }) 
+
+      var enviado = data.join(",")
+      that.ls.set(topic, enviado)
+      console.log("topic: " + topic + ", valor_enviado: '" + enviado + "', valor_recibido: '" + that.ls.get(topic) + "', valor_anterior:'" + before +"'")
+    } 
+  });
+  
+  if( that.ls.get(topic) ){ 
+    var rtag = "#" + topic + "_input_box"
+      , nums = that.ls.get(topic).split(","),  textos = [], values = [];
+    for(var i in nums){
+      var texto = jQuery( rtag + " ul.chzn-results").children("li").eq(nums[i] - 1).text()
+      var value = jQuery( "#field-" + topic + " option[text='" + texto + "']").val()//.split("_").pop()
+      textos.push(texto)
+      values.push(value)
+    }
+
+    var ul = jQuery( rtag + " #field_" + topic + "_chzn ul.chzn-choices")
+    
+    for(var j in nums){
+      var li = '<li class="search-choice" id="field_' + topic + '_chzn_c_' + nums[j] + '">' + 
+                '<span>' + textos[j] + '</span>' +  
+                '<a href="javascript:void(0)" class="search-choice-close" rel="' + values[j] + '"></a>' +
+              '</li>';
+      ul.prepend(li)
+    }
+
+
+
   }
 }
 
@@ -112,6 +146,27 @@ StorageMethods.prototype.clear_all= function(){
 
 StorageMethods.prototype.clear_theses= function(names, sufix){  
   for(var i in names) this.ls.remove(names[i] + sufix)
+}
+
+StorageMethods.prototype.add_migrantes_to_select = function(){
+  if(this.ls.get("migrantes_data") != null ){
+    var migrantes = this.ls.get("migrantes_data").split(",")
+    var ul = jQuery( "#migrantes_input_box" + " #field_migrantes_chzn ul.chzn-choices")
+    ul.empty();
+
+    for(var i in migrantes){
+      var migrante = migrantes[i].split(":")
+      var li = '<li class="search-choice" id="field_migrantes_chzn_c_' + ul.children("li").length  + '">' + 
+                '<span>' + migrante[1] + '</span>' +  
+                '<a href="javascript:void(0)" rel="' + ul.children("li").length  + '"></a>' +
+                // sin la clase "search-choice-close" no se pueden quitar los elementos seleccionados
+                //'<a href="javascript:void(0)" class="search-choice-close" rel="' + ul.children("li").length  + '"></a>' +
+              '</li>';
+
+      ul.append(li)
+      //jQuery("#field-migrantes").append("<option value='" + migrante[0] + "'>" + migrante[1] + "</option>")
+    }
+  }
 }
 
 app.controller('MigranteCtrl', [
@@ -148,14 +203,24 @@ app.controller('MigranteCtrl', [
       m_storage.clear_all()
     }
 
-    $scope.add_migrante = function(id){
-      if( localStorageService.set("migrantes_ids") ){
-        var ids = localStorageService.get("migrantes_ids") + "," + id;
-        localStorageService.set("migrantes_ids", ids)
+    $scope.add_migrante = function(migrante){
+      /* Crear options con nombres de migrantes de forma persistente */
+      var nuevo = migrante.id + ":" + migrante.nombre
+      if( localStorageService.get("migrantes_data") == null ){
+        localStorageService.set("migrantes_data", nuevo)
       }else{
-        localStorageService.set("migrantes_ids", id)
+        var todos = localStorageService.get("migrantes_data") + "," + nuevo;
+        localStorageService.set("migrantes_data", todos)
       }
-      console.log( localStorageService.get("migrantes_ids") )
+      
+      //actualizar el select de migrantes
+      m_storage.add_migrantes_to_select()
+      jQuery("#field-migrantes").change()
+
+    }
+
+    $scope.get_migrantes_data = function(){
+      return m_storage.ls.get("migrantes_data")
     }
 
     $scope.clear_theses = function(names){
@@ -171,6 +236,7 @@ app.controller('MigranteCtrl', [
     $scope.storageType = 'Local storage';
     if (localStorageService.getStorageType().indexOf('session') >= 0) { $scope.storageType = 'Session storage'; }
     if (!localStorageService.isSupported) { $scope.storageType = 'Cookie'; }
+
 
     //d_storage.clear_all()
     console.log("-------------------------------------")
@@ -199,9 +265,14 @@ app.controller('MigranteCtrl', [
     var topics_of_multiselects = [ 'paquete_pago', 'autoridades_viaje', 'autoridades_responables', 
                                    'derechos_violados', 'violaciones_derechos' ]
 
+    // 'migrantes',                                    
+
     for(var i in topics) d_storage.save_of_input( topics[i] )         
     for(var j in topics_of_selects){ d_storage.save_of_select(topics_of_selects[j], '')}
     for(var j in topics_of_multiselects){ d_storage.save_of_multiselect(topics_of_multiselects[j] )}
+
+    //actualizar el select de migrantes
+    d_storage.add_migrantes_to_select() 
 
     $scope.clear_all = function(){
       d_storage.clear_all()

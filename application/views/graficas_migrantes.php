@@ -90,43 +90,16 @@
 </head>
 
 <body>
-	<!--div>
-		<a onclick="javascript: return confirmacion('<?php echo site_url('admin/migrantes')?>')" href="javascript:void(0)">
-			<?php if($this->uri->segment(2) == "migrantes") { ?><strong>Migrantes</strong><?php } else { ?>Migrantes<?php } ?>
-		</a> |
-		<a onclick="javascript: return confirmacion('<?php echo site_url('admin/denuncias')?>')" href="javascript:void(0)">
-			<?php if($this->uri->segment(2) == "denuncias") { ?><strong>Denuncias</strong><?php } else { ?>Denuncias<?php } ?>
-		</a> |
-
-		<a onclick="javascript: return confirmacion('<?php echo site_url('admin/graficas_migrantes')?>')" href="javascript:void(0)">
-			<?php if($this->uri->segment(2) == "graficas_migrantes") { ?><strong>Gráficas</strong><?php } else { ?>Gráficas<?php } ?>
-		</a> |
+	<div>
+		<a href="<?php echo site_url('admin/migrantes');?>"> Migrantes </a> |
+		<a href="<?php echo site_url('admin/denuncias');?>"> Denuncias </a> |
+		<a href="#"> <strong> Gráficas </strong> </a> |
+		<a href="<?php echo site_url('admin/reporte');?>"> Reporte </a> |
+		<?php if(isset($_SESSION['user_id'])) ?>
+			<a href="<?php echo site_url('admin/logout');?>">Cerrar sesión</a> | 
+		<?php ?>
 		
-		<?php if(isset($_SESSION['user_id'])) { ?>
-			<a onclick="javascript: return confirmacion('<?php echo site_url('admin/logout')?>')" href="javascript:void(0)">Cerrar sesión</a> | 
-		<?php } ?>
-		
-		<span class="link" id="ver-catalogos">Mostrar/Ocultar Catalogos</span>
-		
-		<span id="catalogos" class="hide">
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<a onclick="javascript: return confirmacion('<?php echo site_url('admin/estados')?>')" href="javascript:void(0)">
-				<?php if($this->uri->segment(2) == "estados") { ?><strong>Estados/Departamentos</strong><?php } else { ?>Estados/Departamentos<?php } ?>
-			</a> |
-			<a onclick="javascript: return confirmacion('<?php echo site_url('admin/autoridades')?>')" href="javascript:void(0)">
-				<?php if($this->uri->segment(2) == "autoridades") { ?><strong>Autoridades</strong><?php } else { ?>Autoridades<?php } ?>
-			</a> |
-			<a onclick="javascript: return confirmacion('<?php echo site_url('admin/paises')?>')" href="javascript:void(0)">
-				<?php if($this->uri->segment(2) == "paises") { ?><strong>Paises</strong><?php } else { ?>Paises<?php } ?>
-			</a> |
-			<a onclick="javascript: return confirmacion('<?php echo site_url('admin/estados_casos')?>')" href="javascript:void(0)">
-				<?php if($this->uri->segment(2) == "estados_casos") { ?><strong>Estado de los casos</strong><?php } else { ?>Estado de los casos<?php } ?>
-			</a> |
-			<a onclick="javascript: return confirmacion('<?php echo site_url('admin/transportes')?>')" href="javascript:void(0)">
-				<?php if($this->uri->segment(2) == "transportes") { ?><strong>Transportes</strong><?php } else { ?>Transportes<?php } ?>
-			</a>
-		</span>
-	</div-->
+	</div>
 
 	<div id="cabecera">
 		<h4 class="printable" id="periodo_tit"> De <?php echo $start;?> a <?php echo $end;?> </h4>

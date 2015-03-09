@@ -114,3 +114,6 @@ $autoload['model'] = array();
 
 /* End of file autoload.php */
 /* Location: ./application/config/autoload.php */
+
+$autoload['helper'] = array('asset');
+$autoload['config'] = array('asset');
