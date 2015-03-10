@@ -146,7 +146,10 @@ class Admin extends CI_Controller {
 		$crud->set_relation_n_n('violaciones_derechos', 'violacion_derechos2denuncias', 'violacion_derechos', 'id_denuncia', 'id_violacion', 'nombre');
 		
 		/*Columnas(Vista), campos y campos obligatorios*/
-		$crud->columns('id_denuncia', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes');
+		$crud->columns('folio', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes');
+
+		$crud->callback_column('migrantes',array($this,'_callback_migrante_url'));
+
 		$crud->fields(
 			'nombre_persona_atendio_seguimiento', 'fecha_creada', 'id_lugar_denuncia', 'folio', 'id_tipo_queja', 'migrantes', 'intentos', 'motivo_migracion', 
 			'coyote_guia', 'lugar_contrato_coyote', 'monto_coyote', 'paquete_pago', 'nombre_punto_fronterizo', 'lugar_de_usa', 'viaja_solo', 
@@ -360,6 +363,13 @@ class Admin extends CI_Controller {
 		return true;
 	}
 	
+	public function _callback_migrante_url($value, $row){
+		$this->load->model('migracion_model');
+		$id = $this->migracion_model->getMigrante($value);
+  		return "<a href='" . site_url('admin/migrantes/read/' . $id)."'>$value</a>";
+	}
+
+
 	function denuncia_after_insert($post_array,$primary_key){  
 		if($primary_key){
     		$data = array('status' => true, 'data' => array('id' => $primary_key, 'folio' => $post_array['folio']) );    
@@ -697,6 +707,7 @@ class Admin extends CI_Controller {
 	}
 
 	public function graficas_migrantes(){
+		$user = $this->isUser();
 		$this->load->model('migracion_model');
 		//$this->load->helper('assets');
 

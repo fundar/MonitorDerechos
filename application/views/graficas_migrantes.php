@@ -41,6 +41,24 @@
 			padding: 10px;
 		}
 
+		.menu_graficas li {
+			float:left;
+			list-style: none;
+
+		}
+
+		.menu_graficas li a{
+			font-weight: bold;
+			color:#777;
+			padding: 5px;
+		}
+
+		.menu_graficas li a:hover{
+			background: #eee;
+			color:#000;
+			text-decoration: none;
+		}
+
 		#cabecera, #personalizar{ 
 			display:block;
 			width: 100%;
@@ -122,20 +140,37 @@
 			<input type="submit" class="def_periodo" value="Rango de Fechas">
 		</form>
 
+		<nav>
+			<ul class="menu_graficas">
+				<li>
+					| <a href="#graficar_1_var" style="color:#000"> Crear gráfica de un criterio </a> |
+				</li>
 
-		<form id="graficar" class="non-printable">
-			<h4> Crear gráfica de un criterio </h4>
+				<li>
+					| <a href="#graficar_2_var"> Crear gráfica de dos criterios </a> |
+				</li>
+
+				<li>
+					| <a href="#graficar_derechos"> Crear gráfica de Derechos Violentados en la Denuncia </a> |
+				</li>
+
+				<li>
+					| <a href="#graficar_violaciones_derechos"> Crear gráfica de Violaciones a los Derechos en la Denuncia </a>
+				</li>
+			</ul>
+		</nav>
+
+		<form id="graficar_1_var" class="non-printable graficar">
 			<div class="field">
 				<label> Elige un criterio: </label>
 				<select id="l"></select>
 			</div>
+			<br>
 
 			<input type="submit" value="Graficar">
 		</form>
 
-
-		<form id="graficar_2_var" class="non-printable">
-			<h4> Crear gráfica de dos criterios </h4>
+		<form id="graficar_2_var" class="non-printable graficar" style="display:none;">
 			<div class="field">
 				<label> Elige el primer criterio: </label>
 				<select id="l1"></select>
@@ -144,12 +179,11 @@
 				<label> Elige el segundo criterio: </label>
 				<select id="l2"></select>
 			</div>
-
+			<br>
 			<input type="submit" value="Graficar">
 		</form>
 
-		<form id="graficar_derechos" class="non-printable">
-			<h4> Crear gráfica de Derechos Violentados en la Denuncia </h4>
+		<form id="graficar_derechos" class="non-printable graficar" style="display:none;">
 			<div class="field">
 				<label> Elige el Derecho: </label>
 				<select id="l3"> </select>
@@ -159,11 +193,11 @@
 				<select id="l4"></select>
 			</div>
 
+			<br>
 			<input type="submit" value="Graficar">
 		</form>
 		
-		<form id="graficar_violaciones_derechos" class="non-printable">
-			<h4> Crear gráfica de Violaciones a los Derechos en la Denuncia </h4>
+		<form id="graficar_violaciones_derechos" class="non-printable graficar" style="display:none;">
 			<div class="field">
 				<label> Elige el tipo de Violación a los Derechos: </label>
 				<select id="l5"> </select>
@@ -172,7 +206,7 @@
 				<label> Elige el segundo criterio: </label>
 				<select id="l6"></select>
 			</div>
-
+			<br> <br>
 			<input type="submit" value="Graficar">
 		</form>
 	</div>
@@ -219,7 +253,18 @@
 		graficar_por_subtema(denuncias, "violaciones_derechos", violaciones_derechos[0], "autoridad")
 		
 
-		$("#graficar").on("submit", function(){
+		$(".menu_graficas li a").on("click", function(){
+			var ref = $(this).attr("href")
+
+			$(".menu_graficas li a").css("color", "#777")
+			$(this).css("color", "#000")
+
+			$(".graficar").css("display", "none")
+			$(".graficar" + ref).css("display", "block")
+			return false;
+		})
+
+		$("#graficar_1_var").on("submit", function(){
 			var l = $("#l").val();
 			graficar(l, histograma_denuncias[l], tags_denuncias[l])
 			return false;
