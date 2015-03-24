@@ -145,11 +145,26 @@ class Admin extends CI_Controller {
 		/*Violaciones a derechos*/
 		$crud->set_relation_n_n('violaciones_derechos', 'violacion_derechos2denuncias', 'violacion_derechos', 'id_denuncia', 'id_violacion', 'nombre');
 		
-		/*Columnas(Vista), campos y campos obligatorios*/
-		$crud->columns('folio', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes');
+		/* Columnas en la Vista */ 
+		//$crud->columns('folio', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes');
+		$crud->columns(
+			'nombre_persona_atendio_seguimiento', 'fecha_creada', 'id_lugar_denuncia', 'folio', 'id_tipo_queja', 'migrantes', 'intentos', 'motivo_migracion', 
+			'coyote_guia', 'lugar_contrato_coyote', 'monto_coyote', 'paquete_pago', 'nombre_punto_fronterizo', 'viaja_solo', 
+			'con_quien_viaja', 'deportado', 'momento_deportado', 'separacion_familiar', 'familiar_separado', 'situacion_familiar','acto_siguiente', 
+			'acto_siguiente_homologada','autoridades_viaje', 'dano_autoridad', 'fecha_injusticia', 'id_pais_injusticia', 'id_estado_injusticia', 
+			'municipio_injusticia', 'espacio_fisico_injusticia', 'espacio_fisico_injusticia_homologada', 'id_transporte_viaje_injusticia', 
+			'detonante_injusticia', 'detonante_injusticia_homologada','numero_migrantes_injusticia', 'lugar_abordaje_transporte', 'destino_transporte', 
+			'autoridades_responables', 'numero_oficiales_responsables', 'algun_nombre_responsables', 'carcteristicas_ficias_policia_responsable', 
+			'carcteristicas_ficias_policia_responsable2', 'carcteristicas_ficias_policia_responsable3', 'uniformado_responsables', 
+			'color_uniforme_responsables', 'insignias_responsables', 'responsables_abordo_vehiculos_responsables', 'id_tipo_transporte_responsables', 
+			'numero_vehiculos_responsables', 'placas_vehiculos_responsables', 'descripcion_evento', 'monto_extorsion', 'derechos_violados', 
+			'violaciones_derechos', 'id_estado_caso', 'estado_seguimiento'
+		);
 
+		/* Agregar link a las fichas de migrantes*/
 		$crud->callback_column('migrantes',array($this,'_callback_migrante_url'));
 
+		/* Campos */
 		$crud->fields(
 			'nombre_persona_atendio_seguimiento', 'fecha_creada', 'id_lugar_denuncia', 'folio', 'id_tipo_queja', 'migrantes', 'intentos', 'motivo_migracion', 
 			'coyote_guia', 'lugar_contrato_coyote', 'monto_coyote', 'paquete_pago', 'nombre_punto_fronterizo', 'lugar_de_usa', 'viaja_solo', 
@@ -165,7 +180,8 @@ class Admin extends CI_Controller {
 			'documento2_seguimiento', 'documento3_seguimiento', 'documento4_seguimiento', 'documento5_seguimiento', 'documento6_seguimiento', 
 			'documento7_seguimiento', 'documento8_seguimiento','documento9_seguimiento', 'documento10_seguimiento'
 		);
-		
+
+		/* Campos obligatorios */
 		$crud->required_fields('fecha_creada');
 
 		/*Relaciones con tablas*/
@@ -236,7 +252,7 @@ class Admin extends CI_Controller {
 		$crud->display_as('coyote_guia', 'Contrato al coyote o guía que lo pasaría');
 		$crud->field_type('coyote_guia', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		
-		$crud->display_as('lugar_contrato_coyote', 'Donnde lo contrato');
+		$crud->display_as('lugar_contrato_coyote', 'Donde lo contrato');
 		$crud->field_type('lugar_contrato_coyote', 'dropdown', array('Cuando salió de su comunidad' => 'Cuando salió de su comunidad', 'En  la frontera' => 'En  la frontera', 'Otro' => 'Otro'));
 		
 		$crud->display_as('monto_coyote', 'Cuanto le cobraría');

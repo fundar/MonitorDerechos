@@ -5462,6 +5462,7 @@
 			}
 			else
 			{
+				console.log("n_n")
 				/* Single column filter */
 				$.extend( oSettings.aoPreSearchCols[ iColumn ], {
 					"sSearch": sInput+"",

@@ -2,6 +2,43 @@ var default_per_page = typeof default_per_page !== 'undefined' ? default_per_pag
 var oTable = null;
 var oTableArray = [];
 var oTableMapping = [];
+var histograma = {};
+var topicos = [];
+
+/* Obtener los datos de la tabla
+	denuncias -> los rows como objetos key/value
+	d_titles -> array de titulos
+*/
+var filtros_a_graficas = function(){
+	var subtopicos = {}
+    var rows = table._('tr', {"filter": "applied"}); 
+    /* limpiar las variables globales*/
+    histograma = {};
+	topicos = [];
+
+	// omitir la columna de acciones de los titulaes
+	for(var i = 0; i <= table.fnSettings().aoColumns.length - 2; i++){
+		var topico = table.fnSettings().aoColumns[i]["sTitle"];
+		topicos.push( topico )
+		histograma[topico] = []
+		subtopicos[topico] = []
+	}
+
+	for(var i in rows){
+        for(var k in topicos ){
+            var t = topicos[k];
+            var sub = (rows[i][k] == null || rows[i][k] == "") ? "Dato no disponible" : rows[i][k];
+
+            var pos = subtopicos[t].indexOf(sub); 
+            if( pos > -1 ) { 
+                histograma[t][pos][1]++
+            } else {
+            	histograma[t].push([sub, 1])
+                subtopicos[t].push(sub)
+            }
+        }
+    }
+}
 
 function supports_html5_storage()
 {
@@ -76,6 +113,10 @@ $(document).ready(function() {
 
 			localStorage.setItem( 'datatables_search_'+ unique_hash ,'["' + search_values_array.join('","') + '"]');
 		}
+		
+		filtros_a_graficas()
+		$("#grafica").fadeOut("slow", function(){ $("#grafica").empty() })
+
 	} );
 
 	var search_values = localStorage.getItem('datatables_search_'+ unique_hash);
@@ -139,7 +180,7 @@ function loadListenersForDatatables() {
 }
 
 function loadDataTable(this_datatables) {
-	return $(this_datatables).dataTable({
+	table = $(this_datatables).dataTable({
 		"bJQueryUI": true,
 		"sPaginationType": "full_numbers",
 		"bStateSave": use_storage,
@@ -184,6 +225,55 @@ function loadDataTable(this_datatables) {
 	        "sSwfPath": base_url+"assets/grocery_crud/themes/datatables/extras/TableTools/media/swf/copy_csv_xls_pdf.swf"
 	    }
 	});
+
+	/* Substituir los campos de búsqueda por selects*/
+	var columns = [0, 2, 4, 7, 8, 9, 13, 14, 16, 17, 18, 19, 21, 22, 23, 25, 26, 27, 28,29, 30, 32, 34, 37, 41, 42, 44, 45, 46, 48, 50, 51, 52, 53, 54 ]
+	var titles = {}
+	$(" tfoot th").each( function ( i ) {
+		var pos = columns.indexOf(i);
+
+		if( pos > -1 ){
+			/* crear el select, substituir al input y asignarle el evento de búsqueda */
+		    var select = $( '<select> <option value=""> Todos </option> </select>')
+		        select.appendTo( $(this).empty() )
+		        select.on( 'change', function () {
+		 			if($(this).val() != ""){
+		        		table.fnFilter(unescape("^" + $(this).val() + "$"), i, true, false, false, false); 
+		 			}else{	
+		 				table.fnFilter(unescape($(this).val()), i, false, false, false, false);
+		 			}
+		        } );
+
+		    /*fd -> filtro-denuncia */
+			var data = table.fnGetColumnData( i )
+			  , results = [] ;
+			if( localStorage.getItem('fd_' + i) === null) {
+			    /* Agregar opciones al input basados en todas las celdas con valores no repetidos de la column */
+			 	for(var j in data) {
+			 		select.append( '<option value="' + data[j] + '">' + data[j] + '</option>' )
+			 		if(data[j] != "" && results.indexOf( data[j] ) > -1 ){
+			 			results.push(data[j])
+			 		}
+			 	}
+
+				localStorage.setItem( 'fd_' + i ,'["' + data.join('","') + '"]');
+			 	
+			}else{
+				/* localStorage.removeItem('fd_' + i); 
+				/**/
+				/**/
+				var options = localStorage.getItem('fd_' + i)
+				$.each( $.parseJSON(options), function(num,val){
+					if(val !== '') select.append( '<option value="' + val + '">' + val + '</option>' )
+				});
+				/**/
+			}
+		}
+		titles[i] = ()
+	});
+	
+	filtros_a_graficas()
+	return table;
 }
 
 function datatables_get_chosen_table(table_as_object)

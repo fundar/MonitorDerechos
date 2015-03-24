@@ -127,7 +127,7 @@
 
 	<div id="personalizar" class="non-printable">
 		<form id="periodo" class="non-printable"> 
-			<h4>Definir Periodo</h4>
+			<h4>Definir Periodo y Lugar</h4>
 			<div class="field">
 				<label> Inicio del Periodo: </label>
 				<input type="date" name="start" id="start" value="<?php echo $start;?>">
@@ -136,27 +136,24 @@
 				<label> Fin del Periodo: </label>
 				<input type="date" name="end" id="end" value="<?php echo $end;?>">
 			</div>
+
+			<div class="field">
+				<label> Lugar: </label>
+				<select id="select_lugar_denuncia">
+					<option value=""> Todos </option>
+				</select>
+			</div>
 			
-			<input type="submit" class="def_periodo" value="Rango de Fechas">
+			<input type="submit" class="def_periodo" value="Enviar">
 		</form>
 
 		<nav>
 			<ul class="menu_graficas">
-				<li>
-					| <a href="#graficar_1_var" style="color:#000"> Crear gráfica de un criterio </a> |
-				</li>
-
-				<li>
-					| <a href="#graficar_2_var"> Crear gráfica de dos criterios </a> |
-				</li>
-
-				<li>
-					| <a href="#graficar_derechos"> Crear gráfica de Derechos Violentados en la Denuncia </a> |
-				</li>
-
-				<li>
-					| <a href="#graficar_violaciones_derechos"> Crear gráfica de Violaciones a los Derechos en la Denuncia </a>
-				</li>
+				<li> | <a href="#graficar_1_var" style="color:#000"> Un criterio </a> | </li>
+				<li> | <a href="#graficar_2_var"> Dos criterios </a> | </li>
+				<li> | <a href="#graficar_derechos"> Derechos Violentados </a> | </li>
+				<li> | <a href="#graficar_violaciones_derechos">  Violaciones a los Derechos </a> | </li>
+				<li> | <a href="#graficar_autoridades"> Autoridades que cometieron las Violaciones a los Derechos </a> </li>
 			</ul>
 		</nav>
 
@@ -209,6 +206,19 @@
 			<br> <br>
 			<input type="submit" value="Graficar">
 		</form>
+
+		<form id="graficar_autoridades" class="non-printable graficar" style="display:none;">
+			<div class="field">
+				<label> Elige la autoridad que cometio la Vioación a los Derechos: </label>
+				<select id="l7"> </select>
+			</div>
+			<div class="field">
+				<label> Elige el segundo criterio: </label>
+				<select id="l8"></select>
+			</div>
+			<br> <br>
+			<input type="submit" value="Graficar">
+		</form>
 	</div>
  
 	<section id="grafica">
@@ -230,15 +240,26 @@
 		var histograma_denuncias = actualizar_histograma( generar_histograma(denuncias) )
 
 		var derechos = []
-		var violaciones_derechos = []
+		  , violaciones_derechos = []
+		  , autoridades = []
+		  , lugares = []
+		  , pos;
 
 		for(var i in denuncias) {
-			var pos = derechos.indexOf(denuncias[i]["derechos"]); 
+			pos = derechos.indexOf(denuncias[i]["derechos"]); 
 			if( pos < 0 ) derechos.push(denuncias[i]["derechos"])
 
-			var pos2 = violaciones_derechos.indexOf(denuncias[i]["violaciones_derechos"]); 
-			if( pos2 < 0 ) violaciones_derechos.push(denuncias[i]["violaciones_derechos"])
+			pos = violaciones_derechos.indexOf(denuncias[i]["violaciones_derechos"]); 
+			if( pos < 0 ) violaciones_derechos.push(denuncias[i]["violaciones_derechos"])
+
+			pos = autoridades.indexOf(denuncias[i]["autoridad"]); 
+			if( pos < 0 ) autoridades.push(denuncias[i]["autoridad"])
+
+			pos = lugares.indexOf(denuncias[i]["lugar_denuncia"]); 
+			if( pos < 0 ) lugares.push(denuncias[i]["lugar_denuncia"])
 		}
+		/* crear_select(<datos>, <id_tag>)*/
+		crear_select(lugares, "select_lugar_denuncia")
 
 		crear_select(tags_denuncias, "l")
 		crear_select(tags_denuncias, "l1")
@@ -249,6 +270,9 @@
 
 		crear_select(violaciones_derechos, "l5")
 		crear_select(tags_denuncias, "l6")
+
+		crear_select(autoridades, "l7")
+		crear_select(tags_denuncias, "l8")
 
 		graficar_por_subtema(denuncias, "violaciones_derechos", violaciones_derechos[0], "autoridad")
 		
@@ -287,14 +311,24 @@
 		$("#graficar_derechos").on("submit", function(){
 			var i = $("#l3").val();
 			var topico = $("#l4").val();
-			graficar_por_subtema(denuncias, "derechos", subtemas[i], topico)
+			graficar_por_subtema(denuncias, "derechos", derechos[i], topico)
 			return false;
 		})
 
 		$("#graficar_violaciones_derechos").on("submit", function(){
 			var i = $("#l5").val();
 			var topico = $("#l6").val();
-			graficar_por_subtema(denuncias, "violaciones_derechos", subtemas[i], topico)
+			graficar_por_subtema(denuncias, "violaciones_derechos", violaciones_derechos[i], topico)
+			return false;
+		})
+
+		$("#graficar_autoridades").on("submit", function(){
+			var i = $("#l7").val();
+			var topico = $("#l8").val();
+			graficar_por_subtema(denuncias, "autoridad", autoridades[i], topico)
+			console.log(topico)
+			/*
+			*/
 			return false;
 		})
 

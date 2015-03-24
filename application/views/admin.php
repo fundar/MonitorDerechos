@@ -7,27 +7,61 @@
 foreach($css_files as $file): ?>
 	<link type="text/css" rel="stylesheet" href="<?php echo $file; ?>" />
 <?php endforeach; ?>
+	
+
 <?php foreach($js_files as $file): ?>
 	<script src="<?php echo $file; ?>"></script>
 <?php endforeach; ?>
+
+<script type="text/javascript" src="../../assets/js/highcharts/highcharts.js"></script>
+<script type="text/javascript" src="../../assets/js/highcharts/modules/exporting.js"></script>
+<script type="text/javascript" src="../../assets/js/chart_methods.js"></script>
+
 <style type='text/css'>
-body
-{
-	font-family: Arial;
-	font-size: 14px;
-}
-a {
-    color: blue;
-    text-decoration: none;
-    font-size: 14px;
-}
-a:hover
-{
-	text-decoration: underline;
-}
-strong { font-size:16px; }
-.link { cursor:pointer; color:blue; font-size:14px; }
-#catalogos { display:none; padding:0;}
+	body {
+		font-family: Arial;
+		font-size: 14px;
+	}
+
+	a {
+	    color: blue;
+	    text-decoration: none;
+	    font-size: 14px;
+	}
+	
+	a:hover {
+		text-decoration: underline;
+	}
+	strong { font-size:16px; }
+	.link { cursor:pointer; color:blue; font-size:14px; }
+	#catalogos { display:none; padding:0;}
+
+/*
+	.c_filtros{
+		min-width: 1200px;
+		width: 1200px;
+	}
+
+	input.filtro{
+		float:left;
+		text-align: left;
+		margin:5px 20px 0 0 !important; 
+		width: 320px;
+	}
+	*/
+	#graficar{
+		margin-top: 20px;
+		float: right;
+	}
+
+	#grafica{
+		display: none;
+		min-width: 98%;
+		min-height: 800px;
+		border: 6px solid #ddd;
+		float: left;
+		margin: 20px auto;
+	}
 </style>
 </head>
 <body>
@@ -79,6 +113,14 @@ strong { font-size:16px; }
     <div>
 		<?php echo $output; ?>
     </div>
+
+    <form id="graficar">
+    	<label for="l"> Selecciona el criterio para gráficar</label>
+    	<select id="l" name="l" ></select>
+    	<input type="submit" value="Graficar">
+    </form>
+
+    <div id="grafica"> </div>
     <script type="text/javascript">
 		function confirmacion(url) {
 			if(confirm('¿Esta segura/o que desea salir (verifique que ha guardado la información)?')) {
@@ -89,6 +131,45 @@ strong { font-size:16px; }
 		}
 		
 		$(document).ready( function () {
+
+			/* Modificar filtro
+			$("tfoot th").first().append('<div class="c_filtros"></div>')
+
+			$("tfoot th").each(function(index){
+			  var filtro = $(this).children("input")
+			  filtro.addClass("filtro")
+			  $("tfoot th").first().children(".c_filtros").append(filtro);
+
+			  if(index > 0)  $(this).remove();
+			})
+
+			$("tfoot th").first().attr("colspan", "56")
+			/**/
+
+			/* Agregar tooltip a los filtros*/
+			$("tfoot th").each(function(index){
+			  var filtro = $(this).children("input")
+			  filtro.attr("title", filtro.attr("placeholder") )
+			})
+			/**/
+
+			crear_select(topicos, "l")
+
+			$("#graficar").on("submit", function(e){
+				e.preventDefault()
+				$("#grafica").css("display","block")
+
+				// obtener el valor y luego el tópico del select
+				var l = topicos[ $("#l").val() ] ; 
+    			
+    			graficar( l, histograma[l], l )
+
+    			/* Desplazar a la gráfica*/
+    			$('html, body').animate({
+			        scrollTop: $("#grafica").offset().top
+			    }, 2000);
+			})
+
 			$("#ver-catalogos").click( function () {
 				$("#catalogos").toggle();
 			});

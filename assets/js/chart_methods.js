@@ -1,7 +1,7 @@
 var tags_denuncias = {
     pais_origen: "País de Origen",
-    //estado_origen: "Estado",
-    //municipio_origen: "Municipio",
+    /**/estado_origen: "Estado",
+    /**/municipio_origen: "Municipio",
     genero: "Género",
     derechos: "Derechos Violentados en la Denuncia",
     violaciones_derechos: "Violaciones a los Derechos",
@@ -16,11 +16,11 @@ var tags_denuncias = {
     intentos: "Cantidad de Intentos de cruzar la frontera", 
     motivo_migracion: "Motivos de Migracion", 
     coyote_guia: "Usó Coyote", 
-    lugar_de_usa: "Lugar de E.U.A al que se dirigía", 
+    //lugar_de_usa: "Lugar de E.U.A al que se dirigía", 
     viaja_solo: "Viaja Solo", 
     deportado: "Fue deportado", 
     autoridad: "Autoridad que cometio la violación a Derechos Humanos", 
-    //pais_injusticia: "País donde se cometio la violación a Derechos Humanos", 
+    /**/pais_injusticia: "País donde se cometio la violación a Derechos Humanos", 
     estado_injusticia: "Estado donde se cometio la violación a Derechos Humanos", 
     espacio_fisico_injusticia: "Espacio físico donde se cometio la violación a Derechos Humanos", 
     detonante_injusticia: "Situación que detona la violación a Derechos Humanos", 
@@ -32,8 +32,10 @@ var tags_denuncias = {
 
 var crear_select = function(topics, target_id){
   var html = ""
-  for(var i in topics)
+  for(var i in topics){
     html += "<option value=" + i + ">" + topics[i] + "</option>"
+  }
+
   $("#" + target_id).append(html)
   //return html 
 }
@@ -46,6 +48,9 @@ var generar_histograma = function (data){
         histograma[key] = [] 
         tags[key] = [] 
     }
+
+    //console.log(tags)
+    console.log(histograma)
 
     for(var i in data){
         for(var key in data[i] ){
@@ -144,8 +149,6 @@ var actualizar_histograma = function(histograma){
 }
 
 var graficar = function(content_tag, data, text){
-  console.log(data)
-
   categories = []
   for(var i in data) categories.push(data[i][0])
   $("#grafica").highcharts({
@@ -298,9 +301,9 @@ var graficar_por_subtema = function(denuncias, tema, subtema, tema2){
     }
   }
 
-  var title = tags_denuncias[tema] + ": " +
-              subtema.split(" - ").join(", ") + "<br>" +
-              tags_denuncias[tema2] 
+  var title = "<b>" + tags_denuncias[tema2] + "</b> <br>" +
+              tags_denuncias[tema] + ": " +
+              subtema.split(" - ").join(", ")
     , filename = subtema + "_x_" + tags_denuncias[tema2] 
 
   graficar(filename, topic_data, title)
