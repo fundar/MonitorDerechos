@@ -227,10 +227,11 @@ function loadDataTable(this_datatables) {
 	});
 
 	/* Substituir los campos de búsqueda por selects*/
-	var columns = [0, 2, 4, 7, 8, 9, 13, 14, 16, 17, 18, 19, 21, 22, 23, 25, 26, 27, 28,29, 30, 32, 34, 37, 41, 42, 44, 45, 46, 48, 50, 51, 52, 53, 54 ]
+	var columns = [0, 2, 4, 7, 8, 9, 13, 14, 16, 17, 18, 19, 21, 22, 23, 25, 26, 27, 28, 29, 30, 32, 34, 37, 41, 42, 44, 45, 46, 48, 50, 51, 52, 53, 54 ]
 	var titles = {}
 	$(" tfoot th").each( function ( i ) {
 		var pos = columns.indexOf(i);
+		//if( i == 44){
 
 		if( pos > -1 ){
 			/* crear el select, substituir al input y asignarle el evento de búsqueda */
@@ -243,33 +244,36 @@ function loadDataTable(this_datatables) {
 		 				table.fnFilter(unescape($(this).val()), i, false, false, false, false);
 		 			}
 		        } );
-
 		    /*fd -> filtro-denuncia */
 			var data = table.fnGetColumnData( i )
 			  , results = [] ;
-			if( localStorage.getItem('fd_' + i) === null) {
-			    /* Agregar opciones al input basados en todas las celdas con valores no repetidos de la column */
-			 	for(var j in data) {
-			 		select.append( '<option value="' + data[j] + '">' + data[j] + '</option>' )
-			 		if(data[j] != "" && results.indexOf( data[j] ) > -1 ){
-			 			results.push(data[j])
-			 		}
+	        if( localStorage.getItem('fd_' + i) === null) {
+	        	/* Agregar opciones al input basados en todas las celdas con valores no repetidos de la column */
+	        	for(var j in data) {
+        			data[j] = data[j].replace(/\"/g,"\'");
+
+		 			select.append( '<option value="' + data[j] + '">' + data[j] + '</option>' )
+		 			if(data[j] != "" && results.indexOf( data[j] ) > -1 ){
+		 				results.push(data[j])
+		 			}
 			 	}
 
 				localStorage.setItem( 'fd_' + i ,'["' + data.join('","') + '"]');
-			 	
+			 	//console.log('["' + data.join('","') + '"]')
 			}else{
-				/* localStorage.removeItem('fd_' + i); 
-				/**/
+				// localStorage.clear();
+				// localStorage.removeItem('fd_' + i); 
 				/**/
 				var options = localStorage.getItem('fd_' + i)
 				$.each( $.parseJSON(options), function(num,val){
 					if(val !== '') select.append( '<option value="' + val + '">' + val + '</option>' )
 				});
+
 				/**/
 			}
+		//}
 		}
-		titles[i] = ()
+		//titles[i] = (tfoot th)
 	});
 	
 	filtros_a_graficas()
