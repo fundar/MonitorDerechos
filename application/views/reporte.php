@@ -1809,7 +1809,7 @@
 			          	angular.element(f2).scope().clear_all();
 						that.children(".small-loading").css("display","none");
 						alert("Se inserto correctamente la denuncia, con el folio: " + res.data.folio)
-						//window.location.reload();
+						window.location.reload();
 			    	}else{
 			    		console.log(res)
 			  			alert("No se pudo insertar la Denuncia, verifique los campos")

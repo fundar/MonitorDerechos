@@ -381,8 +381,14 @@ class Admin extends CI_Controller {
 	
 	public function _callback_migrante_url($value, $row){
 		$this->load->model('migracion_model');
-		$id = $this->migracion_model->getMigrante($value);
-  		return "<a href='" . site_url('admin/migrantes/read/' . $id)."'>$value</a>";
+		$folios = explode(",", $value);
+		$links = array();
+		foreach ($folios as $folio){             
+			$id = $this->migracion_model->getMigrante($folio);
+  			$link = "<a href='" . site_url('admin/migrantes/read/' . $id) . "'> $folio </a>";
+  			array_push($links, $link);
+		}
+  		return implode(",", $links);
 	}
 
 
