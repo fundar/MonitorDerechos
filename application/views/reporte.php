@@ -1771,7 +1771,7 @@
 			  , scope = angular.element(that).scope()
 			  , data = $(this).serializeObject()
 			  , url = that.attr("action");
-			
+
 			$(this).children(".small-loading").css("display","block");
 		  	
 		  	$.get('http://jsonip.com', function (res) {
@@ -1789,7 +1789,7 @@
 				    window.location.reload();
 				}
     		});
-
+			
 
 			var send_data = function(){
 				//scope.clear_all();
@@ -1804,12 +1804,12 @@
 
 			          	f1[0].reset(); // resetea los forms
 			          	f2[0].reset();
-
+			          	insertMigrantes2denuncia(res.data.id)
 			          	angular.element(f1).scope().clear_all(); // limpia el localstorage de migrante
 			          	angular.element(f2).scope().clear_all();
 						that.children(".small-loading").css("display","none");
 						alert("Se inserto correctamente la denuncia, con el folio: " + res.data.folio)
-						window.location.reload();
+						//window.location.reload();
 			    	}else{
 			    		console.log(res)
 			  			alert("No se pudo insertar la Denuncia, verifique los campos")
@@ -1817,6 +1817,18 @@
 
 				})
 				/**/
+			}
+
+			var insertMigrantes2denuncia = function(id_denuncia){
+				var url = "http://localhost/mddh/index.php/admin/insertMigrantes2denuncia";
+				var migrantes = angular.element( $("#addReport-step1") ).scope().get_migrantes_data().split(",")
+				var ids = []
+
+				for(var i in migrantes) ids.push( migrantes[i].split(":")[0] )
+
+				$.post(url, { id_denuncia: id_denuncia, ids_migrantes: ids }, function(res, error){
+					console.log(res)
+				})
 			}
 		})
 
@@ -1843,19 +1855,18 @@
 	          	for(var i in migrantes) ids.push( migrantes[i].split(":")[0] )
 	      		$.post(url, { ids : ids}, function(res, error){
 		          	console.log(res)
-		          	
-		          	f1[0].reset(); // resetea los forms
-		          	f2[0].reset();
-		          	angular.element(f1).scope().clear_all(); // limpia el localstorage de migrante
-		          	angular.element(f2).scope().clear_all(); // limpia el localstorage de denuncia
-
-		          	$('select').each(function(){ // resetea los selects
-		          		$(this).val('').trigger('chosen:updated')
-		          	});
-		      		 	
-					window.location.reload();
-					
 	      		})
+		          	
+	          	f1[0].reset(); // resetea los forms
+	          	f2[0].reset();
+	          	angular.element(f1).scope().clear_all(); // limpia el localstorage de migrante
+	          	angular.element(f2).scope().clear_all(); // limpia el localstorage de denuncia
+
+	          	$('select').each(function(){ // resetea los selects
+	          		$(this).val('').trigger('chosen:updated')
+	          	});
+	      		 	
+				window.location.reload();
 	          },
 	          "No":  function() {
 	          	dialog.dialog('close');

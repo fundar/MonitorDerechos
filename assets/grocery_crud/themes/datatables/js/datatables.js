@@ -273,7 +273,6 @@ function loadDataTable(this_datatables) {
 			}
 		//}
 		}
-		//titles[i] = (tfoot th)
 	});
 	
 	filtros_a_graficas()

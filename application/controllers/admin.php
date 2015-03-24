@@ -746,12 +746,40 @@ class Admin extends CI_Controller {
 		$res = array();    
 		$ids = $this->input->post('ids');
 		
-		$this->load->model('migracion_model');
-		foreach ($ids  as $id) {
-			$res[$id] = $this->migracion_model->deleteMigrante($id);
+        $this->load->model('migracion_model');         
+        foreach ($ids as $id){             
+        	$res[$id] = $this->migracion_model->deleteMigrante($id);
 		}
 
 	    header('Content-Type: application/json');
 	    echo json_encode($res);
 	}
+	
+	public function insertMigrantes2denuncia(){
+	    $res = array();    
+		$this->load->model('migracion_model');
+
+		$ids_migrantes = $this->input->post('ids_migrantes');
+		$id_denuncia = $this->input->post('id_denuncia');
+
+		//$res["status"] = true;
+		
+		foreach ($ids_migrantes as $id_migrante) {
+			$res[$id_migrante] = $this->migracion_model->insertMigrante2denuncia($id_migrante, $id_denuncia);
+		}
+		
+	    header('Content-Type: application/json');
+	    echo json_encode($res);
+	}
+	
+	/*
+	public function insertMigrantes2denuncia($id_denuncia, $id_migrante){
+		$data = array(
+		   'id_migrante' => $id_migrante,
+		   'id_denuncia' => $id_denuncia
+		);
+
+		$this->db->insert('migrantes2denuncias', $data); 
+	}
+*/
 }

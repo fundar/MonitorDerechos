@@ -137,6 +137,18 @@ class migracion_Model extends CI_Model  {
 		foreach ($query->result() as $row) return $row->id_migrante;
 	}
 
+	public function insertMigrante2denuncia($id_migrante, $id_denuncia){
+		$data = array( 'id_migrante' => $id_migrante, 'id_denuncia' => $id_denuncia );
+
+		$this->db->trans_start();
+	   	$this->db->insert('migrantes2denuncias', $data);
+	   	$insert_id = $this->db->insert_id();
+	   	$this->db->trans_complete();
+   		return $insert_id;
+	}
+
+
+
 }
 
 // SELECT pais.nombre AS pais 

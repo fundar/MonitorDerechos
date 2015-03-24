@@ -152,7 +152,10 @@ StorageMethods.prototype.add_migrantes_to_select = function(){
   if(this.ls.get("migrantes_data") != null ){
     var migrantes = this.ls.get("migrantes_data").split(",")
     var ul = jQuery( "#migrantes_input_box" + " #field_migrantes_chzn ul.chzn-choices")
+    var select = jQuery("#field-migrantes")
+    
     ul.empty();
+    select.empty();
 
     for(var i in migrantes){
       var migrante = migrantes[i].split(":")
@@ -163,8 +166,8 @@ StorageMethods.prototype.add_migrantes_to_select = function(){
                 //'<a href="javascript:void(0)" class="search-choice-close" rel="' + ul.children("li").length  + '"></a>' +
               '</li>';
 
+      select.append("<option value='" + migrante[0] + "' selected>" + migrante[1] + "</option>")
       ul.append(li)
-      //jQuery("#field-migrantes").append("<option value='" + migrante[0] + "'>" + migrante[1] + "</option>")
     }
   }
 }
