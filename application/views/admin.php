@@ -107,6 +107,7 @@ foreach($css_files as $file): ?>
 		</span>
 	</div>
 	
+	<div id="clear" style="float:right"> <a id="clear_memo" href="#"> Limpiar filtros </a> </div>
 	
 		
 	<div style='height:20px;'></div>  
@@ -145,6 +146,20 @@ foreach($css_files as $file): ?>
 
 			$("tfoot th").first().attr("colspan", "56")
 			/**/
+
+
+			$("#clear_memo").on("click", function(e){
+				e.preventDefault()
+				/* Limpiar los datos de la tabla y los filtros */
+				for(key in localStorage){
+				  if( key.match(/fd_/g) !== null || key.match(/DataTables_/g) !== null ) 
+				    localStorage.removeItem(key);
+				}
+				window.location.reload();
+			})
+		
+		
+
 
 			/* Agregar tooltip a los filtros*/
 			$("tfoot th").each(function(index){

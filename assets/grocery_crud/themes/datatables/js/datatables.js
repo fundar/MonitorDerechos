@@ -248,7 +248,7 @@ function loadDataTable(this_datatables) {
 			var data = table.fnGetColumnData( i )
 			  , results = [] ;
 	        if( localStorage.getItem('fd_' + i) === null) {
-	        	/* Agregar opciones al input basados en todas las celdas con valores no repetidos de la column */
+	        	/* Agregar opciones al input basados en todas las celdas con valores no repetidos de la columna */
 	        	for(var j in data) {
         			data[j] = data[j].replace(/\"/g,"\'");
 
