@@ -4,11 +4,56 @@ var oTableArray = [];
 var oTableMapping = [];
 var histograma = {};
 var topicos = [];
-
+var site 
 /* Obtener los datos de la tabla
 	denuncias -> los rows como objetos key/value
 	d_titles -> array de titulos
 */
+
+var cambio_filtros_denuncias = function(){
+	/* Substituir los campos de búsqueda por selects*/
+	var columns = [0, 2, 4, 7, 8, 9, 13, 14, 16, 17, 18, 19, 21, 22, 23, 25, 26, 27, 28, 29, 30, 32, 34, 37, 41, 42, 44, 45, 46, 48, 50, 51, 52, 53, 54 ]
+	var titles = {}
+	$(" tfoot th").each( function ( i ) {
+		var pos = columns.indexOf(i);
+
+		if( pos > -1 ){
+			/* crear el select, substituir al input y asignarle el evento de búsqueda */
+		    var select = $( '<select> <option value=""> Todos </option> </select>')
+		        select.appendTo( $(this).empty() )
+		        select.on( 'change', function () {
+		 			if($(this).val() != ""){
+		        		table.fnFilter(unescape("^" + $(this).val() + "$"), i, true, false, false, false); 
+		 			}else{	
+		 				table.fnFilter(unescape($(this).val()), i, false, false, false, false);
+		 			}
+		        } );
+		    /*fd -> filtro-denuncia */
+			var data = table.fnGetColumnData( i )
+			  , results = [] ;
+	        if( localStorage.getItem('fd_' + i) === null) {
+	        	/* Agregar opciones al input basados en todas las celdas con valores no repetidos de la columna */
+	        	for(var j in data) {
+        			data[j] = data[j].replace(/\"/g,"\'");
+
+		 			select.append( '<option value="' + data[j] + '">' + data[j] + '</option>' )
+		 			if(data[j] != "" && results.indexOf( data[j] ) > -1 ){
+		 				results.push(data[j])
+		 			}
+			 	}
+
+				localStorage.setItem( 'fd_' + i ,'["' + data.join('","') + '"]');
+			}else{
+				var options = localStorage.getItem('fd_' + i)
+				$.each( $.parseJSON(options), function(num,val){
+					if(val !== '') select.append( '<option value="' + val + '">' + val + '</option>' )
+				});
+
+			}
+		}
+	});
+}
+
 var filtros_a_graficas = function(){
 	var subtopicos = {}
     var rows = table._('tr', {"filter": "applied"}); 
@@ -40,8 +85,7 @@ var filtros_a_graficas = function(){
     }
 }
 
-function supports_html5_storage()
-{
+function supports_html5_storage() {
 	try {
 		JSON.parse("{}");
 		return 'localStorage' in window && window['localStorage'] !== null;
@@ -56,7 +100,7 @@ var aButtons = [];
 var mColumns = [];
 
 $(document).ready(function() {
-
+	site = location.href.split("/").pop()
 	$('table.groceryCrudTable thead tr th').each(function(index){
 		if(!$(this).hasClass('actions'))
 		{
@@ -94,7 +138,7 @@ $(document).ready(function() {
 
 		oTableMapping[$(this).attr('id')] = index;
 
-		oTableArray[index] = loadDataTable(this);
+		oTableArray[index] = loadDataTable(this, site);
 	});
 
 	$(".groceryCrudTable tfoot input").keyup( function () {
@@ -171,7 +215,7 @@ function loadListenersForDatatables() {
 			success: function(my_output){
 				new_container.html(my_output);
 
-				loadDataTable(new_container.find('.groceryCrudTable'));
+				loadDataTable(new_container.find('.groceryCrudTable'), site);
 
 				loadListenersForDatatables();
 			}
@@ -179,7 +223,7 @@ function loadListenersForDatatables() {
 	});
 }
 
-function loadDataTable(this_datatables) {
+function loadDataTable(this_datatables, site) {
 	table = $(this_datatables).dataTable({
 		"bJQueryUI": true,
 		"sPaginationType": "full_numbers",
@@ -225,56 +269,11 @@ function loadDataTable(this_datatables) {
 	        "sSwfPath": base_url+"assets/grocery_crud/themes/datatables/extras/TableTools/media/swf/copy_csv_xls_pdf.swf"
 	    }
 	});
-
-	/* Substituir los campos de búsqueda por selects*/
-	var columns = [0, 2, 4, 7, 8, 9, 13, 14, 16, 17, 18, 19, 21, 22, 23, 25, 26, 27, 28, 29, 30, 32, 34, 37, 41, 42, 44, 45, 46, 48, 50, 51, 52, 53, 54 ]
-	var titles = {}
-	$(" tfoot th").each( function ( i ) {
-		var pos = columns.indexOf(i);
-		//if( i == 44){
-
-		if( pos > -1 ){
-			/* crear el select, substituir al input y asignarle el evento de búsqueda */
-		    var select = $( '<select> <option value=""> Todos </option> </select>')
-		        select.appendTo( $(this).empty() )
-		        select.on( 'change', function () {
-		 			if($(this).val() != ""){
-		        		table.fnFilter(unescape("^" + $(this).val() + "$"), i, true, false, false, false); 
-		 			}else{	
-		 				table.fnFilter(unescape($(this).val()), i, false, false, false, false);
-		 			}
-		        } );
-		    /*fd -> filtro-denuncia */
-			var data = table.fnGetColumnData( i )
-			  , results = [] ;
-	        if( localStorage.getItem('fd_' + i) === null) {
-	        	/* Agregar opciones al input basados en todas las celdas con valores no repetidos de la columna */
-	        	for(var j in data) {
-        			data[j] = data[j].replace(/\"/g,"\'");
-
-		 			select.append( '<option value="' + data[j] + '">' + data[j] + '</option>' )
-		 			if(data[j] != "" && results.indexOf( data[j] ) > -1 ){
-		 				results.push(data[j])
-		 			}
-			 	}
-
-				localStorage.setItem( 'fd_' + i ,'["' + data.join('","') + '"]');
-			 	//console.log('["' + data.join('","') + '"]')
-			}else{
-				// localStorage.clear();
-				// localStorage.removeItem('fd_' + i); 
-				/**/
-				var options = localStorage.getItem('fd_' + i)
-				$.each( $.parseJSON(options), function(num,val){
-					if(val !== '') select.append( '<option value="' + val + '">' + val + '</option>' )
-				});
-
-				/**/
-			}
-		//}
-		}
-	});
 	
+	if (site == "denuncias"){
+		cambio_filtros_denuncias()
+	}
+
 	filtros_a_graficas()
 	return table;
 }
