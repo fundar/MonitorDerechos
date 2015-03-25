@@ -22,6 +22,8 @@ var cambio_filtros_denuncias = function(){
 		    var select = $( '<select> <option value=""> Todos </option> </select>')
 		        select.appendTo( $(this).empty() )
 		        select.on( 'change', function () {
+
+					$("#grafica").fadeOut("slow", function(){ $("#grafica").empty() })
 		 			if($(this).val() != ""){
 		        		table.fnFilter(unescape("^" + $(this).val() + "$"), i, true, false, false, false); 
 		 			}else{	
