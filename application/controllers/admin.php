@@ -196,6 +196,8 @@ class Admin extends CI_Controller {
 		if($state == 'insert') { // si se trata de solo una insercion se devuelve un json
 			$crud->callback_after_insert(array($this, 'denuncia_after_insert'));
     	}
+    	/* No mostrar opción de agregar en el listado */
+    	$crud->unset_add();
 
 		$output = $crud->render();
 		
@@ -491,7 +493,9 @@ class Admin extends CI_Controller {
 		if($state == 'insert') { // si se trata de solo una insercion se devuelve un json
 			$crud->callback_after_insert(array($this, 'migrante_after_insert'));
     	}
-
+    	/* No mostrar opción de agregar en el listado */
+    	$crud->unset_add();
+    	
 		$output = $crud->render();
 		$this->_example_output($output);
 	}
