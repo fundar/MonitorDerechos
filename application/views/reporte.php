@@ -28,31 +28,45 @@
 	<meta charset="utf-8" />
 	<title>Sistematización de información Migración</title>
 	
-	<link type="text/css" rel="stylesheet" href="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/css/jquery_plugins/chosen/chosen.css" />
 	<link type="text/css" rel="stylesheet" href="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/css/ui/simple/jquery-ui-1.10.1.custom.min.css" />
 	<link type="text/css" rel="stylesheet" href="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/css/jquery_plugins/jquery.ui.datetime.css" />
 	<link type="text/css" rel="stylesheet" href="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/css/jquery_plugins/jquery-ui-timepicker-addon.css" />
+	<link type="text/css" rel="stylesheet" href="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/css/jquery_plugins/chosen/chosen.css" />
+	<link type="text/css" rel="stylesheet" href="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/css/jquery_plugins/file_upload/file-uploader.css">
+	<link type="text/css" rel="stylesheet" href="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/css/jquery_plugins/file_upload/jquery.fileupload-ui.css">
+	<link type="text/css" rel="stylesheet" href="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/css/jquery_plugins/fancybox/jquery.fancybox.css">
+	<link type="text/css" rel="stylesheet" href="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/css/jquery_plugins/file_upload/fileuploader.css">
 	<link type="text/css" rel="stylesheet" href="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/themes/datatables/css/datatables.css" />
+	<link rel="stylesheet" type="text/css" href="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/texteditor/ckeditor/skins/kama/editor.css?t=C9A85WF">
 
 	<script type="text/javascript">var js_date_format = 'dd/mm/yy';</script>
 
 	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery-1.10.2.min.js"></script>
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/jquery.chosen.min.js"></script>
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/config/jquery.chosen.config.js"></script>
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/jquery.numeric.min.js"></script>
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/config/jquery.numeric.config.js"></script>
-
 	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/ui/jquery-ui-1.10.3.custom.min.js"></script>
 	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/jquery-ui-timepicker-addon.js"></script>
 	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/ui/i18n/datepicker/jquery.ui.datepicker-es.js"></script>
 	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/ui/i18n/timepicker/jquery-ui-timepicker-es.js"></script>
 	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/config/jquery-ui-timepicker-addon.config.js"></script>
-
+	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/jquery.chosen.min.js"></script>
+	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/config/jquery.chosen.config.js"></script>
+	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/jquery.numeric.min.js"></script>
+	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/config/jquery.numeric.config.js"></script>
+	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/texteditor/ckeditor/ckeditor.js"></script>
+	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/texteditor/ckeditor/adapters/jquery.js"></script>
+	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/config/jquery.ckeditor.config.js"></script>
+	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/tmpl.min.js"></script>
+	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/load-image.min.js"></script>
+	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/jquery.iframe-transport.js"></script>
+	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/jquery.fileupload.js"></script>
+	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/config/jquery.fileupload.config.js"></script>
+	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/jquery.fancybox-1.3.4.js"></script>
+	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/jquery.easing-1.3.pack.js"></script>
+	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/config/jquery.fancybox.config.js"></script>
 	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/themes/flexigrid/js/jquery.form.js"></script>
 	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/themes/datatables/js/datatables-add.js"></script>
 	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/jquery.noty.js"></script>
-
 	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/config/jquery.noty.config.js"></script>
+
 
 	<script type="text/javascript" src="../../assets/js/angular.js"></script>
 	<script type="text/javascript" src="../../assets/js/angular-local-storage.js"></script>
@@ -75,7 +89,7 @@
 	.link { cursor:pointer; color:blue; font-size:14px; }
 	#catalogos { display:none; padding:0;}
 
-	#addReport-step2{
+	#addReport-step1{
 		display: none;
 	}
 
@@ -198,7 +212,7 @@
 </head>
 
 <div class="container" ng-app="ReporteApp">
-	<form action="http://localhost/mddh/index.php/admin/migrantes/insert" method="post" id="addReport-step1" autocomplete="off" 
+	<form action="http://ddhh.fundarlabs.org.mx/index.php/admin/migrantes/insert" method="post" id="addReport-step1" autocomplete="off" 
 		  enctype="multipart/form-data" accept-charset="utf-8" ng-controller="MigranteCtrl">		
 		
 		<div class='ui-widget-content ui-corner-all datatables' id="migrantes-accordion">
@@ -479,7 +493,7 @@
 		</div>
 	</form>
 
-	<form action="http://localhost/mddh/index.php/admin/denuncias/insert" method="post" id="addReport-step2" autocomplete="off" 
+	<form action="http://ddhh.fundarlabs.org.mx/index.php/admin/denuncias/insert" method="post" id="addReport-step2" autocomplete="off" 
 		  enctype="multipart/form-data" accept-charset="utf-8" ng-controller="DenunciaCtrl">		
 
 		<div class='ui-widget-content ui-corner-all datatables' id="denuncias-accordion">
@@ -1820,7 +1834,7 @@
 			}
 
 			var insertMigrantes2denuncia = function(id_denuncia){
-				var url = "http://localhost/mddh/index.php/admin/insertMigrantes2denuncia";
+				var url = "http://ddhh.fundarlabs.org.mx/index.php/admin/insertMigrantes2denuncia";
 				var migrantes = angular.element( $("#addReport-step1") ).scope().get_migrantes_data().split(",")
 				var ids = []
 
@@ -1850,7 +1864,7 @@
 	          	var migrantes = angular.element(f1).scope().get_migrantes_data().split(",")
 	          	var ids = []
 
-	          	var url = "http://localhost/mddh/index.php/admin/deleteMigrantes";
+	          	var url = "http://ddhh.fundarlabs.org.mx/index.php/admin/deleteMigrantes";
 	          	
 	          	for(var i in migrantes) ids.push( migrantes[i].split(":")[0] )
 	      		$.post(url, { ids : ids}, function(res, error){
