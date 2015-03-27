@@ -28,84 +28,84 @@
 	<meta charset="utf-8" />
 	<title>Sistematización de información Migración</title>
 	
-	<link type="text/css" rel="stylesheet" href="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/css/ui/simple/jquery-ui-1.10.1.custom.min.css" />
-	<link type="text/css" rel="stylesheet" href="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/css/jquery_plugins/jquery.ui.datetime.css" />
-	<link type="text/css" rel="stylesheet" href="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/css/jquery_plugins/jquery-ui-timepicker-addon.css" />
-	<link type="text/css" rel="stylesheet" href="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/css/jquery_plugins/chosen/chosen.css" />
-	<link type="text/css" rel="stylesheet" href="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/css/jquery_plugins/file_upload/file-uploader.css">
-	<link type="text/css" rel="stylesheet" href="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/css/jquery_plugins/file_upload/jquery.fileupload-ui.css">
-	<link type="text/css" rel="stylesheet" href="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/css/jquery_plugins/fancybox/jquery.fancybox.css">
-	<link type="text/css" rel="stylesheet" href="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/css/jquery_plugins/file_upload/fileuploader.css">
-	<link type="text/css" rel="stylesheet" href="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/themes/datatables/css/datatables.css" />
-	<link rel="stylesheet" type="text/css" href="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/texteditor/ckeditor/skins/kama/editor.css?t=C9A85WF">
+	<link type="text/css" rel="stylesheet" href="<?php echo site_url();?>/../assets/grocery_crud/css/ui/simple/jquery-ui-1.10.1.custom.min.css" />
+	<link type="text/css" rel="stylesheet" href="<?php echo site_url();?>/../assets/grocery_crud/css/jquery_plugins/jquery.ui.datetime.css" />
+	<link type="text/css" rel="stylesheet" href="<?php echo site_url();?>/../assets/grocery_crud/css/jquery_plugins/jquery-ui-timepicker-addon.css" />
+	<link type="text/css" rel="stylesheet" href="<?php echo site_url();?>/../assets/grocery_crud/css/jquery_plugins/chosen/chosen.css" />
+	<link type="text/css" rel="stylesheet" href="<?php echo site_url();?>/../assets/grocery_crud/css/jquery_plugins/file_upload/file-uploader.css">
+	<link type="text/css" rel="stylesheet" href="<?php echo site_url();?>/../assets/grocery_crud/css/jquery_plugins/file_upload/jquery.fileupload-ui.css">
+	<link type="text/css" rel="stylesheet" href="<?php echo site_url();?>/../assets/grocery_crud/css/jquery_plugins/fancybox/jquery.fancybox.css">
+	<link type="text/css" rel="stylesheet" href="<?php echo site_url();?>/../assets/grocery_crud/css/jquery_plugins/file_upload/fileuploader.css">
+	<link type="text/css" rel="stylesheet" href="<?php echo site_url();?>/../assets/grocery_crud/themes/datatables/css/datatables.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo site_url();?>/../assets/grocery_crud/texteditor/ckeditor/skins/kama/editor.css?t=C9A85WF">
 
 	<script type="text/javascript">var js_date_format = 'dd/mm/yy';</script>
 
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery-1.10.2.min.js"></script>
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/ui/jquery-ui-1.10.3.custom.min.js"></script>
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/jquery-ui-timepicker-addon.js"></script>
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/ui/i18n/datepicker/jquery.ui.datepicker-es.js"></script>
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/ui/i18n/timepicker/jquery-ui-timepicker-es.js"></script>
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/config/jquery-ui-timepicker-addon.config.js"></script>
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/jquery.chosen.min.js"></script>
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/config/jquery.chosen.config.js"></script>
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/jquery.numeric.min.js"></script>
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/config/jquery.numeric.config.js"></script>
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/texteditor/ckeditor/ckeditor.js"></script>
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/texteditor/ckeditor/adapters/jquery.js"></script>
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/config/jquery.ckeditor.config.js"></script>
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/tmpl.min.js"></script>
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/load-image.min.js"></script>
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/jquery.iframe-transport.js"></script>
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/jquery.fileupload.js"></script>
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/config/jquery.fileupload.config.js"></script>
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/jquery.fancybox-1.3.4.js"></script>
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/jquery.easing-1.3.pack.js"></script>
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/config/jquery.fancybox.config.js"></script>
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/themes/flexigrid/js/jquery.form.js"></script>
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/themes/datatables/js/datatables-add.js"></script>
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/jquery.noty.js"></script>
-	<script src="http://ddhh.fundarlabs.org.mx/assets/grocery_crud/js/jquery_plugins/config/jquery.noty.config.js"></script>
+	<script src="<?php echo site_url();?>/../assets/grocery_crud/js/jquery-1.10.2.min.js"></script>
+	<script src="<?php echo site_url();?>/../assets/grocery_crud/js/jquery_plugins/ui/jquery-ui-1.10.3.custom.min.js"></script>
+	<script src="<?php echo site_url();?>/../assets/grocery_crud/js/jquery_plugins/jquery-ui-timepicker-addon.js"></script>
+	<script src="<?php echo site_url();?>/../assets/grocery_crud/js/jquery_plugins/ui/i18n/datepicker/jquery.ui.datepicker-es.js"></script>
+	<script src="<?php echo site_url();?>/../assets/grocery_crud/js/jquery_plugins/ui/i18n/timepicker/jquery-ui-timepicker-es.js"></script>
+	<script src="<?php echo site_url();?>/../assets/grocery_crud/js/jquery_plugins/config/jquery-ui-timepicker-addon.config.js"></script>
+	<script src="<?php echo site_url();?>/../assets/grocery_crud/js/jquery_plugins/jquery.chosen.min.js"></script>
+	<script src="<?php echo site_url();?>/../assets/grocery_crud/js/jquery_plugins/config/jquery.chosen.config.js"></script>
+	<script src="<?php echo site_url();?>/../assets/grocery_crud/js/jquery_plugins/jquery.numeric.min.js"></script>
+	<script src="<?php echo site_url();?>/../assets/grocery_crud/js/jquery_plugins/config/jquery.numeric.config.js"></script>
+	<script src="<?php echo site_url();?>/../assets/grocery_crud/texteditor/ckeditor/ckeditor.js"></script>
+	<script src="<?php echo site_url();?>/../assets/grocery_crud/texteditor/ckeditor/adapters/jquery.js"></script>
+	<script src="<?php echo site_url();?>/../assets/grocery_crud/js/jquery_plugins/config/jquery.ckeditor.config.js"></script>
+	<script src="<?php echo site_url();?>/../assets/grocery_crud/js/jquery_plugins/tmpl.min.js"></script>
+	<script src="<?php echo site_url();?>/../assets/grocery_crud/js/jquery_plugins/load-image.min.js"></script>
+	<script src="<?php echo site_url();?>/../assets/grocery_crud/js/jquery_plugins/jquery.iframe-transport.js"></script>
+	<script src="<?php echo site_url();?>/../assets/grocery_crud/js/jquery_plugins/jquery.fileupload.js"></script>
+	<script src="<?php echo site_url();?>/../assets/grocery_crud/js/jquery_plugins/config/jquery.fileupload.config.js"></script>
+	<script src="<?php echo site_url();?>/../assets/grocery_crud/js/jquery_plugins/jquery.fancybox-1.3.4.js"></script>
+	<script src="<?php echo site_url();?>/../assets/grocery_crud/js/jquery_plugins/jquery.easing-1.3.pack.js"></script>
+	<script src="<?php echo site_url();?>/../assets/grocery_crud/js/jquery_plugins/config/jquery.fancybox.config.js"></script>
+	<script src="<?php echo site_url();?>/../assets/grocery_crud/themes/flexigrid/js/jquery.form.js"></script>
+	<script src="<?php echo site_url();?>/../assets/grocery_crud/themes/datatables/js/datatables-add.js"></script>
+	<script src="<?php echo site_url();?>/../assets/grocery_crud/js/jquery_plugins/jquery.noty.js"></script>
+	<script src="<?php echo site_url();?>/../assets/grocery_crud/js/jquery_plugins/config/jquery.noty.config.js"></script>
 
 
-	<script type="text/javascript" src="../../assets/js/angular.js"></script>
-	<script type="text/javascript" src="../../assets/js/angular-local-storage.js"></script>
-	<script type="text/javascript" src="../../assets/js/local_storage.js"></script>
+	<script type="text/javascript" src="<?php echo site_url();?>/../assets/js/angular.js"></script>
+	<script type="text/javascript" src="<?php echo site_url();?>/../assets/js/angular-local-storage.js"></script>
+	<script type="text/javascript" src="<?php echo site_url();?>/../assets/js/local_storage.js"></script>
 
-<style type='text/css'>
-	body{
-		font-family: Arial;
-		font-size: 14px;
-	}
-	a {
-	    color: blue;
-	    text-decoration: none;
-	    font-size: 14px;
-	}
-	a:hover{
-		text-decoration: underline;
-	}
-	strong { font-size:16px; }
-	.link { cursor:pointer; color:blue; font-size:14px; }
-	#catalogos { display:none; padding:0;}
+	<style type='text/css'>
+		body{
+			font-family: Arial;
+			font-size: 14px;
+		}
+		a {
+		    color: blue;
+		    text-decoration: none;
+		    font-size: 14px;
+		}
+		a:hover{
+			text-decoration: underline;
+		}
+		strong { font-size:16px; }
+		.link { cursor:pointer; color:blue; font-size:14px; }
+		#catalogos { display:none; padding:0;}
 
-	#addReport-step2{
-		display: none;
-	}
+		#addReport-step2{
+			display: none;
+		}
 
-	.chosen-select{
-		width:300px;
-	}
-</style>
+		.chosen-select{
+			width:300px;
+		}
+	</style>
 </head>
 <body>
 	<div>
-		<a href="<?php echo site_url('admin/migrantes');?>"> Migrantes </a> |
-		<a href="<?php echo site_url('admin/denuncias');?>"> Denuncias </a> |
-		<a href="<?php echo site_url('admin/graficas_migrantes');?>"> Gráficas </a> |
+		<a href="<?php echo site_url();?>/admin/migrantes"> Migrantes </a> |
+		<a href="<?php echo site_url();?>/admin/denuncias"> Denuncias </a> |
+		<a href="<?php echo site_url();?>/admin/graficas_migrantes"> Gráficas </a> |
 		<a href="#"> <strong> Reporte </strong> </a> |
 		<?php if(isset($_SESSION['user_id'])) ?>
-			<a href="<?php echo site_url('admin/logout');?>">Cerrar sesión</a> | 
+			<a href="<?php echo site_url();?>/admin/logout">Cerrar sesión</a> | 
 		<?php ?>
 		
 	</div>
@@ -114,10 +114,6 @@
 		
 	<div style='height:20px;'></div>  
     <div>
-
-<script type="text/javascript">
-	var ajax_relation_url = 'http://ddhh.fundarlabs.org.mx/admin/migrantes/ajax_relation';
-</script>
 
 <script type="text/javascript">
 	var upload_info_1886533685 = {
@@ -202,7 +198,7 @@
 	var error_max_file_size 		= "El archivo excede el tamaño 50MB que fue especificado.";
 	var error_min_file_size 		= "No puedes subir un arvhivo vacio.";
 
-	var base_url = "http://ddhh.fundarlabs.org.mx/";
+	var base_url = "<?php echo site_url();?>/";
 	var upload_a_file_string = "Subir un archivo";
 	
 		
@@ -212,7 +208,7 @@
 </head>
 
 <div class="container" ng-app="ReporteApp">
-	<form action="http://ddhh.fundarlabs.org.mx/index.php/admin/migrantes/insert" method="post" id="addReport-step1" autocomplete="off" 
+	<form action="<?php echo site_url();?>/admin/migrantes/insert" method="post" id="addReport-step1" autocomplete="off" 
 		  enctype="multipart/form-data" accept-charset="utf-8" ng-controller="MigranteCtrl">		
 		
 		<div class='ui-widget-content ui-corner-all datatables' id="migrantes-accordion">
@@ -493,7 +489,7 @@
 		</div>
 	</form>
 
-	<form action="http://ddhh.fundarlabs.org.mx/index.php/admin/denuncias/insert" method="post" id="addReport-step2" autocomplete="off" 
+	<form action="<?php echo site_url();?>/admin/denuncias/insert" method="post" id="addReport-step2" autocomplete="off" 
 		  enctype="multipart/form-data" accept-charset="utf-8" ng-controller="DenunciaCtrl">		
 
 		<div class='ui-widget-content ui-corner-all datatables' id="denuncias-accordion">
@@ -1359,12 +1355,12 @@
 					<div class='form-input-box' id="documento1_seguimiento_input_box">
 						<span class="fileinput-button qq-upload-button" id="upload-button-1886533685" style="">
 							<span>Subir un archivo</span>
-							<input type="file" name="s008231d3" class="gc-file-upload" rel="http://ddhh.fundarlabs.org.mx/admin/denuncias/upload_file/documento1_seguimiento" id="1886533685">
+							<input type="file" name="s008231d3" class="gc-file-upload" rel="<?php echo site_url();?>/admin/denuncias/upload_file/documento1_seguimiento" id="1886533685">
 							<input class="hidden-upload-input" type="hidden" name="documento1_seguimiento" value="" rel="s008231d3" />
 						</span>
 						<div id='uploader_1886533685' rel='1886533685' class='grocery-crud-uploader' style=''></div>
 						<div id='success_1886533685' class='upload-success-url' style='display:none; padding-top:7px;'>
-							<a href='http://ddhh.fundarlabs.org.mx/assets/uploads/files/' id='file_1886533685' class='open-file' target='_blank'></a> 
+							<a href='<?php echo site_url();?>/../assets/uploads/files/' id='file_1886533685' class='open-file' target='_blank'></a> 
 							<a href='javascript:void(0)' id='delete_1886533685' class='delete-anchor'>eliminar</a> 
 						</div>
 						<div style='clear:both'></div>
@@ -1374,10 +1370,10 @@
 							<span id='progress-1886533685'></span>
 						</div>
 						<div style='display:none'>
-							<a href='http://ddhh.fundarlabs.org.mx/admin/denuncias/upload_file/documento1_seguimiento' id='url_1886533685'></a>
+							<a href='<?php echo site_url();?>/admin/denuncias/upload_file/documento1_seguimiento' id='url_1886533685'></a>
 						</div>
 						<div style='display:none'>
-							<a href='http://ddhh.fundarlabs.org.mx/admin/denuncias/delete_file/documento1_seguimiento' id='delete_url_1886533685' rel='' ></a>
+							<a href='<?php echo site_url();?>/admin/denuncias/delete_file/documento1_seguimiento' id='delete_url_1886533685' rel='' ></a>
 						</div>				
 					</div>
 					<div class='clear'></div>
@@ -1390,12 +1386,12 @@
 					<div class='form-input-box' id="documento2_seguimiento_input_box">
 						<span class="fileinput-button qq-upload-button" id="upload-button-326692416" style="">
 							<span>Subir un archivo</span>
-							<input type="file" name="s9af4a019" class="gc-file-upload" rel="http://ddhh.fundarlabs.org.mx/admin/denuncias/upload_file/documento2_seguimiento" id="326692416">
+							<input type="file" name="s9af4a019" class="gc-file-upload" rel="<?php echo site_url();?>/admin/denuncias/upload_file/documento2_seguimiento" id="326692416">
 							<input class="hidden-upload-input" type="hidden" name="documento2_seguimiento" value="" rel="s9af4a019" />
 						</span>
 						<div id='uploader_326692416' rel='326692416' class='grocery-crud-uploader' style=''></div>
 						<div id='success_326692416' class='upload-success-url' style='display:none; padding-top:7px;'>
-							<a href='http://ddhh.fundarlabs.org.mx/assets/uploads/files/' id='file_326692416' class='open-file' target='_blank'></a> 
+							<a href='<?php echo site_url();?>/../assets/uploads/files/' id='file_326692416' class='open-file' target='_blank'></a> 
 							<a href='javascript:void(0)' id='delete_326692416' class='delete-anchor'>eliminar</a> 
 						</div>
 						<div style='clear:both'></div>
@@ -1405,10 +1401,10 @@
 							<span id='progress-326692416'></span>
 						</div>
 						<div style='display:none'>
-							<a href='http://ddhh.fundarlabs.org.mx/admin/denuncias/upload_file/documento2_seguimiento' id='url_326692416'></a>
+							<a href='<?php echo site_url();?>/admin/denuncias/upload_file/documento2_seguimiento' id='url_326692416'></a>
 						</div>
 						<div style='display:none'>
-							<a href='http://ddhh.fundarlabs.org.mx/admin/denuncias/delete_file/documento2_seguimiento' id='delete_url_326692416' rel='' ></a>
+							<a href='<?php echo site_url();?>/admin/denuncias/delete_file/documento2_seguimiento' id='delete_url_326692416' rel='' ></a>
 						</div>				
 					</div>
 					<div class='clear'></div>
@@ -1421,12 +1417,12 @@
 					<div class='form-input-box' id="documento3_seguimiento_input_box">
 						<span class="fileinput-button qq-upload-button" id="upload-button-50183926" style="">
 							<span>Subir un archivo</span>
-							<input type="file" name="s7e129420" class="gc-file-upload" rel="http://ddhh.fundarlabs.org.mx/admin/denuncias/upload_file/documento3_seguimiento" id="50183926">
+							<input type="file" name="s7e129420" class="gc-file-upload" rel="<?php echo site_url();?>/admin/denuncias/upload_file/documento3_seguimiento" id="50183926">
 							<input class="hidden-upload-input" type="hidden" name="documento3_seguimiento" value="" rel="s7e129420" />
 						</span>
 						<div id='uploader_50183926' rel='50183926' class='grocery-crud-uploader' style=''></div>
 						<div id='success_50183926' class='upload-success-url' style='display:none; padding-top:7px;'>
-							<a href='http://ddhh.fundarlabs.org.mx/assets/uploads/files/' id='file_50183926' class='open-file' target='_blank'></a> 
+							<a href='<?php echo site_url();?>/../assets/uploads/files/' id='file_50183926' class='open-file' target='_blank'></a> 
 							<a href='javascript:void(0)' id='delete_50183926' class='delete-anchor'>eliminar</a> 
 						</div>
 						<div style='clear:both'></div>
@@ -1436,10 +1432,10 @@
 							<span id='progress-50183926'></span>
 						</div>
 						<div style='display:none'>
-							<a href='http://ddhh.fundarlabs.org.mx/admin/denuncias/upload_file/documento3_seguimiento' id='url_50183926'></a>
+							<a href='<?php echo site_url();?>/admin/denuncias/upload_file/documento3_seguimiento' id='url_50183926'></a>
 						</div>
 						<div style='display:none'>
-							<a href='http://ddhh.fundarlabs.org.mx/admin/denuncias/delete_file/documento3_seguimiento' id='delete_url_50183926' rel='' ></a>
+							<a href='<?php echo site_url();?>/admin/denuncias/delete_file/documento3_seguimiento' id='delete_url_50183926' rel='' ></a>
 						</div>				
 					</div>
 					<div class='clear'></div>
@@ -1452,12 +1448,12 @@
 					<div class='form-input-box' id="documento4_seguimiento_input_box">
 						<span class="fileinput-button qq-upload-button" id="upload-button-2062526969" style="">
 							<span>Subir un archivo</span>
-							<input type="file" name="sa92f009b" class="gc-file-upload" rel="http://ddhh.fundarlabs.org.mx/admin/denuncias/upload_file/documento4_seguimiento" id="2062526969">
+							<input type="file" name="sa92f009b" class="gc-file-upload" rel="<?php echo site_url();?>/admin/denuncias/upload_file/documento4_seguimiento" id="2062526969">
 							<input class="hidden-upload-input" type="hidden" name="documento4_seguimiento" value="" rel="sa92f009b" />
 						</span>
 						<div id='uploader_2062526969' rel='2062526969' class='grocery-crud-uploader' style=''></div>
 						<div id='success_2062526969' class='upload-success-url' style='display:none; padding-top:7px;'>
-							<a href='http://ddhh.fundarlabs.org.mx/assets/uploads/files/' id='file_2062526969' class='open-file' target='_blank'></a> 
+							<a href='<?php echo site_url();?>/../assets/uploads/files/' id='file_2062526969' class='open-file' target='_blank'></a> 
 							<a href='javascript:void(0)' id='delete_2062526969' class='delete-anchor'>eliminar</a> </div>
 							<div style='clear:both'></div>
 							<div id='loading-2062526969' style='display:none'>
@@ -1466,10 +1462,10 @@
 								<span id='progress-2062526969'></span>
 							</div>
 							<div style='display:none'>
-								<a href='http://ddhh.fundarlabs.org.mx/admin/denuncias/upload_file/documento4_seguimiento' id='url_2062526969'></a>
+								<a href='<?php echo site_url();?>/admin/denuncias/upload_file/documento4_seguimiento' id='url_2062526969'></a>
 							</div>
 							<div style='display:none'>
-								<a href='http://ddhh.fundarlabs.org.mx/admin/denuncias/delete_file/documento4_seguimiento' id='delete_url_2062526969' rel='' ></a>
+								<a href='<?php echo site_url();?>/admin/denuncias/delete_file/documento4_seguimiento' id='delete_url_2062526969' rel='' ></a>
 							</div>				
 						</div>
 						<div class='clear'></div>
@@ -1482,12 +1478,12 @@
 						<div class='form-input-box' id="documento5_seguimiento_input_box">
 							<span class="fileinput-button qq-upload-button" id="upload-button-741464619" style="">
 								<span>Subir un archivo</span>
-								<input type="file" name="s7dd3ed65" class="gc-file-upload" rel="http://ddhh.fundarlabs.org.mx/admin/denuncias/upload_file/documento5_seguimiento" id="741464619">
+								<input type="file" name="s7dd3ed65" class="gc-file-upload" rel="<?php echo site_url();?>/admin/denuncias/upload_file/documento5_seguimiento" id="741464619">
 								<input class="hidden-upload-input" type="hidden" name="documento5_seguimiento" value="" rel="s7dd3ed65" />
 							</span>
 							<div id='uploader_741464619' rel='741464619' class='grocery-crud-uploader' style=''></div>
 							<div id='success_741464619' class='upload-success-url' style='display:none; padding-top:7px;'>
-								<a href='http://ddhh.fundarlabs.org.mx/assets/uploads/files/' id='file_741464619' class='open-file' target='_blank'></a> 
+								<a href='<?php echo site_url();?>/../assets/uploads/files/' id='file_741464619' class='open-file' target='_blank'></a> 
 								<a href='javascript:void(0)' id='delete_741464619' class='delete-anchor'>eliminar</a> 
 							</div>
 							<div style='clear:both'></div>
@@ -1497,10 +1493,10 @@
 								<span id='progress-741464619'></span>
 							</div>
 							<div style='display:none'>
-								<a href='http://ddhh.fundarlabs.org.mx/admin/denuncias/upload_file/documento5_seguimiento' id='url_741464619'></a>
+								<a href='<?php echo site_url();?>/admin/denuncias/upload_file/documento5_seguimiento' id='url_741464619'></a>
 							</div>
 							<div style='display:none'>
-								<a href='http://ddhh.fundarlabs.org.mx/admin/denuncias/delete_file/documento5_seguimiento' id='delete_url_741464619' rel='' ></a>
+								<a href='<?php echo site_url();?>/admin/denuncias/delete_file/documento5_seguimiento' id='delete_url_741464619' rel='' ></a>
 							</div>				
 						</div>
 						<div class='clear'></div>
@@ -1513,12 +1509,12 @@
 						<div class='form-input-box' id="documento6_seguimiento_input_box">
 							<span class="fileinput-button qq-upload-button" id="upload-button-1256211452" style="">
 								<span>Subir un archivo</span>
-								<input type="file" name="s85e26f21" class="gc-file-upload" rel="http://ddhh.fundarlabs.org.mx/admin/denuncias/upload_file/documento6_seguimiento" id="1256211452">
+								<input type="file" name="s85e26f21" class="gc-file-upload" rel="<?php echo site_url();?>/admin/denuncias/upload_file/documento6_seguimiento" id="1256211452">
 								<input class="hidden-upload-input" type="hidden" name="documento6_seguimiento" value="" rel="s85e26f21" />
 							</span>
 							<div id='uploader_1256211452' rel='1256211452' class='grocery-crud-uploader' style=''></div>
 							<div id='success_1256211452' class='upload-success-url' style='display:none; padding-top:7px;'>
-								<a href='http://ddhh.fundarlabs.org.mx/assets/uploads/files/' id='file_1256211452' class='open-file' target='_blank'></a> 
+								<a href='<?php echo site_url();?>/../assets/uploads/files/' id='file_1256211452' class='open-file' target='_blank'></a> 
 								<a href='javascript:void(0)' id='delete_1256211452' class='delete-anchor'>eliminar</a> 
 							</div>
 							<div style='clear:both'></div>
@@ -1528,10 +1524,10 @@
 								<span id='progress-1256211452'></span>
 							</div>
 							<div style='display:none'>
-								<a href='http://ddhh.fundarlabs.org.mx/admin/denuncias/upload_file/documento6_seguimiento' id='url_1256211452'></a>
+								<a href='<?php echo site_url();?>/admin/denuncias/upload_file/documento6_seguimiento' id='url_1256211452'></a>
 							</div>
 							<div style='display:none'>
-								<a href='http://ddhh.fundarlabs.org.mx/admin/denuncias/delete_file/documento6_seguimiento' id='delete_url_1256211452' rel='' ></a>
+								<a href='<?php echo site_url();?>/admin/denuncias/delete_file/documento6_seguimiento' id='delete_url_1256211452' rel='' ></a>
 							</div>				
 						</div>
 						<div class='clear'></div>
@@ -1544,12 +1540,12 @@
 						<div class='form-input-box' id="documento7_seguimiento_input_box">
 							<span class="fileinput-button qq-upload-button" id="upload-button-673702828" style="">
 								<span>Subir un archivo</span>
-								<input type="file" name="s178548d2" class="gc-file-upload" rel="http://ddhh.fundarlabs.org.mx/admin/denuncias/upload_file/documento7_seguimiento" id="673702828">
+								<input type="file" name="s178548d2" class="gc-file-upload" rel="<?php echo site_url();?>/admin/denuncias/upload_file/documento7_seguimiento" id="673702828">
 								<input class="hidden-upload-input" type="hidden" name="documento7_seguimiento" value="" rel="s178548d2" />
 							</span>
 							<div id='uploader_673702828' rel='673702828' class='grocery-crud-uploader' style=''></div>
 								<div id='success_673702828' class='upload-success-url' style='display:none; padding-top:7px;'>
-									<a href='http://ddhh.fundarlabs.org.mx/assets/uploads/files/' id='file_673702828' class='open-file' target='_blank'></a> 
+									<a href='<?php echo site_url();?>/../assets/uploads/files/' id='file_673702828' class='open-file' target='_blank'></a> 
 									<a href='javascript:void(0)' id='delete_673702828' class='delete-anchor'>eliminar</a> 
 								</div>
 								<div style='clear:both'></div>
@@ -1559,10 +1555,10 @@
 									<span id='progress-673702828'></span>
 								</div>
 								<div style='display:none'>
-									<a href='http://ddhh.fundarlabs.org.mx/admin/denuncias/upload_file/documento7_seguimiento' id='url_673702828'></a>
+									<a href='<?php echo site_url();?>/admin/denuncias/upload_file/documento7_seguimiento' id='url_673702828'></a>
 								</div>
 								<div style='display:none'>
-									<a href='http://ddhh.fundarlabs.org.mx/admin/denuncias/delete_file/documento7_seguimiento' id='delete_url_673702828' rel='' ></a>
+									<a href='<?php echo site_url();?>/admin/denuncias/delete_file/documento7_seguimiento' id='delete_url_673702828' rel='' ></a>
 								</div>				
 							</div>
 						<div class='clear'></div>
@@ -1575,11 +1571,11 @@
 						<div class='form-input-box' id="documento8_seguimiento_input_box">
 							<span class="fileinput-button qq-upload-button" id="upload-button-680273429" style="">
 								<span>Subir un archivo</span>
-									<input type="file" name="s856dc304" class="gc-file-upload" rel="http://ddhh.fundarlabs.org.mx/admin/denuncias/upload_file/documento8_seguimiento" id="680273429">
+									<input type="file" name="s856dc304" class="gc-file-upload" rel="<?php echo site_url();?>/admin/denuncias/upload_file/documento8_seguimiento" id="680273429">
 									<input class="hidden-upload-input" type="hidden" name="documento8_seguimiento" value="" rel="s856dc304" />
 								</span><div id='uploader_680273429' rel='680273429' class='grocery-crud-uploader' style=''></div>
 								<div id='success_680273429' class='upload-success-url' style='display:none; padding-top:7px;'>
-									<a href='http://ddhh.fundarlabs.org.mx/assets/uploads/files/' id='file_680273429' class='open-file' target='_blank'></a> 
+									<a href='<?php echo site_url();?>/../assets/uploads/files/' id='file_680273429' class='open-file' target='_blank'></a> 
 									<a href='javascript:void(0)' id='delete_680273429' class='delete-anchor'>eliminar</a> 
 								</div>
 								<div style='clear:both'></div>
@@ -1588,10 +1584,10 @@
 									<span class='qq-upload-spinner'></span> 
 									<span id='progress-680273429'></span>
 								</div><div style='display:none'>
-								<a href='http://ddhh.fundarlabs.org.mx/admin/denuncias/upload_file/documento8_seguimiento' id='url_680273429'></a>
+								<a href='<?php echo site_url();?>/admin/denuncias/upload_file/documento8_seguimiento' id='url_680273429'></a>
 							</div>
 							<div style='display:none'>
-								<a href='http://ddhh.fundarlabs.org.mx/admin/denuncias/delete_file/documento8_seguimiento' id='delete_url_680273429' rel='' ></a>
+								<a href='<?php echo site_url();?>/admin/denuncias/delete_file/documento8_seguimiento' id='delete_url_680273429' rel='' ></a>
 							</div>				
 						</div>
 						<div class='clear'></div>
@@ -1604,12 +1600,12 @@
 						<div class='form-input-box' id="documento9_seguimiento_input_box">
 							<span class="fileinput-button qq-upload-button" id="upload-button-1049547211" style="">
 								<span>Subir un archivo</span>
-								<input type="file" name="s3eed3d9c" class="gc-file-upload" rel="http://ddhh.fundarlabs.org.mx/admin/denuncias/upload_file/documento9_seguimiento" id="1049547211">
+								<input type="file" name="s3eed3d9c" class="gc-file-upload" rel="<?php echo site_url();?>/admin/denuncias/upload_file/documento9_seguimiento" id="1049547211">
 								<input class="hidden-upload-input" type="hidden" name="documento9_seguimiento" value="" rel="s3eed3d9c" />
 							</span>
 							<div id='uploader_1049547211' rel='1049547211' class='grocery-crud-uploader' style=''></div>
 							<div id='success_1049547211' class='upload-success-url' style='display:none; padding-top:7px;'>
-								<a href='http://ddhh.fundarlabs.org.mx/assets/uploads/files/' id='file_1049547211' class='open-file' target='_blank'></a> 
+								<a href='<?php echo site_url();?>/../assets/uploads/files/' id='file_1049547211' class='open-file' target='_blank'></a> 
 								<a href='javascript:void(0)' id='delete_1049547211' class='delete-anchor'>eliminar</a> 
 							</div>
 							<div style='clear:both'></div>
@@ -1619,10 +1615,10 @@
 								<span id='progress-1049547211'></span>
 							</div>
 							<div style='display:none'>
-								<a href='http://ddhh.fundarlabs.org.mx/admin/denuncias/upload_file/documento9_seguimiento' id='url_1049547211'></a>
+								<a href='<?php echo site_url();?>/admin/denuncias/upload_file/documento9_seguimiento' id='url_1049547211'></a>
 							</div>
 							<div style='display:none'>
-								<a href='http://ddhh.fundarlabs.org.mx/admin/denuncias/delete_file/documento9_seguimiento' id='delete_url_1049547211' rel='' ></a>
+								<a href='<?php echo site_url();?>/admin/denuncias/delete_file/documento9_seguimiento' id='delete_url_1049547211' rel='' ></a>
 							</div>				
 						</div>
 						<div class='clear'></div>
@@ -1635,12 +1631,12 @@
 						<div class='form-input-box' id="documento10_seguimiento_input_box">
 							<span class="fileinput-button qq-upload-button" id="upload-button-1029029082" style="">
 								<span>Subir un archivo</span>
-								<input type="file" name="s0bdcb1ad" class="gc-file-upload" rel="http://ddhh.fundarlabs.org.mx/admin/denuncias/upload_file/documento10_seguimiento" id="1029029082">
+								<input type="file" name="s0bdcb1ad" class="gc-file-upload" rel="<?php echo site_url();?>/admin/denuncias/upload_file/documento10_seguimiento" id="1029029082">
 								<input class="hidden-upload-input" type="hidden" name="documento10_seguimiento" value="" rel="s0bdcb1ad" />
 							</span>
 							<div id='uploader_1029029082' rel='1029029082' class='grocery-crud-uploader' style=''></div>
 							<div id='success_1029029082' class='upload-success-url' style='display:none; padding-top:7px;'>
-								<a href='http://ddhh.fundarlabs.org.mx/assets/uploads/files/' id='file_1029029082' class='open-file' target='_blank'></a> 
+								<a href='<?php echo site_url();?>/../assets/uploads/files/' id='file_1029029082' class='open-file' target='_blank'></a> 
 								<a href='javascript:void(0)' id='delete_1029029082' class='delete-anchor'>eliminar</a> 
 							</div>
 							<div style='clear:both'></div>
@@ -1650,10 +1646,10 @@
 								<span id='progress-1029029082'></span>
 							</div>
 							<div style='display:none'>
-								<a href='http://ddhh.fundarlabs.org.mx/admin/denuncias/upload_file/documento10_seguimiento' id='url_1029029082'></a>
+								<a href='<?php echo site_url();?>/admin/denuncias/upload_file/documento10_seguimiento' id='url_1029029082'></a>
 							</div>
 							<div style='display:none'>
-								<a href='http://ddhh.fundarlabs.org.mx/admin/denuncias/delete_file/documento10_seguimiento' id='delete_url_1029029082' rel='' ></a>
+								<a href='<?php echo site_url();?>/admin/denuncias/delete_file/documento10_seguimiento' id='delete_url_1029029082' rel='' ></a>
 							</div>				
 						</div>
 						<div class='clear'></div>
@@ -1685,16 +1681,14 @@
 
 					<div class='clear'></div>
 				</div>
-		</div>
-
-
+			</div>
 		</div>
 	</form>
 </div>
 
 <script>
-	var default_theme_path = 'http://ddhh.fundarlabs.org.mx/assets/grocery_crud/themes';
-	var base_url = 'http://ddhh.fundarlabs.org.mx/';
+	var default_theme_path = '<?php echo site_url();?>/../assets/grocery_crud/themes';
+	var base_url = '<?php echo site_url();?>/';
 
 	
 	$(document).ready( function () {
@@ -1834,7 +1828,7 @@
 			}
 
 			var insertMigrantes2denuncia = function(id_denuncia){
-				var url = "http://ddhh.fundarlabs.org.mx/index.php/admin/insertMigrantes2denuncia";
+				var url = "<?php echo site_url();?>/index.php/admin/insertMigrantes2denuncia";
 				var migrantes = angular.element( $("#addReport-step1") ).scope().get_migrantes_data().split(",")
 				var ids = []
 
@@ -1864,7 +1858,7 @@
 	          	var migrantes = angular.element(f1).scope().get_migrantes_data().split(",")
 	          	var ids = []
 
-	          	var url = "http://ddhh.fundarlabs.org.mx/index.php/admin/deleteMigrantes";
+	          	var url = "<?php echo site_url();?>/index.php/admin/deleteMigrantes";
 	          	
 	          	for(var i in migrantes) ids.push( migrantes[i].split(":")[0] )
 	      		$.post(url, { ids : ids}, function(res, error){

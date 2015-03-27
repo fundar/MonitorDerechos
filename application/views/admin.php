@@ -89,13 +89,13 @@ foreach($css_files as $file): ?>
 		
 		<span id="catalogos" class="hide">
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<a href="<?php echo site_url('admin/estados')?>')" >
+			<a href="<?php echo site_url('admin/estados')?>" >
 				<?php if($this->uri->segment(2) == "estados") { ?><strong>Estados/Departamentos</strong><?php } else { ?>Estados/Departamentos<?php } ?>
 			</a> |
-			<a href="<?php echo site_url('admin/autoridades')?>')" >
+			<a href="<?php echo site_url('admin/autoridades')?>" >
 				<?php if($this->uri->segment(2) == "autoridades") { ?><strong>Autoridades</strong><?php } else { ?>Autoridades<?php } ?>
 			</a> |
-			<a href="<?php echo site_url('admin/paises')?>')" >
+			<a href="<?php echo site_url('admin/paises')?>" >
 				<?php if($this->uri->segment(2) == "paises") { ?><strong>Paises</strong><?php } else { ?>Paises<?php } ?>
 			</a> |
 			<a href="<?php echo site_url('admin/estados_casos')?>" >
