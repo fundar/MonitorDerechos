@@ -125,20 +125,8 @@ foreach($css_files as $file): ?>
     <script type="text/javascript">
 		$(document).ready( function () {
 
-			/* Modificar filtro
-			$("tfoot th").first().append('<div class="c_filtros"></div>')
-
-			$("tfoot th").each(function(index){
-			  var filtro = $(this).children("input")
-			  filtro.addClass("filtro")
-			  $("tfoot th").first().children(".c_filtros").append(filtro);
-
-			  if(index > 0)  $(this).remove();
-			})
-
-			$("tfoot th").first().attr("colspan", "56")
-			/**/
-
+			/* Quitar la opción de agregar en el listado*/
+			$(".datatables-add-button").remove()
 
 			$("#clear_memo").on("click", function(e){
 				e.preventDefault()
