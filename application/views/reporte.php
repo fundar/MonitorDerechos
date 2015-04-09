@@ -554,7 +554,7 @@
 			
 				<div class='form-field-box odd' id="migrantes_field_box">
 					<div class='form-display-as-box' id="migrantes_display_as_box">
-						Migrantes :
+						Migrantes <span class='required'>*</span>:
 					</div>
 					<div class='form-input-box' id="migrantes_input_box">
 						<select id='field-migrantes' name='migrantes[]'  ng-model='migrantes' multiple='multiple' size='8' 

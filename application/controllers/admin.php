@@ -183,6 +183,7 @@ class Admin extends CI_Controller {
 
 		/* Campos obligatorios */
 		$crud->required_fields('fecha_creada');
+		$crud->required_fields('migrantes');
 
 		/*Relaciones con tablas*/
 		/*Set displays campos*/
@@ -196,8 +197,6 @@ class Admin extends CI_Controller {
 		if($state == 'insert') { // si se trata de solo una insercion se devuelve un json
 			$crud->callback_after_insert(array($this, 'denuncia_after_insert'));
     	}
-    	/* No mostrar opción de agregar en el listado */
-    	//$crud->unset_add();
 
 		$output = $crud->render();
 		
