@@ -100,10 +100,10 @@
 </head>
 <body>
 	<div>
+		<a href="#"> <strong> Levantar Denuncia </strong> </a> |
 		<a href="<?php echo site_url();?>/admin/migrantes"> Migrantes </a> |
 		<a href="<?php echo site_url();?>/admin/denuncias"> Denuncias </a> |
 		<a href="<?php echo site_url();?>/admin/graficas_migrantes"> Gráficas </a> |
-		<a href="#"> <strong> Reporte </strong> </a> |
 		<?php if(isset($_SESSION['user_id'])) ?>
 			<a href="<?php echo site_url();?>/admin/logout">Cerrar sesión</a> | 
 		<?php ?>
