@@ -478,6 +478,10 @@
 							<input type='submit' value='Guardar y Seguir' ng-click="clear_migrante()" class='ui-input-button' id="save-and-go-next-button"/>
 						</div>
 
+						<div class='form-button-box'>
+							<input type='button' value='Ir a Agregar Denuncia >>' class='ui-input-button' id='go-next-button' />
+						</div>
+
 						<div class='form-button-box loading-box'>
 							<div class='small-loading' id='FormLoading'>Cargando, guardando los datos...</div>
 						</div>
@@ -1668,7 +1672,7 @@
 					</div>
 
 					<div class='form-button-box'>
-						<input type='button' value='Atras' class='ui-input-button' id="go-back-button"/>
+						<input type='button' value='<< Regresar a Agregar Migrante' class='ui-input-button' id="go-back-button"/>
 					</div>
 
 					<div class='form-button-box'>
@@ -1850,11 +1854,18 @@
 			}
 		})
 
+		$("#go-next-button").on("click", function(e){
+			e.preventDefault()
+			$("#addReport-step1").toggle( "slide", function(){
+        		$("#addReport-step2").toggle( "slide" )
+        	})
+		})
+
 		$("#go-back-button").on("click", function(e){
 			e.preventDefault();
 			$("#addReport-step2").toggle( "slide", function(){
-    		$("#addReport-step1").toggle( "slide" )
-    	})
+	    		$("#addReport-step1").toggle( "slide" )
+	    	})
 		})
 
 		$(".cancel-and-go-back-button").on("click", function(e){
