@@ -1777,54 +1777,64 @@
 			e.preventDefault();
 			var that = $(this)
 			  , scope = angular.element(that).scope()
-			  , data = $(this).serializeObject()
-			  , url = that.attr("action");
-
-			$(this).children(".small-loading").css("display","block");
-		  	
+			  //, data = $(this).serializeObject()
+  			
+			//console.log(data)
+			that.children(".small-loading").css("display","block");
 		  	$.get('http://jsonip.com', function (res) {
+		  		var folio;
 		  	 	if(res && res.ip ){
 			  	 	ip = parseInt( (res.ip).replace(/\./g, "") );
-			  	 	data.folio = 'DEN-' + Math.floor(Date.now() / 1000) + '-' +  toRadix(ip, 36).toUpperCase() 
+			  	 	folio = 'DEN-' + Math.floor(Date.now() / 1000) + '-' +  toRadix(ip, 36).toUpperCase() 
 		  	 	}else{
-			  		data.folio = "<?php echo crearFolio('DEN'); ?>"
+			  		folio = "<?php echo crearFolio('DEN'); ?>"
 		  	 	}
+
+		  	 	that.append("<input type='hidden' id='folio' name='folio' value='" + folio +"' >")
 
 		  	 	// fallara si no esta logueado
 		  	 	try {
-			  		send_data()	
+			  		send_data(that)	
 		  	 	} catch(e) {
 				    window.location.reload();
 				}
     		});
-			
 
-			var send_data = function(){
-				//scope.clear_all();
-				/**/
-				$.post(url, data, function(res, error){
-					//proceso para guardar 
-					var res = JSON.parse(res)
-					var that = $("#addReport-step2")
-					if(res.status){
-						var f1 = $("#addReport-step1") // formulario migrante
-			          	var f2 = $("#addReport-step2") // formulario denuncia
+			var send_data = function(el){
+  				/**/
+  				var formData = new FormData(el[0])
+  				  , url = el.attr("action");
 
-			          	f1[0].reset(); // resetea los forms
-			          	f2[0].reset();
-			          	insertMigrantes2denuncia(res.data.id)
-			          	angular.element(f1).scope().clear_all(); // limpia el localstorage de migrante
-			          	angular.element(f2).scope().clear_all();
-						that.children(".small-loading").css("display","none");
-						alert("Se inserto correctamente la denuncia, con el folio: " + res.data.folio)
-						window.location.reload();
-			    	}else{
-			    		console.log(res)
-			  			alert("No se pudo insertar la Denuncia, verifique los campos")
-			  		}
+				jQuery.ajax({
+				    url: url,
+				    data: formData,
+				    cache: false,
+				    contentType: false,
+				    processData: false,
+				    type: 'POST',
+				    success: function(res, error){
+				        //proceso para guardar 
+						var res = JSON.parse(res)
+						var that = $("#addReport-step2")
+						if(res.status){
+							var f1 = $("#addReport-step1") // formulario migrante
+				          	var f2 = $("#addReport-step2") // formulario denuncia
 
-				})
-				/**/
+				          	f1[0].reset(); // resetea los forms
+				          	f2[0].reset();
+				          	insertMigrantes2denuncia(res.data.id)
+				          	angular.element(f1).scope().clear_all(); // limpia el localstorage de migrante
+				          	angular.element(f2).scope().clear_all();
+							that.children(".small-loading").css("display","none");
+							alert("Se inserto correctamente la denuncia, con el folio: " + res.data.folio)
+							window.location.reload();
+				    	}else{
+				    		console.log(res)
+				  			alert("No se pudo insertar la Denuncia, verifique los campos")
+				  		}
+				    }
+				});
+
 			}
 
 			var insertMigrantes2denuncia = function(id_denuncia){
