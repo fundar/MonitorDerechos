@@ -726,7 +726,7 @@ class Admin extends CI_Controller {
 	
 	/*metodo index - redirect a denuncias*/
 	public function index() {
-		header('Location: ' . site_url('admin/reporte'));
+		header('Location: ' . site_url('admin/denunciar'));
 		
 		return false;
 	}
@@ -746,9 +746,9 @@ class Admin extends CI_Controller {
 		$this->load->view('graficas_migrantes.php', $data);
 	}
 
-	public function reporte(){
+	public function denunciar(){
 		$user = $this->isUser();
-		$this->load->view('reporte.php');
+		$this->load->view('denunciar.php');
 	}
 
 	public function deleteMigrantes(){

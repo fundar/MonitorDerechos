@@ -66,8 +66,8 @@ foreach($css_files as $file): ?>
 </head>
 <body>
 	<div>
-		<a href="<?php echo site_url('admin/reporte')?>" >
-			<?php if($this->uri->segment(2) == "reporte") { ?><strong>Reporte</strong><?php } else { ?>Levantar Denuncia<?php } ?>
+		<a href="<?php echo site_url('admin/denunciar')?>" >
+			<?php if($this->uri->segment(2) == "denunciar") { ?><strong>Reporte</strong><?php } else { ?>Levantar Denuncia<?php } ?>
 		</a> |
 		<a href="<?php echo site_url('admin/migrantes')?>" >
 			<?php if($this->uri->segment(2) == "migrantes") { ?><strong>Migrantes</strong><?php } else { ?>Migrantes<?php } ?>

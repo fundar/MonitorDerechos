@@ -109,7 +109,7 @@
 
 <body>
 	<div>
-		<a href="<?php echo site_url('admin/reporte');?>"> Levantar Denuncia </a> |
+		<a href="<?php echo site_url('admin/denunciar');?>"> Levantar Denuncia </a> |
 		<a href="<?php echo site_url('admin/migrantes');?>"> Migrantes </a> |
 		<a href="<?php echo site_url('admin/denuncias');?>"> Denuncias </a> |
 		<a href="#"> <strong> Gráficas </strong> </a> |
