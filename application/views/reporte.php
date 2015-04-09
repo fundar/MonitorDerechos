@@ -204,7 +204,7 @@
 		
 </script>
 <head>
-	<h1> Añadir Reporte Completo </h1>
+	<h1> Añadir Denuncia Completa </h1>
 </head>
 
 <div class="container" ng-app="ReporteApp">
