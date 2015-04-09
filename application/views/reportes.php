@@ -112,7 +112,7 @@
 		<a href="<?php echo site_url('admin/denunciar');?>"> Levantar Denuncia </a> |
 		<a href="<?php echo site_url('admin/migrantes');?>"> Migrantes </a> |
 		<a href="<?php echo site_url('admin/denuncias');?>"> Denuncias </a> |
-		<a href="#"> <strong> Gráficas </strong> </a> |
+		<a href="#"> <strong> Reportes </strong> </a> |
 		<?php if(isset($_SESSION['user_id'])) ?>
 			<a href="<?php echo site_url('admin/logout');?>">Cerrar sesión</a> | 
 		<?php ?>

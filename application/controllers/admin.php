@@ -731,7 +731,7 @@ class Admin extends CI_Controller {
 		return false;
 	}
 
-	public function graficas_migrantes(){
+	public function reportes(){
 		$user = $this->isUser();
 		$this->load->model('migracion_model');
 		//$this->load->helper('assets');
@@ -743,7 +743,7 @@ class Admin extends CI_Controller {
         $data['end'] = $end;
 
         $data['denuncias'] = $this->migracion_model->allDenuncias($start, $end);
-		$this->load->view('graficas_migrantes.php', $data);
+		$this->load->view('reportes.php', $data);
 	}
 
 	public function denunciar(){

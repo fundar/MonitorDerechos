@@ -67,7 +67,7 @@ foreach($css_files as $file): ?>
 <body>
 	<div>
 		<a href="<?php echo site_url('admin/denunciar')?>" >
-			<?php if($this->uri->segment(2) == "denunciar") { ?><strong>Reporte</strong><?php } else { ?>Levantar Denuncia<?php } ?>
+			<?php if($this->uri->segment(2) == "denunciar") { ?><strong>Levantar Denuncia</strong><?php } else { ?>Levantar Denuncia<?php } ?>
 		</a> |
 		<a href="<?php echo site_url('admin/migrantes')?>" >
 			<?php if($this->uri->segment(2) == "migrantes") { ?><strong>Migrantes</strong><?php } else { ?>Migrantes<?php } ?>
@@ -76,8 +76,8 @@ foreach($css_files as $file): ?>
 			<?php if($this->uri->segment(2) == "denuncias") { ?><strong>Denuncias</strong><?php } else { ?>Denuncias<?php } ?>
 		</a> |
 
-		<a href="<?php echo site_url('admin/graficas_migrantes')?>" >
-			<?php if($this->uri->segment(2) == "graficas_migrantes") { ?><strong>Gráficas</strong><?php } else { ?>Gráficas<?php } ?>
+		<a href="<?php echo site_url('admin/reportes')?>" >
+			<?php if($this->uri->segment(2) == "reportes") { ?><strong>Reportes</strong><?php } else { ?>Reportes<?php } ?>
 		</a> |
 		
 		<?php if(isset($_SESSION['user_id'])) { ?>
