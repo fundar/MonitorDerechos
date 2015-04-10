@@ -36,6 +36,10 @@ foreach($css_files as $file): ?>
 	.link { cursor:pointer; color:blue; font-size:14px; }
 	#catalogos { display:none; padding:0;}
 
+	.datatables-add-button{
+		display:none;
+	}
+
 /*
 	.c_filtros{
 		min-width: 1200px;
