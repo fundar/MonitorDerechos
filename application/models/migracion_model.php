@@ -147,7 +147,31 @@ class migracion_Model extends CI_Model  {
    		return $insert_id;
 	}
 
+	public function getEstados() {
+		$data = $this->db->query("SELECT nombre, id_estado FROM estados");
+		return $data;
+	}
+	
+	
+	public function getPaises() {
+		$data = $this->db->query("SELECT nombre, id_pais FROM paises");
+		return $data;
+	}
 
+	public function getAutoridades() {
+		$data = $this->db->query("SELECT nombre, id_autoridad FROM autoridades");
+		return $data;
+	}
+
+	public function getTransportes() {
+		$data = $this->db->query("SELECT nombre, id_transporte FROM transportes");
+		return $data;
+	}
+
+	public function getEstadosCasos() {
+		$data = $this->db->query("SELECT nombre, id_estado_caso FROM etados_casos");
+		return $data;
+	}
 
 }
 

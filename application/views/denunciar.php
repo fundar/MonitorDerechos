@@ -27,7 +27,7 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Sistematización de información Migración</title>
-	
+
 	<link type="text/css" rel="stylesheet" href="<?php echo site_url();?>/../assets/grocery_crud/css/ui/simple/jquery-ui-1.10.1.custom.min.css" />
 	<link type="text/css" rel="stylesheet" href="<?php echo site_url();?>/../assets/grocery_crud/css/jquery_plugins/jquery.ui.datetime.css" />
 	<link type="text/css" rel="stylesheet" href="<?php echo site_url();?>/../assets/grocery_crud/css/jquery_plugins/jquery-ui-timepicker-addon.css" />
@@ -237,15 +237,9 @@
 						<div class='form-input-box' id="id_pais_input_box">
 							<select id='field-id_pais' name='id_pais' ng-model="id_pais_migrante" class='chosen-select' data-placeholder='Seleccionar País' style='width:300px'>
 								<option value=''></option>
-								<option value='1'  >México</option>
-								<option value='2'  >Estados Unidos</option>
-								<option value='3'  >Honduras</option>
-								<option value='4'  >Guatemala</option>
-								<option value='5'  >El Salvador</option>
-								<option value='6' >Belice</option>
-								<option value='7'  >Nicaragua</option>
-								</select>				
-							</div>
+								<?php foreach ($paises->result_array() as $row) echo "<option value='" . $row['id_pais'] . "'>" . $row['nombre'] . "</option>"; ?>
+							</select>				
+						</div>
 						<div class='clear'></div>
 					</div>
 					
@@ -256,48 +250,7 @@
 						<div class='form-input-box' id="id_estado_input_box">
 							<select id='field-id_estado' name='id_estado' ng-model="id_estado_migrante" class='chosen-select' data-placeholder='Seleccionar Estado/Departamento' style='width:300px'>
 								<option value=''></option>
-								<option value='1'  >Aguascalientes</option>
-								<option value='2'  >Baja California</option>
-								<option value='3'  >Baja California Sur</option>
-								<option value='4'  >Campeche</option>
-								<option value='5'  >Coahuila</option>
-								<option value='6'  >Colima</option>
-								<option value='7'  >Chiapas</option>
-								<option value='8'  >Chihuahua</option>
-								<option value='9'  >Distrito Federal</option>
-								<option value='10'  >Durango</option>
-								<option value='11'  >Guanajuato</option>
-								<option value='12'  >Guerrero</option>
-								<option value='13'  >Hidalgo</option>
-								<option value='14'  >Jalisco</option>
-								<option value='15'  >Edo. De México</option>
-								<option value='16'  >Michoacán</option>
-								<option value='17'  >Morelos</option>
-								<option value='18'  >Nayarit</option>
-								<option value='19'  >Nuevo León</option>
-								<option value='20'  >Oaxaca</option>
-								<option value='21'  >Puebla</option>
-								<option value='22'  >Querétaro</option>
-								<option value='23'  >Quintana Roo</option>
-								<option value='24'  >San Luis Potosí</option>
-								<option value='25'  >Sinaloa</option>
-								<option value='26'  >Sonora</option>
-								<option value='27'  >Tabasco</option>
-								<option value='28'  >Tamaulipas</option>
-								<option value='29'  >Tlaxcala</option>
-								<option value='30'  >Veracruz</option>
-								<option value='31'  >Yucatán</option>
-								<option value='32'  >Zacatecas</option>
-								<option value='33'  >Comayahua</option>
-								<option value='34'  >Tegusigalpa</option>
-								<option value='35'  >Huehuetenango</option>
-								<option value='36'  >Choluteca</option>
-								<option value='37'  >Arizona</option>
-								<option value='38'  >Escuintla</option>
-								<option value='39'  >Cortés</option>
-								<option value='40'  >Francisco Morazán</option>
-								<option value='41'  >Matagalpa</option>
-								<option value='42'  >Suchitepéquez</option>
+								<?php foreach ($estados->result_array() as $row) echo "<option value='" . $row['id_estado'] . "'>" . $row['nombre'] . "</option>"; ?>
 							</select>				
 						</div>
 						<div class='clear'></div>
@@ -788,25 +741,7 @@
 					<div class='form-input-box' id="autoridades_viaje_input_box">
 						<select id='field-autoridades_viaje' name='autoridades_viaje[]' ng-model='autoridades_viaje' multiple='multiple' size='8' class='chosen-multiple-select' data-placeholder='Seleccionar Durante el viaje con que autoridades te encontraste' style='width:510px;' >
 							<option value=''></option>
-							<option value='1'>Patrulla Fronteriza</option>
-							<option value='2'>Policía</option>
-							<option value='3'>Grupo Beta</option>
-							<option value='4'>Agente del instituto nacional de migración</option>
-							<option value='5'>El Ejército</option>
-							<option value='6'>Marina</option>
-							<option value='7'>Migración</option>
-							<option value='8'>Policía Federal</option>
-							<option value='9'>Policía Preventiva y Transito Municipal</option>
-							<option value='10'>Otro actor / Coyote</option>
-							<option value='11'>Otro actor / Mafia</option>
-							<option value='12'></option>
-							<option value='13'>Policía Estatal de Seguridad</option>
-							<option value='14'>Policía Estatal Investigadora</option>
-							<option value='15'></option>
-							<option value='16'>Otro actor/ taxista</option>
-							<option value='17'>Policia Turística</option>
-							<option value='18'>PGR</option>
-							<option value='19'>Ministerio Público Federal</option>
+							<?php foreach ($autoridades->result_array() as $row) echo "<option value='" . $row['id_autoridad'] . "'>" . $row['nombre'] . "</option>"; ?>
 						</select>				
 					</div>
 					<div class='clear'></div>
@@ -842,25 +777,8 @@
 					<div class='form-input-box' id="id_autoridad_dano_input_box">
 						<select id='field-id_autoridad_dano'  name='id_autoridad_dano' ng-model='id_autoridad_dano' class='chosen-select' data-placeholder='Seleccionar Que autoridad lo hizo' style='width:300px'>
 							<option value=''></option>
-							<option value='1'  >Patrulla Fronteriza</option>
-							<option value='2'  >Policía</option>
-							<option value='3'  >Grupo Beta</option>
-							<option value='4'  >Agente del instituto nacional de migración</option>
-							<option value='5'  >El Ejército</option>
-							<option value='6'  >Marina</option>
-							<option value='7'  >Migración</option>
-							<option value='8'  >Policía Federal</option>
-							<option value='9'  >Policía Preventiva y Transito Municipal</option>
-							<option value='10'  >Otro actor / Coyote</option>
-							<option value='11'  >Otro actor / Mafia</option>
-							<option value='12'></option>
-							<option value='13'  >Policía Estatal de Seguridad</option>
-							<option value='14'  >Policía Estatal Investigadora</option>
-							<option value='15'></option>
-							<option value='16'  >Otro actor/ taxista</option>
-							<option value='17'  >Policia Turística</option>
-							<option value='18'  >PGR</option>
-							<option value='19'  >Ministerio Público Federal</option>
+							<?php foreach ($autoridades->result_array() as $row) echo "<option value='" . $row['id_autoridad'] . "'>" . $row['nombre'] . "</option>"; ?>
+							
 						</select>				
 					</div>
 					<div class='clear'></div>
@@ -873,13 +791,7 @@
 					<div class='form-input-box' id="id_pais_injusticia_input_box">
 						<select id='field-id_pais_injusticia'  name='id_pais_injusticia' ng-model='id_pais_injusticia' class='chosen-select' data-placeholder='Seleccionar País donde se cometió la injusticia' style='width:300px'>
 							<option value=''></option>
-							<option value='1'  >México</option>
-							<option value='2'  >Estados Unidos</option>
-							<option value='3'  >Honduras</option>
-							<option value='4'  >Guatemala</option>
-							<option value='5'  >El Salvador</option>
-							<option value='6'  >Belice</option>
-							<option value='7'  >Nicaragua</option>
+							<?php foreach ($paises->result_array() as $row) echo "<option value='" . $row['id_pais'] . "'>" . $row['nombre'] . "</option>"; ?>
 						</select>				
 					</div>
 					<div class='clear'></div>
@@ -984,19 +896,7 @@
 					<div class='form-input-box' id="id_transporte_viaje_injusticia_input_box">
 						<select id='field-id_transporte_viaje_injusticia'  name='id_transporte_viaje_injusticia' ng-model='id_transporte_viaje_injusticia' class='chosen-select' data-placeholder='Seleccionar En que viajaba' style='width:300px'>
 							<option value=''></option>
-							<option value='1'  >Autobús de la Central</option>
-							<option value='2'  >Autobús de turismo</option>
-							<option value='3'  >Taxi</option>
-							<option value='4'  >Tren</option>
-							<option value='5'  >Camion</option>
-							<option value='6'  >Otro</option>
-							<option value='7'  >Vehículos oficiales</option>
-							<option value='8'  >Vehículos particulares</option>
-							<option value='9'  >Patrulla</option>
-							<option value='10'  >A pie</option>
-							<option value='11'  >Particulares</option>
-							<option value='12'  >Combi</option>
-							<option value='13'  >Bicicleta</option>
+							<?php foreach ($transportes->result_array() as $row) echo "<option value='" . $row['id_transporte'] . "'>" . $row['nombre'] . "</option>"; ?>
 						</select>				
 					</div>
 					<div class='clear'></div>
@@ -1067,25 +967,7 @@
 					<div class='form-input-box' id="autoridades_responables_input_box">
 						<select id='field-autoridades_responables' name='autoridades_responables[]' ng-model='autoridades_responables' multiple='multiple' size='8' class='chosen-multiple-select' data-placeholder='Seleccionar Nombre de las instituciones involucradas' style='width:510px;' >
 							<option value=""></option>
-							<option value='1'>Patrulla Fronteriza</option>
-							<option value='2'>Policía</option>
-							<option value='3'>Grupo Beta</option>
-							<option value='4'>Agente del instituto nacional de migración</option>
-							<option value='5'>El Ejército</option>
-							<option value='6'>Marina</option>
-							<option value='7'>Migración</option>
-							<option value='8'>Policía Federal</option>
-							<option value='9'>Policía Preventiva y Transito Municipal</option>
-							<option value='10'>Otro actor / Coyote</option>
-							<option value='11'>Otro actor / Mafia</option>
-							<option value=""></option>
-							<option value='13'>Policía Estatal de Seguridad</option>
-							<option value='14'>Policía Estatal Investigadora</option>
-							<option value=""></option>
-							<option value='16'>Otro actor/ taxista</option>
-							<option value='17'>Policia Turística</option>
-							<option value='18'>PGR</option>
-							<option value='19'>Ministerio Público Federal</option>
+							<?php foreach ($autoridades->result_array() as $row) echo "<option value='" . $row['id_autoridad'] . "'>" . $row['nombre'] . "</option>"; ?>
 						</select>				
 					</div>
 					<div class='clear'></div>
@@ -1203,7 +1085,9 @@
 					</div>
 					<div class='form-input-box' id="id_tipo_transporte_responsables_input_box">
 						<select id='field-id_tipo_transporte_responsables'  name='id_tipo_transporte_responsables' ng-model='id_tipo_transporte_responsables' class='chosen-select' data-placeholder='Seleccionar Tipo de vehículo' style='width:300px'>
-							<option value=''></option><option value='10'  >A pie</option><option value='1'  >Autobús de la Central</option><option value='2'  >Autobús de turismo</option><option value='13'  >Bicicleta</option><option value='5'  >Camion</option><option value='12'  >Combi</option><option value='6'  >Otro</option><option value='11'  >Particulares</option><option value='9'  >Patrulla</option><option value='3'  >Taxi</option><option value='4'  >Tren</option><option value='7'  >Vehículos oficiales</option><option value='8'  >Vehículos particulares</option>
+							<option value=''>
+							<?php foreach ($transportes->result_array() as $row) echo "<option value='" . $row['id_transporte'] . "'>" . $row['nombre'] . "</option>"; ?>
+							
 						</select>				
 					</div>
 					<div class='clear'></div>
@@ -1312,10 +1196,7 @@
 					<div class='form-input-box' id="id_estado_caso_input_box">
 						<select id='field-id_estado_caso'  name='id_estado_caso' ng-model='id_estado_caso' class='chosen-select' data-placeholder='Seleccionar Estado actual del caso' style='width:300px'>
 							<option value=''></option>
-							<option value='1'  >Trámite</option>
-							<option value='2'  >Cerrado por desistimiento estan en transito</option>
-							<option value='3'  >Cerrado por desistimiento por temor a represalias</option>
-							<option value='4'  >Cerrado por canalización a una instancia</option>
+							<?php foreach ($estados_casos->result_array() as $row) echo "<option value='" . $row['id_estado_caso'] . "'>" . $row['nombre'] . "</option>"; ?>
 						</select>				
 					</div>
 					<div class='clear'></div>

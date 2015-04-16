@@ -747,8 +747,17 @@ class Admin extends CI_Controller {
 	}
 
 	public function denunciar(){
+		$this->load->model('migracion_model');
 		$user = $this->isUser();
-		$this->load->view('denunciar.php');
+		$data = array(
+           'estados' => $this->migracion_model->getEstados(),
+           'paises' => $this->migracion_model->getPaises(),
+           'autoridades' => $this->migracion_model->getAutoridades(),
+           'transportes' => $this->migracion_model->getTransportes(),
+           'estados_casos' => $this->migracion_model->getEstadosCasos()
+      );
+
+		$this->load->view('denunciar.php', $data);
 	}
 
 	public function deleteMigrantes(){
