@@ -422,6 +422,7 @@ class Admin extends CI_Controller {
 		
 		
 		/*Relaciones con tablas*/
+		$crud->display_as('id_migrante', 'Id');
 		$crud->display_as('id_lugar_denuncia', 'Lugar de la organización');
 		$crud->display_as('id_pais', 'País');
 		$crud->display_as('id_estado', 'Estado/Departamento');
@@ -432,21 +433,6 @@ class Admin extends CI_Controller {
 		$crud->display_as('pueblo_indigena', 'Pertenece a algún pueblo indígena');
 		$crud->display_as('espanol', 'Dominio del español');
 
-		/*
-		$query  = " SELECT migrantes.id_migrante, migrantes.nombre, migrantes.municipio, migrantes.edad, migrantes.escolaridad, 
-						   migrantes.pueblo_indigena, migrantes.espanol, lugares_denuncia.nombre AS lugar_denuncia, paises.nombre AS pais, 
-						   estados.nombre AS estado, generos.nombre AS genero, estado_civil.nombre AS estado_civil, migrantes2denuncias.id_denuncia";
-		$query .= " FROM migrantes, lugares_denuncia, paises, estados, generos, estado_civil, migrantes2denuncias";
-		$query .= " WHERE migrante.id_lugar_denuncia = lugares_denuncia.id_lugar_denuncia";
-		$query .= " AND migrantes.id_pais = paises.id_pais";
-		$query .= " AND migrantes.id_estado = estados.id_estado";
-		$query .= " AND migrantes.id_genero = generos.id_genero";
-		$query .= " AND migrantes.id_estado_civil = generos.id_estado_civil";
-		$query .= " AND migrantes.id_migrante = migrantes2denuncias.id_migrante";
-		*/
-
-		//$crud->basic_model->set_query_str($query);
-   
 		
 		$crud->set_relation('id_lugar_denuncia', 'lugares_denuncia', 'nombre');
 		$crud->set_relation('id_pais', 'paises', 'nombre');
@@ -484,8 +470,9 @@ class Admin extends CI_Controller {
 		$crud->field_type('pueblo_indigena', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		$crud->field_type('espanol', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		
-		$crud->columns('id_migrante', 'id_lugar_denuncia', 'nombre', 'id_pais', 'id_estado', 'municipio', 'edad'/*, 'denuncia'*/);
-		
+		$crud->unset_columns('folio');
+		$crud->columns('id_migrante', 'nombre', 'edad', 'municipio', 'id_lugar_denuncia', 'id_pais', 'id_estado', 'id_genero', 'fecha_nacimiento', 'ocupacion', 'ocupacion_homologada', 'id_estado_civil', 'escolaridad', 'pueblo_indigena', 'espanol');
+
 		$crud->required_fields('nombre');
 
 		$crud->unset_export();
@@ -498,9 +485,9 @@ class Admin extends CI_Controller {
     	}
 
 
+		$crud->field_type('folio', 'hidden', '');
     	if($state == "edit") {
-			$crud->field_type('folio', 'hidden', '');
-			$crud->field_type('id_denuncia', 'hidden', '');
+			$crud->field_type('id_migrante', 'hidden', '');
 		}
 
     	/* No mostrar opción de agregar en el listado */
