@@ -161,6 +161,9 @@ class Admin extends CI_Controller {
 			'violaciones_derechos', 'id_estado_caso', 'estado_seguimiento'
 		);
 
+		/* Convertir columna en fechas reales para su ordenamiento */
+		$crud->callback_column('fecha_creada',array($this,'_callback_date'));
+
 		/* Agregar link a las fichas de migrantes*/
 		$crud->callback_column('migrantes',array($this,'_callback_migrante_url'));
 
@@ -384,6 +387,13 @@ class Admin extends CI_Controller {
 		return true;
 	}
 	
+	public function _callback_date($value, $row) {
+		return "<span style='visibility:hidden;display:none;'>" .
+					date('Y-m-d H:i:s', strtotime($value)) .
+			   "</span>" . 
+			   date('d/m/Y H:i:s', strtotime($value));
+	}
+
 	public function _callback_migrante_url($value, $row){
 		$this->load->model('migracion_model');
 		$folios = explode(",", $value);
