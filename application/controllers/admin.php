@@ -148,7 +148,7 @@ class Admin extends CI_Controller {
 		/* Columnas en la Vista */ 
 		//$crud->columns('folio', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes');
 		$crud->columns(
-			'nombre_persona_atendio_seguimiento', 'fecha_creada', 'id_lugar_denuncia', 'folio', 'id_tipo_queja', 'migrantes', 'intentos', 'motivo_migracion', 
+			'folio', 'id_denuncia', 'nombre_persona_atendio_seguimiento', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes', 'intentos', 'motivo_migracion', 
 			'coyote_guia', 'lugar_contrato_coyote', 'monto_coyote', 'paquete_pago', 'nombre_punto_fronterizo', 'viaja_solo', 
 			'con_quien_viaja', 'deportado', 'momento_deportado', 'separacion_familiar', 'familiar_separado', 'situacion_familiar','acto_siguiente', 
 			'acto_siguiente_homologada','autoridades_viaje', 'dano_autoridad', 'fecha_injusticia', 'id_pais_injusticia', 'id_estado_injusticia', 
@@ -166,7 +166,7 @@ class Admin extends CI_Controller {
 
 		/* Campos */
 		$crud->fields(
-			'nombre_persona_atendio_seguimiento', 'fecha_creada', 'id_lugar_denuncia', 'folio', 'id_tipo_queja', 'migrantes', 'intentos', 'motivo_migracion', 
+			'folio', 'id_denuncia', 'nombre_persona_atendio_seguimiento', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes', 'intentos', 'motivo_migracion', 
 			'coyote_guia', 'lugar_contrato_coyote', 'monto_coyote', 'paquete_pago', 'nombre_punto_fronterizo', 'lugar_de_usa', 'viaja_solo', 
 			'con_quien_viaja', 'deportado', 'momento_deportado', 'separacion_familiar', 'familiar_separado', 'situacion_familiar','acto_siguiente', 
 			'acto_siguiente_homologada','autoridades_viaje', 'dano_autoridad', 'fecha_injusticia', 'id_autoridad_dano', 'id_pais_injusticia', 'id_estado_injusticia', 
@@ -198,6 +198,11 @@ class Admin extends CI_Controller {
 			$crud->callback_after_insert(array($this, 'denuncia_after_insert'));
     	}
 
+    	if($state == "edit") {
+			$crud->field_type('folio', 'hidden', '');
+			$crud->field_type('id_denuncia', 'hidden', '');
+		}
+
 		$output = $crud->render();
 		
 		$this->_example_output($output);
@@ -207,14 +212,13 @@ class Admin extends CI_Controller {
 	public function display_as_denuncias($crud) {
 		/*Lugar denuncia*/
 		$crud->display_as('fecha_creada', 'Fecha que se recibió la queja');
-		$crud->display_as('id_denuncia', 'Número de queja');
+		$crud->display_as('id_denuncia', 'Id');
 		
 		$crud->display_as('id_lugar_denuncia', 'Lugar de denuncia');
 		$crud->set_relation('id_lugar_denuncia', 'lugares_denuncia', 'nombre');
 
 		/* Campo de folio*/
 		$crud->display_as('folio', 'Folio');
-		$crud->field_type('folio', 'hidden', '');
 
 		/*Lugar denuncia*/
 		$crud->display_as('id_tipo_queja', 'Tipo de queja');
@@ -492,6 +496,13 @@ class Admin extends CI_Controller {
 		if($state == 'insert') { // si se trata de solo una insercion se devuelve un json
 			$crud->callback_after_insert(array($this, 'migrante_after_insert'));
     	}
+
+
+    	if($state == "edit") {
+			$crud->field_type('folio', 'hidden', '');
+			$crud->field_type('id_denuncia', 'hidden', '');
+		}
+
     	/* No mostrar opción de agregar en el listado */
     	//$crud->unset_add();
     	
