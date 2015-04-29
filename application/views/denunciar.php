@@ -1794,27 +1794,14 @@
 		});
 		
 		var fields_hs = function(id, n, fields){
-			var f1 = $("#addReport-step1")
-			var f2 = $("#addReport-step2")
-
 			if( $("li#field_" + id + "_chzn_o_" + n ).hasClass("result-selected" ) ){
-				angular.element(f1).scope().clear_theses(fields)
-				angular.element(f2).scope().clear_theses(fields)
 				for(i in fields) $("#" + fields[i] + "_field_box").show() 
-					
 			}else {
 				for(i in fields) $("#" + fields[i] + "_field_box").hide();
-
-				if(id == "pueblo_indigena"){
-					//console.log(angular.element(f1).scope())
-					angular.element(f1).scope()["nombre_pueblo_indigena_migrante"] = "No Aplica"
-					//$("#field-nombre_pueblo_indigena").val("No Aplica")
-					//$("#field-espanol").val("No Aplica")
-				}else{
-					angular.element(f1).scope().clear_theses(fields)
-					angular.element(f2).scope().clear_theses(fields)
-				
-				}
+				var f1 = $("#addReport-step1")
+				var f2 = $("#addReport-step2")
+				angular.element(f1).scope().clear_theses(fields)
+				angular.element(f2).scope().clear_theses(fields)
 			}
 		}
 
