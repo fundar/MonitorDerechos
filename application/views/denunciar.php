@@ -1760,15 +1760,18 @@
 	          "Si": function() {
 	          	var f1 = $("#addReport-step1") // formulario migrante
 	          	var f2 = $("#addReport-step2") // formulario denuncia
-	          	var migrantes = angular.element(f1).scope().get_migrantes_data().split(",")
-	          	var ids = []
 
-	          	var url = "<?php echo site_url();?>/index.php/admin/deleteMigrantes";
-	          	
-	          	for(var i in migrantes) ids.push( migrantes[i].split(":")[0] )
-	      		$.post(url, { ids : ids}, function(res, error){
-		          	console.log(res)
-	      		})
+	          	/* Elimina migrantes si ya han sido creados en esta denuncia */
+	          	try {
+		          	var migrantes = angular.element(f1).scope().get_migrantes_data().split(",")
+		          	  , ids = []
+		          	  , url = "<?php echo site_url();?>/index.php/admin/deleteMigrantes";
+		          	
+		          	for(var i in migrantes) ids.push( migrantes[i].split(":")[0] )
+		      		$.post(url, { ids : ids}, function(res, error){ console.log(res) })
+
+				}catch(err) { }
+
 		          	
 	          	f1[0].reset(); // resetea los forms
 	          	f2[0].reset();
@@ -1802,6 +1805,35 @@
 				var f2 = $("#addReport-step2")
 				angular.element(f1).scope().clear_theses(fields)
 				angular.element(f2).scope().clear_theses(fields)
+			}
+		}
+
+		var hs_fields = function(el, on_id, off_id, input_fields, select_fields){
+			if( $("li#field_" + el + "_chzn_o_" + on_id ).hasClass("result-selected" ) ){
+				for(var key in input_fields ) $("#" + key + "_field_box").show() 
+				for(var key in select_fields) $("#" + key + "_field_box").show() 
+			}else if( $("li#field_" + el + "_chzn_o_" + off_id ).hasClass("result-selected" ) ){
+				for(var key in input_fields ) {
+					$("#field-" + key ).val(input_fields[key]);
+					$("#" + key + "_field_box").hide();
+				}
+
+				for(var key in select_fields) {
+					var d = select_fields[key].split("-");
+
+					$("#field_" + key + "_chzn .chzn-single span").addClass("chzn-default chzn-single-with-drop")
+					$("#field_" + key + "_chzn .chzn-single span").text( d[1] )
+					$("#field_" + key + "_chzn .chzn-single").append('<abbr class="search-choice-close"></abbr>')
+					
+					$("#field_" + key + "_chzn .chzn-results li").removeClass("result-selected")
+					$("#field_" + key + "_chzn .chzn-results li:eq(" + d[0] + ")").addClass("result-selected")
+					$("#" + key + "_field_box").hide() 
+				}
+
+				var f1 = $("#addReport-step1")
+				var f2 = $("#addReport-step2")
+				angular.element(f1).scope().clear_theses(input_fields)
+				angular.element(f1).scope().clear_theses(select_fields)
 			}
 		}
 
@@ -1889,13 +1921,13 @@
 		$("#espanol_field_box").css("margin-left", "50px");
 		$("#espanol_field_box").hide();
 
-		$("#field-pueblo_indigena").change( function () { 
-			fields_hs( "pueblo_indigena", 1,
-								 ["nombre_pueblo_indigena", "espanol"] )
+		$("#field-pueblo_indigena").change( function () { 					
+			hs_fields( "pueblo_indigena", 1, 2,
+								 {"nombre_pueblo_indigena": "No Aplica"}, {"espanol": "2-No Aplica"} )			 
 		});
 		
-		fields_hs( "pueblo_indigena", 1,
-								 ["nombre_pueblo_indigena", "espanol"] )
+		hs_fields( "pueblo_indigena", 1, 2, 
+								 {"nombre_pueblo_indigena": "No Aplica"}, {"espanol": "2-No Aplica"} )
 
 
 		$(".search-choice-close").on("click", function(e){
