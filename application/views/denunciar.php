@@ -698,7 +698,14 @@
 						Donde fue deportado :
 					</div>
 					<div class='form-input-box' id="momento_deportado_input_box">
-						<select id='field-momento_deportado' name='momento_deportado' ng-model='momento_deportado' class='chosen-select' data-placeholder='Seleccionar Donde fue deportado'><option value=''  ></option><option value='Al cruzar la frontera'  >Al cruzar la frontera</option><option value='Vivías en USA'  >Vivías en USA</option><option value='Otro'  >Otro</option></select>				</div>
+						<select id='field-momento_deportado' name='momento_deportado' ng-model='momento_deportado' class='chosen-select' data-placeholder='Seleccionar Donde fue deportado'>
+							<option value=''  ></option>
+							<option value='Al cruzar la frontera'  >Al cruzar la frontera</option>
+							<option value='Vivías en USA'  >Vivías en USA</option>
+							<option value='Otro'  >Otro</option>
+							<option value='No Aplica'  >No Aplica</option>
+						</select>				
+					</div>
 					<div class='clear'></div>
 				</div>
 
@@ -1916,30 +1923,36 @@
 		$("#situacion_familiar_field_box").hide();
 
 		$("#field-viaja_solo").change( function () { 
-			hs_fields(  "viaja_solo", 2, 1, 
-							{"con_quien_viaja": "No Aplica", "situacion_familiar": "No Aplica" }, {},{} )
+			hs_fields(  "viaja_solo", 2, 1, {"con_quien_viaja": "No Aplica", "situacion_familiar": "No Aplica" }, {},{} )
 		});
 		
-		hs_fields(  "viaja_solo", 2, 1, 
-							{"con_quien_viaja": "No Aplica", "situacion_familiar": "No Aplica" }, {},{} )
+		hs_fields(  "viaja_solo", 2, 1, {"con_quien_viaja": "No Aplica", "situacion_familiar": "No Aplica" }, {},{} )
+
+		/*Momento de deportado*/
+		$("#momento_deportado_field_box").css("margin-left", "50px");
+		$("#separacion_familiar_field_box").css("margin-left", "50px");
+
+		$("#momento_deportado_field_box").hide();
+		$("#separacion_familiar_field_box").hide();
+
+		$("#field-deportado").change( function () { 
+			hs_fields(  "deportado", 1, 2, 
+						{}, {"momento_deportado": "4-No Aplica", "separacion_familiar": "3-No Aplica-familiar_separado" }, {} )
+		});
+		
+		hs_fields(  "deportado", 1, 2, 
+					{}, {"momento_deportado": "4-No Aplica", "separacion_familiar": "3-No Aplica-familiar_separado" },  {} )
 
 		/*Familiar separacion*/
 		$("#familiar_separado_field_box").css("margin-left", "70px");
 		$("#familiar_separado_field_box").hide();
-		$("#situacion_familiar_field_box").css("margin-left", "70px");
-		$("#situacion_familiar_field_box").hide();
-
 
 		$("#field-separacion_familiar").change( function () { 
-			fields_hs( "separacion_familiar", 1,
-								 ["familiar_separado", "situacion_familiar"] )
+			hs_fields(  "separacion_familiar", 1, 2, {"familiar_separado": "No Aplica"}, {}, {})
 		});
 		
-		fields_hs( "separacion_familiar", 1,
-								 ["familiar_separado", "situacion_familiar"] )
-
-
-			
+		hs_fields(  "separacion_familiar", 1, 2, {"familiar_separado": "No Aplica"}, {}, {})
+		
 		/*Color uniformome responsables*/
 		$("#color_uniforme_responsables_field_box").css("margin-left", "50px");
 		$("#insignias_responsables_field_box").css("margin-left", "50px");
@@ -1957,18 +1970,6 @@
 
 
 		
-		/*Momento de deportado*/
-		$("#momento_deportado_field_box").css("margin-left", "50px");
-		$("#momento_deportado_field_box").hide();
-
-		$("#field-deportado").change( function () { 
-			fields_hs( "deportado", 1, ["momento_deportado"] )
-		});
-		
-		fields_hs( "deportado", 1, ["momento_deportado"] )
-
-
-
 
 
 
