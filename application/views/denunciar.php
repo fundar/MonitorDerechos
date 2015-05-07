@@ -672,6 +672,18 @@
 					<div class='clear'></div>
 				</div>
 
+				<div class='form-field-box even' id="situacion_familiar_field_box">
+					<div class='form-display-as-box' id="situacion_familiar_display_as_box">
+						Sabes que paso con tu familiar :
+					</div>
+					<div class='form-input-box' id="situacion_familiar_input_box">
+						<input id='field-situacion_familiar' name='situacion_familiar' ng-model='situacion_familiar' type='text' value="" maxlength='255' />				
+					</div>
+					<div class='clear'></div>
+				</div>
+
+
+
 				<div class='form-field-box even' id="deportado_field_box">
 					<div class='form-display-as-box' id="deportado_display_as_box">
 						Deportado :
@@ -695,7 +707,13 @@
 						Te separaron de algún familiar :
 					</div>
 					<div class='form-input-box' id="separacion_familiar_input_box">
-						<select id='field-separacion_familiar' name='separacion_familiar' ng-model='separacion_familiar' class='chosen-select' data-placeholder='Seleccionar Te separaron de algún familiar'><option value=''  ></option><option value='1'  >Si</option><option value='2'  >No</option></select>				</div>
+						<select id='field-separacion_familiar' name='separacion_familiar' ng-model='separacion_familiar' class='chosen-select' data-placeholder='Seleccionar Te separaron de algún familiar'>
+							<option value=''  ></option>
+							<option value='1'  >Si</option>
+							<option value='2'  >No</option>
+							<option value='3'  >No Aplica</option>
+						</select>				
+					</div>
 					<div class='clear'></div>
 				</div>
 
@@ -705,16 +723,6 @@
 					</div>
 					<div class='form-input-box' id="familiar_separado_input_box">
 						<input id='field-familiar_separado' name='familiar_separado' ng-model='familiar_separado' type='text' value="" maxlength='255' />				
-					</div>
-					<div class='clear'></div>
-				</div>
-			
-				<div class='form-field-box even' id="situacion_familiar_field_box">
-					<div class='form-display-as-box' id="situacion_familiar_display_as_box">
-						Sabes que paso con tu familiar :
-					</div>
-					<div class='form-input-box' id="situacion_familiar_input_box">
-						<input id='field-situacion_familiar' name='situacion_familiar' ng-model='situacion_familiar' type='text' value="" maxlength='255' />				
 					</div>
 					<div class='clear'></div>
 				</div>
@@ -1831,6 +1839,9 @@
 
 				for(var key in select_fields) {
 					var d = select_fields[key].split("-");
+					/* d[0] -> id en el select del texto a mostrar */
+					/* d[1] -> texto a mostrar cuando se oculten los campos */
+					/* d[2..] -> campos hijos a ocultar */
 
 					$("#field_" + key + "_chzn .chzn-single span").addClass("chzn-default chzn-single-with-drop")
 					$("#field_" + key + "_chzn .chzn-single span").text( d[1] )
@@ -1838,7 +1849,9 @@
 					
 					$("#field_" + key + "_chzn .chzn-results li").removeClass("result-selected")
 					$("#field_" + key + "_chzn .chzn-results li:eq(" + d[0] + ")").addClass("result-selected")
+
 					$("#" + key + "_field_box").hide() 
+					for(var i = 2 in d) $("#" + d[i] + "_field_box").hide() 
 				}
 
 				for(var key in multi_select ) {
@@ -1852,7 +1865,6 @@
 					$("#field_" + "paquete_pago" + "_chzn ul.chzn-choices li.search-choice").remove()
 					$("#field_" + "paquete_pago" + "_chzn ul.chzn-choices").prepend(na_el)
 
-
 					$("#field_" + "paquete_pago" + "_chzn .chzn-drop ul li.result-selected")
 						.removeClass("result-selected")
 						.addClass("active-result")
@@ -1861,7 +1873,7 @@
 						.removeClass("active-result")
 						.addClass("result-selected")
 				}
-				
+
 				angular.element(f1).scope().clear_theses(input_fields)
 				angular.element(f1).scope().clear_theses(select_fields)
 				angular.element(f1).scope().clear_theses(multi_select)
@@ -1898,13 +1910,34 @@
 
 		/*Viajaba solo*/
 		$("#con_quien_viaja_field_box").css("margin-left", "50px");
+		$("#situacion_familiar_field_box").css("margin-left", "50px");
+
 		$("#con_quien_viaja_field_box").hide();
+		$("#situacion_familiar_field_box").hide();
 
 		$("#field-viaja_solo").change( function () { 
-			fields_hs( "viaja_solo", 2,  ["con_quien_viaja"] )
+			hs_fields(  "viaja_solo", 2, 1, 
+							{"con_quien_viaja": "No Aplica", "situacion_familiar": "No Aplica" }, {},{} )
 		});
 		
-		fields_hs( "viaja_solo", 2, ["con_quien_viaja"] )
+		hs_fields(  "viaja_solo", 2, 1, 
+							{"con_quien_viaja": "No Aplica", "situacion_familiar": "No Aplica" }, {},{} )
+
+		/*Familiar separacion*/
+		$("#familiar_separado_field_box").css("margin-left", "70px");
+		$("#familiar_separado_field_box").hide();
+		$("#situacion_familiar_field_box").css("margin-left", "70px");
+		$("#situacion_familiar_field_box").hide();
+
+
+		$("#field-separacion_familiar").change( function () { 
+			fields_hs( "separacion_familiar", 1,
+								 ["familiar_separado", "situacion_familiar"] )
+		});
+		
+		fields_hs( "separacion_familiar", 1,
+								 ["familiar_separado", "situacion_familiar"] )
+
 
 			
 		/*Color uniformome responsables*/
@@ -1936,21 +1969,6 @@
 
 
 
-
-		/*Familiar separacion*/
-		$("#familiar_separado_field_box").css("margin-left", "50px");
-		$("#familiar_separado_field_box").hide();
-		$("#situacion_familiar_field_box").css("margin-left", "50px");
-		$("#situacion_familiar_field_box").hide();
-
-
-		$("#field-separacion_familiar").change( function () { 
-			fields_hs( "separacion_familiar", 1,
-								 ["familiar_separado", "situacion_familiar"] )
-		});
-		
-		fields_hs( "separacion_familiar", 1,
-								 ["familiar_separado", "situacion_familiar"] )
 
 
 
