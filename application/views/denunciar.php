@@ -1953,25 +1953,22 @@
 		
 		hs_fields(  "separacion_familiar", 1, 2, {"familiar_separado": "No Aplica"}, {}, {})
 		
+		
 		/*Color uniformome responsables*/
 		$("#color_uniforme_responsables_field_box").css("margin-left", "50px");
 		$("#insignias_responsables_field_box").css("margin-left", "50px");
+
 		$("#color_uniforme_responsables_field_box").hide();
 		$("#insignias_responsables_field_box").hide();
 		
 
 		$("#field-uniformado_responsables").change( function () { 
-			fields_hs( "uniformado_responsables", 1, 
-								 ["color_uniforme_responsables", "insignias_responsables"] )
+			hs_fields(  "uniformado_responsables", 1, 2,
+						{"color_uniforme_responsables": "No Aplica", "insignias_responsables": "No Aplica"}, {}, {})
 		});
 		
-		fields_hs( "uniformado_responsables", 1, 
-								 ["color_uniforme_responsables", "insignias_responsables"] )
-
-
-		
-
-
+		hs_fields(  "uniformado_responsables", 1, 2,
+						{"color_uniforme_responsables": "No Aplica", "insignias_responsables": "No Aplica"}, {}, {})
 
 
 		/*Migrante - Pueblo indigena*/
