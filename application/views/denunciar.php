@@ -400,7 +400,7 @@
 								<option value=''  ></option>
 								<option value='1'  >Si</option>
 								<option value='2'  >No</option>
-								<option value='3'  >No Aplica</option>
+								<option value='No Aplica'  >No Aplica</option>
 							</select>				
 						</div>
 						<div class='clear'></div>
@@ -625,7 +625,7 @@
 							<option value='5'>No especificó</option>
 							<option value='6'>Sólo cruce</option>
 							<option value='7'>Cruce</option>
-							<option value='8'>No Aplica</option>
+							<option value='No Aplica'>No Aplica</option>
 						</select>				
 					</div>
 				</div>
@@ -711,14 +711,14 @@
 
 				<div class='form-field-box even' id="separacion_familiar_field_box">
 					<div class='form-display-as-box' id="separacion_familiar_display_as_box">
-						Te separaron de algún familiar :
+						Te separaron de algún familiar durante la deportación  :
 					</div>
 					<div class='form-input-box' id="separacion_familiar_input_box">
 						<select id='field-separacion_familiar' name='separacion_familiar' ng-model='separacion_familiar' class='chosen-select' data-placeholder='Seleccionar Te separaron de algún familiar'>
 							<option value=''  ></option>
 							<option value='1'  >Si</option>
 							<option value='2'  >No</option>
-							<option value='3'  >No Aplica</option>
+							<option value='No Aplica'  >No Aplica</option>
 						</select>				
 					</div>
 					<div class='clear'></div>
@@ -1110,8 +1110,9 @@
 					</div>
 					<div class='form-input-box' id="id_tipo_transporte_responsables_input_box">
 						<select id='field-id_tipo_transporte_responsables'  name='id_tipo_transporte_responsables' ng-model='id_tipo_transporte_responsables' class='chosen-select' data-placeholder='Seleccionar Tipo de vehículo' style='width:300px'>
-							<option value=''>
+							<option value=''></option>
 							<?php foreach ($transportes->result_array() as $row) echo "<option value='" . $row['id_transporte'] . "'>" . $row['nombre'] . "</option>"; ?>
+							<option value='No aplica'>No Aplica</option>
 							
 						</select>				
 					</div>
@@ -1233,7 +1234,10 @@
 					</div>
 					<div class='form-input-box' id="estado_seguimiento_input_box">
 						<select id='field-estado_seguimiento' name='estado_seguimiento' ng-model='estado_seguimiento' class='chosen-select' data-placeholder='Seleccionar Seguimiento'>
-							<option value=''  ></option><option value='Defensa'  >Defensa</option><option value='Canalización a una instancia'  >Canalización a una instancia</option>
+							<option value=''  ></option>
+							<option value='Defensa'  >Defensa</option>
+							<option value='Canalización a una instancia'  >Canalización a una instancia</option>
+							<option value='Asesoría'>Asesoría</option>
 						</select>				
 					</div>
 					<div class='clear'></div>
@@ -1954,7 +1958,7 @@
 		hs_fields(  "separacion_familiar", 1, 2, {"familiar_separado": "No Aplica"}, {}, {})
 		
 		
-		/*Color uniformome responsables*/
+		/*Color uniforme responsables*/
 		$("#color_uniforme_responsables_field_box").css("margin-left", "50px");
 		$("#insignias_responsables_field_box").css("margin-left", "50px");
 
@@ -1969,6 +1973,32 @@
 		
 		hs_fields(  "uniformado_responsables", 1, 2,
 						{"color_uniforme_responsables": "No Aplica", "insignias_responsables": "No Aplica"}, {}, {})
+
+
+		/*Color uniforme responsables*/
+		$("#id_tipo_transporte_responsables_field_box").css("margin-left", "50px");
+		$("#numero_vehiculos_responsables_field_box").css("margin-left", "50px");
+		$("#placas_vehiculos_responsables_field_box").css("margin-left", "50px");
+
+		$("#id_tipo_transporte_responsables_field_box").hide();
+		$("#numero_vehiculos_responsables_field_box").hide();
+		$("#placas_vehiculos_responsables_field_box").hide();
+		
+		/* "field-id_tipo_transporte_responsables" */
+		var pos;
+		$("#field-id_tipo_transporte_responsables option").each(function(i){
+			if( $(this).val() == "No Aplica"){ pos = i; return false; }
+		})
+
+		$("#field-responsables_abordo_vehiculos_responsables").change( function () { 
+			hs_fields(  "responsables_abordo_vehiculos_responsables", 1, 2,
+						{"numero_vehiculos_responsables": "No Aplica", "placas_vehiculos_responsables": "No Aplica"}, 
+						{"id_tipo_transporte_responsables": pos + "-No Aplica"}, {})
+		});
+		
+		hs_fields(  "responsables_abordo_vehiculos_responsables", 1, 2,
+						{"numero_vehiculos_responsables": "No Aplica", "placas_vehiculos_responsables": "No Aplica"}, 
+						{"id_tipo_transporte_responsables": pos + "-No Aplica"}, {})
 
 
 		/*Migrante - Pueblo indigena*/
