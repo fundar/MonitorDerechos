@@ -89,7 +89,7 @@
 		.link { cursor:pointer; color:blue; font-size:14px; }
 		#catalogos { display:none; padding:0;}
 
-		#addReport-step2{
+		#addReport-step1{
 			display: none;
 		}
 
@@ -572,11 +572,13 @@
 			
 				<div class='form-field-box even' id="coyote_guia_field_box">
 					<div class='form-display-as-box' id="coyote_guia_display_as_box">
-						Contrato al coyote o guía que lo pasaría :
+						Contrato coyote o guía para cruzar :
 					</div>
 					<div class='form-input-box' id="coyote_guia_input_box">
 						<select id='field-coyote_guia' name='coyote_guia' ng-model='coyote_guia' class='chosen-select' data-placeholder='Seleccionar Contrato al coyote o guía que lo pasaría'>
-							<option value=''  ></option><option value='1'  >Si</option><option value='2'  >No</option>
+							<option value=''  ></option>
+							<option value='1'  >Si</option>
+							<option value='2'  >No</option>
 						</select>				
 					</div>
 					<div class='clear'></div>
@@ -588,13 +590,17 @@
 					</div>
 					<div class='form-input-box' id="lugar_contrato_coyote_input_box">
 						<select id='field-lugar_contrato_coyote' name='lugar_contrato_coyote' ng-model='lugar_contrato_coyote' class='chosen-select' data-placeholder='Seleccionar Donde lo contrato'>
-							<option value=''  ></option><option value='Cuando salió de su comunidad'  >Cuando salió de su comunidad</option><option value='En  la frontera'  >En  la frontera</option><option value='Otro'  >Otro</option>
+							<option value=''  ></option>
+							<option value='Cuando salió de su comunidad'> Cuando salió de su comunidad</option>
+							<option value='En  la frontera'  >En  la frontera</option>
+							<option value='Otro'  >Otro</option>
+							<option value='No Aplica'  >No Aplica</option>
 						</select>				
 					</div>
 					<div class='clear'></div>
 				</div>
 
-				<div class='form-field-box even' id="monto_coyote_field3434rfere_box">
+				<div class='form-field-box even' id="monto_coyote_field_box">
 					<div class='form-display-as-box' id="monto_coyote_display_as_box">
 						Cuanto le cobraría :
 					</div>
@@ -619,6 +625,7 @@
 							<option value='5'>No especificó</option>
 							<option value='6'>Sólo cruce</option>
 							<option value='7'>Cruce</option>
+							<option value='8'>No Aplica</option>
 						</select>				
 					</div>
 				</div>
@@ -1808,11 +1815,15 @@
 			}
 		}
 
-		var hs_fields = function(el, on_id, off_id, input_fields, select_fields){
+		var hs_fields = function(el, on_id, off_id, input_fields, select_fields, multi_select){
 			if( $("li#field_" + el + "_chzn_o_" + on_id ).hasClass("result-selected" ) ){
 				for(var key in input_fields ) $("#" + key + "_field_box").show() 
 				for(var key in select_fields) $("#" + key + "_field_box").show() 
+				for(var key in multi_select) $("#" + key + "_field_box").show() 
 			}else if( $("li#field_" + el + "_chzn_o_" + off_id ).hasClass("result-selected" ) ){
+				var f1 = $("#addReport-step1")
+				var f2 = $("#addReport-step2")
+
 				for(var key in input_fields ) {
 					$("#field-" + key ).val(input_fields[key]);
 					$("#" + key + "_field_box").hide();
@@ -1830,10 +1841,35 @@
 					$("#" + key + "_field_box").hide() 
 				}
 
-				var f1 = $("#addReport-step1")
-				var f2 = $("#addReport-step2")
+				for(var key in multi_select ) {
+					$("#" + key + "_field_box").hide();
+
+					var na_el  = '<li class="search-choice" id="field_paquete_pago_chzn_c_8">'
+						na_el += '  <span>No Aplica</span>' 
+						na_el += '  <a href="javascript:void(0)" class="search-choice-close" rel="8"></a>'
+						na_el += '</li>'
+						
+					$("#field_" + "paquete_pago" + "_chzn ul.chzn-choices li.search-choice").remove()
+					$("#field_" + "paquete_pago" + "_chzn ul.chzn-choices").prepend(na_el)
+
+
+					$("#field_" + "paquete_pago" + "_chzn .chzn-drop ul li.result-selected")
+						.removeClass("result-selected")
+						.addClass("active-result")
+
+					$("#field_" + "paquete_pago" + "_chzn .chzn-drop ul li#field_" + "paquete_pago" + "_chzn_o_" + "8")
+						.removeClass("active-result")
+						.addClass("result-selected")
+				}
+				
 				angular.element(f1).scope().clear_theses(input_fields)
 				angular.element(f1).scope().clear_theses(select_fields)
+				angular.element(f1).scope().clear_theses(multi_select)
+
+
+				angular.element(f2).scope().clear_theses(input_fields)
+				angular.element(f2).scope().clear_theses(select_fields)
+				angular.element(f2).scope().clear_theses(multi_select)
 			}
 		}
 
@@ -1842,18 +1878,23 @@
 		$("#lugar_contrato_coyote_field_box").css("margin-left", "50px");
 		$("#monto_coyote_field_box").css("margin-left", "50px");
 		$("#paquete_pago_field_box").css("margin-left", "50px");
+
 		$("#lugar_contrato_coyote_field_box").hide();
 		$("#monto_coyote_field_box").hide();
 		$("#paquete_pago_field_box").hide();
 		
 		$("#field-coyote_guia").change( function () { 
-			fields_hs( "coyote_guia", 1, 
-								 ["lugar_contrato_coyote", "monto_coyote", "paquete_pago"] )
+			hs_fields(  "coyote_guia", 1, 2, 
+						{"monto_coyote": "No Aplica" }, 
+						{"lugar_contrato_coyote": "3-No Aplica"},
+						{"paquete_pago": "8-No Aplica"}
+					)
 		});
-		
-		fields_hs( "coyote_guia", 1,
-							 ["lugar_contrato_coyote", "monto_coyote", "paquete_pago"] )
-
+			hs_fields(  "coyote_guia", 1, 2, 
+						{"monto_coyote": "No Aplica" }, 
+						{"lugar_contrato_coyote": "3-No Aplica"},
+						{"paquete_pago": "8-No Aplica"}
+					)
 
 		/*Viajaba solo*/
 		$("#con_quien_viaja_field_box").css("margin-left", "50px");
@@ -1923,12 +1964,13 @@
 
 		$("#field-pueblo_indigena").change( function () { 					
 			hs_fields( "pueblo_indigena", 1, 2,
-								 {"nombre_pueblo_indigena": "No Aplica"}, {"espanol": "2-No Aplica"} )			 
+					   {"nombre_pueblo_indigena": "No Aplica"}, 
+					   {"espanol": "2-No Aplica"}, {} )			 
 		});
 		
-		hs_fields( "pueblo_indigena", 1, 2, 
-								 {"nombre_pueblo_indigena": "No Aplica"}, {"espanol": "2-No Aplica"} )
-
+		hs_fields(  "pueblo_indigena", 1, 2, 
+					{"nombre_pueblo_indigena": "No Aplica"}, 
+					{"espanol": "2-No Aplica"}, {} )			 
 
 		$(".search-choice-close").on("click", function(e){
 			e.preventDefault()
