@@ -133,8 +133,8 @@ class migracion_Model extends CI_Model  {
 	}
 
 	public function getMigrante($folio = -1){
-		$query = $this->db->get_where('migrantes', array('nombre' => $folio), 1);
-		foreach ($query->result() as $row) return $row->id_migrante;
+		$query = $this->db->get_where('migrantes', array('folio' => $folio), 1);
+		foreach ($query->result() as $row) return array($row->id_migrante, $row->nombre) ;
 	}
 
 	public function insertMigrante2denuncia($id_migrante, $id_denuncia){

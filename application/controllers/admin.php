@@ -133,7 +133,7 @@ class Admin extends CI_Controller {
 		
 		/*Relaciones n_n*/
 		/*Migrantes*/
-		$crud->set_relation_n_n('migrantes', 'migrantes2denuncias', 'migrantes', 'id_denuncia', 'id_migrante', 'nombre');
+		$crud->set_relation_n_n('migrantes', 'migrantes2denuncias', 'migrantes', 'id_denuncia', 'id_migrante', 'folio');
 		/*Autoridades*/
 		$crud->set_relation_n_n('autoridades_viaje', 'autoridades2denuncias', 'autoridades', 'id_denuncia', 'id_autoridad', 'nombre');
 		/*Paquete pago coyote*/
@@ -399,8 +399,8 @@ class Admin extends CI_Controller {
 		$folios = explode(",", $value);
 		$links = array();
 		foreach ($folios as $folio){             
-			$id = $this->migracion_model->getMigrante($folio);
-  			$link = "<a href='" . site_url('admin/migrantes/read/' . $id) . "'> $folio </a>";
+			$migrante = $this->migracion_model->getMigrante($folio);
+  			$link = "<a href='" . site_url('admin/migrantes/read/' . $migrante[0]) . "'>" . $migrante[1] . "</a>";
   			array_push($links, $link);
 		}
   		return implode(",", $links);
@@ -480,8 +480,8 @@ class Admin extends CI_Controller {
 		$crud->field_type('pueblo_indigena', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		$crud->field_type('espanol', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		
-		$crud->unset_columns('folio');
-		$crud->columns('id_migrante', 'nombre', 'edad', 'municipio', 'id_lugar_denuncia', 'id_pais', 'id_estado', 'id_genero', 'fecha_nacimiento', 'ocupacion', 'ocupacion_homologada', 'id_estado_civil', 'escolaridad', 'pueblo_indigena', 'espanol');
+		//$crud->unset_columns('folio');
+		$crud->columns('folio', 'id_migrante', 'nombre', 'edad', 'municipio', 'id_lugar_denuncia', 'id_pais', 'id_estado', 'id_genero', 'fecha_nacimiento', 'ocupacion', 'ocupacion_homologada', 'id_estado_civil', 'escolaridad', 'pueblo_indigena', 'espanol');
 
 		$crud->required_fields('nombre');
 
@@ -494,9 +494,10 @@ class Admin extends CI_Controller {
 			$crud->callback_after_insert(array($this, 'migrante_after_insert'));
     	}
 
+    	$crud->display_as('folio', 'Folio');
 
-		$crud->field_type('folio', 'hidden', '');
     	if($state == "edit") {
+			$crud->field_type('folio', 'hidden', '');
 			$crud->field_type('id_migrante', 'hidden', '');
 		}
 
