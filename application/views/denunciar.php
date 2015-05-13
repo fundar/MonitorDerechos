@@ -89,7 +89,7 @@
 		.link { cursor:pointer; color:blue; font-size:14px; }
 		#catalogos { display:none; padding:0;}
 
-		#addReport-step1{
+		#addReport-step2{
 			display: none;
 		}
 
@@ -1643,10 +1643,29 @@
 			  , data = that.serialize()
 			  , url = that.attr("action");
 
+			$.get('http://jsonip.com', function (res) {
+		  		var folio;
+		  	 	if(res && res.ip ){
+			  	 	ip = parseInt( (res.ip).replace(/\./g, "") );
+			  	 	folio = 'MIG-' + Math.floor(Date.now() / 1000) + '-' +  toRadix(ip, 36).toUpperCase() 
+		  	 	}else{
+			  		folio = "<?php echo crearFolio('MIG'); ?>"
+		  	 	}
+
+		  	 	that.append("<input type='hidden' id='folio' name='folio' value='" + folio +"' >")
+
+		  	 	// fallara si no esta logueado
+		  	 	try {
+			  		_send_data()	
+		  	 	} catch(e) {
+				    window.location.reload();
+				}
+    		});
+
 			  //scope.clear_all();  /*
-		  	$.post(url, data, function(res){
-				//proceso para guardar 
-				try { // fallara si no esta logueado
+			var _send_data = function(){
+			  	$.post(url, data, function(res){
+					//proceso para guardar 
 					var res = JSON.parse(res)
 			  		if(res.status){
 						$(this).children(".small-loading").css("display","block");
@@ -1678,12 +1697,9 @@
 			      	}else{
 			  			alert("No se pudo insertar el Registro del Migrante, verifique los campos")
 			  		}
-				} catch(e) {
-				    window.location.reload();
-				}
+				})
+			}
 
-
-			})
 		})
 
 		
