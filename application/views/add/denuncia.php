@@ -87,11 +87,7 @@
 		}
 		strong { font-size:16px; }
 		.link { cursor:pointer; color:blue; font-size:14px; }
-		#catalogos { display:none; padding:0;}
-
-		#addReport-step2{
-			display: none;
-		}
+		#catalogos { display:none; padding:0;} 
 
 		.chosen-select{
 			width:300px;
@@ -100,8 +96,8 @@
 </head>
 <body>
 	<div>
-		<a href="#"> <strong>  Levantar denuncia completa </strong> </a> |
-		<a href="<?php echo site_url('admin/crea/denuncia');?>"> Agregar denuncia </a> |
+		<a href="<?php echo site_url('admin/denunciar');?>"> Levantar denuncia completa </a> |
+		<a href="#"> <strong> Agregar denuncia </strong> </a> |
 		<a href="<?php echo site_url();?>/admin/migrantes"> Migrantes </a> |
 		<a href="<?php echo site_url();?>/admin/denuncias"> Denuncias </a> |
 		<a href="<?php echo site_url();?>/admin/reportes"> Reportes </a> |
@@ -205,251 +201,10 @@
 		
 </script>
 <head>
-	<h1> Añadir Denuncia Completa </h1>
+	<h1> Añadir Denuncia </h1>
 </head>
 
 <div class="container" ng-app="ReporteApp">
-	<form action="<?php echo site_url();?>/admin/migrantes/insert" method="post" id="addReport-step1" autocomplete="off" 
-		  enctype="multipart/form-data" accept-charset="utf-8" ng-controller="MigranteCtrl">		
-		
-		<div class='ui-widget-content ui-corner-all datatables' id="migrantes-accordion">
-			<h3 class="ui-accordion-header ui-helper-reset ui-state-default form-title">
-				<div class='floatL form-title-left'>
-					<a href="#"> Paso 1: Datos de los migrantes involucrados </a>
-				</div>
-				<div class='clear'></div>
-			</h3>
-
-			<div class='form-content form-div'>
-					<div class='form-field-box odd' id="nombre_field_box">
-						<div class='form-display-as-box' id="nombre_display_as_box">
-							Nombre<span class='required'>*</span> :
-						</div>
-						<div class='form-input-box' id="nombre_input_box">
-							<input id='field-nombre' name='nombre' ng-model="nombre_migrante" type='text' value="" maxlength='255'  />			
-						</div>
-						<div class='clear'></div>
-					</div>
-
-					<div class='form-field-box even' id="id_pais_field_box">
-						<div class='form-display-as-box' id="id_pais_display_as_box">
-							País :
-						</div>
-						<div class='form-input-box' id="id_pais_input_box">
-							<select id='field-id_pais' name='id_pais' ng-model="id_pais_migrante" class='chosen-select' data-placeholder='Seleccionar País' style='width:300px'>
-								<option value=''></option>
-								<?php foreach ($paises->result_array() as $row) echo "<option value='" . $row['id_pais'] . "'>" . $row['nombre'] . "</option>"; ?>
-							</select>				
-						</div>
-						<div class='clear'></div>
-					</div>
-					
-					<div class='form-field-box odd' id="id_estado_field_box">
-						<div class='form-display-as-box' id="id_estado_display_as_box">
-							Estado/Departamento :
-						</div>
-						<div class='form-input-box' id="id_estado_input_box">
-							<select id='field-id_estado' name='id_estado' ng-model="id_estado_migrante" class='chosen-select' data-placeholder='Seleccionar Estado/Departamento' style='width:300px'>
-								<option value=''></option>
-								<?php foreach ($estados->result_array() as $row) echo "<option value='" . $row['id_estado'] . "'>" . $row['nombre'] . "</option>"; ?>
-							</select>				
-						</div>
-						<div class='clear'></div>
-					</div>
-					
-					<div class='form-field-box even' id="municipio_field_box">
-						<div class='form-display-as-box' id="municipio_display_as_box">
-							Municipio :
-						</div>
-						<div class='form-input-box' id="municipio_input_box">
-							<input id='field-municipio' name='municipio' ng-model="municipio_migrante" type='text' value="" maxlength='255' />				
-						</div>
-						<div class='clear'></div>
-					</div>
-					
-					<div class='form-field-box odd' id="id_genero_field_box">
-						<div class='form-display-as-box' id="id_genero_display_as_box">
-							Género :
-						</div>
-						<div class='form-input-box' id="id_genero_input_box">
-							<select id='field-id_genero'  name='id_genero' ng-model="id_genero_migrante" class='chosen-select' data-placeholder='Seleccionar Género' style='width:300px'>
-								<option value=''></option>
-								<option value='1'  >Masculino</option>
-								<option value='2'  >Femenino</option>
-							</select>				
-						</div>
-						<div class='clear'></div>
-					</div>
-					
-					<div class='form-field-box even' id="edad_field_box">
-						<div class='form-display-as-box' id="edad_display_as_box">
-							Edad :
-						</div>
-						<div class='form-input-box' id="edad_input_box">
-							<input id='field-edad' name='edad' type='text' ng-model="edad_migrante" value='' min=1 class='numeric' maxlength='11' />				
-						</div>
-						<div class='clear'></div>
-					</div>
-					
-					<div class='form-field-box odd' id="fecha_nacimiento_field_box">
-						<div class='form-display-as-box' id="fecha_nacimiento_display_as_box">
-							Fecha nacimiento :
-						</div>
-						<div class='form-input-box' id="fecha_nacimiento_input_box">
-							<input id='field-fecha_nacimiento' name='fecha_nacimiento' ng-model="fecha_nac_migrante" type='text' value='' maxlength='19' class='datetime-input' placeholder="dd/mm/aaaa hh:mm"/>
-							<a class='datetime-input-clear' tabindex='-1'>Resetear</a> 			
-						</div>
-						<div class='clear'></div>
-					</div>
-			
-					<div class='form-field-box even' id="ocupacion_field_box">
-						<div class='form-display-as-box' id="ocupacion_display_as_box">
-							Ocupacion :
-						</div>
-						<div class='form-input-box' id="ocupacion_input_box">
-							<input id='field-ocupacion' name='ocupacion' ng-model="ocupacion_migrante" type='text' value="" maxlength='255' />				
-						</div>
-						<div class='clear'></div>
-						<div class='form-display-as-box' id="ocupacion_display_as_box"> </div>
-						<div class='form-input-box' id="ocupacion_homologada_input_box">
-							<select id='field-ocupacion_homologada' name='ocupacion_homologada'  ng-model="ocupacion_homologada_migrante" class='chosen-select' data-placeholder='¿En que categoría ubica esta ocupación?'>
-								<option value=''  ></option>
-								<option value='1'  >Al hogar</option>
-								<option value='2'  >Albañil</option>
-								<option value='3'  >Campesino</option>
-								<option value='4'  >Comerciante</option>
-								<option value='5'  >Empleado</option>
-								<option value='6'  >Empleado de gobierno</option>
-								<option value='7'  >Jornalero</option>
-								<option value='8'  >Peón</option>
-							</select>				
-						</div>
-						<div class='clear'></div>
-					</div>
-					
-					<div class='form-field-box odd' id="id_estado_civil_field_box">
-						<div class='form-display-as-box' id="id_estado_civil_display_as_box">
-							Estado Civil :
-						</div>
-						<div class='form-input-box' id="id_estado_civil_input_box">
-							<select id='field-id_estado_civil'  name='id_estado_civil' ng-model="id_estado_civil_migrante" class='chosen-select' data-placeholder='Seleccionar Estado Civil' style='width:300px'>
-								<option value=''></option>
-								<option value='1'  >Soltera(o)</option>
-								<option value='2'  >Casada(o)</option>
-								<option value='3'  >Viuda(o)</option>
-								<option value='4'  >Unión libre</option>
-								<option value='5'  >Divorciada(o)</option>
-								<option value='6'  >Otro</option>
-							</select>				
-						</div>
-						<div class='clear'></div>
-					</div>
-					
-					<div class='form-field-box even' id="escolaridad_field_box">
-						<div class='form-display-as-box' id="escolaridad_display_as_box">
-							Escolaridad :
-						</div>
-						<div class='form-input-box' id="escolaridad_input_box">
-							<select id='field-escolaridad' name='escolaridad' ng-model="escolaridad_migrante" class='chosen-select' data-placeholder='Seleccionar Escolaridad'>
-								<option value=''  ></option>
-								<option value='Sin instrucción'  >Sin instrucción</option>
-								<option value='Primaria'  >Primaria</option>
-								<option value='Primaria inconclusa'  >Primaria inconclusa</option>
-								<option value='Secundaria'  >Secundaria</option>
-								<option value='Secundaria inconclusa'  >Secundaria inconclusa</option>
-								<option value='Preparatoria'  >Preparatoria</option>
-								<option value='Preparatoria inconclusa'  >Preparatoria inconclusa</option>
-								<option value='Licenciatura'  >Licenciatura</option>
-								<option value='Licenciatura inconlusa'  >Licenciatura inconlusa</option>
-								<option value='Maestria'  >Maestria</option>
-								<option value='Doctorado'  >Doctorado</option>
-							</select>				
-						</div>
-						<div class='clear'></div>
-					</div>
-					
-					<div class='form-field-box odd' id="pueblo_indigena_field_box">
-						<div class='form-display-as-box' id="pueblo_indigena_display_as_box">
-							Pertenece a algún pueblo indígena :
-						</div>
-						<div class='form-input-box' id="pueblo_indigena_input_box">
-							<select id='field-pueblo_indigena' name='pueblo_indigena' ng-model="pueblo_indigena_migrante" class='chosen-select' data-placeholder='Seleccionar Pertenece a algún pueblo indígena'>
-								<option value=''  ></option>
-								<option value='1'  >Si</option>
-								<option value='2'  >No</option>
-							</select>				
-						</div>
-						<div class='clear'></div>
-					</div>
-
-					<div class='form-field-box even' id="nombre_pueblo_indigena_field_box">
-						<div class='form-display-as-box' id="nombre_pueblo_indigena_display_as_box">
-							Nombre pueblo indigena :
-						</div>
-						<div class='form-input-box' id="nombre_input_box">
-							<input id='field-nombre_pueblo_indigena' name='nombre_pueblo_indigena' ng-model="nombre_pueblo_indigena_migrante" type='text' value="" maxlength='15' />				
-						</div>
-						<div class='clear'></div>
-					</div>
-					
-					<div class='form-field-box odd' id="espanol_field_box">
-						<div class='form-display-as-box' id="espanol_display_as_box">
-							Dominio del español :
-						</div>
-						<div class='form-input-box' id="espanol_input_box">
-							<select id='field-espanol' name='espanol'  ng-model="espanol_migrante" class='chosen-select' data-placeholder='Seleccionar Dominio del español'>
-								<option value=''  ></option>
-								<option value='1'  >Si</option>
-								<option value='2'  >No</option>
-								<option value='No Aplica'  >No Aplica</option>
-							</select>				
-						</div>
-						<div class='clear'></div>
-					</div>
-					
-					<div class='form-field-box even' id="id_lugar_denuncia_field_box">
-						<div class='form-display-as-box' id="id_lugar_denuncia_display_as_box">
-							Lugar de la organización :
-						</div>
-						<div class='form-input-box' id="id_lugar_denuncia_input_box">
-							<select id='field-id_lugar_denuncia'  name='id_lugar_denuncia' ng-model="id_lugar_denuncia_migrante" class='chosen-select' data-placeholder='Seleccionar Lugar de la organización'>
-								<option value=''></option>
-								<option value='1'  >Nogales, Sonora</option>
-								<option value='2'  >Agua Prieta, Sonora</option>
-								<option value='3'  >Altar, Sonora</option>
-							</select>				
-						</div>
-						<div class='clear'></div>
-						<div class='line-1px'></div>
-						<div id='report-error' class='report-div error'></div>
-						<div id='report-success' class='report-div success'></div>
-					</div>
-
-					<div class='buttons-box'>
-
-						<div class='form-button-box'>
-							<input type='button' value='Cancelar' class='ui-input-button cancel-and-go-back-button' />
-						</div>
-
-						<div class='form-button-box'>
-							<input type='submit' value='Guardar y Seguir' ng-click="clear_migrante()" class='ui-input-button' id="save-and-go-next-button"/>
-						</div>
-
-						<div class='form-button-box'>
-							<input type='button' value='Ir a Agregar Denuncia >>' class='ui-input-button' id='go-next-button' />
-						</div>
-
-						<div class='form-button-box loading-box'>
-							<div class='small-loading' id='FormLoading'>Cargando, guardando los datos...</div>
-						</div>
-
-						<div class='clear'></div>
-					</div>
-		</div>
-
-		</div>
-	</form>
-
 	<form action="<?php echo site_url();?>/admin/denuncias/insert" method="post" id="addReport-step2" autocomplete="off" 
 		  enctype="multipart/form-data" accept-charset="utf-8" ng-controller="DenunciaCtrl">		
 
@@ -482,21 +237,6 @@
 					</div>
 					<div class='clear'></div>
 				</div>
-								
-				<!--div class='form-field-box odd' id="id_lugar_denuncia_field_box">
-					<div class='form-display-as-box' id="id_lugar_denuncia_display_as_box">
-						Lugar de denuncia :
-					</div>
-					<div class='form-input-box' id="id_lugar_denuncia_input_box">
-						<select id='field-id_lugar_denuncia_'  name='id_lugar_denuncia' ng-model='id_lugar_denuncia_' class='chosen-select' data-placeholder='Seleccionar Lugar de denuncia' style="width:300px;">
-							<option value=''></option>
-							<option value='1'  >Nogales, Sonora</option>
-							<option value='2'  >Agua Prieta, Sonora</option>
-							<option value='3'  >Altar, Sonora</option>
-						</select>				
-					</div>
-					<div class='clear'></div>
-				</div-->
 
 				<div class='form-field-box odd' id="id_tipo_queja_field_box">
 					<div class='form-display-as-box' id="id_tipo_queja_display_as_box">
@@ -518,32 +258,15 @@
 						Migrantes <span class='required'>*</span>:
 					</div>
 					<div class='form-input-box' id="migrantes_input_box">
-						<select id='field-migrantes' name='migrantes[]'  ng-model='migrantes' multiple='multiple' size='8' 
-								class='chosen-multiple-select' data-placeholder='Seleccionar Migrantes' style='width:510px;' >
+						<select id='field-migrantes' name='migrantes[]'  ng-model='migrantes' multiple='multiple' size='8' class='chosen-multiple-select' data-placeholder='Seleccionar Migrantes' style='width:510px;' >
+							<option value=''></option>
+							<?php //foreach ($migrantes->result_array() as $row) echo "<option value='" . $row['id_migrante'] . "'>" . $row['nombre'] . "</option>"; ?>
+							<?php foreach ( $migrantes as $row) echo "<option value='" . $row['id_migrante'] . "'>" . $row['nombre'] . "</option>"?>
 							<!--option value=''></option><option value='1'>Abel Chavez Villa</option><option value='72'>Adali Alvarez Flores</option><option value='212'>Adrián García de la Rosa</option><option value='154'>Alejandro Adrián Díaz Quiroz</option><option value='133'>Alex David</option><option value='130'>ALM</option><option value='41'>Álvaro Julián Ochoa Vera</option><option value='129'>Anderson</option><option value='144'>Anderson 2</option><option value='62'>Andrés Romero Alas </option><option value='63'>Andrés Ruiz Mendoza</option><option value='76'>Ángel Rubén Rodríguez González</option><option value='44'>Aniceto Damián</option><option value='196'>Anónimo</option><option value='209'>Anónimo</option><option value='68'>Anonio Canalaes Cabrera</option><option value='22'>Anselmo Calyn Apen</option><option value='43'>Antonio Esteban Sánchez</option><option value='9'>Apolinar Pacheco Reyes</option><option value='135'>Apoloni</option><option value='38'>Armando Hernandez</option><option value='136'>Bairo</option><option value='138'>Bairo Jesús Guevara</option><option value='73'>Cándido Flores  Lorenzo</option><option value='88'>Carlos Antonio Rosales Rosales</option><option value='56'>Carlos Emilio Flores Marte </option><option value='55'>Carlos Humberto Posadas</option><option value='53'>Carlos Márquez</option><option value='198'>Carlos Martínez</option><option value='110'>Carlos Martinez Gonzalez</option><option value='107'>Carlos Morales</option><option value='12'>Carlos Salgado Valdez </option><option value='117'>Cecilia Mones</option><option value='123'>Celvin Antonio</option><option value='124'>Cipriano Rodríguez González</option><option value='37'>Claudia Perez</option><option value='47'>Cristián Goel Meléndez Rivas</option><option value='119'>Damián Pacheco</option><option value='29'>Darwin Canales López</option><option value='193'>David Barrera Álvarez</option><option value='74'>Delvin Arain Hernandez Redondo </option><option value='145'>Denis Roberto Vázquez</option><option value='34'>Elder Díaz</option><option value='184'>Elias Madris Silva</option><option value='35'>Elvin Emilio Vázquez</option><option value='146'>Emilio Vázquez</option><option value='194'>Eric García Aguilar</option><option value='208'>Erik Fernando Salas</option><option value='66'>Erminio Cartagena Hernandez</option><option value='16'>Ever Casco </option><option value='173'>Exel Arnulfo Teque Pivaral</option><option value='126'>Fausto Vidal L.</option><option value='211'>Félix Fernández</option><option value='167'>Florentino Oliva Santiago</option><option value='58'>Fraklin Alexander </option><option value='195'>Francisco Alfredo Hernández Chávez</option><option value='116'>Francisco Javier Martínez</option><option value='147'>Francisco Javier Martínez</option><option value='31'>Franco Eduardo López Domínguez</option><option value='30'>Franklin Ezequiel Alvarado</option><option value='165'>Gabriela Ortega Téllez</option><option value='155'>Gandhi Raúl Cano Cano</option><option value='170'>Gerardo Guzmán Burgos</option><option value='201'>Gladis Cruz</option><option value='52'>Gregorio Gómez Hernández</option><option value='8'>Guillermo</option><option value='42'>Guillermo Gómez Vásques</option><option value='33'>Gustavo Adolfo Molina</option><option value='164'>Horacio Mendoza Torres</option><option value='186'>Ignacio Hernández Hernández</option><option value='169'>iveth diaz hernandez</option><option value='200'>Javier Torres</option><option value='137'>Jesús Ernesto</option><option value='168'>Jesús Gutiérrez Martínez</option><option value='187'>Jibran Felix Pazos</option><option value='25'>Joel Barragán Mendoza</option><option value='148'>Johan Manzanares</option><option value='1'>Jonatan Morales</option><option value='174'>Jorge Antonio</option><option value='175'>Jorge Cadena</option><option value='141'>Jorge Rolando Vargas Cantarero</option><option value='134'>Jorge Vargas</option><option value='181'>José Guadalupe Jiménez Juárez</option><option value='28'>José Guadalupe Ramírez López</option><option value='84'>Jose Hernan Cardenas Rios</option><option value='4'>José Hernández Velázquez</option><option value='60'>José Luis </option><option value='75'>Jose Luis Flores Flores</option><option value='26'>José Luís Herrera Herrera</option><option value='207'>José Ramón Pérez Gómez</option><option value='14'>José Vega </option><option value='120'>José Vega</option><option value='159'>Josue Raul Hernandez Morales</option><option value='188'>Jovany Carrera Hernández</option><option value='23'>Juan Armando Mendez Gonzalez</option><option value='2'>Juan Manuel González Sánchez</option><option value='114'>Juan Manuel Luevano Dávila</option><option value='103'>Juan Manuel Orozco Romero </option><option value='108'>Juan Pablo Castellano Marin</option><option value='24'>Juan Ramírez Martínez</option><option value='82'>Juvencio Hernandez Lopez </option><option value='7'>Kader Orellana Flores</option><option value='40'>Kevin  Argueta </option><option value='13'>Kevin Usiel Pèrez Rodríguez</option><option value='61'>Leonardo García Paz</option><option value='39'>Leoncio Martínez</option><option value='59'>Lilia</option><option value='192'>Luciana Calvo </option><option value='140'>Lucio Castillo</option><option value='158'>Luis Alonso Quintanilla</option><option value='128'>Luis Daniel</option><option value='199'>Ma. Magdalena Díaz Verdugo</option><option value='49'>Manuel de Jesús Hernández</option><option value='204'>Manuel Gubera</option><option value='203'>Manuel Zuniga Mendoza</option><option value='51'>Marco Antonio Morales Río </option><option value='106'>Marcos Rodríguez Oliva</option><option value='157'>Maria Melina </option><option value='160'>María Melina Beltran Victoriano</option><option value='132'>Maricela Silverio Mendoza</option><option value='131'>Marina Arcos</option><option value='180'>Mario Moreno</option><option value='213'>Marvin Antonio Cárdenas Candia</option><option value='46'>Melesio Morán Peña</option><option value='87'>Melvin Geovany Elvir Vega</option><option value='121'>Melvin Waldemar Meza del Cid</option><option value='185'>Miguel</option><option value='11'>Miguel ángel </option><option value='197'>Miguel Angel Diaz Lira</option><option value='21'>Moisés Rivera Rodríguez</option><option value='101'>Moises Rivera Rodriguez</option><option value='191'>Nancy Carolina Galindo Martínez</option><option value='118'>Natividad de Jesús</option><option value='206'>Nelson Ecarro</option><option value='100'>Nelson Enrique Martínez Peralta</option><option value='83'>Nery Ramirez Cardona</option><option value='70'>Nestor Velazquez Ramirez</option><option value='156'>Nicolas Morales Ambrosio</option><option value='142'>Noe Cante Saint</option><option value='27'>Noé Cante Sanit</option><option value='122'>Oscar Armando Benítez</option><option value='152'>Oscar Gael Coronel Morales</option><option value='163'>Oswaldo Ríos Martínez</option><option value='149'>Ovidio Marín </option><option value='85'>Pascual Tomas Arredondo</option><option value='86'>Pascual Tomas Hernandez</option><option value='202'>Pedro Ruiz Rivera</option><option value='109'>Perfecto Cristobal Perez Gonzalez</option><option value='17'>Rafael Mada Lastra </option><option value='115'>Ramón Ramírez Romero</option><option value='45'>Renato Ramírez</option><option value='179'>René Javier Cruz</option><option value='171'>Reyna José Miguel</option><option value='3'>Ricardo Martínez</option><option value='162'>Rigoberto Palafox</option><option value='176'>Roberto Quintero Chávez</option><option value='210'>Rolando Frías</option><option value='151'>Rosa Maria Velez Amaro</option><option value='69'>Rubén Quiñonez Villarreal</option><option value='172'>Sergio Lucio</option><option value='178'>Sergio Manuel Ramirez Gutierrez</option><option value='150'>Simón Costrero Barrán</option><option value='161'>Tomás Eugenio Torres Hernández</option><option value='20'>Toribio Jesús López</option><option value='18'>Toribio Velázquez Santos </option><option value='205'>Víctor</option><option value='112'>Wilbert</option><option value='127'>Wilbert Madrid</option><option value='19'>Wilmer Alexis Montoya </option><option value='32'>Yeims James</option><option value='15'>Zaul Rivas </option-->
 						</select>				
 					</div>
 					<div class='clear'></div>
 				</div>
-
-				<!--div class='form-field-box odd' id="paquete_pago_field_box">
-					<div class='form-display-as-box' id="paquete_pago_display_as_box">
-						Que incluía el pago :
-					</div>
-					<div class='form-input-box' id="paquete_pago_input_box">
-						<select id='field-paquete_pago' name='paquete_pago[]' ng-model='paquete_pago' multiple='multiple' size='8' 
-								class='chosen-multiple-select' data-placeholder='Seleccionar que incluía el pago' style='width:510px;' >
-							<option value=''></option>
-							<option value='1'>Hospedaje</option>
-							<option value='2'>Transporte</option>
-							<option value='3'>Alimentación</option>
-							<option value='4'>Pago de cuotas a la mafia</option>
-							<option value='5'>No especificó</option>
-							<option value='6'>Sólo cruce</option>
-							<option value='7'>Cruce</option>
-						</select>				
-					</div>
-				</div-->
 
 				<div class='form-field-box even' id="intentos_field_box">
 					<div class='form-display-as-box' id="intentos_display_as_box">
@@ -1583,10 +1306,6 @@
 					</div>
 
 					<div class='form-button-box'>
-						<input type='button' value='<< Regresar a Agregar Migrante' class='ui-input-button' id="go-back-button"/>
-					</div>
-
-					<div class='form-button-box'>
 						<input type='submit' value='Guardar' class='ui-input-button' id="save-all" ng-click=""/>
 					</div>
 
@@ -1607,22 +1326,6 @@
 
 	
 	$(document).ready( function () {
-		// obtener datos de un formulario como json
-		$.fn.serializeObject = function() {
-		   var o = {};
-		   var a = this.serializeArray();
-		   $.each(a, function() {
-		       if (o[this.name]) {
-		           if (!o[this.name].push) {
-		               o[this.name] = [o[this.name]];
-		           }
-		           o[this.name].push(this.value || '');
-		       } else {
-		           o[this.name] = this.value || '';
-		       }
-		   });
-		   return o;
-		};
 
 		// convertir un decimal a otra base
 		function toRadix(N,radix) {
@@ -1637,78 +1340,11 @@
 		 return ((N<0) ? "-"+HexN : HexN);
 		}
 
-		$("#addReport-step1").on("submit", function(e){
-			e.preventDefault();
-			var that = $(this)
-			  , scope = angular.element(that).scope()
-			  , data = that.serialize()
-			  , url = that.attr("action");
-
-			$.get('http://jsonip.com', function (res) {
-		  		var folio;
-		  	 	if(res && res.ip ){
-			  	 	ip = parseInt( (res.ip).replace(/\./g, "") );
-			  	 	folio = 'MIG-' + Math.floor(Date.now() / 1000) + '-' +  toRadix(ip, 36).toUpperCase() 
-		  	 	}else{
-			  		folio = "<?php echo crearFolio('MIG'); ?>"
-		  	 	}
-
-		  	 	that.append("<input type='hidden' id='folio' name='folio' value='" + folio +"' >")
-
-		  	 	// fallara si no esta logueado
-		  	 	try {
-			  		_send_data()	
-		  	 	} catch(e) {
-				    window.location.reload();
-				}
-    		});
-
-			  //scope.clear_all();  /*
-			var _send_data = function(){
-			  	$.post(url, data, function(res){
-					//proceso para guardar 
-					var res = JSON.parse(res)
-			  		if(res.status){
-						$(this).children(".small-loading").css("display","block");
-						$(this).children(".small-loading").css("display","none");
-						var msg = ' <p> El registro del migrante fue correctamente agregado. \
-								    ¿Quiéres agregar otro migrante o los datos de la denuncia ?</p>';
-
-					  	var dialog = $(msg).dialog({
-			        		buttons: {
-					            "Agregar otro migrante": function() {
-					            	that[0].reset() // limpia input text
-					            	scope.clear_migrante(); // limpia el localstorage de migrante
-					            	that.children('select').each(function(){
-					            		$(this).val('').trigger('chosen:updated')
-					            	});
-					        		 	window.location.reload();
-					            },
-					            "Capturar datos de la denuncia ":  function() {
-					            	that.toggle( "slide", function(){
-					            		that[0].reset()
-					            		$("#addReport-step2").toggle( "slide" )
-					            	})
-					            	dialog.dialog('close');
-					            }
-					          }
-				      	});
-				      	scope.add_migrante(res.data)
-					  	console.log(res.data)
-			      	}else{
-			  			alert("No se pudo insertar el Registro del Migrante, verifique los campos")
-			  		}
-				})
-			}
-
-		})
-
 		
 		$("#addReport-step2").on("submit", function(e){
 			e.preventDefault();
 			var that = $(this)
 			  , scope = angular.element(that).scope()
-			  //, data = $(this).serializeObject()
   			
 			//console.log(data)
 			that.children(".small-loading").css("display","block");
@@ -1724,17 +1360,14 @@
 		  	 	that.append("<input type='hidden' id='folio' name='folio' value='" + folio +"' >")
 
 		  	 	// fallara si no esta logueado
-		  	 	try {
-			  		send_data(that)	
-		  	 	} catch(e) {
-				    window.location.reload();
-				}
+		  	 	try { send_data(that) } 
+		  	 	catch(e){ window.location.reload(); }
     		});
 
 			var send_data = function(el){
-  				/**/
   				var formData = new FormData(el[0])
-  				  , url = el.attr("action");
+  				  , url = el.attr("action")
+  				  , ids = $("#field-migrantes").val();
 
 				jQuery.ajax({
 				    url: url,
@@ -1748,13 +1381,10 @@
 						var res = JSON.parse(res)
 						var that = $("#addReport-step2")
 						if(res.status){
-							var f1 = $("#addReport-step1") // formulario migrante
 				          	var f2 = $("#addReport-step2") // formulario denuncia
-
-				          	f1[0].reset(); // resetea los forms
 				          	f2[0].reset();
-				          	insertMigrantes2denuncia(res.data.id)
-				          	angular.element(f1).scope().clear_all(); // limpia el localstorage de migrante
+
+				          	insertMigrantes2denuncia(ids, res.data.id)
 				          	angular.element(f2).scope().clear_all();
 							that.children(".small-loading").css("display","none");
 							alert("Se inserto correctamente la denuncia, con el folio: " + res.data.folio)
@@ -1765,34 +1395,15 @@
 				  		}
 				    }
 				});
-
+				
 			}
 
-			var insertMigrantes2denuncia = function(id_denuncia){
+			var insertMigrantes2denuncia = function(ids, id_denuncia){
 				var url = "<?php echo site_url();?>/index.php/admin/insertMigrantes2denuncia";
-				var migrantes = angular.element( $("#addReport-step1") ).scope().get_migrantes_data().split(",")
-				var ids = []
-
-				for(var i in migrantes) ids.push( migrantes[i].split(":")[0] )
-
 				$.post(url, { id_denuncia: id_denuncia, ids_migrantes: ids }, function(res, error){
 					console.log(res)
 				})
 			}
-		})
-
-		$("#go-next-button").on("click", function(e){
-			e.preventDefault()
-			$("#addReport-step1").toggle( "slide", function(){
-        		$("#addReport-step2").toggle( "slide" )
-        	})
-		})
-
-		$("#go-back-button").on("click", function(e){
-			e.preventDefault();
-			$("#addReport-step2").toggle( "slide", function(){
-	    		$("#addReport-step1").toggle( "slide" )
-	    	})
 		})
 
 		$(".cancel-and-go-back-button").on("click", function(e){
@@ -1801,35 +1412,18 @@
 			var dialog = $(msg).dialog({
 	        buttons: {
 	          "Si": function() {
-	          	var f1 = $("#addReport-step1") // formulario migrante
 	          	var f2 = $("#addReport-step2") // formulario denuncia
 
-	          	/* Elimina migrantes si ya han sido creados en esta denuncia */
-	          	try {
-		          	var migrantes = angular.element(f1).scope().get_migrantes_data().split(",")
-		          	  , ids = []
-		          	  , url = "<?php echo site_url();?>/index.php/admin/deleteMigrantes";
-		          	
-		          	for(var i in migrantes) ids.push( migrantes[i].split(":")[0] )
-		      		$.post(url, { ids : ids}, function(res, error){ console.log(res) })
-
-				}catch(err) { }
-
-		          	
-	          	f1[0].reset(); // resetea los forms
 	          	f2[0].reset();
-	          	angular.element(f1).scope().clear_all(); // limpia el localstorage de migrante
 	          	angular.element(f2).scope().clear_all(); // limpia el localstorage de denuncia
 
-	          	$('select').each(function(){ // resetea los selects
-	          		$(this).val('').trigger('chosen:updated')
-	          	});
+	          	// resetea los selects
+	          	$('select').each(function(){ $(this).val('').trigger('chosen:updated') });
 	      		 	
 				window.location.reload();
 	          },
-	          "No":  function() {
-	          	dialog.dialog('close');
-	          }
+
+	          "No":  function() { dialog.dialog('close'); }
 	        }
 	      });
 		})
@@ -1838,18 +1432,6 @@
 		$("#ver-catalogos").click( function () {
 			$("#catalogos").toggle();
 		});
-		
-		var fields_hs = function(id, n, fields){
-			if( $("li#field_" + id + "_chzn_o_" + n ).hasClass("result-selected" ) ){
-				for(i in fields) $("#" + fields[i] + "_field_box").show() 
-			}else {
-				for(i in fields) $("#" + fields[i] + "_field_box").hide();
-				var f1 = $("#addReport-step1")
-				var f2 = $("#addReport-step2")
-				angular.element(f1).scope().clear_theses(fields)
-				angular.element(f2).scope().clear_theses(fields)
-			}
-		}
 
 		var hs_fields = function(el, on_id, off_id, input_fields, select_fields, multi_select){
 			if( $("li#field_" + el + "_chzn_o_" + on_id ).hasClass("result-selected" ) ){
@@ -1857,7 +1439,6 @@
 				for(var key in select_fields) $("#" + key + "_field_box").show() 
 				for(var key in multi_select) $("#" + key + "_field_box").show() 
 			}else if( $("li#field_" + el + "_chzn_o_" + off_id ).hasClass("result-selected" ) ){
-				var f1 = $("#addReport-step1")
 				var f2 = $("#addReport-step2")
 
 				for(var key in input_fields ) {
@@ -1901,11 +1482,6 @@
 						.removeClass("active-result")
 						.addClass("result-selected")
 				}
-
-				angular.element(f1).scope().clear_theses(input_fields)
-				angular.element(f1).scope().clear_theses(select_fields)
-				angular.element(f1).scope().clear_theses(multi_select)
-
 
 				angular.element(f2).scope().clear_theses(input_fields)
 				angular.element(f2).scope().clear_theses(select_fields)
@@ -2016,24 +1592,7 @@
 		hs_fields(  "responsables_abordo_vehiculos_responsables", 1, 2,
 						{"numero_vehiculos_responsables": "No Aplica", "placas_vehiculos_responsables": "No Aplica"}, 
 						{"id_tipo_transporte_responsables": pos + "-No Aplica"}, {})
-
-
-		/*Migrante - Pueblo indigena*/
-
-		$("#nombre_pueblo_indigena_field_box").css("margin-left", "50px");
-		$("#nombre_pueblo_indigena_field_box").hide();
-		$("#espanol_field_box").css("margin-left", "50px");
-		$("#espanol_field_box").hide();
-
-		$("#field-pueblo_indigena").change( function () { 					
-			hs_fields( "pueblo_indigena", 1, 2,
-					   {"nombre_pueblo_indigena": "No Aplica"}, 
-					   {"espanol": "2-No Aplica"}, {} )			 
-		});
-		
-		hs_fields(  "pueblo_indigena", 1, 2, 
-					{"nombre_pueblo_indigena": "No Aplica"}, 
-					{"espanol": "2-No Aplica"}, {} )			 
+		 
 
 		$(".search-choice-close").on("click", function(e){
 			e.preventDefault()

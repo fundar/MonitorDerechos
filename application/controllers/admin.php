@@ -210,6 +210,21 @@ class Admin extends CI_Controller {
 		
 		$this->_example_output($output);
 	}
+
+	public function add_denuncia(){
+		$this->load->model('migracion_model');
+		$user = $this->isUser();
+		$data = array( 
+			'migrantes' => $this->migracion_model->getMigrantes(),
+			'estados' => $this->migracion_model->getEstados(),
+            'paises' => $this->migracion_model->getPaises(),
+            'autoridades' => $this->migracion_model->getAutoridades(),
+            'transportes' => $this->migracion_model->getTransportes(),
+            'estados_casos' => $this->migracion_model->getEstadosCasos()
+		);
+
+		$this->load->view('add/denuncia.php', $data);
+	}
 	
 	/*Nombres en español de los campos*/
 	public function display_as_denuncias($crud) {

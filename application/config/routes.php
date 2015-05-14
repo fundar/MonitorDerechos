@@ -39,6 +39,7 @@
 */
 
 $route['default_controller'] = "admin";
+$route['admin/crea/denuncia'] = "admin/add_denuncia";
 $route['404_override'] = '';
 
 
