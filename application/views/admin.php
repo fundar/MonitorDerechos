@@ -71,7 +71,7 @@ foreach($css_files as $file): ?>
 <body>
 	<div>
 		<a href="<?php echo site_url('admin/denunciar')?>" >
-			<?php if($this->uri->segment(2) == "denunciar") { ?><strong> Levantar denuncia completa </strong><?php } else { ?>Levantar Denuncia<?php } ?>
+			<?php if($this->uri->segment(2) == "denunciar") { ?><strong> Levantar denuncia completa </strong><?php } else { ?> Levantar denuncia completa <?php } ?>
 		</a> |
 		<a href="<?php echo site_url('admin/crea/denuncia');?>"> Agregar denuncia </a> |
 
