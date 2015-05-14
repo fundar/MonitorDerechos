@@ -202,6 +202,7 @@
 </script>
 <head>
 	<h1> Añadir Denuncia </h1>
+	<h3 style="color: #D43400;"> AVISO: Solo se puede usar esta opción si se asigna un migrante creado previamente en la pestaña "Levantar denuncia completa" </h3>
 </head>
 
 <div class="container" ng-app="ReporteApp">
