@@ -40,6 +40,8 @@
 
 $route['default_controller'] = "admin";
 $route['admin/crea/denuncia'] = "admin/add_denuncia";
+$route['admin/migrantes/add'] = "admin/login";
+$route['admin/denuncias/add'] = "admin/login";
 $route['404_override'] = '';
 
 
