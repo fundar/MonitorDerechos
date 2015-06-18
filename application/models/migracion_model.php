@@ -81,51 +81,51 @@ class migracion_Model extends CI_Model  {
         return $query->result();
 	}
 	
-	public function allDenuncias($start = "2014-01-01", $end = "2014-12-31") {
-		$sq  = " SELECT intentos, motivo_migracion, coyote_guia, lugar_de_usa, viaja_solo, deportado "; 
-		$sq	.= " , espacio_fisico_injusticia_homologada AS espacio_fisico_injusticia, numero_migrantes_injusticia";
-		$sq	.= " , detonante_injusticia_homologada as detonante_injusticia,algun_nombre_responsables, uniformado_responsables";
-		$sq	.= " , responsables_abordo_vehiculos_responsables AS responsables_abordo_vehiculos";
-		$sq	.= " , derechos.todos AS derechos, violaciones.todas as violaciones_derechos";
-		$sq	.= " , autoridades.nombre AS autoridad, paises.nombre AS pais_origen";
-		$sq	.= " , migrantes.escolaridad, migrantes.edad, migrantes.ocupacion_homologada AS ocupacion, migrantes.nombre_pueblo_indigena, migrantes.espanol";
-		$sq	.= " , lugares_denuncia.nombre AS lugar_denuncia, generos.nombre AS genero, estado_civil.nombre AS estado_civil";
-		$sq	.= " , tipos_quejas.nombre AS queja, estados.nombre AS estado_injusticia";
-
-		$sq .= " FROM denuncias";
-		/* Todos los Derechos involucrados por Denuncia  */
-		$sq .= "   	JOIN ( SELECT denuncias.id_denuncia, GROUP_CONCAT(derechos.nombre SEPARATOR ' - ') AS todos ";
-		$sq .= "   	  FROM derechos_violados2denuncias, derechos, denuncias";
-		$sq .= "      WHERE derechos_violados2denuncias.id_denuncia = denuncias.id_denuncia ";
-		$sq .= "   	  AND derechos.id_derecho = derechos_violados2denuncias.id_derecho";
-		$sq .= "   	  GROUP BY denuncias.id_denuncia";
-	  	$sq .= "   	) AS derechos";
-   		$sq .= "	ON derechos.id_denuncia = denuncias.id_denuncia";
-		/* Todas los Violaciones a los Derechos por Denuncia  */
-   		$sq .= "   	JOIN ( SELECT denuncias.id_denuncia, GROUP_CONCAT(violacion_derechos.nombre SEPARATOR ' - ') AS todas ";
-		$sq .= "   	  FROM violacion_derechos2denuncias, violacion_derechos, denuncias";
-		$sq .= "      WHERE violacion_derechos2denuncias.id_denuncia = denuncias.id_denuncia ";
-		$sq .= "   	  AND violacion_derechos.id_violacion = violacion_derechos2denuncias.id_violacion";
-		$sq .= "   	  GROUP BY denuncias.id_denuncia";
-	  	$sq .= "   	) AS violaciones";
-   		$sq .= "	ON violaciones.id_denuncia = denuncias.id_denuncia";
-
-   		$sq .= "    JOIN autoridades_responables2denuncias ON autoridades_responables2denuncias.id_denuncia = denuncias.id_denuncia";
-   		$sq .= "    JOIN autoridades ON autoridades.id_autoridad = autoridades_responables2denuncias.id_autoridad";
-   		$sq .= "    JOIN migrantes2denuncias ON migrantes2denuncias.id_denuncia = denuncias.id_denuncia";
-   		$sq .= "    JOIN migrantes ON migrantes2denuncias.id_migrante = migrantes.id_migrante";
-		$sq .= "    JOIN lugares_denuncia ON migrantes.id_lugar_denuncia = lugares_denuncia.id_lugar_denuncia";
-		$sq .= "    JOIN paises ON migrantes.id_pais = paises.id_pais";
-		$sq .= "    JOIN generos ON migrantes.id_genero = generos.id_genero";
-		$sq .= "    JOIN estado_civil ON migrantes.id_estado_civil = estado_civil.id_estado_civil";
-   		$sq .= "    JOIN tipos_quejas ON tipos_quejas.id_tipo_queja = denuncias.id_tipo_queja";
-   		$sq .= "    JOIN estados ON estados.id_estado = denuncias.id_estado_injusticia";
-
+	public function allDenuncias($start, $end) {
+  	$sq  = "	SELECT intentos, motivo_migracion, coyote_guia, lugar_de_usa, viaja_solo, deportado ";
+		$sq .= " , espacio_fisico_injusticia_homologada AS espacio_fisico_injusticia, numero_migrantes_injusticia ";
+		$sq .= " , detonante_injusticia_homologada as detonante_injusticia,algun_nombre_responsables, uniformado_responsables ";
+		$sq .= " , responsables_abordo_vehiculos_responsables AS responsables_abordo_vehiculos ";
+		$sq .= " , derechos.todos AS derechos, violaciones.todas as violaciones_derechos ";
+		$sq .= " , autoridades.nombre AS autoridad, migrantes.pais AS pais_origen, migrantes.estado AS estado_origen ";
+		$sq .= " , migrantes.escolaridad, migrantes.edad, migrantes.ocupacion_homologada AS ocupacion, migrantes.nombre_pueblo_indigena, migrantes.espanol ";
+		$sq .= " , migrantes.lugar_denuncia AS lugar_denuncia, migrantes.genero AS genero, migrantes.estado_civil AS estado_civil ";
+		$sq .= " , tipos_quejas.nombre AS queja, estados.nombre AS estado_injusticia  ";
+		$sq .= " FROM denuncias ";
+		$sq .= " LEFT JOIN (  ";
+		$sq .= " 	 SELECT id_denuncia, GROUP_CONCAT(d.nombre SEPARATOR ' - ') AS todos  ";
+		$sq .= "   FROM derechos_violados2denuncias d2d ";
+		$sq .= "   LEFT JOIN derechos d ON d2d.id_derecho = d.id_derecho  ";
+		$sq .= "   GROUP BY id_denuncia ";
+		$sq .= " ) AS derechos ON denuncias.id_denuncia = derechos.id_denuncia  ";
+		$sq .= " LEFT JOIN ( SELECT id_denuncia, GROUP_CONCAT(v.nombre SEPARATOR ' - ') AS todas  ";
+		$sq .= "   FROM violacion_derechos2denuncias v2d ";
+		$sq .= "   LEFT JOIN violacion_derechos v ON v2d.id_violacion = v.id_violacion  ";
+		$sq .= "   GROUP BY id_denuncia ";
+		$sq .= " ) AS violaciones ON denuncias.id_denuncia = violaciones.id_denuncia ";
+		$sq .= " LEFT JOIN (  ";
+		$sq .= " 	SELECT id_denuncia, p.nombre pais, e.nombre estado, l.nombre lugar_denuncia, g.nombre genero, ec.nombre estado_civil, escolaridad, edad ";
+		$sq .= " 	, ocupacion_homologada, nombre_pueblo_indigena, espanol ";
+		$sq .= " 	FROM migrantes2denuncias m2d ";
+		$sq .= " 	LEFT JOIN migrantes m ON m2d.id_migrante = m.id_migrante  ";
+		$sq .= " 	LEFT JOIN paises p ON m.id_pais = p.id_pais  ";
+		$sq .= " 	LEFT JOIN estados e ON m.id_estado = e.id_pais  ";
+		$sq .= " 	LEFT JOIN lugares_denuncia l ON m.id_lugar_denuncia = l.id_lugar_denuncia  ";
+		$sq .= " 	LEFT JOIN generos g ON m.id_genero = g.id_genero  ";
+		$sq .= " 	LEFT JOIN estado_civil ec ON m.id_estado_civil = ec.id_estado_civil  ";
+		$sq .= " 	GROUP BY id_denuncia ";
+		$sq .= " ) AS migrantes ON denuncias.id_denuncia = migrantes.id_denuncia ";
+		$sq .= " LEFT JOIN ( ";
+		$sq .= " 	SELECT id_denuncia, a.nombre ";
+		$sq .= " 	FROM autoridades_responables2denuncias a2d ";
+		$sq .= " 	LEFT JOIN autoridades a ON a2d.id_autoridad =  a.id_autoridad  ";
+		$sq .= " 	GROUP BY id_denuncia ";
+		$sq .= " 	) AS autoridades ON denuncias.id_denuncia = autoridades.id_denuncia ";
+		$sq .= " LEFT JOIN tipos_quejas ON denuncias.id_tipo_queja = tipos_quejas.id_tipo_queja ";
+		$sq .= " LEFT JOIN estados ON denuncias.id_estado_injusticia = estados.id_estado  ";
 		$sq .= " WHERE fecha_injusticia BETWEEN '" . $start . "' AND '" . $end . "'";
-
 		$query = $this->db->query($sq);
-
-        return $query->result();
+    return $query->result();
 	}
 
 	public function deleteMigrante($id = -1){
