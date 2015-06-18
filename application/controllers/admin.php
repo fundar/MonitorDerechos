@@ -760,8 +760,8 @@ class Admin extends CI_Controller {
 		$this->load->model('migracion_model');
 		//$this->load->helper('assets');
 
-		$start = $this->input->get("start")? $this->input->get("start") : "2014-01-01";
-		$end = $this->input->get("end")? $this->input->get("end") : "2014-12-31";
+		$start = $this->input->get("start")? $this->input->get("start") : "";
+		$end = $this->input->get("end")? $this->input->get("end") : "";
         
         $data['start'] = $start;
         $data['end'] = $end;
