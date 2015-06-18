@@ -238,6 +238,7 @@
 <script type="text/javascript">
 	jQuery(document).ready(function() {
 		var denuncias = <?php echo json_encode($denuncias);?>;
+		console.log( denuncias.length)
 		var histograma_denuncias = actualizar_histograma( generar_histograma(denuncias) )
 
 		var derechos = []
@@ -275,7 +276,7 @@
 		crear_select(autoridades, "l7")
 		crear_select(tags_denuncias, "l8")
 
-		graficar_por_subtema(denuncias, "violaciones_derechos", violaciones_derechos[0], "autoridad")
+		graficar_por_subtema(denuncias, "violaciones_derechos", violaciones_derechos[1], "autoridad")
 		
 
 		$(".menu_graficas li a").on("click", function(){

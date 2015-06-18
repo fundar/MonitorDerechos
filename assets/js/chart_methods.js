@@ -33,7 +33,9 @@ var tags_denuncias = {
 var crear_select = function(topics, target_id){
   var html = ""
   for(var i in topics){
-    html += "<option value=" + i + ">" + topics[i] + "</option>"
+    if(topics[i] != null){
+      html += "<option value=" + i + ">" + topics[i] + "</option>"
+    }
   }
 
   $("#" + target_id).append(html)
@@ -110,23 +112,23 @@ var actualizar_histograma = function(histograma){
   histograma.edad = n_topico_edad
 
   /* Modificar las etiquetas en el campo habla español */
-  histograma.espanol[0][0] = "Si";
-  histograma.espanol[1][0] = "No";
+  //histograma.espanol[0][0] = "Si";
+  //histograma.espanol[1][0] = "No";
   
   /* Modificar las etiquetas en el campo coyote */
-  histograma.coyote_guia[0][0] = "Si"; // 1 como tag original
-  histograma.coyote_guia[1][0] = "Dato no disponible"; // 0 como tag original
-  histograma.coyote_guia[2][0] = "No"; // 2 como tag original
+  //histograma.coyote_guia[0][0] = "Si"; // 1 como tag original
+  //histograma.coyote_guia[1][0] = "Dato no disponible"; // 0 como tag original
+  //histograma.coyote_guia[2][0] = "No"; // 2 como tag original
 
   /* Modificar las etiquetas en el campo viaja_solo */
-  histograma.viaja_solo[0][0] = "Si"; // 1 como tag original
-  histograma.viaja_solo[1][0] = "Dato no disponible"; // 0 como tag original
-  histograma.viaja_solo[2][0] = "No"; // 2 como tag original
+  //histograma.viaja_solo[0][0] = "Si"; // 1 como tag original
+  //histograma.viaja_solo[1][0] = "Dato no disponible"; // 0 como tag original
+  //histograma.viaja_solo[2][0] = "No"; // 2 como tag original
 
   /* Modificar las etiquetas en el campo deportado */
-  histograma.deportado[0][0] = "Si"; // 1 como tag original
-  histograma.deportado[1][0] = "Dato no disponible"; // 0 como tag original
-  histograma.deportado[2][0] = "No"; // 2 como tag original
+  //histograma.deportado[0][0] = "Si"; // 1 como tag original
+  //histograma.deportado[1][0] = "Dato no disponible"; // 0 como tag original
+  //histograma.deportado[2][0] = "No"; // 2 como tag original
 
   /* Reducir a dos (SI/NO) categorias la pregunta algun_nombre_responsables */
   var n_topico_algun_nombre_responsables = [ 
@@ -249,7 +251,7 @@ var graficar_l2 = function(content_tag, histograma, title, l1_label, l2_label){
         allowPointSelect: true, cursor: 'pointer',
         center: ['50%', '50%'],
         dataLabels: {
-          enabled: true, format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+          /*enabled: true, format: '<b>{point.name}</b>: {point.percentage:.1f} %',*/
           style: { color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black' }
         }
       } 
@@ -274,7 +276,8 @@ var graficar_l2 = function(content_tag, histograma, title, l1_label, l2_label){
       innerSize: '60%',
       dataLabels: {
           formatter: function () {
-            return this.y > 1 ? '<b>' + this.point.name + ':</b> ' + this.y + '%'  : null;
+            //return this.y > 1 ? '<b>' + this.point.name + ':</b> ' + this.y + '%'  : null;
+            return this.y > 1 ? '<b>Migrantes:</b> ' + this.y : null;
           },
           distance: 10,
           style: { 
@@ -302,8 +305,8 @@ var graficar_por_subtema = function(denuncias, tema, subtema, tema2){
   }
 
   var title = "<b>" + tags_denuncias[tema2] + "</b> <br>" +
-              tags_denuncias[tema] + ": " +
-              subtema.split(" - ").join(", ")
+              tags_denuncias[tema] + ": " 
+              //+ subtema.split(" - ").join(", ")
     , filename = subtema + "_x_" + tags_denuncias[tema2] 
 
   graficar(filename, topic_data, title)
