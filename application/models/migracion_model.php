@@ -95,7 +95,7 @@ class migracion_Model extends CI_Model  {
 		$sq .= " LEFT JOIN (  ";
 		$sq .= " 	 SELECT id_denuncia, GROUP_CONCAT(d.nombre SEPARATOR ' - ') AS todos  ";
 		$sq .= "   FROM derechos_violados2denuncias d2d ";
-		$sq .= "   LEFT JOIN derechos d ON d2d.id_derehco = d.id_derecho  ";
+		$sq .= "   LEFT JOIN derechos d ON d2d.id_derecho = d.id_derecho  ";
 		$sq .= "   GROUP BY id_denuncia ";
 		$sq .= " ) AS derechos ON denuncias.id_denuncia = derechos.id_denuncia  ";
 		$sq .= " LEFT JOIN ( SELECT id_denuncia, GROUP_CONCAT(v.nombre SEPARATOR ' - ') AS todas  ";
