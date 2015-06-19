@@ -76,6 +76,7 @@
 		body{
 			font-family: Arial;
 			font-size: 14px;
+			//position: relative;
 		}
 		a {
 		    color: blue;
@@ -100,9 +101,36 @@
 		#go-next-button{
 			display: none;
 		}
+
+		#gray_screen{
+			position: absolute;
+			min-width: 100%;
+			min-height: 100%;
+			left:0;
+			top:0;
+			background: rgba(50,50,50, 0.7);
+			z-index: 20;
+			display: none;
+		}
+
+		.ui-corner-all.ui-button-icon-only.ui-dialog-titlebar-close, 
+		.ui-dialog-titlebar.ui-widget-header.ui-corner-all.ui-helper-clearfix{
+			display: none;
+		}
+
+		.ui-dialog.ui-widget.ui-widget-content.ui-corner-all.ui-front.ui-dialog-buttons.ui-draggable.ui-resizable{
+			padding: 20px;
+		  border-radius: 10px 10px 10px 10px;
+		  -moz-border-radius: 10px 10px 10px 10px;
+		  -webkit-border-radius: 10px 10px 10px 10px;
+		  border: 0px solid #000000;
+		}
+
+
 	</style>
 </head>
 <body>
+	<div id="gray_screen"></div>
 	<div>
 		<a href="#"> <strong>  Levantar denuncia completa </strong> </a> |
 		<a href="<?php echo site_url('admin/crea/denuncia');?>"> Agregar denuncia </a> |
@@ -1650,7 +1678,10 @@
 
 		$("#addReport-step1").on("submit", function(e){
 			e.preventDefault();
+
 			$("#FormLoading").css("display", "block")
+			$("#gray_screen").css("display", "block")
+
 			var that = $(this)
 			  , scope = angular.element(that).scope()
 			  , data = that.serialize()
@@ -1678,6 +1709,7 @@
 			  //scope.clear_all();  /*
 			var _send_data = function(){
 		  	$.post(url, data, function(res){
+		  			
 					//proceso para guardar 
 					var res = JSON.parse(res)
 		  		if(res.status){
@@ -1687,28 +1719,31 @@
 									    ¿Quiéres agregar otro migrante o los datos de la denuncia ?</p>';
 
 				  	var dialog = $(msg).dialog({
-				        		buttons: {
-						            "Agregar otro migrante": function() {
-						            	that[0].reset() // limpia input text
-						            	scope.clear_migrante(); // limpia el localstorage de migrante
-						            	that.children('select').each(function(){
-						            		$(this).val('').trigger('chosen:updated')
-						            	});
-						        		 	window.location.reload();
-						            },
-						            "Capturar datos de la denuncia ":  function() {
-						            	that.toggle( "slide", function(){
-						            		that[0].reset()
-						            		$("#addReport-step2").toggle( "slide" )
-						            	})
-						            	dialog.dialog('close');
-						            }
-						          }
-					      	});
+	        		buttons: {
+			            "Agregar otro migrante": function() {
+			            	that[0].reset() // limpia input text
+			            	scope.clear_migrante(); // limpia el localstorage de migrante
+			            	that.children('select').each(function(){
+			            		$(this).val('').trigger('chosen:updated')
+			            	});
+			        		 	window.location.reload();
+			            },
+			            "Capturar datos de la denuncia ":  function() {
+			            	that.toggle( "slide", function(){
+			            		that[0].reset()
+			            		$("#addReport-step2").toggle( "slide" )
+			            	})
+		  							$("#gray_screen").css("display", "none")
+			            	dialog.dialog('close');
+
+			            }
+			          }
+		      	});
 		      	scope.add_migrante(res.data)
 				  	console.log(res.data)
 	      	}else{
 		  			alert("No se pudo insertar el Registro del Migrante, verifique los campos")
+		  			$("#gray_screen").css("display", "none")
 		  		}
 
 		  		$("#FormLoading").css("display", "none")
