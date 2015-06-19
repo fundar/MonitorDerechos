@@ -96,6 +96,10 @@
 		.chosen-select{
 			width:300px;
 		}
+		/* Ocultar por defecto el botón de ir al formulario de llenado datos de denuncia*/
+		#go-next-button{
+			display: none;
+		}
 	</style>
 </head>
 <body>
@@ -113,7 +117,7 @@
 	
 	
 		
-	<div style='height:20px;'></div>  
+	<div style='height:20px;'></div>  	
     <div>
 
 <script type="text/javascript">
@@ -432,7 +436,7 @@
 						</div>
 
 						<div class='form-button-box'>
-							<input type='submit' value='Guardar y Seguir' ng-click="clear_migrante()" class='ui-input-button' id="save-and-go-next-button"/>
+							<input type='submit' value='Guardar migrante' ng-click="clear_migrante()" class='ui-input-button' id="save-and-go-next-button"/>
 						</div>
 
 						<div class='form-button-box'>
@@ -1607,6 +1611,13 @@
 
 	
 	$(document).ready( function () {
+		var s1 = angular.element("#addReport-step1").scope() // formulario migrante
+ 		var s2 = angular.element("#addReport-step2").scope() // formulario denuncia
+
+		//console.log(s1.get_migrantes_data() != null )
+		// Mostrar el botón 'datos de denuncia' si se ha ingresado por lo menos un migrante
+ 		if( s1.get_migrantes_data() != null ) $("#go-next-button").css("display", "block")
+
 		// obtener datos de un formulario como json
 		$.fn.serializeObject = function() {
 		   var o = {};
@@ -1639,6 +1650,7 @@
 
 		$("#addReport-step1").on("submit", function(e){
 			e.preventDefault();
+			$("#FormLoading").css("display", "block")
 			var that = $(this)
 			  , scope = angular.element(that).scope()
 			  , data = that.serialize()
@@ -1665,39 +1677,41 @@
 
 			  //scope.clear_all();  /*
 			var _send_data = function(){
-			  	$.post(url, data, function(res){
+		  	$.post(url, data, function(res){
 					//proceso para guardar 
 					var res = JSON.parse(res)
-			  		if(res.status){
+		  		if(res.status){
 						$(this).children(".small-loading").css("display","block");
 						$(this).children(".small-loading").css("display","none");
 						var msg = ' <p> El registro del migrante fue correctamente agregado. \
-								    ¿Quiéres agregar otro migrante o los datos de la denuncia ?</p>';
+									    ¿Quiéres agregar otro migrante o los datos de la denuncia ?</p>';
 
-					  	var dialog = $(msg).dialog({
-			        		buttons: {
-					            "Agregar otro migrante": function() {
-					            	that[0].reset() // limpia input text
-					            	scope.clear_migrante(); // limpia el localstorage de migrante
-					            	that.children('select').each(function(){
-					            		$(this).val('').trigger('chosen:updated')
-					            	});
-					        		 	window.location.reload();
-					            },
-					            "Capturar datos de la denuncia ":  function() {
-					            	that.toggle( "slide", function(){
-					            		that[0].reset()
-					            		$("#addReport-step2").toggle( "slide" )
-					            	})
-					            	dialog.dialog('close');
-					            }
-					          }
-				      	});
-				      	scope.add_migrante(res.data)
-					  	console.log(res.data)
-			      	}else{
-			  			alert("No se pudo insertar el Registro del Migrante, verifique los campos")
-			  		}
+				  	var dialog = $(msg).dialog({
+				        		buttons: {
+						            "Agregar otro migrante": function() {
+						            	that[0].reset() // limpia input text
+						            	scope.clear_migrante(); // limpia el localstorage de migrante
+						            	that.children('select').each(function(){
+						            		$(this).val('').trigger('chosen:updated')
+						            	});
+						        		 	window.location.reload();
+						            },
+						            "Capturar datos de la denuncia ":  function() {
+						            	that.toggle( "slide", function(){
+						            		that[0].reset()
+						            		$("#addReport-step2").toggle( "slide" )
+						            	})
+						            	dialog.dialog('close');
+						            }
+						          }
+					      	});
+		      	scope.add_migrante(res.data)
+				  	console.log(res.data)
+	      	}else{
+		  			alert("No se pudo insertar el Registro del Migrante, verifique los campos")
+		  		}
+
+		  		$("#FormLoading").css("display", "none")
 				})
 			}
 
