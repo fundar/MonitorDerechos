@@ -235,7 +235,7 @@
 
 		<form id="graficar_autoridades" class="non-printable graficar" style="display:none;">
 			<div class="field">
-				<label> Elige la autoridad que cometio la Vioación a los Derechos: </label>
+				<label> Elige la autoridad que cometio la Violación a los Derechos: </label>
 				<select id="l7"> </select>
 			</div>
 			<div class="field">
@@ -263,7 +263,6 @@
 <script type="text/javascript">
 	jQuery(document).ready(function() {
 		var denuncias = <?php echo json_encode($denuncias);?>;
-		console.log( denuncias.length)
 		var histograma_denuncias = actualizar_histograma( generar_histograma(denuncias) )
 
 		var derechos = []

@@ -52,8 +52,6 @@ var generar_histograma = function (data){
     }
 
     //console.log(tags)
-    console.log(histograma)
-
     for(var i in data){
         for(var key in data[i] ){
             var tag = (data[i][key] == null) ? "0" : data[i][key];
@@ -150,11 +148,17 @@ var actualizar_histograma = function(histograma){
   return histograma
 }
 
-var graficar = function(content_tag, data, text){
+var graficar = function(content_tag, data, text, text2){
   categories = []
-  for(var i in data) categories.push(data[i][0])
+  var total = 0;
+
+  for(var i in data) {
+    categories.push(data[i][0])
+    total += parseInt(data[i][1])
+  }
+  if(!text2) text2 = ''
   $("#grafica").highcharts({
-    title: { text: text, style:{"fontSize": "24px"} },
+    title: { text: text + " ( Total: " + total + " )" + "<br>" + text2 , style:{"fontSize": "24px"} },
     xAxis: {
       categories: categories
     },
@@ -234,14 +238,17 @@ var generar_histograma_l2 = function (data, l1, l2){
 }
 
 var graficar_l2 = function(content_tag, histograma, title, l1_label, l2_label){
-  console.log(histograma.categories)
   var categories = []
+
+  var total = 0;
   for(var i in histograma.categories){
     categories.push(histograma.categories[i].name)
+    total += parseInt( histograma.categories[i].y )
   }
+
   $('#grafica').highcharts({
     chart: { type: 'pie' },
-    title: { text: title, style:{"fontSize": "24px"} },
+    title: { text: title + " ( Total: " + total + " )", style:{"fontSize": "24px"} },
     /*xAxis: {
       categories: categories
     },*/
@@ -304,10 +311,11 @@ var graficar_por_subtema = function(denuncias, tema, subtema, tema2){
     }
   }
 
-  var title = "<b>" + tags_denuncias[tema2] + "</b> <br>" +
-              tags_denuncias[tema] + ": " 
+  //var title = "<b>" + tags_denuncias[tema] + "</b> <br>" +
+  var text  = tags_denuncias[tema] +  ": <b>" + subtema + "</b> ",
+      text2 = tags_denuncias[tema2]
               //+ subtema.split(" - ").join(", ")
     , filename = subtema + "_x_" + tags_denuncias[tema2] 
 
-  graficar(filename, topic_data, title)
+  graficar(filename, topic_data, text, text2)
 }
