@@ -23,16 +23,20 @@ foreach($css_files as $file): ?>
 		font-size: 14px;
 	}
 
-	a {
-	    color: blue;
-	    text-decoration: none;
-	    font-size: 14px;
+	a.menu_item {
+		font-weight: bolder;
+    color: #555;
+    text-decoration: none;
+    font-size: 16px;
 	}
 	
 	a:hover {
 		text-decoration: underline;
 	}
-	strong { font-size:16px; }
+	strong { 
+    color: #000;
+		font-size:20px; 
+	}
 	.link { cursor:pointer; color:blue; font-size:14px; }
 	#catalogos { display:none; padding:0;}
 
@@ -40,18 +44,31 @@ foreach($css_files as $file): ?>
 		display:none;
 	}
 
-/*
-	.c_filtros{
-		min-width: 1200px;
-		width: 1200px;
+	#_tooltip{
+		font-weight: bolder;
+		color:#fff;
+		//background: rgb(148, 185, 217);
+		background: rgba(120, 166, 225, 0.7);
+		padding: 6px 3px 3px 6px;
+		display: none;
+		position: absolute;
+		max-width: 70%;
+		min-height: 40px;
+		overflow:visible;
 	}
 
-	input.filtro{
-		float:left;
-		text-align: left;
-		margin:5px 20px 0 0 !important; 
-		width: 320px;
-	}
+	/*
+		.c_filtros{
+			min-width: 1200px;
+			width: 1200px;
+		}
+
+		input.filtro{
+			float:left;
+			text-align: left;
+			margin:5px 20px 0 0 !important; 
+			width: 320px;
+		}
 	*/
 	#graficar{
 		margin-top: 20px;
@@ -69,25 +86,25 @@ foreach($css_files as $file): ?>
 </style>
 </head>
 <body>
-	<div>
-		<a href="<?php echo site_url('admin/denunciar')?>" >
+	<div >
+		<a class="menu_item" id="menu_denunciar" href="<?php echo site_url('admin/denunciar')?>" >
 			<?php if($this->uri->segment(2) == "denunciar") { ?><strong> Levantar denuncia completa </strong><?php } else { ?> Levantar denuncia completa <?php } ?>
 		</a> |
-		<a href="<?php echo site_url('admin/crea/denuncia');?>"> Agregar denuncia </a> |
+		<a class="menu_item" id="menu_crea_denuncia" href="<?php echo site_url('admin/crea/denuncia');?>"> Agregar más denuncias </a> |
 
-		<a href="<?php echo site_url('admin/migrantes')?>" >
+		<a class="menu_item" id="menu_migrantes" href="<?php echo site_url('admin/migrantes')?>" >
 			<?php if($this->uri->segment(2) == "migrantes") { ?><strong>Migrantes</strong><?php } else { ?>Migrantes<?php } ?>
 		</a> |
-		<a href="<?php echo site_url('admin/denuncias')?>" >
+		<a class="menu_item" id="menu_denuncias" href="<?php echo site_url('admin/denuncias')?>" >
 			<?php if($this->uri->segment(2) == "denuncias") { ?><strong>Denuncias</strong><?php } else { ?>Denuncias<?php } ?>
 		</a> |
 
-		<a href="<?php echo site_url('admin/reportes')?>" >
+		<a class="menu_item" id="menu_reportes" href="<?php echo site_url('admin/reportes')?>" >
 			<?php if($this->uri->segment(2) == "reportes") { ?><strong>Reportes</strong><?php } else { ?>Reportes<?php } ?>
 		</a> |
 		
 		<?php if(isset($_SESSION['user_id'])) { ?>
-			<a href="<?php echo site_url('admin/logout')?>" >Cerrar sesión</a> | 
+			<a class="menu_item"  href="<?php echo site_url('admin/logout')?>" >Cerrar sesión</a> | 
 		<?php } ?>
 		
 		<span class="link" id="ver-catalogos">Mostrar/Ocultar Catalogos</span>
@@ -112,10 +129,12 @@ foreach($css_files as $file): ?>
 		</span>
 	</div>
 	
+	<div id="_tooltip" style='height:20px;'> </div>  
+	
 	<div id="clear" style="float:right"> <a id="clear_memo" href="#"> Limpiar filtros </a> </div>
 	
 		
-	<div style='height:20px;'></div>  
+
     <div>
 		<?php echo $output; ?>
     </div>
@@ -143,7 +162,40 @@ foreach($css_files as $file): ?>
 				window.location.reload();
 			})
 		
-		
+			$(".menu_item").hover(function(){
+				var msg = '';
+				switch( $(this).attr("id") ) {
+			    case "menu_denunciar":
+			    	msg = 'Con esta opción podrá capturar uno o más migrantes, así como los datos del caso en el que estan involucrados.'
+		        break;
+			    case "menu_crea_denuncia":
+			    	msg = 'A traves de esta opción se pueden agregar denuncias relacionadas a migrantes que ya existan en el sistema (por la opción "Levantar denuncia completa"). Es ideal para agregar más casos a un migrante o conjunto de migrantes.'
+		        break;
+			    case "menu_migrantes":
+			    	msg = 'Aquí se pueden ver a todos los migrantes caṕturados, con opciones de filtrado y búsqueda así como de la posibilidad de gráficar el contenido filtrado por algún criterio.'
+		        break;
+			    case "menu_denuncias":
+			    	msg = 'Aquí se pueden ver a todos las denuncias caṕturados, con opciones de filtrado y búsqueda así como de la posibilidad de gráficar el contenido filtrado por algún criterio.'
+		        break;
+			    case "menu_reportes":
+			    	msg = 'Reportes es la opción para ver las gráficas estadísticas resultantes de la captura de migrantes y denuncias.'
+		        break;
+			    default:
+			    	break
+				}
+
+				if(msg != ''){
+					$("#_tooltip")
+					.text(msg)
+					.slideDown()
+				}
+
+			}, function(){
+				$("#_tooltip")
+					.text("")
+					.fadeOut("slow")
+					//.css("display", "none")
+			})
 
 
 			/* Agregar tooltip a los filtros*/

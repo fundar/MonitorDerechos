@@ -86,7 +86,10 @@
 		a:hover{
 			text-decoration: underline;
 		}
-		strong { font-size:16px; }
+		strong { 
+	    color: #000;
+			font-size:20px; 
+		}
 		.link { cursor:pointer; color:blue; font-size:14px; }
 		#catalogos { display:none; padding:0;}
 
@@ -127,26 +130,44 @@
 		}
 
 
+		#_tooltip{
+			font-weight: bolder;
+			color:#fff;
+			//background: rgb(148, 185, 217);
+			background: rgba(120, 166, 225, 0.7);
+			padding: 6px 3px 3px 6px;
+			display: none;
+			position: absolute;
+			max-width: 70%;
+			min-height: 40px;
+			overflow:visible;
+		}
+
+		a.menu_item {
+			font-weight: bolder;
+	    color: #555;
+	    text-decoration: none;
+	    font-size: 16px;
+		}
 	</style>
 </head>
 <body>
 	<div id="gray_screen"></div>
 	<div>
-		<a href="#"> <strong>  Levantar denuncia completa </strong> </a> |
-		<a href="<?php echo site_url('admin/crea/denuncia');?>"> Agregar denuncia </a> |
-		<a href="<?php echo site_url();?>/admin/migrantes"> Migrantes </a> |
-		<a href="<?php echo site_url();?>/admin/denuncias"> Denuncias </a> |
-		<a href="<?php echo site_url();?>/admin/reportes"> Reportes </a> |
+		<a class="menu_item" id="menu_denunciar" href="#"> <strong>  Levantar denuncia completa </strong> </a> |
+		<a class="menu_item" id="menu_crea_denuncia" href="<?php echo site_url('admin/crea/denuncia');?>"> Agregar más denuncias </a> |
+		<a class="menu_item" id="menu_migrantes" href="<?php echo site_url();?>/admin/migrantes"> Migrantes </a> |
+		<a class="menu_item" id="menu_denuncias" href="<?php echo site_url();?>/admin/denuncias"> Denuncias </a> |
+		<a class="menu_item" id="menu_reportes" href="<?php echo site_url();?>/admin/reportes"> Reportes </a> |
 		<?php if(isset($_SESSION['user_id'])) ?>
-			<a href="<?php echo site_url();?>/admin/logout">Cerrar sesión</a> | 
+			<a class="menu_item" href="<?php echo site_url();?>/admin/logout">Cerrar sesión</a> | 
 		<?php ?>
 		
 	</div>
 	
 	
 		
-	<div style='height:20px;'></div>  	
-    <div>
+	<div id="_tooltip" style='height:20px;'> </div>  
 
 <script type="text/javascript">
 	var upload_info_1886533685 = {
@@ -2090,6 +2111,41 @@
 			$(this).parent().remove()
 			select.change()
 		})
+
+			$(".menu_item").hover(function(){
+				var msg = '';
+				switch( $(this).attr("id") ) {
+			    case "menu_denunciar":
+			    	msg = 'Con esta opción podrá capturar uno o más migrantes, así como los datos del caso en el que estan involucrados.'
+		        break;
+			    case "menu_crea_denuncia":
+			    	msg = 'A traves de esta opción se pueden agregar denuncias relacionadas a migrantes que ya existan en el sistema (por la opción "Levantar denuncia completa"). Es ideal para agregar más casos a un migrante o conjunto de migrantes.'
+		        break;
+			    case "menu_migrantes":
+			    	msg = 'Aquí se pueden ver a todos los migrantes caṕturados, con opciones de filtrado y búsqueda así como de la posibilidad de gráficar el contenido filtrado por algún criterio.'
+		        break;
+			    case "menu_denuncias":
+			    	msg = 'Aquí se pueden ver a todos las denuncias caṕturados, con opciones de filtrado y búsqueda así como de la posibilidad de gráficar el contenido filtrado por algún criterio.'
+		        break;
+			    case "menu_reportes":
+			    	msg = 'Reportes es la opción para ver las gráficas estadísticas resultantes de la captura de migrantes y denuncias.'
+		        break;
+			    default:
+			    	break
+				}
+
+				if(msg != ''){
+					$("#_tooltip")
+					.text(msg)
+					.slideDown()
+				}
+
+			}, function(){
+				$("#_tooltip")
+					.text("")
+					.fadeOut("slow")
+					//.css("display", "none")
+			})
 	});
 </script>
 </body>
