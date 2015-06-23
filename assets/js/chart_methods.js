@@ -258,12 +258,21 @@ var graficar_l2 = function(content_tag, histograma, title, l1_label, l2_label){
         allowPointSelect: true, cursor: 'pointer',
         center: ['50%', '50%'],
         dataLabels: {
+          enabled: true, format: '<b>{point.name}</b>: {point.percentage:.1f} %',
           /*enabled: true, format: '<b>{point.name}</b>: {point.percentage:.1f} %',*/
           style: { color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black' }
         }
       } 
     },
-    tooltip: { valueSuffix: '%' },
+    tooltip: { 
+      valueSuffix: '%',
+      formatter: function() {
+        console.log(this)
+        return this.series.name + ': <b>' + this.key + '</b> <br>' + 'Total de migrantes: <b>' + this.y + '</b>';
+        //return 'The value for <b>' + this.key + '</b> is <b>' + this.y + '</b>, in series '+ this.series.name;
+      }
+
+    },
     series: [{
       name: l1_label,
       data: histograma.categories,
@@ -273,7 +282,8 @@ var graficar_l2 = function(content_tag, histograma, title, l1_label, l2_label){
         style: { 
           color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black' ,
           fontSize: "18px"
-        }
+        },
+        enabled: true, format: '<b>{point.name}</b>: {point.percentage:.1f} %',
       }
 
     }, {
@@ -283,8 +293,7 @@ var graficar_l2 = function(content_tag, histograma, title, l1_label, l2_label){
       innerSize: '60%',
       dataLabels: {
           formatter: function () {
-            //return this.y > 1 ? '<b>' + this.point.name + ':</b> ' + this.y + '%'  : null;
-            return this.y > 1 ? '<b>Migrantes:</b> ' + this.y : null;
+            return this.y > 1 ? '<b>' + this.point.name + ':</b> ' + this.y + '%'  : null;
           },
           distance: 10,
           style: { 
