@@ -97,7 +97,6 @@ var actualizar_histograma = function(histograma){
   ]
 
   var topico_edad = histograma.edad
-  
   /* Crear rangos de edad */
   for(var i in topico_edad){
     var e = parseInt(topico_edad[i][0])
@@ -109,24 +108,31 @@ var actualizar_histograma = function(histograma){
 
   histograma.edad = n_topico_edad
 
+  /* Colocar en name "Dato no disponible" de todos los topics que no lo tengan */
+  for(var key in histograma){
+    var topic = histograma[key];
+    for(var i = 0 in topic ) if(topic[i][0] == "0") topic[i][0] = "Dato no disponible"
+  }
+
   /* Modificar las etiquetas en el campo habla español */
-  //histograma.espanol[0][0] = "Si";
-  //histograma.espanol[1][0] = "No";
+  histograma.espanol[0][0] = "Si";
+  histograma.espanol[1][0] = "No";
+  histograma.espanol[2][0] = "Dato no disponible";
   
   /* Modificar las etiquetas en el campo coyote */
-  //histograma.coyote_guia[0][0] = "Si"; // 1 como tag original
-  //histograma.coyote_guia[1][0] = "Dato no disponible"; // 0 como tag original
-  //histograma.coyote_guia[2][0] = "No"; // 2 como tag original
+  histograma.coyote_guia[0][0] = "Si"; // 1 como tag original
+  histograma.coyote_guia[1][0] = "Dato no disponible"; // 0 como tag original
+  histograma.coyote_guia[2][0] = "No"; // 2 como tag original
 
   /* Modificar las etiquetas en el campo viaja_solo */
-  //histograma.viaja_solo[0][0] = "Si"; // 1 como tag original
-  //histograma.viaja_solo[1][0] = "Dato no disponible"; // 0 como tag original
-  //histograma.viaja_solo[2][0] = "No"; // 2 como tag original
+  histograma.viaja_solo[0][0] = "Si"; // 1 como tag original
+  histograma.viaja_solo[1][0] = "Dato no disponible"; // 0 como tag original
+  histograma.viaja_solo[2][0] = "No"; // 2 como tag original
 
   /* Modificar las etiquetas en el campo deportado */
-  //histograma.deportado[0][0] = "Si"; // 1 como tag original
-  //histograma.deportado[1][0] = "Dato no disponible"; // 0 como tag original
-  //histograma.deportado[2][0] = "No"; // 2 como tag original
+  histograma.deportado[0][0] = "Si"; // 1 como tag original
+  histograma.deportado[1][0] = "Dato no disponible"; // 0 como tag original
+  histograma.deportado[2][0] = "No"; // 2 como tag original
 
   /* Reducir a dos (SI/NO) categorias la pregunta algun_nombre_responsables */
   var n_topico_algun_nombre_responsables = [ 
