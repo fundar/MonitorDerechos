@@ -246,6 +246,9 @@ app.controller('MigranteCtrl', [
     var keys = localStorageService.keys()
     console.log(keys)
     for(i in keys) console.log(keys[i], localStorageService.get(keys[i]) )
+
+    window.migrantes_data = localStorageService.get( "migrantes_data" )
+    console.log(localStorageService.get( "migrantes_data" ))
     console.log("-------------------------------------")
 
     var topics = ['nombre_persona_atendio_seguimiento', 'fecha_creada','intentos','monto_coyote',
