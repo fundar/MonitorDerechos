@@ -48,7 +48,7 @@ foreach($css_files as $file): ?>
 		font-weight: bolder;
 		color:#fff;
 		//background: rgb(148, 185, 217);
-		background: rgba(120, 166, 225, 0.7);
+		background: rgba(120, 166, 225, 0.9);
 		padding: 6px 3px 3px 6px;
 		display: none;
 		position: absolute;
