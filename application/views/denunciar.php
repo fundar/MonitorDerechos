@@ -133,7 +133,6 @@
 		#_tooltip{
 			font-weight: bolder;
 			color:#fff;
-			//background: rgb(148, 185, 217);
 			background: rgba(120, 166, 225, 0.7);
 			padding: 6px 3px 3px 6px;
 			display: none;
@@ -149,10 +148,31 @@
 	    text-decoration: none;
 	    font-size: 16px;
 		}
+
+		.migrantes_capturados{
+			display: none;
+		}
+
+		.migrantes_capturados{
+			background: rgba(120, 166, 225, 0.7);
+			padding: 10px 15px;
+			margin:-15px -10px 10px -10px
+		}
+
+		.migrantes_capturados h3, .migrantes_capturados ul{
+			margin: 0px;
+		}
+
 	</style>
 </head>
 <body>
 	<div id="gray_screen"></div>
+	
+	<div class="migrantes_capturados"> 
+		<h3> Migrantes capturados en esta denuncia: </h3>
+		<ul></ul>
+	</div>
+
 	<div>
 		<a class="menu_item" id="menu_denunciar" href="#"> <strong>  Levantar denuncia completa </strong> </a> |
 		<a class="menu_item" id="menu_crea_denuncia" href="<?php echo site_url('admin/crea/denuncia');?>"> Agregar más denuncias </a> |
@@ -259,7 +279,10 @@
 </script>
 <head>
 	<h1> Añadir Denuncia Completa </h1>
+	
 </head>
+
+
 
 <div class="container" ng-app="ReporteApp">
 	<form action="<?php echo site_url();?>/admin/migrantes/insert" method="post" id="addReport-step1" autocomplete="off" 
@@ -1665,7 +1688,16 @@
 
 		//console.log(s1.get_migrantes_data() != null )
 		// Mostrar el botón 'datos de denuncia' si se ha ingresado por lo menos un migrante
- 		if( s1.get_migrantes_data() != null ) $("#go-next-button").css("display", "block")
+ 		if( s1.get_migrantes_data() != null ) {
+ 			$("#go-next-button").css("display", "block")
+ 			var migrantes = s1.get_migrantes_data().split(",")
+ 			for(var i in migrantes) 
+ 				$(".migrantes_capturados ul").append("<li>" + migrantes[i].split(":")[1] + "</li>")
+
+ 			//$(".migrantes_capturados").css("display", "block")
+ 			$(".migrantes_capturados").slideDown("fast")
+ 		}
+
 
 		// obtener datos de un formulario como json
 		$.fn.serializeObject = function() {
