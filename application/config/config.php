@@ -15,7 +15,7 @@
 |
 */
 $config['base_url']	= 'http://ddhh.fundarlabs.org.mx/';
-$config['base_url']	= 'http://localhost/mddh/';
+//$config['base_url']	= 'http://localhost/mddh/';
 
 /*
 |--------------------------------------------------------------------------
