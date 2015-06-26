@@ -125,6 +125,18 @@
 	    text-decoration: none;
 	    font-size: 16px;
 		}
+
+		#gray_screen{
+			position: absolute;
+			margin-top: 40px;
+			min-width: 100%;
+			min-height: 100%;
+			left:0;
+			top:0;
+			background: rgba(50,50,50, 0.7);
+			z-index: 20;
+			display: none;
+		}
 	</style>
 </head>
 <body>
@@ -139,6 +151,7 @@
 		<?php ?>
 		
 	</div>
+	<div id="gray_screen"></div>
 	
 	
 		
@@ -1352,7 +1365,7 @@
 			</div>
 		</div>
 	</form>
-</div>
+</div> 
 
 <script>
 	var default_theme_path = '<?php echo site_url();?>/../assets/grocery_crud/themes';
@@ -1360,6 +1373,12 @@
 
 	
 	$(document).ready( function () {
+		console.log(window.migrantes_data)
+		if( window.migrantes_data ) {
+			$("#gray_screen").css("display", "block")
+			$(".container").css("display", "none");
+			alert('No se puede mostrar esta pantalla, debido a que no haz completado una captura en la sección \n "Levantar denuncia completa". ')
+		}
 
 		// convertir un decimal a otra base
 		function toRadix(N,radix) {
