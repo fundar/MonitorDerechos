@@ -150,7 +150,7 @@ class Admin extends CI_Controller {
 		$crud->columns(
 			'folio', 'id_denuncia', 'nombre_persona_atendio_seguimiento', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes', 'intentos', 'motivo_migracion', 
 			'coyote_guia', 'lugar_contrato_coyote', 'monto_coyote', 'paquete_pago', 'nombre_punto_fronterizo', 'viaja_solo', 
-			'con_quien_viaja', 'deportado', 'momento_deportado', 'separacion_familiar', 'familiar_separado', 'situacion_familiar','acto_siguiente', 
+			'con_quien_viaja', 'deportado', 'momento_deportado', 'separacion_familiar', 'familiar_separado', 'situacion_familiar',/*'acto_siguiente', */
 			'acto_siguiente_homologada','autoridades_viaje', 'dano_autoridad', 'fecha_injusticia', 'id_pais_injusticia', 'id_estado_injusticia', 
 			'municipio_injusticia', 'espacio_fisico_injusticia', 'espacio_fisico_injusticia_homologada', 'id_transporte_viaje_injusticia', 
 			'detonante_injusticia', 'detonante_injusticia_homologada','numero_migrantes_injusticia', 'lugar_abordaje_transporte', 'destino_transporte', 
@@ -260,13 +260,14 @@ class Admin extends CI_Controller {
 		$crud->field_type('separacion_familiar', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		$crud->display_as('familiar_separado', 'Que familiar');
 		$crud->display_as('situacion_familiar', 'Sabes que paso con tu familiar');
-		$crud->display_as('acto_siguiente', 'Qué piensa hacer ahora');
+		//$crud->display_as('acto_siguiente', 'Qué piensa hacer ahora');
 
-		$crud->display_as('acto_siguiente_homologada', 'Qué piensa hacer ahora (categoría)');
+		$crud->display_as('acto_siguiente_homologada', 'Qué piensa hacer ahora');
 		$crud->field_type('acto_siguiente_homologada', 'dropdown', array(
 			'Intentar cruzar otra vez' => 'Intentar cruzar otra vez',
 			'Regresar a mi comunidad de origen' => 'Regresar a mi comunidad de origen',
 			'Esperar en la frontera' => 'Esperar en la frontera',
+			'Otro' => 'Otro',
 			'No sabe' => 'No sabe'
 		));
 		//intentar cruzar otra vez, regresar a mi comunidad de origen, esperar en la forntera, no sabe
@@ -452,7 +453,7 @@ class Admin extends CI_Controller {
 		$crud->display_as('id_pais', 'País');
 		$crud->display_as('id_estado', 'Estado/Departamento');
 		$crud->display_as('id_genero', 'Género');
-		$crud->display_as('ocupacion_homologada', 'Ocupacion (categoría)');
+		$crud->display_as('ocupacion_homologada', 'Ocupacion');
 		$crud->display_as('id_estado_civil', 'Estado Civil');
 		$crud->display_as('escolaridad', 'Escolaridad');
 		$crud->display_as('pueblo_indigena', 'Pertenece a algún pueblo indígena');
@@ -496,11 +497,11 @@ class Admin extends CI_Controller {
 		$crud->field_type('espanol', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		
 		//$crud->unset_columns('folio');
-		$crud->columns('folio', 'id_migrante', 'nombre', 'edad', 'municipio', 'id_lugar_denuncia', 'id_pais', 'id_estado', 'id_genero', 'fecha_nacimiento', 'ocupacion', 'ocupacion_homologada', 'id_estado_civil', 'escolaridad', 'pueblo_indigena', 'espanol');
+		$crud->columns('folio', 'id_migrante', 'nombre', 'edad', 'municipio', 'id_lugar_denuncia', 'id_pais', 'id_estado', 'id_genero', 'fecha_nacimiento',/* 'ocupacion',*/ 'ocupacion_homologada', 'id_estado_civil', 'escolaridad', 'pueblo_indigena', 'espanol');
 
 		$crud->required_fields('nombre');
 
-		$crud->unset_export();
+		//$crud->unset_export();
 
 		$state = $crud->getState();
     	$state_info = $crud->getStateInfo();
