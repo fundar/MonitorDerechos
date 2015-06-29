@@ -256,8 +256,8 @@ class Admin extends CI_Controller {
 		$crud->display_as('momento_deportado', 'Donde fue deportado');
 		$crud->field_type('momento_deportado', 'dropdown', array('Al cruzar la frontera' => 'Al cruzar la frontera', 'Vivías en USA' => 'Vivías en USA', 'Otro' => 'Otro'));
 		/*Separacion familiar*/
-		$crud->display_as('separacion_familiar', 'Te separaron de algún familiar');
-		$crud->field_type('separacion_familiar', 'dropdown', array(1 => 'Si', 2 => 'No'));
+		$crud->display_as('separacion_familiar', 'Te separaron de algún familiar durante la deportación');
+		$crud->field_type('separacion_familiar', 'dropdown', array(1 => 'Si', 2 => 'No', 3 => 'No aplica'));
 		$crud->display_as('familiar_separado', 'Que familiar');
 		$crud->display_as('situacion_familiar', 'Sabes que paso con tu familiar');
 		//$crud->display_as('acto_siguiente', 'Qué piensa hacer ahora');
@@ -273,7 +273,7 @@ class Admin extends CI_Controller {
 		//intentar cruzar otra vez, regresar a mi comunidad de origen, esperar en la forntera, no sabe
 
 		/*Coyote*/
-		$crud->display_as('coyote_guia', 'Contrato al coyote o guía que lo pasaría');
+		$crud->display_as('coyote_guia', 'Contrató coyote o guía para cruzar');
 		$crud->field_type('coyote_guia', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		
 		$crud->display_as('lugar_contrato_coyote', 'Donde lo contrato');
@@ -326,13 +326,14 @@ class Admin extends CI_Controller {
 				3 => 'Falta administrativa',
 				4 => 'Falta de documentos',
 				5 => 'Intentar viajar',
-				8 => 'Revisión'
+				8 => 'Retén', 
+				9 => 'Otro'
 			)
 		);
 
 		$crud->display_as('numero_migrantes_injusticia', 'Número de migrantes que habia con usted cuando se cometio el abuso');
 		$crud->display_as('fecha_injusticia', 'Cuándo se cometió la injusticia');
-		$crud->display_as('id_transporte_viaje_injusticia', 'En que viajaba');
+		$crud->display_as('id_transporte_viaje_injusticia', 'En qué viajaba mientras se cometió la injusticia"');
 		$crud->set_relation('id_transporte_viaje_injusticia', 'transportes', 'nombre');
 		$crud->display_as('lugar_abordaje_transporte', 'Donde abordo el transporte');
 		$crud->display_as('destino_transporte', 'Destino del transporte');
