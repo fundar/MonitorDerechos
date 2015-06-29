@@ -10,9 +10,9 @@ var site
 	d_titles -> array de titulos
 */
 
-var cambio_filtros_denuncias = function(){
+/* Cambia los filtros de input[text] a selects */
+var select_filters = function(columns){
 	/* Substituir los campos de búsqueda por selects*/
-	var columns = [0, 2, 4, 7, 8, 9, 13, 14, 16, 17, 18, 19, 21, 22, 23, 25, 26, 27, 28, 29, 30, 32, 34, 37, 41, 42, 44, 45, 46, 48, 50, 51, 52, 53, 54 ]
 	var titles = {}
 	$(" tfoot th").each( function ( i ) {
 		var pos = columns.indexOf(i);
@@ -56,7 +56,7 @@ var cambio_filtros_denuncias = function(){
 	});
 }
 
-var filtros_a_graficas = function(){
+var filters_to_graphic = function(){
 	var subtopicos = {}
     var rows = table._('tr', {"filter": "applied"}); 
     /* limpiar las variables globales*/
@@ -160,7 +160,7 @@ $(document).ready(function() {
 			localStorage.setItem( 'datatables_search_'+ unique_hash ,'["' + search_values_array.join('","') + '"]');
 		}
 		
-		filtros_a_graficas()
+		filters_to_graphic()
 		$("#grafica").fadeOut("slow", function(){ $("#grafica").empty() })
 
 	} );
@@ -272,11 +272,17 @@ function loadDataTable(this_datatables, site) {
 	    }
 	});
 	
+	var columns = [ 0, 2, 4, 7, 8, 9, 13, 14, 16, 17, 18, 19, 21, 22, 23, 25, 26, 27, 28, 
+									29, 30, 32, 34, 37, 41, 42, 44, 45, 46, 48, 50, 51, 52, 53, 54 ]
+									
 	if (site == "denuncias"){
-		cambio_filtros_denuncias()
+		select_filters(columns)
+	}else if (site == "migrantes"){
+		columns = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+		select_filters(columns)
 	}
 
-	filtros_a_graficas()
+	filters_to_graphic()
 	return table;
 }
 
