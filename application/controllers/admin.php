@@ -262,7 +262,7 @@ class Admin extends CI_Controller {
 		$crud->display_as('situacion_familiar', 'Sabes que paso con tu familiar');
 		//$crud->display_as('acto_siguiente', 'Qué piensa hacer ahora');
 
-		$crud->display_as('acto_siguiente_homologada', 'Qué piensa hacer ahora');
+		$crud->display_as('acto_siguiente_homologada', '¿Qué piensa hacer ahora?');
 		$crud->field_type('acto_siguiente_homologada', 'dropdown', array(
 			'Intentar cruzar otra vez' => 'Intentar cruzar otra vez',
 			'Regresar a mi comunidad de origen' => 'Regresar a mi comunidad de origen',
@@ -489,7 +489,7 @@ class Admin extends CI_Controller {
 				5 => 'Empleado',
 				6 => 'Empleado de gobierno',
 				7 => 'Jornalero',
-				8 => 'Peón'
+				8 => 'Obrero'
 			)
 		);
 		
