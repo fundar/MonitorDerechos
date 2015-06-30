@@ -277,7 +277,12 @@ class Admin extends CI_Controller {
 		$crud->field_type('coyote_guia', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		
 		$crud->display_as('lugar_contrato_coyote', 'Donde lo contrato');
-		$crud->field_type('lugar_contrato_coyote', 'dropdown', array('Cuando salió de su comunidad' => 'Cuando salió de su comunidad', 'En  la frontera' => 'En  la frontera', 'Otro' => 'Otro'));
+		$crud->field_type('lugar_contrato_coyote', 'dropdown', array(
+			'Cuando salió de su comunidad' => 'Cuando salió de su comunidad', 
+			'En  la frontera' => 'En  la frontera', 
+			'Otro' => 'Otro',
+			'Dato no disponible' => 'Dato no disponible'
+		));
 		
 		$crud->display_as('monto_coyote', 'Cuanto le cobraría');
 		$crud->display_as('paquete_pago', 'Que incluía el pago');
@@ -333,8 +338,10 @@ class Admin extends CI_Controller {
 
 		$crud->display_as('numero_migrantes_injusticia', 'Número de migrantes que habia con usted cuando se cometio el abuso');
 		$crud->display_as('fecha_injusticia', 'Cuándo se cometió la injusticia');
+
 		$crud->display_as('id_transporte_viaje_injusticia', 'En qué viajaba mientras se cometió la injusticia"');
 		$crud->set_relation('id_transporte_viaje_injusticia', 'transportes', 'nombre');
+
 		$crud->display_as('lugar_abordaje_transporte', 'Donde abordo el transporte');
 		$crud->display_as('destino_transporte', 'Destino del transporte');
 		
