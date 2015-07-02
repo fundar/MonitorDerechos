@@ -114,7 +114,7 @@
 			font-weight: bolder;
 			color:#fff;
 			background: rgba(120, 166, 225, 0.7);
-			padding: 6px 3px 3px 6px;
+			padding: 12px 6px 6px 12px;
 			max-width: 70%;
 			min-height: 40px;
 		}
@@ -143,7 +143,7 @@
 <body>
 	<div>
 		<a class="menu_item" id="menu_denunciar" href="<?php echo site_url('admin/denunciar');?>"> Levantar denuncia completa </a> |
-		<a class="menu_item" id="menu_crea_denuncia" href="#"> <strong> Agregar más denuncias </strong> </a> |
+		<a class="menu_item" id="menu_crea_denuncia" href="#"> <strong> Agregar denuncia a migrante </strong> </a> |
 		<a class="menu_item" id="menu_migrantes" href="<?php echo site_url();?>/admin/migrantes"> Migrantes </a> |
 		<a class="menu_item" id="menu_denuncias" href="<?php echo site_url();?>/admin/denuncias"> Denuncias </a> |
 		<a class="menu_item" id="menu_reportes" href="<?php echo site_url();?>/admin/reportes"> Reportes </a> |
@@ -248,8 +248,11 @@
 		
 </script>
 <head>
-	<h1> Añadir Denuncia </h1>
-	<h3 id="aviso"> A traves de esta opción se pueden agregar denuncias relacionadas a migrantes que ya existan en el sistema (por la opción "Levantar denuncia completa"). Es ideal para agregar más casos a un migrante o conjunto de migrantes. </h3>
+	<h1> Añadir nueva denuncia a un migrante</h1>
+	<h3 id="aviso"> 
+		En esta sección sólo se pueden agregar denuncias relacionadas a migrantes que <u> ya existan en el sistema </u> <br>
+		Para ingresar un migrante desde cero, use la opción "Levantar denuncia completa"
+	</h3>
 </head>
 
 <div class="container" ng-app="ReporteApp">
@@ -1375,6 +1378,11 @@
 	
 	$(document).ready( function () {
 		console.log(window.migrantes_data)
+
+		$("#gray_screen").css("display", "block")
+		alert('En esta sección sólo se pueden agregar denuncias relacionadas a migrantes que ya existan en el sistema. \n \n Para ingresar un migrante desde cero, use la opción "Levantar denuncia completa"')
+		$("#gray_screen").css("display", "none")
+
 		if( window.migrantes_data ) {
 			$("#gray_screen").css("display", "block")
 			$(".container").css("display", "none");
@@ -1662,7 +1670,7 @@
 			    	msg = 'Con esta opción podrá capturar uno o más migrantes, así como los datos del caso en el que estan involucrados.'
 		        break;
 			    case "menu_crea_denuncia":
-			    	msg = 'A traves de esta opción se pueden agregar denuncias relacionadas a migrantes que ya existan en el sistema (por la opción "Levantar denuncia completa"). Es ideal para agregar más casos a un migrante o conjunto de migrantes.'
+			    	msg = 'En esta sección sólo se pueden agregar denuncias relacionadas a migrantes que <u> ya existan en el sistema. </u> <br>Para ingresar un migrante desde cero, use la opción "Levantar denuncia completa"'
 		        break;
 			    case "menu_migrantes":
 			    	msg = 'Aquí se pueden ver a todos los migrantes caṕturados, con opciones de filtrado y búsqueda así como de la posibilidad de gráficar el contenido filtrado por algún criterio.'
@@ -1679,13 +1687,13 @@
 
 				if(msg != ''){
 					$("#_tooltip")
-					.text(msg)
+					.html(msg)
 					.slideDown()
 				}
 
 			}, function(){
 				$("#_tooltip")
-					.text("")
+					.html("")
 					.fadeOut("slow")
 					//.css("display", "none")
 			})

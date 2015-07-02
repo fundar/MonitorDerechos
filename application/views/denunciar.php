@@ -175,7 +175,7 @@
 
 	<div>
 		<a class="menu_item" id="menu_denunciar" href="#"> <strong>  Levantar denuncia completa </strong> </a> |
-		<a class="menu_item" id="menu_crea_denuncia" href="<?php echo site_url('admin/crea/denuncia');?>"> Agregar más denuncias </a> |
+		<a class="menu_item" id="menu_crea_denuncia" href="<?php echo site_url('admin/crea/denuncia');?>"> Agregar denuncia a migrante </a> |
 		<a class="menu_item" id="menu_migrantes" href="<?php echo site_url();?>/admin/migrantes"> Migrantes </a> |
 		<a class="menu_item" id="menu_denuncias" href="<?php echo site_url();?>/admin/denuncias"> Denuncias </a> |
 		<a class="menu_item" id="menu_reportes" href="<?php echo site_url();?>/admin/reportes"> Reportes </a> |
@@ -2151,7 +2151,7 @@
 			    	msg = 'Con esta opción podrá capturar uno o más migrantes, así como los datos del caso en el que estan involucrados.'
 		        break;
 			    case "menu_crea_denuncia":
-			    	msg = 'A traves de esta opción se pueden agregar denuncias relacionadas a migrantes que ya existan en el sistema (por la opción "Levantar denuncia completa"). Es ideal para agregar más casos a un migrante o conjunto de migrantes.'
+			    	msg = 'En esta sección sólo se pueden agregar denuncias relacionadas a migrantes que <u> ya existan en el sistema. </u> <br>Para ingresar un migrante desde cero, use la opción "Levantar denuncia completa"'
 		        break;
 			    case "menu_migrantes":
 			    	msg = 'Aquí se pueden ver a todos los migrantes caṕturados, con opciones de filtrado y búsqueda así como de la posibilidad de gráficar el contenido filtrado por algún criterio.'
@@ -2168,13 +2168,13 @@
 
 				if(msg != ''){
 					$("#_tooltip")
-					.text(msg)
+					.html(msg)
 					.slideDown()
 				}
 
 			}, function(){
 				$("#_tooltip")
-					.text("")
+					.html("")
 					.fadeOut("slow")
 					//.css("display", "none")
 			})
