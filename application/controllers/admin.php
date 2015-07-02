@@ -133,7 +133,8 @@ class Admin extends CI_Controller {
 		
 		/*Relaciones n_n*/
 		/*Migrantes*/
-		$crud->set_relation_n_n('migrantes', 'migrantes2denuncias', 'migrantes', 'id_denuncia', 'id_migrante', 'folio');
+		$crud->set_relation_n_n('migrantes', 'migrantes2denuncias', 'migrantes', 'id_denuncia', 'id_migrante', 'id_migrante');
+		//$crud->set_relation_n_n('denuncias', 'migrantes2denuncias', 'denuncias', 'id_migrante', 'id_denuncia', 'folio');
 		/*Autoridades*/
 		$crud->set_relation_n_n('autoridades_viaje', 'autoridades2denuncias', 'autoridades', 'id_denuncia', 'id_autoridad', 'nombre');
 		/*Paquete pago coyote*/
@@ -148,7 +149,7 @@ class Admin extends CI_Controller {
 		/* Columnas en la Vista */ 
 		//$crud->columns('folio', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes');
 		$crud->columns(
-			'folio', 'id_denuncia', 'nombre_persona_atendio_seguimiento', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes', 'intentos', 'motivo_migracion', 
+			/*'folio',*/ 'id_denuncia', 'nombre_persona_atendio_seguimiento', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes', 'intentos', 'motivo_migracion', 
 			'coyote_guia', 'lugar_contrato_coyote', 'monto_coyote', 'paquete_pago', 'nombre_punto_fronterizo', 'viaja_solo', 
 			'con_quien_viaja', 'deportado', 'momento_deportado', 'separacion_familiar', 'familiar_separado', 'situacion_familiar',/*'acto_siguiente', */
 			'acto_siguiente_homologada','autoridades_viaje', 'dano_autoridad', 'fecha_injusticia', 'id_pais_injusticia', 'id_estado_injusticia', 
@@ -420,12 +421,24 @@ class Admin extends CI_Controller {
 
 	public function _callback_migrante_url($value, $row){
 		$this->load->model('migracion_model');
-		$folios = explode(",", $value);
+		$ids = explode(",", $value);
 		$links = array();
-		foreach ($folios as $folio){             
-			$migrante = $this->migracion_model->getMigrante($folio);
-  			$link = "<a href='" . site_url('admin/migrantes/read/' . $migrante[0]) . "'>" . $migrante[1] . "</a>";
+		foreach ($ids as $id){             
+			$migrante = $this->migracion_model->getMigrante($id);
+  			$link = "<a href='" . site_url('admin/migrantes/read/' . $migrante[0]) . "'>" . $migrante[0] . "</a>";
   			array_push($links, $link);
+		}
+  		return implode(",", $links);
+	}
+
+	public function _callback_denuncia_url($value, $row){
+		$this->load->model('migracion_model');
+		$ids = explode(",", $value);
+		$links = array();
+		foreach ($ids as $id){             
+			$migrante = $this->migracion_model->getDenuncia($id);
+  		$link = "<a href='" . site_url('admin/denuncias/read/' . $migrante[0]) . "'>" . $migrante[0] . "</a>";
+  		array_push($links, $link);
 		}
   		return implode(",", $links);
 	}
@@ -504,8 +517,15 @@ class Admin extends CI_Controller {
 		$crud->field_type('pueblo_indigena', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		$crud->field_type('espanol', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		
+
+		//$crud->set_relation_n_n('migrantes', 'migrantes2denuncias', 'migrantes', 'id_denuncia', 'id_migrante', 'folio');
+		$crud->set_relation_n_n('denuncias', 'migrantes2denuncias', 'denuncias', 'id_migrante', 'id_denuncia', 'id_denuncia');
+
 		//$crud->unset_columns('folio');
-		$crud->columns('folio', 'id_migrante', 'nombre', 'edad', 'municipio', 'id_lugar_denuncia', 'id_pais', 'id_estado', 'id_genero', 'fecha_nacimiento',/* 'ocupacion',*/ 'ocupacion_homologada', 'id_estado_civil', 'escolaridad', 'pueblo_indigena', 'espanol');
+		$crud->columns(/*'folio',*/ 'id_migrante', 'nombre', 'denuncias' , 'edad', 'municipio', 'id_lugar_denuncia', 'id_pais', 'id_estado', 'id_genero', 'fecha_nacimiento',/* 'ocupacion',*/ 'ocupacion_homologada', 'id_estado_civil', 'escolaridad', 'pueblo_indigena', 'espanol');
+
+		/* Agregar link a las fichas de migrantes*/
+		$crud->callback_column('denuncias',array($this,'_callback_denuncia_url'));
 
 		$crud->required_fields('nombre');
 
