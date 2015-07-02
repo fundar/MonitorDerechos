@@ -133,8 +133,12 @@ class Admin extends CI_Controller {
 		
 		/*Relaciones n_n*/
 		/*Migrantes*/
-		$crud->set_relation_n_n('migrantes', 'migrantes2denuncias', 'migrantes', 'id_denuncia', 'id_migrante', 'id_migrante');
-		//$crud->set_relation_n_n('denuncias', 'migrantes2denuncias', 'denuncias', 'id_migrante', 'id_denuncia', 'folio');
+		//$crud->set_relation_n_n('migrantes', 'migrantes2denuncias', 'migrantes', 'id_denuncia', 'id_migrante', 'migrantes.id_migrante', 'id_migrante');
+
+		$crud->set_relation_n_n('migrantes', 'migrantes2denuncias', 'migrantes', 'id_denuncia', 'id_migrante', 'migrantes.id_migrante', 'id_migrante');
+
+		//$crud->set_relation('migrantes','migrantes2denuncias','id_denuncia');
+
 		/*Autoridades*/
 		$crud->set_relation_n_n('autoridades_viaje', 'autoridades2denuncias', 'autoridades', 'id_denuncia', 'id_autoridad', 'nombre');
 		/*Paquete pago coyote*/
@@ -149,7 +153,7 @@ class Admin extends CI_Controller {
 		/* Columnas en la Vista */ 
 		//$crud->columns('folio', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes');
 		$crud->columns(
-			/*'folio',*/ 'id_denuncia', 'nombre_persona_atendio_seguimiento', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes', 'intentos', 'motivo_migracion', 
+			/*'folio',*/ 'id_denuncia', 'nombre_persona_atendio_seguimiento', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja'/*, 'migrantes'*/, 'intentos', 'motivo_migracion', 
 			'coyote_guia', 'lugar_contrato_coyote', 'monto_coyote', 'paquete_pago', 'nombre_punto_fronterizo', 'viaja_solo', 
 			'con_quien_viaja', 'deportado', 'momento_deportado', 'separacion_familiar', 'familiar_separado', 'situacion_familiar',/*'acto_siguiente', */
 			'acto_siguiente_homologada','autoridades_viaje', 'dano_autoridad', 'fecha_injusticia', 'id_pais_injusticia', 'id_estado_injusticia', 
@@ -518,7 +522,10 @@ class Admin extends CI_Controller {
 		$crud->field_type('espanol', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		
 
-		//$crud->set_relation_n_n('migrantes', 'migrantes2denuncias', 'migrantes', 'id_denuncia', 'id_migrante', 'folio');
+		 //$crud->set_relation_n_n('_migrantes', 'migrantes2denuncias', 'migrantes', 'id_denuncia', 'id_migrante', 'migrantes.id_migrante', 'id_migrante');
+		
+		$crud->set_relation_n_n('denuncias', 'migrantes2denuncias', 'denuncias', 'id_migrante', 'id_denuncia', 'id_denuncia', 'id_denuncia');
+
 		$crud->set_relation_n_n('denuncias', 'migrantes2denuncias', 'denuncias', 'id_migrante', 'id_denuncia', 'id_denuncia');
 
 		//$crud->unset_columns('folio');
