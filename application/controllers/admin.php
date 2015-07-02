@@ -346,7 +346,7 @@ class Admin extends CI_Controller {
 		$crud->display_as('destino_transporte', 'Destino del transporte');
 		
 		/*Datos de la autoridad responsable*/
-		$crud->display_as('autoridades_responables', 'Nombre de las instituciones involucradas');
+		$crud->display_as('autoridades_responables', 'Autoridades señaladas como responsables');
 		$crud->display_as('numero_oficiales_responsables', 'Número de oficiales responsables');
 		$crud->display_as('algun_nombre_responsables', 'Escucho o sabe algún nombre de  los oficiales involucrados');
 		$crud->display_as('carcteristicas_ficias_policia_responsable', 'Características fìsicas oficial 1');

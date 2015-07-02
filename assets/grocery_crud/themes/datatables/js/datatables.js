@@ -273,7 +273,7 @@ function loadDataTable(this_datatables, site) {
 	});
 	
 	var columns = [ 0, 2, 4, 7, 8, 9, 13, 14, 16, 17, 18, 19, 21, 22, 23, 25, 26, 27, 28, 
-									29, 30, 32, 34, 37, 41, 42, 44, 45, 46, 48, 50, 51, 52, 53, 54 ]
+									29, 30, 32, 34, 36, 41, 42, 44, 45, 46, 48, 50, 51, 52, 53, 54 ]
 
 	if (site == "denuncias"){
 		select_filters(columns)
