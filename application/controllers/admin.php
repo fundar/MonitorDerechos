@@ -316,14 +316,14 @@ class Admin extends CI_Controller {
 		$crud->display_as('espacio_fisico_injusticia_homologada', 'Espacio físico de la injusticia (Categoría)');
 		$crud->field_type('espacio_fisico_injusticia_homologada', 
 			'dropdown', array(
-				1 => 'A bordo del propio transporte', 
-				2 => 'Afuera de la terminal de transporte',
-				3 => 'Cerca de oficina de gobierno',
-				4 => 'Domicilio',
-				5 => 'Oficinas de gobierno',
-				6 => 'Retén',
-				7 => 'Vía pública',
-				8 => 'Otro'
+				'A bordo del propio transporte' => 'A bordo del propio transporte', 
+				'Afuera de la terminal de transporte' => 'Afuera de la terminal de transporte',
+				'Cerca de oficina de gobierno' => 'Cerca de oficina de gobierno',
+				'Domicilio' => 'Domicilio',
+				'Oficinas de gobierno' => 'Oficinas de gobierno',
+				'Retén' => 'Retén',
+				'Vía pública' => 'Vía pública',
+				'Otro' => 'Otro'
 			)
 		);
 
