@@ -135,10 +135,6 @@ class Admin extends CI_Controller {
 		/*Migrantes*/
 		//$crud->set_relation_n_n('migrantes', 'migrantes2denuncias', 'migrantes', 'id_denuncia', 'id_migrante', 'migrantes.id_migrante', 'id_migrante');
 
-		$crud->set_relation_n_n('migrantes', 'migrantes2denuncias', 'migrantes', 'id_denuncia', 'id_migrante', 'migrantes.id_migrante', 'id_migrante');
-
-		//$crud->set_relation('migrantes','migrantes2denuncias','id_denuncia');
-
 		/*Autoridades*/
 		$crud->set_relation_n_n('autoridades_viaje', 'autoridades2denuncias', 'autoridades', 'id_denuncia', 'id_autoridad', 'nombre');
 		/*Paquete pago coyote*/
@@ -170,7 +166,7 @@ class Admin extends CI_Controller {
 		$crud->callback_column('fecha_creada',array($this,'_callback_date'));
 
 		/* Agregar link a las fichas de migrantes*/
-		$crud->callback_column('migrantes',array($this,'_callback_migrante_url'));
+		//$crud->callback_column('migrantes',array($this,'_callback_migrante_url'));
 
 		/* Campos */
 		$crud->fields(
@@ -314,6 +310,7 @@ class Admin extends CI_Controller {
 
 		$crud->display_as('espacio_fisico_injusticia', 'Espacio físico de la injusticia');
 		$crud->display_as('espacio_fisico_injusticia_homologada', 'Espacio físico de la injusticia (Categoría)');
+		/*
 		$crud->field_type('espacio_fisico_injusticia_homologada', 
 			'dropdown', array(
 				'A bordo del propio transporte' => 'A bordo del propio transporte', 
@@ -326,7 +323,20 @@ class Admin extends CI_Controller {
 				'Otro' => 'Otro'
 			)
 		);
-
+		*/
+/**/
+		$crud->field_type('espacio_fisico_injusticia_homologada', 
+			'dropdown', array (
+				'Carretera' => 'Carretera', 
+				'Vías/abordo del tren' => 'Vías/abordo del tren', 
+				'Cerca/en terminal de tren' => 'Cerca/en terminal de tren', 
+				'Cerca/en terminal de autobús' => 'Cerca/en terminal de autobús', 
+				'Cerca/en oficinas de gobierno' => 'Cerca/en oficinas de gobierno', 
+				'Vía pública' => 'Vía pública', 
+				'Otro' => 'Otro'
+			)
+		);
+/**/
 		$crud->display_as('detonante_injusticia', 'Situación que detona la injusticia');
 		$crud->display_as('detonante_injusticia_homologada', 'Situación que detona la injusticia (Categoría)');
 		$crud->field_type('detonante_injusticia_homologada', 
@@ -468,9 +478,7 @@ class Admin extends CI_Controller {
 		$crud->set_theme('datatables');
 		$crud->set_table('migrantes');
 		
-
 		$crud->set_subject('Migrantes');
-		
 		
 		/*Relaciones con tablas*/
 		$crud->display_as('id_migrante', 'Id');
@@ -521,15 +529,11 @@ class Admin extends CI_Controller {
 		$crud->field_type('pueblo_indigena', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		$crud->field_type('espanol', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		
-
-		 //$crud->set_relation_n_n('_migrantes', 'migrantes2denuncias', 'migrantes', 'id_denuncia', 'id_migrante', 'migrantes.id_migrante', 'id_migrante');
-		
-		$crud->set_relation_n_n('denuncias', 'migrantes2denuncias', 'denuncias', 'id_migrante', 'id_denuncia', 'id_denuncia', 'id_denuncia');
-
-		$crud->set_relation_n_n('denuncias', 'migrantes2denuncias', 'denuncias', 'id_migrante', 'id_denuncia', 'id_denuncia');
+		//$crud->set_relation_n_n('denuncias', 'migrantes2denuncias', 'denuncias', 'id_migrante', 'id_denuncia', 'id_denuncia', 'id_denuncia');
+		//$crud->set_relation_n_n('denuncias', 'migrantes2denuncias', 'denuncias', 'id_migrante', 'id_denuncia', 'id_denuncia');
 
 		//$crud->unset_columns('folio');
-		$crud->columns(/*'folio',*/ 'id_migrante', 'nombre', 'denuncias' , 'edad', 'municipio', 'id_lugar_denuncia', 'id_pais', 'id_estado', 'id_genero', 'fecha_nacimiento',/* 'ocupacion',*/ 'ocupacion_homologada', 'id_estado_civil', 'escolaridad', 'pueblo_indigena', 'espanol');
+		$crud->columns(/*'folio',*/ 'id_migrante', 'nombre', /*'denuncias', */ 'edad', 'municipio', 'id_lugar_denuncia', 'id_pais', 'id_estado', 'id_genero', 'fecha_nacimiento',/* 'ocupacion',*/ 'ocupacion_homologada', 'id_estado_civil', 'escolaridad', 'pueblo_indigena', 'espanol');
 
 		/* Agregar link a las fichas de migrantes*/
 		$crud->callback_column('denuncias',array($this,'_callback_denuncia_url'));
