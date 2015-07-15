@@ -134,6 +134,9 @@ class Admin extends CI_Controller {
 		/*Relaciones n_n*/
 		/*Migrantes*/
 		//$crud->set_relation_n_n('migrantes', 'migrantes2denuncias', 'migrantes', 'id_denuncia', 'id_migrante', 'migrantes.id_migrante', 'id_migrante');
+		
+		//$crud->set_relation_n_n('migrantes', 'migrantes2denuncias', 'migrantes', 'id_denuncia', 'id_migrante', 'nombre', 'id_migrante');
+		$crud->set_relation_n_n('migrantes', 'migrantes2denuncias', 'migrantes', 'id_denuncia', 'id_migrante', 'nombre');
 
 		/*Autoridades*/
 		$crud->set_relation_n_n('autoridades_viaje', 'autoridades2denuncias', 'autoridades', 'id_denuncia', 'id_autoridad', 'nombre');
@@ -149,7 +152,7 @@ class Admin extends CI_Controller {
 		/* Columnas en la Vista */ 
 		//$crud->columns('folio', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes');
 		$crud->columns(
-			/*'folio',*/ 'id_denuncia', 'nombre_persona_atendio_seguimiento', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja'/*, 'migrantes'*/, 'intentos', 'motivo_migracion', 
+			/*'folio',*/ 'id_denuncia', 'nombre_persona_atendio_seguimiento', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes', 'intentos', 'motivo_migracion', 
 			'coyote_guia', 'lugar_contrato_coyote', 'monto_coyote', 'paquete_pago', 'nombre_punto_fronterizo', 'viaja_solo', 
 			'con_quien_viaja', 'deportado', 'momento_deportado', 'separacion_familiar', 'familiar_separado', 'situacion_familiar',/*'acto_siguiente', */
 			'acto_siguiente_homologada','autoridades_viaje', 'dano_autoridad', 'fecha_injusticia', 'id_pais_injusticia', 'id_estado_injusticia', 
@@ -166,7 +169,7 @@ class Admin extends CI_Controller {
 		$crud->callback_column('fecha_creada',array($this,'_callback_date'));
 
 		/* Agregar link a las fichas de migrantes*/
-		//$crud->callback_column('migrantes',array($this,'_callback_migrante_url'));
+		$crud->callback_column('migrantes',array($this,'_callback_migrante_url'));
 
 		/* Campos */
 		$crud->fields(
@@ -435,10 +438,10 @@ class Admin extends CI_Controller {
 
 	public function _callback_migrante_url($value, $row){
 		$this->load->model('migracion_model');
-		$ids = explode(",", $value);
+		$names = explode(",", $value);	
 		$links = array();
-		foreach ($ids as $id){             
-			$migrante = $this->migracion_model->getMigrante($id);
+		foreach ($names as $name){             
+			$migrante = $this->migracion_model->getMigrante($name);
   			$link = "<a href='" . site_url('admin/migrantes/read/' . $migrante[0]) . "'>" . $migrante[0] . "</a>";
   			array_push($links, $link);
 		}

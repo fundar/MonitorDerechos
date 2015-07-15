@@ -137,8 +137,8 @@ class migracion_Model extends CI_Model  {
 		return $this->db->delete( 'migrantes', array('id_migrante' => $id) ); 
 	}
 
-	public function getMigrante($id_migrante = -1){
-		$query = $this->db->get_where('migrantes', array('id_migrante' => $id_migrante), 1);
+	public function getMigrante($name = -1){
+		$query = $this->db->get_where('migrantes', array('nombre' => $name), 1);
 		foreach ($query->result() as $row) return array($row->id_migrante, $row->nombre) ;
 	}
 
