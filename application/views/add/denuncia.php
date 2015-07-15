@@ -675,13 +675,13 @@
 					<div class='form-input-box' id="espacio_fisico_injusticia_homologada_input_box">
 						<select id='field-espacio_fisico_injusticia_homologada' name='espacio_fisico_injusticia_homologada' ng-model='espacio_fisico_injusticia_homologada' class='chosen-select' data-placeholder='Seleccionar Espacio físico de la injusticia (Categoría)'>
 							<option value=''  ></option>
-							<option value='1'  >A bordo del propio transporte</option>
-							<option value='2'  >Afuera de la terminal de transporte</option>
-							<option value='3'  >Cerca de oficina de gobierno</option>
-							<option value='4'  >Domicilio</option><option value='5'  >Oficinas de gobierno</option>
-							<option value='6'  >Retén</option>
-							<option value='7'  >Vía pública</option>
-							<option value='8'  >Otro</option>
+							<option value='Carretera' > Carretera </option>
+							<option value='Vías/abordo del tren' > Vías/abordo del tren </option>
+							<option value='Cerca/en terminal de tren' > Cerca/en terminal de tren </option>
+							<option value='Cerca/en terminal de autobús' > Cerca/en terminal de autobús </option>
+							<option value='Cerca/en oficinas de gobierno' > Cerca/en oficinas de gobierno </option>
+							<option value='Vía pública' > Vía pública </option>
+							<option value='Otro' > Otro </option>
 						</select>				
 					</div>
 					<div class='clear'></div>
