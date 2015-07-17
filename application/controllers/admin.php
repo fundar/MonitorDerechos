@@ -135,7 +135,6 @@ class Admin extends CI_Controller {
 		/*Migrantes*/
 		//$crud->set_relation_n_n('migrantes', 'migrantes2denuncias', 'migrantes', 'id_denuncia', 'id_migrante', 'migrantes.id_migrante', 'id_migrante');
 		
-		//$crud->set_relation_n_n('migrantes', 'migrantes2denuncias', 'migrantes', 'id_denuncia', 'id_migrante', 'nombre', 'id_migrante');
 		$crud->set_relation_n_n('migrantes', 'migrantes2denuncias', 'migrantes', 'id_denuncia', 'id_migrante', 'nombre');
 
 		/*Autoridades*/
@@ -150,7 +149,7 @@ class Admin extends CI_Controller {
 		$crud->set_relation_n_n('violaciones_derechos', 'violacion_derechos2denuncias', 'violacion_derechos', 'id_denuncia', 'id_violacion', 'nombre');
 		
 		/* Columnas en la Vista */ 
-		//$crud->columns('folio', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes');
+		// AL AGREGAR O QUITAR COLUMNAS, ASEGURARCE DE EDITAR EL ARREGLO 'columns' PARA ACTUALIZAR LOS FILTROS EN EL ARCHIVO assets/grocery_crud/themes/datatables/js/datatables.js
 		$crud->columns(
 			/*'folio',*/ 'id_denuncia', 'nombre_persona_atendio_seguimiento', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes', 'intentos', 'motivo_migracion', 
 			'coyote_guia', 'lugar_contrato_coyote', 'monto_coyote', 'paquete_pago', 'nombre_punto_fronterizo', 'viaja_solo', 
@@ -442,7 +441,7 @@ class Admin extends CI_Controller {
 		$links = array();
 		foreach ($names as $name){             
 			$migrante = $this->migracion_model->getMigrante($name);
-  			$link = "<a href='" . site_url('admin/migrantes/read/' . $migrante[0]) . "'>" . $migrante[0] . "</a>";
+  			$link = "<a href='" . site_url('admin/migrantes/read/' . $migrante[0]) . "'>" . $migrante[1] . "</a>";
   			array_push($links, $link);
 		}
   		return implode(",", $links);
@@ -536,6 +535,7 @@ class Admin extends CI_Controller {
 		//$crud->set_relation_n_n('denuncias', 'migrantes2denuncias', 'denuncias', 'id_migrante', 'id_denuncia', 'id_denuncia');
 
 		//$crud->unset_columns('folio');
+		// AL AGREGAR O QUITAR COLUMNAS, ASEGURARCE DE EDITAR EL ARREGLO 'columns' PARA ACTUALIZAR LOS FILTROS EN EL ARCHIVO assets/grocery_crud/themes/datatables/js/datatables.js
 		$crud->columns(/*'folio',*/ 'id_migrante', 'nombre', /*'denuncias', */ 'edad', 'municipio', 'id_lugar_denuncia', 'id_pais', 'id_estado', 'id_genero', 'fecha_nacimiento',/* 'ocupacion',*/ 'ocupacion_homologada', 'id_estado_civil', 'escolaridad', 'pueblo_indigena', 'espanol');
 
 		/* Agregar link a las fichas de migrantes*/
