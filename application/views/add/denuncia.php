@@ -798,7 +798,7 @@
 						Características fìsicas oficial 1 :
 					</div>
 					<div class='form-input-box' id="carcteristicas_ficias_policia_responsable_input_box">
-						<input id='field-carcteristicas_ficias_policia_responsable' name='carcteristicas_ficias_policia_responsable' ng-model='carcteristicas_ficias_policia_responsable' type='text' value="" maxlength='255' />				
+						<input id='field-carcteristicas_ficias_policia_responsable' name='carcteristicas_ficias_policia_responsable' ng-model='carcteristicas_ficias_policia_responsable' type='text' value=""  />				
 					</div>
 					<div class='clear'></div>
 				</div>
@@ -808,7 +808,7 @@
 						Características fìsicas oficial 2 :
 					</div>
 					<div class='form-input-box' id="carcteristicas_ficias_policia_responsable2_input_box">
-						<input id='field-carcteristicas_ficias_policia_responsable2' name='carcteristicas_ficias_policia_responsable2' ng-model='carcteristicas_ficias_policia_responsable2' type='text' value="" maxlength='15' />				
+						<input id='field-carcteristicas_ficias_policia_responsable2' name='carcteristicas_ficias_policia_responsable2' ng-model='carcteristicas_ficias_policia_responsable2' type='text' value=""  />				
 					</div>
 					<div class='clear'></div>
 				</div>
@@ -818,7 +818,7 @@
 						Características fìsicas oficial 3 :
 					</div>
 					<div class='form-input-box' id="carcteristicas_ficias_policia_responsable3_input_box">
-						<input id='field-carcteristicas_ficias_policia_responsable3' name='carcteristicas_ficias_policia_responsable3' ng-model='carcteristicas_ficias_policia_responsable3' type='text' value="" maxlength='15' />				
+						<input id='field-carcteristicas_ficias_policia_responsable3' name='carcteristicas_ficias_policia_responsable3' ng-model='carcteristicas_ficias_policia_responsable3' type='text' value=""  />				
 					</div>
 					<div class='clear'></div>
 				</div>
@@ -859,7 +859,7 @@
 						Insignias de uniforme de oficiales responsables :
 					</div>
 					<div class='form-input-box' id="insignias_responsables_input_box">
-						<input id='field-insignias_responsables' name='insignias_responsables' ng-model='insignias_responsables' type='text' value="" maxlength='255' />				
+						<input id='field-insignias_responsables' name='insignias_responsables' ng-model='insignias_responsables' type='text' value=""  />				
 					</div>					
 					<div class='clear'></div>
 				</div>
@@ -1023,7 +1023,7 @@
 						Notas sobre el seguimiento :
 					</div>
 					<div class='form-input-box' id="notas_seguimiento_input_box">
-						<input id='field-notas_seguimiento' name='notas_seguimiento' ng-model='notas_seguimiento' type='text' value="" maxlength='255' />				
+						<input id='field-notas_seguimiento' name='notas_seguimiento' ng-model='notas_seguimiento' type='text' value=""  />				
 					</div>
 					<div class='clear'></div>
 				</div>
