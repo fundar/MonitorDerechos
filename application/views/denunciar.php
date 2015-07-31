@@ -712,7 +712,28 @@
 						Porque punto fronterizo cruzaste o vas a cruzar a USA :
 					</div>
 					<div class='form-input-box' id="nombre_punto_fronterizo_input_box">
-						<input id='field-nombre_punto_fronterizo' name='nombre_punto_fronterizo' ng-model='nombre_punto_fronterizo' type='text' value="" maxlength='255' />				
+						<!--input id='field-nombre_punto_fronterizo' name='nombre_punto_fronterizo' ng-model='nombre_punto_fronterizo' type='text' value="" maxlength='255' /-->
+						<select id='field-nombre_punto_fronterizo' name='nombre_punto_fronterizo' ng-model='nombre_punto_fronterizo' class='chosen-select' data-placeholder='Seleccionar el punto fronterizo'>
+							<option value=''></option>
+							<option value='Sásabe'>Sásabe</option>
+							<option value='Caborca'>Caborca</option>
+							<option value='Naco'>Naco</option>
+							<option value='Agua Prieta'>Agua Prieta</option>
+							<option value='Nogales'>Nogales</option>
+							<option value='Douglas'>Douglas</option>
+							<option value='Algodones'>Algodones</option>
+							<option value='Cananea'>Cananea</option>
+							<option value='Mascareña'>Mascareña</option>
+							<option value='Sonoyta '>Sonoyta </option>
+							<option value='Tecate'>Tecate</option>
+							<option value='Laredo'>Laredo</option>
+							<option value='Mexicali'>Mexicali</option>
+							<option value='Reynosa'>Reynosa</option>
+							<option value='Piedras Negras'>Piedras Negras</option>
+							<option value='Santa Cruz'>Santa Cruz</option>
+							<option value='Tecate'>Tecate</option>
+							<option value='Tijuana'>Tijuana</option>
+						</select>					
 					</div>
 					<div class='clear'></div>
 				</div>

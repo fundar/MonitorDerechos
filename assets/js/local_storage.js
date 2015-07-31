@@ -252,7 +252,7 @@ app.controller('MigranteCtrl', [
     console.log("-------------------------------------")
 
     var topics = ['nombre_persona_atendio_seguimiento', 'fecha_creada','intentos','monto_coyote',
-                  'nombre_punto_fronterizo','lugar_de_usa','con_quien_viaja','familiar_separado','situacion_familiar',
+                  'lugar_de_usa','con_quien_viaja','familiar_separado','situacion_familiar',
                   'acto_siguiente','fecha_injusticia','municipio_injusticia','espacio_fisico_injusticia', 
                   'detonante_injusticia','numero_migrantes_injusticia','lugar_abordaje_transporte','destino_transporte',
                   'numero_oficiales_responsables','algun_nombre_responsables', 'carcteristicas_ficias_policia_responsable',
@@ -262,7 +262,7 @@ app.controller('MigranteCtrl', [
                   'telefono_seguimiento' ]     
 
     var topics_of_selects = [ 'id_lugar_denuncia_','id_tipo_queja','motivo_migracion','acto_siguiente_homologada', 
-                              'coyote_guia','lugar_contrato_coyote', 'viaja_solo','deportado','momento_deportado',
+                              'coyote_guia','lugar_contrato_coyote',  'nombre_punto_fronterizo', 'viaja_solo','deportado','momento_deportado',
                               'separacion_familiar', 'dano_autoridad', 'id_autoridad_dano','id_pais_injusticia',
                               'id_estado_injusticia', 'uniformado_responsables', 'espacio_fisico_injusticia_homologada',
                               'id_transporte_viaje_injusticia', 'estado_seguimiento','responsables_abordo_vehiculos_responsables',

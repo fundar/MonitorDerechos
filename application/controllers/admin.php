@@ -294,6 +294,29 @@ class Admin extends CI_Controller {
 		$crud->field_type('conocimineto_punto_fronterizo', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		
 		$crud->display_as('nombre_punto_fronterizo', 'Porque punto fronterizo cruzaste o vas a cruzar a USA');
+                $crud->field_type('nombre_punto_fronterizo', 'dropdown', 
+			array(
+				'Sásabe' => 'Sásabe', 
+				'Caborca' => 'Caborca', 
+				'Naco' => 'Naco', 
+				'Agua Prieta' => 'Agua Prieta', 
+				'Nogales' => 'Nogales', 
+				'Douglas' => 'Douglas', 
+				'Algodones' => 'Algodones', 
+				'Cananea' => 'Cananea', 
+				'Mascareña' => 'Mascareña', 
+				'Sonoyta ' => 'Sonoyta ', 
+				'Tecate' => 'Tecate', 
+				'Laredo' => 'Laredo', 
+				'Mexicali' => 'Mexicali', 
+				'Reynosa' => 'Reynosa', 
+				'Piedras Negras' => 'Piedras Negras', 
+				'Santa Cruz' => 'Santa Cruz', 
+				'Tecate' => 'Tecate', 
+				'Tijuana' => 'Tijuana'
+			)
+		);
+
 		$crud->display_as('lugar_de_usa', 'A que lugar de USA vas');
 		
 		/*Antecedentes de autoridades*/
