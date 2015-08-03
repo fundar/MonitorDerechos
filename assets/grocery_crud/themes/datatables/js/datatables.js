@@ -11,48 +11,51 @@ var site
 */
 
 /* Cambia los filtros de input[text] a selects */
-var select_filters = function(columns){
+var select_filters = function(columns, prefix){
+
 	/* Substituir los campos de búsqueda por selects*/
 	var titles = {}
-	$(" tfoot th").each( function ( i ) {
-		var pos = columns.indexOf(i);
+	var l = $("tfoot th").length - 1
 
-		if( pos > -1 ){
-			/* crear el select, substituir al input y asignarle el evento de búsqueda */
-		    var select = $( '<select> <option value=""> Todos </option> </select>')
-		        select.appendTo( $(this).empty() )
-		        select.on( 'change', function () {
+	$("tfoot th").each( function ( i ) {
+		if(i >= l || columns.indexOf(i) < 0){ return true	} // si rebasa el limite de las columnas (tfoot th) o no se encuentra en la lista de los items  
 
-					$("#grafica").fadeOut("slow", function(){ $("#grafica").empty() })
-		 			if($(this).val() != ""){
-		        		table.fnFilter(unescape("^" + $(this).val() + "$"), i, true, false, false, false); 
-		 			}else{	
-		 				table.fnFilter(unescape($(this).val()), i, false, false, false, false);
-		 			}
-		        } );
-		    /*fd -> filtro-denuncia */
-			var data = table.fnGetColumnData( i )
-			  , results = [] ;
-	        if( localStorage.getItem('fd_' + i) === null) {
-	        	/* Agregar opciones al input basados en todas las celdas con valores no repetidos de la columna */
-	        	for(var j in data) {
-        			data[j] = data[j].replace(/\"/g,"\'");
+		/* crear el select, substituir al input y asignarle el evento de búsqueda */
+	  var select = $( '<select> <option value=""> Todos </option> </select>')
+    select.appendTo( $(this).empty() )
+   
 
-		 			select.append( '<option value="' + data[j] + '">' + data[j] + '</option>' )
-		 			if(data[j] != "" && results.indexOf( data[j] ) > -1 ){
-		 				results.push(data[j])
-		 			}
-			 	}
+			select.on( 'change', function () {
+			$("#grafica").fadeOut("slow", function(){ $("#grafica").empty() })
+ 			if($(this).val() != ""){
+    		table.fnFilter(unescape("^" + $(this).val() + "$"), i, true, false, false, false); 
+ 			}else{	
+ 				table.fnFilter(unescape($(this).val()), i, false, false, false, false);
+ 			}
+    });
+	  
+		var data = table.fnGetColumnData( i )
+		  , results = [] ;
 
-				localStorage.setItem( 'fd_' + i ,'["' + data.join('","') + '"]');
-			}else{
-				var options = localStorage.getItem('fd_' + i)
-				$.each( $.parseJSON(options), function(num,val){
-					if(val !== '') select.append( '<option value="' + val + '">' + val + '</option>' )
-				});
+    if( localStorage.getItem(prefix + '_' + i) === null) {
+    	/* Agregar opciones al input basados en todas las celdas con valores no repetidos de la columna */
+    	for(var j in data) {
+				data[j] = data[j].replace(/\"/g,"\'");
 
-			}
+ 				select.append( '<option value="' + data[j] + '">' + data[j] + '</option>' )
+ 				if(data[j] != "" && results.indexOf( data[j] ) > -1 ) results.push(data[j])
+	 		}
+
+			localStorage.setItem( prefix + '_' + i ,'["' + data.join('","') + '"]');
+
+		}else{
+			var options = localStorage.getItem(prefix + '_' + i)
+			$.each( $.parseJSON(options), function(num,val){
+			 	if(val !== '') select.append( "<option value='" + val + "'>" + val + "</option>" )
+			});
+
 		}
+
 	});
 }
 
@@ -277,13 +280,14 @@ function loadDataTable(this_datatables, site) {
 									50, 51, 52, 53 ]
 
 
-	if (site == "denuncias"){
-		select_filters(columns)
-	}else if (site == "migrantes"){
-		columns = [1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
-		select_filters(columns)
+	
+	if (site == "migrantes"){
+		columns = [0, 1, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14] // no usar la ultima columna 
+		select_filters(columns, 'fil-mig')
+	}else{
+		select_filters(columns, 'fil-den')
 	}
-
+	
 	filters_to_graphic()
 	return table;
 }

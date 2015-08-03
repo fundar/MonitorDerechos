@@ -115,9 +115,9 @@ var actualizar_histograma = function(histograma){
   }
 
   /* Modificar las etiquetas en el campo habla español */
-  histograma.espanol[0][0] = "Si";
-  histograma.espanol[1][0] = "No";
-  histograma.espanol[2][0] = "Dato no disponible";
+  histograma.espanol[0][0] = "No Aplica";
+  histograma.espanol[1][0] = "Si";
+  //histograma.espanol[2][0] = "Dato no disponible";
   
   /* Modificar las etiquetas en el campo coyote */
   histograma.coyote_guia[0][0] = "Si"; // 1 como tag original
