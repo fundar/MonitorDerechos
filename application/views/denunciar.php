@@ -313,7 +313,7 @@
 						</div>
 						<div class='form-input-box' id="id_pais_input_box">
 							<select id='field-id_pais' name='id_pais' ng-model="id_pais_migrante" class='chosen-select' data-placeholder='Seleccionar País' style='width:300px'>
-								<option value=''></option>
+								<option value='Dato no disponible'></option>
 								<?php foreach ($paises->result_array() as $row) echo "<option value='" . $row['id_pais'] . "'>" . $row['nombre'] . "</option>"; ?>
 							</select>				
 						</div>
@@ -326,7 +326,7 @@
 						</div>
 						<div class='form-input-box' id="id_estado_input_box">
 							<select id='field-id_estado' name='id_estado' ng-model="id_estado_migrante" class='chosen-select' data-placeholder='Seleccionar Estado/Departamento' style='width:300px'>
-								<option value=''></option>
+								<option value='Dato no disponible'></option>
 								<?php foreach ($estados->result_array() as $row) echo "<option value='" . $row['id_estado'] . "'>" . $row['nombre'] . "</option>"; ?>
 							</select>				
 						</div>
@@ -349,7 +349,7 @@
 						</div>
 						<div class='form-input-box' id="id_genero_input_box">
 							<select id='field-id_genero'  name='id_genero' ng-model="id_genero_migrante" class='chosen-select' data-placeholder='Seleccionar Género' style='width:300px'>
-								<option value=''></option>
+								<option value='Dato no disponible'></option>
 								<option value='1'  >Masculino</option>
 								<option value='2'  >Femenino</option>
 							</select>				
@@ -389,7 +389,7 @@
 						<div class='form-display-as-box' id="ocupacion_display_as_box"> </div>
 						<div class='form-input-box' id="ocupacion_homologada_input_box">
 							<select id='field-ocupacion_homologada' name='ocupacion_homologada'  ng-model="ocupacion_homologada_migrante" class='chosen-select' data-placeholder='¿En que categoría ubica esta ocupación?'>
-								<option value=''  ></option>
+								<option value='Dato no disponible'  ></option>
 								<option value='1'  >Al hogar</option>
 								<option value='2'  >Albañil</option>
 								<option value='3'  >Campesino</option>
@@ -409,7 +409,7 @@
 						</div>
 						<div class='form-input-box' id="id_estado_civil_input_box">
 							<select id='field-id_estado_civil'  name='id_estado_civil' ng-model="id_estado_civil_migrante" class='chosen-select' data-placeholder='Seleccionar Estado Civil' style='width:300px'>
-								<option value=''></option>
+								<option value='Dato no disponible'></option>
 								<option value='1'  >Soltera(o)</option>
 								<option value='2'  >Casada(o)</option>
 								<option value='3'  >Viuda(o)</option>
@@ -427,7 +427,7 @@
 						</div>
 						<div class='form-input-box' id="escolaridad_input_box">
 							<select id='field-escolaridad' name='escolaridad' ng-model="escolaridad_migrante" class='chosen-select' data-placeholder='Seleccionar Escolaridad'>
-								<option value=''  ></option>
+								<option value='Dato no disponible'  ></option>
 								<option value='Sin instrucción'  >Sin instrucción</option>
 								<option value='Primaria'  >Primaria</option>
 								<option value='Primaria inconclusa'  >Primaria inconclusa</option>
@@ -450,7 +450,7 @@
 						</div>
 						<div class='form-input-box' id="pueblo_indigena_input_box">
 							<select id='field-pueblo_indigena' name='pueblo_indigena' ng-model="pueblo_indigena_migrante" class='chosen-select' data-placeholder='Seleccionar Pertenece a algún pueblo indígena'>
-								<option value=''  ></option>
+								<option value='Dato no disponible'  ></option>
 								<option value='1'  >Si</option>
 								<option value='2'  >No</option>
 							</select>				
@@ -474,7 +474,7 @@
 						</div>
 						<div class='form-input-box' id="espanol_input_box">
 							<select id='field-espanol' name='espanol'  ng-model="espanol_migrante" class='chosen-select' data-placeholder='Seleccionar Dominio del español'>
-								<option value=''  ></option>
+								<option value='Dato no disponible'  ></option>
 								<option value='1'  >Si</option>
 								<option value='2'  >No</option>
 								<option value='No Aplica'  >No Aplica</option>
@@ -489,7 +489,7 @@
 						</div>
 						<div class='form-input-box' id="id_lugar_denuncia_input_box">
 							<select id='field-id_lugar_denuncia'  name='id_lugar_denuncia' ng-model="id_lugar_denuncia_migrante" class='chosen-select' data-placeholder='Seleccionar Lugar de la organización'>
-								<option value=''></option>
+								<option value='Dato no disponible'></option>
 								<option value='1'  >Nogales, Sonora</option>
 								<option value='2'  >Agua Prieta, Sonora</option>
 								<option value='3'  >Altar, Sonora</option>
@@ -565,7 +565,7 @@
 					</div>
 					<div class='form-input-box' id="id_lugar_denuncia_input_box">
 						<select id='field-id_lugar_denuncia_'  name='id_lugar_denuncia' ng-model='id_lugar_denuncia_' class='chosen-select' data-placeholder='Seleccionar Lugar de denuncia' style="width:300px;">
-							<option value=''></option>
+							<option value='Dato no disponible'></option>
 							<option value='1'  >Nogales, Sonora</option>
 							<option value='2'  >Agua Prieta, Sonora</option>
 							<option value='3'  >Altar, Sonora</option>
@@ -580,7 +580,7 @@
 					</div>
 					<div class='form-input-box' id="id_tipo_queja_input_box">
 						<select id='field-id_tipo_queja'  name='id_tipo_queja' ng-model='id_tipo_queja' class='chosen-select' data-placeholder='Seleccionar Tipo de queja' >
-							<option value=''> </option>
+							<option value='Dato no disponible'> </option>
 							<option value='1'>Individual</option>
 							<option value='2'>Grupal</option>
 							<option value='3'>Comunitaria</option>
@@ -596,7 +596,7 @@
 					<div class='form-input-box' id="migrantes_input_box">
 						<select id='field-migrantes' name='migrantes[]'  ng-model='migrantes' multiple='multiple' size='8' 
 								class='chosen-multiple-select' data-placeholder='Seleccionar Migrantes' style='width:510px;' >
-							<!--option value=''></option><option value='1'>Abel Chavez Villa</option><option value='72'>Adali Alvarez Flores</option><option value='212'>Adrián García de la Rosa</option><option value='154'>Alejandro Adrián Díaz Quiroz</option><option value='133'>Alex David</option><option value='130'>ALM</option><option value='41'>Álvaro Julián Ochoa Vera</option><option value='129'>Anderson</option><option value='144'>Anderson 2</option><option value='62'>Andrés Romero Alas </option><option value='63'>Andrés Ruiz Mendoza</option><option value='76'>Ángel Rubén Rodríguez González</option><option value='44'>Aniceto Damián</option><option value='196'>Anónimo</option><option value='209'>Anónimo</option><option value='68'>Anonio Canalaes Cabrera</option><option value='22'>Anselmo Calyn Apen</option><option value='43'>Antonio Esteban Sánchez</option><option value='9'>Apolinar Pacheco Reyes</option><option value='135'>Apoloni</option><option value='38'>Armando Hernandez</option><option value='136'>Bairo</option><option value='138'>Bairo Jesús Guevara</option><option value='73'>Cándido Flores  Lorenzo</option><option value='88'>Carlos Antonio Rosales Rosales</option><option value='56'>Carlos Emilio Flores Marte </option><option value='55'>Carlos Humberto Posadas</option><option value='53'>Carlos Márquez</option><option value='198'>Carlos Martínez</option><option value='110'>Carlos Martinez Gonzalez</option><option value='107'>Carlos Morales</option><option value='12'>Carlos Salgado Valdez </option><option value='117'>Cecilia Mones</option><option value='123'>Celvin Antonio</option><option value='124'>Cipriano Rodríguez González</option><option value='37'>Claudia Perez</option><option value='47'>Cristián Goel Meléndez Rivas</option><option value='119'>Damián Pacheco</option><option value='29'>Darwin Canales López</option><option value='193'>David Barrera Álvarez</option><option value='74'>Delvin Arain Hernandez Redondo </option><option value='145'>Denis Roberto Vázquez</option><option value='34'>Elder Díaz</option><option value='184'>Elias Madris Silva</option><option value='35'>Elvin Emilio Vázquez</option><option value='146'>Emilio Vázquez</option><option value='194'>Eric García Aguilar</option><option value='208'>Erik Fernando Salas</option><option value='66'>Erminio Cartagena Hernandez</option><option value='16'>Ever Casco </option><option value='173'>Exel Arnulfo Teque Pivaral</option><option value='126'>Fausto Vidal L.</option><option value='211'>Félix Fernández</option><option value='167'>Florentino Oliva Santiago</option><option value='58'>Fraklin Alexander </option><option value='195'>Francisco Alfredo Hernández Chávez</option><option value='116'>Francisco Javier Martínez</option><option value='147'>Francisco Javier Martínez</option><option value='31'>Franco Eduardo López Domínguez</option><option value='30'>Franklin Ezequiel Alvarado</option><option value='165'>Gabriela Ortega Téllez</option><option value='155'>Gandhi Raúl Cano Cano</option><option value='170'>Gerardo Guzmán Burgos</option><option value='201'>Gladis Cruz</option><option value='52'>Gregorio Gómez Hernández</option><option value='8'>Guillermo</option><option value='42'>Guillermo Gómez Vásques</option><option value='33'>Gustavo Adolfo Molina</option><option value='164'>Horacio Mendoza Torres</option><option value='186'>Ignacio Hernández Hernández</option><option value='169'>iveth diaz hernandez</option><option value='200'>Javier Torres</option><option value='137'>Jesús Ernesto</option><option value='168'>Jesús Gutiérrez Martínez</option><option value='187'>Jibran Felix Pazos</option><option value='25'>Joel Barragán Mendoza</option><option value='148'>Johan Manzanares</option><option value='1'>Jonatan Morales</option><option value='174'>Jorge Antonio</option><option value='175'>Jorge Cadena</option><option value='141'>Jorge Rolando Vargas Cantarero</option><option value='134'>Jorge Vargas</option><option value='181'>José Guadalupe Jiménez Juárez</option><option value='28'>José Guadalupe Ramírez López</option><option value='84'>Jose Hernan Cardenas Rios</option><option value='4'>José Hernández Velázquez</option><option value='60'>José Luis </option><option value='75'>Jose Luis Flores Flores</option><option value='26'>José Luís Herrera Herrera</option><option value='207'>José Ramón Pérez Gómez</option><option value='14'>José Vega </option><option value='120'>José Vega</option><option value='159'>Josue Raul Hernandez Morales</option><option value='188'>Jovany Carrera Hernández</option><option value='23'>Juan Armando Mendez Gonzalez</option><option value='2'>Juan Manuel González Sánchez</option><option value='114'>Juan Manuel Luevano Dávila</option><option value='103'>Juan Manuel Orozco Romero </option><option value='108'>Juan Pablo Castellano Marin</option><option value='24'>Juan Ramírez Martínez</option><option value='82'>Juvencio Hernandez Lopez </option><option value='7'>Kader Orellana Flores</option><option value='40'>Kevin  Argueta </option><option value='13'>Kevin Usiel Pèrez Rodríguez</option><option value='61'>Leonardo García Paz</option><option value='39'>Leoncio Martínez</option><option value='59'>Lilia</option><option value='192'>Luciana Calvo </option><option value='140'>Lucio Castillo</option><option value='158'>Luis Alonso Quintanilla</option><option value='128'>Luis Daniel</option><option value='199'>Ma. Magdalena Díaz Verdugo</option><option value='49'>Manuel de Jesús Hernández</option><option value='204'>Manuel Gubera</option><option value='203'>Manuel Zuniga Mendoza</option><option value='51'>Marco Antonio Morales Río </option><option value='106'>Marcos Rodríguez Oliva</option><option value='157'>Maria Melina </option><option value='160'>María Melina Beltran Victoriano</option><option value='132'>Maricela Silverio Mendoza</option><option value='131'>Marina Arcos</option><option value='180'>Mario Moreno</option><option value='213'>Marvin Antonio Cárdenas Candia</option><option value='46'>Melesio Morán Peña</option><option value='87'>Melvin Geovany Elvir Vega</option><option value='121'>Melvin Waldemar Meza del Cid</option><option value='185'>Miguel</option><option value='11'>Miguel ángel </option><option value='197'>Miguel Angel Diaz Lira</option><option value='21'>Moisés Rivera Rodríguez</option><option value='101'>Moises Rivera Rodriguez</option><option value='191'>Nancy Carolina Galindo Martínez</option><option value='118'>Natividad de Jesús</option><option value='206'>Nelson Ecarro</option><option value='100'>Nelson Enrique Martínez Peralta</option><option value='83'>Nery Ramirez Cardona</option><option value='70'>Nestor Velazquez Ramirez</option><option value='156'>Nicolas Morales Ambrosio</option><option value='142'>Noe Cante Saint</option><option value='27'>Noé Cante Sanit</option><option value='122'>Oscar Armando Benítez</option><option value='152'>Oscar Gael Coronel Morales</option><option value='163'>Oswaldo Ríos Martínez</option><option value='149'>Ovidio Marín </option><option value='85'>Pascual Tomas Arredondo</option><option value='86'>Pascual Tomas Hernandez</option><option value='202'>Pedro Ruiz Rivera</option><option value='109'>Perfecto Cristobal Perez Gonzalez</option><option value='17'>Rafael Mada Lastra </option><option value='115'>Ramón Ramírez Romero</option><option value='45'>Renato Ramírez</option><option value='179'>René Javier Cruz</option><option value='171'>Reyna José Miguel</option><option value='3'>Ricardo Martínez</option><option value='162'>Rigoberto Palafox</option><option value='176'>Roberto Quintero Chávez</option><option value='210'>Rolando Frías</option><option value='151'>Rosa Maria Velez Amaro</option><option value='69'>Rubén Quiñonez Villarreal</option><option value='172'>Sergio Lucio</option><option value='178'>Sergio Manuel Ramirez Gutierrez</option><option value='150'>Simón Costrero Barrán</option><option value='161'>Tomás Eugenio Torres Hernández</option><option value='20'>Toribio Jesús López</option><option value='18'>Toribio Velázquez Santos </option><option value='205'>Víctor</option><option value='112'>Wilbert</option><option value='127'>Wilbert Madrid</option><option value='19'>Wilmer Alexis Montoya </option><option value='32'>Yeims James</option><option value='15'>Zaul Rivas </option-->
+							<!--option value='Dato no disponible'></option><option value='1'>Abel Chavez Villa</option><option value='72'>Adali Alvarez Flores</option><option value='212'>Adrián García de la Rosa</option><option value='154'>Alejandro Adrián Díaz Quiroz</option><option value='133'>Alex David</option><option value='130'>ALM</option><option value='41'>Álvaro Julián Ochoa Vera</option><option value='129'>Anderson</option><option value='144'>Anderson 2</option><option value='62'>Andrés Romero Alas </option><option value='63'>Andrés Ruiz Mendoza</option><option value='76'>Ángel Rubén Rodríguez González</option><option value='44'>Aniceto Damián</option><option value='196'>Anónimo</option><option value='209'>Anónimo</option><option value='68'>Anonio Canalaes Cabrera</option><option value='22'>Anselmo Calyn Apen</option><option value='43'>Antonio Esteban Sánchez</option><option value='9'>Apolinar Pacheco Reyes</option><option value='135'>Apoloni</option><option value='38'>Armando Hernandez</option><option value='136'>Bairo</option><option value='138'>Bairo Jesús Guevara</option><option value='73'>Cándido Flores  Lorenzo</option><option value='88'>Carlos Antonio Rosales Rosales</option><option value='56'>Carlos Emilio Flores Marte </option><option value='55'>Carlos Humberto Posadas</option><option value='53'>Carlos Márquez</option><option value='198'>Carlos Martínez</option><option value='110'>Carlos Martinez Gonzalez</option><option value='107'>Carlos Morales</option><option value='12'>Carlos Salgado Valdez </option><option value='117'>Cecilia Mones</option><option value='123'>Celvin Antonio</option><option value='124'>Cipriano Rodríguez González</option><option value='37'>Claudia Perez</option><option value='47'>Cristián Goel Meléndez Rivas</option><option value='119'>Damián Pacheco</option><option value='29'>Darwin Canales López</option><option value='193'>David Barrera Álvarez</option><option value='74'>Delvin Arain Hernandez Redondo </option><option value='145'>Denis Roberto Vázquez</option><option value='34'>Elder Díaz</option><option value='184'>Elias Madris Silva</option><option value='35'>Elvin Emilio Vázquez</option><option value='146'>Emilio Vázquez</option><option value='194'>Eric García Aguilar</option><option value='208'>Erik Fernando Salas</option><option value='66'>Erminio Cartagena Hernandez</option><option value='16'>Ever Casco </option><option value='173'>Exel Arnulfo Teque Pivaral</option><option value='126'>Fausto Vidal L.</option><option value='211'>Félix Fernández</option><option value='167'>Florentino Oliva Santiago</option><option value='58'>Fraklin Alexander </option><option value='195'>Francisco Alfredo Hernández Chávez</option><option value='116'>Francisco Javier Martínez</option><option value='147'>Francisco Javier Martínez</option><option value='31'>Franco Eduardo López Domínguez</option><option value='30'>Franklin Ezequiel Alvarado</option><option value='165'>Gabriela Ortega Téllez</option><option value='155'>Gandhi Raúl Cano Cano</option><option value='170'>Gerardo Guzmán Burgos</option><option value='201'>Gladis Cruz</option><option value='52'>Gregorio Gómez Hernández</option><option value='8'>Guillermo</option><option value='42'>Guillermo Gómez Vásques</option><option value='33'>Gustavo Adolfo Molina</option><option value='164'>Horacio Mendoza Torres</option><option value='186'>Ignacio Hernández Hernández</option><option value='169'>iveth diaz hernandez</option><option value='200'>Javier Torres</option><option value='137'>Jesús Ernesto</option><option value='168'>Jesús Gutiérrez Martínez</option><option value='187'>Jibran Felix Pazos</option><option value='25'>Joel Barragán Mendoza</option><option value='148'>Johan Manzanares</option><option value='1'>Jonatan Morales</option><option value='174'>Jorge Antonio</option><option value='175'>Jorge Cadena</option><option value='141'>Jorge Rolando Vargas Cantarero</option><option value='134'>Jorge Vargas</option><option value='181'>José Guadalupe Jiménez Juárez</option><option value='28'>José Guadalupe Ramírez López</option><option value='84'>Jose Hernan Cardenas Rios</option><option value='4'>José Hernández Velázquez</option><option value='60'>José Luis </option><option value='75'>Jose Luis Flores Flores</option><option value='26'>José Luís Herrera Herrera</option><option value='207'>José Ramón Pérez Gómez</option><option value='14'>José Vega </option><option value='120'>José Vega</option><option value='159'>Josue Raul Hernandez Morales</option><option value='188'>Jovany Carrera Hernández</option><option value='23'>Juan Armando Mendez Gonzalez</option><option value='2'>Juan Manuel González Sánchez</option><option value='114'>Juan Manuel Luevano Dávila</option><option value='103'>Juan Manuel Orozco Romero </option><option value='108'>Juan Pablo Castellano Marin</option><option value='24'>Juan Ramírez Martínez</option><option value='82'>Juvencio Hernandez Lopez </option><option value='7'>Kader Orellana Flores</option><option value='40'>Kevin  Argueta </option><option value='13'>Kevin Usiel Pèrez Rodríguez</option><option value='61'>Leonardo García Paz</option><option value='39'>Leoncio Martínez</option><option value='59'>Lilia</option><option value='192'>Luciana Calvo </option><option value='140'>Lucio Castillo</option><option value='158'>Luis Alonso Quintanilla</option><option value='128'>Luis Daniel</option><option value='199'>Ma. Magdalena Díaz Verdugo</option><option value='49'>Manuel de Jesús Hernández</option><option value='204'>Manuel Gubera</option><option value='203'>Manuel Zuniga Mendoza</option><option value='51'>Marco Antonio Morales Río </option><option value='106'>Marcos Rodríguez Oliva</option><option value='157'>Maria Melina </option><option value='160'>María Melina Beltran Victoriano</option><option value='132'>Maricela Silverio Mendoza</option><option value='131'>Marina Arcos</option><option value='180'>Mario Moreno</option><option value='213'>Marvin Antonio Cárdenas Candia</option><option value='46'>Melesio Morán Peña</option><option value='87'>Melvin Geovany Elvir Vega</option><option value='121'>Melvin Waldemar Meza del Cid</option><option value='185'>Miguel</option><option value='11'>Miguel ángel </option><option value='197'>Miguel Angel Diaz Lira</option><option value='21'>Moisés Rivera Rodríguez</option><option value='101'>Moises Rivera Rodriguez</option><option value='191'>Nancy Carolina Galindo Martínez</option><option value='118'>Natividad de Jesús</option><option value='206'>Nelson Ecarro</option><option value='100'>Nelson Enrique Martínez Peralta</option><option value='83'>Nery Ramirez Cardona</option><option value='70'>Nestor Velazquez Ramirez</option><option value='156'>Nicolas Morales Ambrosio</option><option value='142'>Noe Cante Saint</option><option value='27'>Noé Cante Sanit</option><option value='122'>Oscar Armando Benítez</option><option value='152'>Oscar Gael Coronel Morales</option><option value='163'>Oswaldo Ríos Martínez</option><option value='149'>Ovidio Marín </option><option value='85'>Pascual Tomas Arredondo</option><option value='86'>Pascual Tomas Hernandez</option><option value='202'>Pedro Ruiz Rivera</option><option value='109'>Perfecto Cristobal Perez Gonzalez</option><option value='17'>Rafael Mada Lastra </option><option value='115'>Ramón Ramírez Romero</option><option value='45'>Renato Ramírez</option><option value='179'>René Javier Cruz</option><option value='171'>Reyna José Miguel</option><option value='3'>Ricardo Martínez</option><option value='162'>Rigoberto Palafox</option><option value='176'>Roberto Quintero Chávez</option><option value='210'>Rolando Frías</option><option value='151'>Rosa Maria Velez Amaro</option><option value='69'>Rubén Quiñonez Villarreal</option><option value='172'>Sergio Lucio</option><option value='178'>Sergio Manuel Ramirez Gutierrez</option><option value='150'>Simón Costrero Barrán</option><option value='161'>Tomás Eugenio Torres Hernández</option><option value='20'>Toribio Jesús López</option><option value='18'>Toribio Velázquez Santos </option><option value='205'>Víctor</option><option value='112'>Wilbert</option><option value='127'>Wilbert Madrid</option><option value='19'>Wilmer Alexis Montoya </option><option value='32'>Yeims James</option><option value='15'>Zaul Rivas </option-->
 						</select>				
 					</div>
 					<div class='clear'></div>
@@ -609,7 +609,7 @@
 					<div class='form-input-box' id="paquete_pago_input_box">
 						<select id='field-paquete_pago' name='paquete_pago[]' ng-model='paquete_pago' multiple='multiple' size='8' 
 								class='chosen-multiple-select' data-placeholder='Seleccionar que incluía el pago' style='width:510px;' >
-							<option value=''></option>
+							<option value='Dato no disponible'></option>
 							<option value='1'>Hospedaje</option>
 							<option value='2'>Transporte</option>
 							<option value='3'>Alimentación</option>
@@ -637,7 +637,7 @@
 					</div>
 					<div class='form-input-box' id="motivo_migracion_input_box">
 						<select id='field-motivo_migracion' name='motivo_migracion' ng-model='motivo_migracion' class='chosen-select' data-placeholder='Seleccionar Cuál es el motivo de migración' style='width:300px'>
-							<option value=''  ></option>
+							<option value='Dato no disponible'  ></option>
 							<option value='Falta de trabajo'  >Falta de trabajo</option>
 							<option value='Violencia/Seguridad'  >Violencia/Seguridad</option>
 							<option value='Reunificación familiar'  >Reunificación familiar</option>
@@ -653,7 +653,7 @@
 					</div>
 					<div class='form-input-box' id="coyote_guia_input_box">
 						<select id='field-coyote_guia' name='coyote_guia' ng-model='coyote_guia' class='chosen-select' data-placeholder='Seleccionar Contrato al coyote o guía que lo pasaría'>
-							<option value=''  ></option>
+							<option value='Dato no disponible'  ></option>
 							<option value='1'  >Si</option>
 							<option value='2'  >No</option>
 						</select>				
@@ -667,7 +667,7 @@
 					</div>
 					<div class='form-input-box' id="lugar_contrato_coyote_input_box">
 						<select id='field-lugar_contrato_coyote' name='lugar_contrato_coyote' ng-model='lugar_contrato_coyote' class='chosen-select' data-placeholder='Seleccionar Donde lo contrato'>
-							<option value=''  ></option>
+							<option value='Dato no disponible'  ></option>
 							<option value='Cuando salió de su comunidad'> Cuando salió de su comunidad</option>
 							<option value='En  la frontera'  >En  la frontera</option>
 							<option value='Otro'  >Otro</option>
@@ -694,7 +694,7 @@
 					<div class='form-input-box' id="paquete_pago_input_box">
 						<select id='field-paquete_pago' name='paquete_pago[]' ng-model='paquete_pago' multiple='multiple' size='8' 
 										class='chosen-multiple-select' data-placeholder='Seleccionar Que incluía el pago' style='width:510px;' >
-							<option value=''></option>
+							<option value='Dato no disponible'></option>
 							<option value='1'>Hospedaje</option>
 							<option value='2'>Transporte</option>
 							<option value='3'>Alimentación</option>
@@ -714,7 +714,7 @@
 					<div class='form-input-box' id="nombre_punto_fronterizo_input_box">
 						<!--input id='field-nombre_punto_fronterizo' name='nombre_punto_fronterizo' ng-model='nombre_punto_fronterizo' type='text' value="" maxlength='255' /-->
 						<select id='field-nombre_punto_fronterizo' name='nombre_punto_fronterizo' ng-model='nombre_punto_fronterizo' class='chosen-select' data-placeholder='Seleccionar el punto fronterizo'>
-							<option value=''></option>
+							<option value='Dato no disponible'></option>
 							<option value='Sásabe'>Sásabe</option>
 							<option value='Caborca'>Caborca</option>
 							<option value='Naco'>Naco</option>
@@ -754,7 +754,7 @@
 					</div>
 					<div class='form-input-box' id="viaja_solo_input_box">
 						<select id='field-viaja_solo' name='viaja_solo' ng-model='viaja_solo' class='chosen-select' data-placeholder='Seleccionar Viaja solo'>
-							<option value=''  ></option><option value='1'  >Si</option><option value='2'  >No</option>
+							<option value='Dato no disponible'  ></option><option value='1'  >Si</option><option value='2'  >No</option>
 						</select>				
 					</div>
 					<div class='clear'></div>
@@ -787,7 +787,7 @@
 						Deportado :
 					</div>
 					<div class='form-input-box' id="deportado_input_box">
-						<select id='field-deportado' name='deportado' ng-model='deportado' class='chosen-select' data-placeholder='Seleccionar Deportado'><option value=''  ></option><option value='1'  >Si</option><option value='2'  >No</option></select>				</div>
+						<select id='field-deportado' name='deportado' ng-model='deportado' class='chosen-select' data-placeholder='Seleccionar Deportado'><option value='Dato no disponible'  ></option><option value='1'  >Si</option><option value='2'  >No</option></select>				</div>
 					<div class='clear'></div>
 				</div>
 
@@ -797,7 +797,7 @@
 					</div>
 					<div class='form-input-box' id="momento_deportado_input_box">
 						<select id='field-momento_deportado' name='momento_deportado' ng-model='momento_deportado' class='chosen-select' data-placeholder='Seleccionar Donde fue deportado'>
-							<option value=''  ></option>
+							<option value='Dato no disponible'  ></option>
 							<option value='Al cruzar la frontera'  >Al cruzar la frontera</option>
 							<option value='Vivías en USA'  >Vivías en USA</option>
 							<option value='Otro'  >Otro</option>
@@ -813,7 +813,7 @@
 					</div>
 					<div class='form-input-box' id="separacion_familiar_input_box">
 						<select id='field-separacion_familiar' name='separacion_familiar' ng-model='separacion_familiar' class='chosen-select' data-placeholder='Seleccionar Te separaron de algún familiar'>
-							<option value=''  ></option>
+							<option value='Dato no disponible'  ></option>
 							<option value='1'  >Si</option>
 							<option value='2'  >No</option>
 							<option value='No Aplica'  >No Aplica</option>
@@ -863,7 +863,7 @@
 					</div>
 					<div class='form-input-box' id="autoridades_viaje_input_box">
 						<select id='field-autoridades_viaje' name='autoridades_viaje[]' ng-model='autoridades_viaje' multiple='multiple' size='8' class='chosen-multiple-select' data-placeholder='Seleccionar Durante el viaje con que autoridades te encontraste' style='width:510px;' >
-							<option value=''></option>
+							<option value='Dato no disponible'></option>
 							<?php foreach ($autoridades->result_array() as $row) echo "<option value='" . $row['id_autoridad'] . "'>" . $row['nombre'] . "</option>"; ?>
 						</select>				
 					</div>
@@ -876,7 +876,7 @@
 					</div>
 					<div class='form-input-box' id="dano_autoridad_input_box">
 						<select id='field-dano_autoridad' name='dano_autoridad' ng-model='dano_autoridad' class='chosen-select' data-placeholder='Seleccionar Alguna de las autoridades te causaron daño'>
-							<option value=''  ></option><option value='1'  >Si</option><option value='2'  >No</option>
+							<option value='Dato no disponible'  ></option><option value='1'  >Si</option><option value='2'  >No</option>
 						</select>				
 					</div>
 					<div class='clear'></div>
@@ -899,7 +899,7 @@
 					</div>
 					<div class='form-input-box' id="id_autoridad_dano_input_box">
 						<select id='field-id_autoridad_dano'  name='id_autoridad_dano' ng-model='id_autoridad_dano' class='chosen-select' data-placeholder='Seleccionar Que autoridad lo hizo' style='width:300px'>
-							<option value=''></option>
+							<option value='Dato no disponible'></option>
 							<?php foreach ($autoridades->result_array() as $row) echo "<option value='" . $row['id_autoridad'] . "'>" . $row['nombre'] . "</option>"; ?>
 							
 						</select>				
@@ -913,7 +913,7 @@
 					</div>
 					<div class='form-input-box' id="id_pais_injusticia_input_box">
 						<select id='field-id_pais_injusticia'  name='id_pais_injusticia' ng-model='id_pais_injusticia' class='chosen-select' data-placeholder='Seleccionar País donde se cometió la injusticia' style='width:300px'>
-							<option value=''></option>
+							<option value='Dato no disponible'></option>
 							<?php foreach ($paises->result_array() as $row) echo "<option value='" . $row['id_pais'] . "'>" . $row['nombre'] . "</option>"; ?>
 						</select>				
 					</div>
@@ -926,7 +926,7 @@
 					</div>
 					<div class='form-input-box' id="id_estado_injusticia_input_box">
 						<select id='field-id_estado_injusticia'  name='id_estado_injusticia' ng-model='id_estado_injusticia' class='chosen-select' data-placeholder='Seleccionar Estado donde se cometió la injusticia' style='width:300px'>
-							<option value=''></option>
+							<option value='Dato no disponible'></option>
 							<option value='1'  >Aguascalientes</option>
 							<option value='2'  >Baja California</option>
 							<option value='3'  >Baja California Sur</option>
@@ -997,7 +997,7 @@
 					</div>
 					<div class='form-input-box' id="espacio_fisico_injusticia_homologada_input_box">
 						<select id='field-espacio_fisico_injusticia_homologada' name='espacio_fisico_injusticia_homologada' ng-model='espacio_fisico_injusticia_homologada' class='chosen-select' data-placeholder='Seleccionar Espacio físico de la injusticia (Categoría)'>
-							<option value=''  ></option>
+							<option value='Dato no disponible'  ></option>
 							<option value='Carretera' > Carretera </option>
 							<option value='Vías/abordo del tren' > Vías/abordo del tren </option>
 							<option value='Cerca/en terminal de tren' > Cerca/en terminal de tren </option>
@@ -1018,7 +1018,7 @@
 					</div>
 					<div class='form-input-box' id="id_transporte_viaje_injusticia_input_box">
 						<select id='field-id_transporte_viaje_injusticia'  name='id_transporte_viaje_injusticia' ng-model='id_transporte_viaje_injusticia' class='chosen-select' data-placeholder='Seleccionar En que viajaba' style='width:300px'>
-							<option value=''></option>
+							<option value='Dato no disponible'></option>
 							<?php foreach ($transportes->result_array() as $row) echo "<option value='" . $row['id_transporte'] . "'>" . $row['nombre'] . "</option>"; ?>
 						</select>				
 					</div>
@@ -1038,14 +1038,14 @@
 					</div>
 					<div class='form-input-box' id="detonante_injusticia_homologada_input_box">
 						<select id='field-detonante_injusticia_homologada' name='detonante_injusticia_homologada' ng-model='detonante_injusticia_homologada' class='chosen-select' data-placeholder='Seleccionar Situación que detona la injusticia (Categoría)'>
-							<option value=''  ></option>
+							<option value='Dato no disponible'  ></option>
 							<option value='1'  >Atención a migrantes</option>
 							<option value='2'  >Detectaron su aspecto de migrante</option>
 							<option value='3'  >Falta administrativa</option>
 							<option value='4'  >Falta de documentos</option>
 							<option value='5'  >Intentar viajar</option>
-							<option value=''  ></option>
-							<option value=''  ></option>
+							<option value='Dato no disponible'  ></option>
+							<option value='Dato no disponible'  ></option>
 							<option value='8'  >Revisión</option>
 						</select>				
 					</div>
@@ -1161,7 +1161,7 @@
 					</div>
 					<div class='form-input-box' id="uniformado_responsables_input_box">
 						<select id='field-uniformado_responsables' name='uniformado_responsables' ng-model='uniformado_responsables' class='chosen-select' data-placeholder='Seleccionar Los responsables estaban uniformados'>
-							<option value=''  ></option><option value='Si'  >Si</option><option value='No'  >No</option><option value='No vio'  >No vio</option>
+							<option value='Dato no disponible'  ></option><option value='Si'  >Si</option><option value='No'  >No</option><option value='No vio'  >No vio</option>
 						</select>				
 					</div>
 					<div class='clear'></div>
@@ -1193,7 +1193,7 @@
 					</div>
 					<div class='form-input-box' id="responsables_abordo_vehiculos_responsables_input_box">
 						<select id='field-responsables_abordo_vehiculos_responsables' name='responsables_abordo_vehiculos_responsables' ng-model='responsables_abordo_vehiculos_responsables' class='chosen-select' data-placeholder='Seleccionar Iban a bordo de Vehículos'>
-							<option value=''  ></option>
+							<option value='Dato no disponible'  ></option>
 							<option value='Si'  >Si</option>
 							<option value='No'  >No</option>
 							<option value='No vio'  >No vio</option>
@@ -1208,7 +1208,7 @@
 					</div>
 					<div class='form-input-box' id="id_tipo_transporte_responsables_input_box">
 						<select id='field-id_tipo_transporte_responsables'  name='id_tipo_transporte_responsables' ng-model='id_tipo_transporte_responsables' class='chosen-select' data-placeholder='Seleccionar Tipo de vehículo' style='width:300px'>
-							<option value=''></option>
+							<option value='Dato no disponible'></option>
 							<?php foreach ($transportes->result_array() as $row) echo "<option value='" . $row['id_transporte'] . "'>" . $row['nombre'] . "</option>"; ?>
 							<option value='No aplica'>No Aplica</option>
 							
@@ -1262,7 +1262,7 @@
 					</div>
 					<div class='form-input-box' id="derechos_violados_input_box">
 						<select id='field-derechos_violados' name='derechos_violados[]' ng-model='derechos_violados' multiple='multiple' size='8' class='chosen-multiple-select' data-placeholder='Seleccionar Derechos violados' style='width:510px;' >
-							<option value=''></option>
+							<option value='Dato no disponible'></option>
 							<option value='1'>A la Libertad Personal</option>
 							<option value='2'>A la Integridad Personal</option>
 							<option value='3'>Al debido Proceso Legal</option>
@@ -1279,11 +1279,11 @@
 					</div>
 					<div class='form-input-box' id="violaciones_derechos_input_box">
 						<select id='field-violaciones_derechos' name='violaciones_derechos[]' ng-model='violaciones_derechos' multiple='multiple' size='8' class='chosen-multiple-select' data-placeholder='Seleccionar Violaciones derechos' style='width:510px;' >
-							<option value=''></option>
+							<option value='Dato no disponible'></option>
 							<option value='1'>Detención ilegal y/o arbitraria</option>
 							<option value='2'>Omisión de poner inmediatamente a disposición de la autoridad competente a la persona</option>
-							<option value=''></option>
-							<option value=''></option>
+							<option value='Dato no disponible'></option>
+							<option value='Dato no disponible'></option>
 							<option value='5'>Restricción al libre tránsito</option>
 							<option value='6'>Falta de una defensa adecuada</option>
 							<option value='7'>Falta de protección consular</option>
@@ -1319,7 +1319,7 @@
 					</div>
 					<div class='form-input-box' id="id_estado_caso_input_box">
 						<select id='field-id_estado_caso'  name='id_estado_caso' ng-model='id_estado_caso' class='chosen-select' data-placeholder='Seleccionar Estado actual del caso' style='width:300px'>
-							<option value=''></option>
+							<option value='Dato no disponible'></option>
 							<?php foreach ($estados_casos->result_array() as $row) echo "<option value='" . $row['id_estado_caso'] . "'>" . $row['nombre'] . "</option>"; ?>
 						</select>				
 					</div>
@@ -1332,7 +1332,7 @@
 					</div>
 					<div class='form-input-box' id="estado_seguimiento_input_box">
 						<select id='field-estado_seguimiento' name='estado_seguimiento' ng-model='estado_seguimiento' class='chosen-select' data-placeholder='Seleccionar Seguimiento'>
-							<option value=''  ></option>
+							<option value='Dato no disponible'  ></option>
 							<option value='Defensa'  >Defensa</option>
 							<option value='Canalización a una instancia'  >Canalización a una instancia</option>
 							<option value='Asesoría'>Asesoría</option>
