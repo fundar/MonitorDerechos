@@ -165,8 +165,12 @@
 
 			<div class="field">
 				<label> Lugar: </label>
-				<select id="select_lugar_denuncia">
-					<option value=""> Todos </option>
+				<!-- Hardcoding time!!! -->
+				<select id="location" name="location"> 
+					<option value="">Todos</option> 
+					<option value="1">Nogales, Sonora</option> 
+					<option value="2">Agua Prieta, Sonora</option> 
+					<option value="3">Altar, Sonora</option> 
 				</select>
 			</div>
 			
