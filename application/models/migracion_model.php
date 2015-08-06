@@ -81,7 +81,7 @@ class migracion_Model extends CI_Model  {
         return $query->result();
 	}
 	
-	public function allDenuncias($start, $end) {
+	public function allDenuncias($start, $end, $location) {
   	$sq  = "	SELECT intentos, motivo_migracion, coyote_guia, lugar_de_usa, viaja_solo, deportado ";
 		$sq .= " , espacio_fisico_injusticia_homologada AS espacio_fisico_injusticia, numero_migrantes_injusticia ";
 		$sq .= " , detonante_injusticia_homologada as detonante_injusticia,algun_nombre_responsables, uniformado_responsables ";
@@ -127,7 +127,12 @@ class migracion_Model extends CI_Model  {
 		$sq .= " LEFT JOIN tipos_quejas ON denuncias.id_tipo_queja = tipos_quejas.id_tipo_queja ";
 		$sq .= " LEFT JOIN estados ON denuncias.id_estado_injusticia = estados.id_estado  ";
 
-		if($start != "" && $end != "" )	$sq .= " WHERE fecha_creada BETWEEN '" . $start . "' AND '" . $end . "'";
+		if($start != "" && $end != "" && $location != "")	{
+			$sq .= " WHERE (fecha_creada BETWEEN '" . $start . "' AND '" . $end . "') ";
+			$sq .= " AND id_lugar_denuncia = " . $location;
+		} else if($location != "")	{
+			$sq .= " WHERE id_lugar_denuncia = " . $location;
+		}
 		
 		$query = $this->db->query($sq);
     return $query->result();
