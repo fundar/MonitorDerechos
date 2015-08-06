@@ -127,7 +127,7 @@ class migracion_Model extends CI_Model  {
 		$sq .= " LEFT JOIN tipos_quejas ON denuncias.id_tipo_queja = tipos_quejas.id_tipo_queja ";
 		$sq .= " LEFT JOIN estados ON denuncias.id_estado_injusticia = estados.id_estado  ";
 
-		if($start != "" && $end != "" )	$sq .= " WHERE fecha_injusticia BETWEEN '" . $start . "' AND '" . $end . "'";
+		if($start != "" && $end != "" )	$sq .= " WHERE fecha_creada BETWEEN '" . $start . "' AND '" . $end . "'";
 		
 		$query = $this->db->query($sq);
     return $query->result();
