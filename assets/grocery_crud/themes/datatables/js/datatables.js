@@ -25,7 +25,7 @@ var select_filters = function(columns, prefix){
     select.appendTo( $(this).empty() )
    
 
-			select.on( 'change', function () {
+		select.on( 'change', function () {
 			$("#grafica").fadeOut("slow", function(){ $("#grafica").empty() })
  			if($(this).val() != ""){
     		table.fnFilter(unescape("^" + $(this).val() + "$"), i, true, false, false, false); 
@@ -37,12 +37,22 @@ var select_filters = function(columns, prefix){
 		var data = table.fnGetColumnData( i )
 		  , results = [] ;
 
+
     if( localStorage.getItem(prefix + '_' + i) === null) {
     	/* Agregar opciones al input basados en todas las celdas con valores no repetidos de la columna */
     	for(var j in data) {
 				data[j] = data[j].replace(/\"/g,"\'");
+        var val = data[j]
+          , text = val; 
 
- 				select.append( '<option value="' + data[j] + '">' + data[j] + '</option>' )
+        if( data[j].match(/<a.*>(.*)<\/a>/g) ){
+        	val = val.match(/>(.*)</g).map(function(s){ return s.substr(1, s.length -2 ) }).join(',');
+        }else if( data[j].match(/<span.*>(.*)<\/span>/g) ){
+        	val = val.replace(/<span.*'>/g, '').replace(/<\/.*>/g, '')
+        	text = val.substr(19)
+        }
+ 				
+ 				select.append( '<option value="' + val + '">' + text + '</option>' )
  				if(data[j] != "" && results.indexOf( data[j] ) > -1 ) results.push(data[j])
 	 		}
 
@@ -51,7 +61,16 @@ var select_filters = function(columns, prefix){
 		}else{
 			var options = localStorage.getItem(prefix + '_' + i)
 			$.each( $.parseJSON(options), function(num,val){
-			 	if(val !== '') select.append( "<option value='" + val + "'>" + val + "</option>" )
+				var text = val;
+
+				if( val.match(/<a.*>(.*)<\/a>/g) ){
+        	val = val.match(/>(.*)</g).map(function(s){ return s.substr(1, s.length -2 ) }).join(',');
+        }else if( val.match(/<span.*>(.*)<\/span>/g) ){
+        	val = val.replace(/<span.*'>/g, '').replace(/<\/.*>/g, '')
+        	text = val.substr(19)
+        }
+
+			 	if(val !== '') select.append( "<option value='" + val + "'>" + text + "</option>" )
 			});
 
 		}
