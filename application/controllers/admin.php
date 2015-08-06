@@ -828,11 +828,12 @@ class Admin extends CI_Controller {
 
 		$start = $this->input->get("start")? $this->input->get("start") : "";
 		$end = $this->input->get("end")? $this->input->get("end") : "";
+		$location = $this->input->get("location")? $this->input->get("location") : "";
         
         $data['start'] = $start;
         $data['end'] = $end;
 
-        $data['denuncias'] = $this->migracion_model->allDenuncias($start, $end);
+        $data['denuncias'] = $this->migracion_model->allDenuncias($start, $end, $location);
 		$this->load->view('reportes.php', $data);
 	}
 
