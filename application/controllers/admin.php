@@ -525,17 +525,15 @@ class Admin extends CI_Controller {
 		$crud->set_relation('id_estado_civil', 'estado_civil', 'nombre');
 			
 		$crud->field_type('escolaridad', 'dropdown', array(
-			'Sin instrucción' => 'Sin instrucción',
-			'Primaria' => 'Primaria',
-			'Primaria inconclusa' => 'Primaria inconclusa',
-			'Secundaria' => 'Secundaria',
-			'Secundaria inconclusa' => 'Secundaria inconclusa',
-			'Preparatoria' => 'Preparatoria',
-			'Preparatoria inconclusa' => 'Preparatoria inconclusa',
-			'Licenciatura' => 'Licenciatura',
-			'Licenciatura inconlusa' => 'Licenciatura inconlusa',
-			'Maestria' => 'Maestria',
-			'Doctorado' => 'Doctorado'
+			'Primaria' => 'Primaria', 
+			'Secundaria' => 'Secundaria', 
+			'Preparatoria' => 'Preparatoria', 
+			'Licenciatura' => 'Licenciatura', 
+			'Primaria inconclusa' => 'Primaria inconclusa', 
+			'Secundaria inconclusa' => 'Secundaria inconclusa', 
+			'Preparatoria inconclusa' => 'Preparatoria inconclusa', 
+			'Licenciatura inconclusa' => 'Licenciatura inconclusa', 
+			'Sin instrucción' => 'Sin instrucción' 
 		));
 
 		$crud->field_type('ocupacion_homologada', 
