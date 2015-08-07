@@ -87,7 +87,7 @@ class migracion_Model extends CI_Model  {
 		$sq .= " , detonante_injusticia_homologada as detonante_injusticia,algun_nombre_responsables, uniformado_responsables ";
 		$sq .= " , responsables_abordo_vehiculos_responsables AS responsables_abordo_vehiculos ";
 		$sq .= " , derechos.todos AS derechos, violaciones.todas as violaciones_derechos ";
-		$sq .= " , autoridades.nombre AS autoridad, migrantes.pais AS pais_origen, migrantes.estado AS estado_origen ";
+		$sq .= " , autoridades.todas AS autoridad, migrantes.pais AS pais_origen, migrantes.estado AS estado_origen ";
 		$sq .= " , migrantes.escolaridad, migrantes.edad, migrantes.ocupacion_homologada AS ocupacion, migrantes.nombre_pueblo_indigena, migrantes.espanol ";
 		$sq .= " , migrantes.lugar_denuncia AS lugar_denuncia, migrantes.genero AS genero, migrantes.estado_civil AS estado_civil ";
 		$sq .= " , tipos_quejas.nombre AS queja, estados.nombre AS estado_injusticia  ";
@@ -118,8 +118,11 @@ class migracion_Model extends CI_Model  {
 		$sq .= " 	LEFT JOIN estado_civil ec ON m.id_estado_civil = ec.id_estado_civil  ";
 		$sq .= " 	GROUP BY id_denuncia ";
 		$sq .= " ) AS migrantes ON denuncias.id_denuncia = migrantes.id_denuncia ";
+		/* La columna de autoridades puede dar datos incompletos */
+		/* Eliminar aqui las autoridades y crear sus propias queries*/
 		$sq .= " LEFT JOIN ( ";
-		$sq .= " 	SELECT id_denuncia, a.nombre ";
+		$sq .= " 	SELECT id_denuncia, GROUP_CONCAT(DISTINCT a.nombre ORDER BY a.nombre SEPARATOR ' - ') AS todas ";
+		//$sq .= " 	SELECT id_denuncia, a.nombre AS todas ";
 		$sq .= " 	FROM autoridades_responables2denuncias a2d ";
 		$sq .= " 	LEFT JOIN autoridades a ON a2d.id_autoridad =  a.id_autoridad  ";
 		$sq .= " 	GROUP BY id_denuncia ";
