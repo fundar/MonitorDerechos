@@ -40,8 +40,9 @@ var select_filters = function(columns, prefix){
 
     if( localStorage.getItem(prefix + '_' + i) === null) {
     	/* Agregar opciones al input basados en todas las celdas con valores no repetidos de la columna */
+    	data = data.map(function(d){ return d.replace(/\"/g,"\'") } ).sort()
+
     	for(var j in data) {
-				data[j] = data[j].replace(/\"/g,"\'");
         var val = data[j]
           , text = val; 
 
