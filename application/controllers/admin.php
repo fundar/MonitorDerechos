@@ -250,7 +250,14 @@ class Admin extends CI_Controller {
 		
 		/*Falta de trabajo, Violencia/Seguridad, Reunificación familiar, Otro*/
 		$crud->display_as('motivo_migracion', 'Cuál es el motivo de migración');
-		$crud->field_type('motivo_migracion', 'dropdown', array('Falta de trabajo' => 'Falta de trabajo', 'Violencia/Seguridad' => 'Violencia/Seguridad', 'Reunificación familiar' => 'Reunificación familiar', 'Otro' => 'Otro'));
+		$crud->field_type('motivo_migracion', 'dropdown', array(
+			'Dato no disponible' => '', 
+			'Falta de trabajo' => 'Falta de trabajo', 
+			'Violencia/Seguridad' => 'Violencia/Seguridad', 
+			'Reunificación familiar' => 'Reunificación familiar', 
+			'Dato no disponible' => 'Dato no disponible', 
+			'Otro' => 'Otro'
+		));
 		
 		$crud->field_type('viaja_solo', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		$crud->display_as('con_quien_viaja', 'Con quien viaja');

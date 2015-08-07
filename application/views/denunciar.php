@@ -635,11 +635,12 @@
 					</div>
 					<div class='form-input-box' id="motivo_migracion_input_box">
 						<select id='field-motivo_migracion' name='motivo_migracion' ng-model='motivo_migracion' class='chosen-select' data-placeholder='Seleccionar Cuál es el motivo de migración' style='width:300px'>
-							<option value='Dato no disponible'  ></option>
-							<option value='Falta de trabajo'  >Falta de trabajo</option>
-							<option value='Violencia/Seguridad'  >Violencia/Seguridad</option>
-							<option value='Reunificación familiar'  >Reunificación familiar</option>
-							<option value='Otro'  >Otro</option>
+							<option value='Dato no disponible'></option>
+							<option value='Falta de trabajo'>Falta de trabajo</option>
+							<option value='Violencia/Seguridad'>Violencia/Seguridad</option>
+							<option value='Reunificación familiar'>Reunificación familiar</option>
+							<option value='Dato no disponible'>Dato no disponible</option>
+							<option value='Otro'>Otro</option>
 						</select>				
 					</div>
 					<div class='clear'></div>
