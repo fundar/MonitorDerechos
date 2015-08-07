@@ -427,18 +427,16 @@
 						</div>
 						<div class='form-input-box' id="escolaridad_input_box">
 							<select id='field-escolaridad' name='escolaridad' ng-model="escolaridad_migrante" class='chosen-select' data-placeholder='Seleccionar Escolaridad'>
-								<option value='Dato no disponible'  ></option>
-								<option value='Sin instrucción'  >Sin instrucción</option>
-								<option value='Primaria'  >Primaria</option>
-								<option value='Primaria inconclusa'  >Primaria inconclusa</option>
-								<option value='Secundaria'  >Secundaria</option>
-								<option value='Secundaria inconclusa'  >Secundaria inconclusa</option>
-								<option value='Preparatoria'  >Preparatoria</option>
-								<option value='Preparatoria inconclusa'  >Preparatoria inconclusa</option>
-								<option value='Licenciatura'  >Licenciatura</option>
-								<option value='Licenciatura inconlusa'  >Licenciatura inconlusa</option>
-								<option value='Maestria'  >Maestria</option>
-								<option value='Doctorado'  >Doctorado</option>
+								<option value='Dato no disponible'></option>
+								<option value='Primaria'>Primaria</option>
+								<option value='Secundaria'>Secundaria</option>
+								<option value='Preparatoria'>Preparatoria</option>
+								<option value='Licenciatura'>Licenciatura</option>
+								<option value='Primaria inconclusa'>Primaria inconclusa</option>
+								<option value='Secundaria inconclusa'>Secundaria inconclusa</option>
+								<option value='Preparatoria inconclusa'>Preparatoria inconclusa</option>
+								<option value='Licenciatura inconclusa'>Licenciatura inconclusa</option>
+								<option value='Sin instrucción'>Sin instrucción</option>
 							</select>				
 						</div>
 						<div class='clear'></div>
@@ -475,9 +473,9 @@
 						<div class='form-input-box' id="espanol_input_box">
 							<select id='field-espanol' name='espanol'  ng-model="espanol_migrante" class='chosen-select' data-placeholder='Seleccionar Dominio del español'>
 								<option value='Dato no disponible'  ></option>
+								<option value='0'  >No Aplica</option>
 								<option value='1'  >Si</option>
 								<option value='2'  >No</option>
-								<option value='No Aplica'  >No Aplica</option>
 							</select>				
 						</div>
 						<div class='clear'></div>
