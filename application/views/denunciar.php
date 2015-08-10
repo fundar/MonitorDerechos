@@ -581,7 +581,6 @@
 							<option value='Dato no disponible'> </option>
 							<option value='1'>Individual</option>
 							<option value='2'>Grupal</option>
-							<option value='3'>Comunitaria</option>
 						</select>				
 					</div>
 					<div class='clear'></div>
