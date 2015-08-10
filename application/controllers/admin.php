@@ -269,7 +269,18 @@ class Admin extends CI_Controller {
 		$crud->display_as('separacion_familiar', 'Te separaron de algún familiar durante la deportación');
 		$crud->field_type('separacion_familiar', 'dropdown', array(1 => 'Si', 2 => 'No', 3 => 'No aplica'));
 		$crud->display_as('familiar_separado', 'Que familiar');
+
 		$crud->display_as('situacion_familiar', 'Sabes que paso con tu familiar');
+		$crud->field_type('situacion_familiar', 'dropdown', array(
+			'Dato no disponible' => 'Dato no disponible', 
+			'Deportado' => 'Deportado', 
+			'Repatriado' => 'Repatriado', 
+			'Detenido' => 'Detenido', 
+			'Está en Estados Unidos' => 'Está en Estados Unidos', 
+			'Otro' => 'Otro'
+		));
+
+
 		//$crud->display_as('acto_siguiente', 'Qué piensa hacer ahora');
 
 		$crud->display_as('acto_siguiente_homologada', '¿Qué piensa hacer ahora?');

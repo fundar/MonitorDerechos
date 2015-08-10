@@ -452,7 +452,9 @@
 					</div>
 					<div class='form-input-box' id="viaja_solo_input_box">
 						<select id='field-viaja_solo' name='viaja_solo' ng-model='viaja_solo' class='chosen-select' data-placeholder='Seleccionar Viaja solo'>
-							<option value='Dato no disponible'  ></option><option value='1'  >Si</option><option value='2'  >No</option>
+							<option value='Dato no disponible'  ></option>
+							<option value='1'  >Si</option>
+							<option value='2'  >No</option>
 						</select>				
 					</div>
 					<div class='clear'></div>
@@ -473,7 +475,14 @@
 						Sabes que paso con tu familiar :
 					</div>
 					<div class='form-input-box' id="situacion_familiar_input_box">
-						<input id='field-situacion_familiar' name='situacion_familiar' ng-model='situacion_familiar' type='text' value="" maxlength='255' />				
+						<select id='field-situacion_familiar' name='situacion_familiar' ng-model='situacion_familiar' class='chosen-select' data-placeholder='Selecciona la situación del familiar'>
+							<option value='Dato no disponible'>Dato no disponible</option>
+							<option value='Deportado'>Deportado</option>
+							<option value='Repatriado'>Repatriado</option>
+							<option value='Detenido'>Detenido</option>
+							<option value='Está en Estados Unidos'>Está en Estados Unidos</option>
+							<option value='Otro'>Otro</option>
+						</select>	
 					</div>
 					<div class='clear'></div>
 				</div>
@@ -495,7 +504,7 @@
 					</div>
 					<div class='form-input-box' id="momento_deportado_input_box">
 						<select id='field-momento_deportado' name='momento_deportado' ng-model='momento_deportado' class='chosen-select' data-placeholder='Seleccionar Donde fue deportado'>
-							<option value='Dato no disponible'  ></option>
+							<option value='Dato no disponible'  >Dato no disponible</option>
 							<option value='Al cruzar la frontera'  >Al cruzar la frontera</option>
 							<option value='Vivías en USA'  >Vivías en USA</option>
 							<option value='Otro'  >Otro</option>
