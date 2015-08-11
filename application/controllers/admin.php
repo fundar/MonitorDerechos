@@ -259,15 +259,15 @@ class Admin extends CI_Controller {
 			'Otro' => 'Otro'
 		));
 		
-		$crud->field_type('viaja_solo', 'dropdown', array(1 => 'Si', 2 => 'No'));
+		$crud->field_type('viaja_solo', 'dropdown', array(0 => 'Dato no disponible', 1 => 'Si', 2 => 'No'));
 		$crud->display_as('con_quien_viaja', 'Con quien viaja');
 		/*Lugar deportado*/
-		$crud->field_type('deportado', 'dropdown', array(1 => 'Si', 2 => 'No'));
+		$crud->field_type('deportado', 'dropdown', array(0 => 'Dato no disponible', 1 => 'Si', 2 => 'No'));
 		$crud->display_as('momento_deportado', 'Donde fue deportado');
 		$crud->field_type('momento_deportado', 'dropdown', array('Al cruzar la frontera' => 'Al cruzar la frontera', 'Vivías en USA' => 'Vivías en USA', 'Otro' => 'Otro'));
 		/*Separacion familiar*/
 		$crud->display_as('separacion_familiar', 'Te separaron de algún familiar durante la deportación');
-		$crud->field_type('separacion_familiar', 'dropdown', array(1 => 'Si', 2 => 'No', 3 => 'No aplica'));
+		$crud->field_type('separacion_familiar', 'dropdown', array((0 => 'Dato no disponible',1 => 'Si', 2 => 'No', 3 => 'No aplica'));
 		$crud->display_as('familiar_separado', 'Que familiar');
 
 		$crud->display_as('situacion_familiar', 'Sabes que paso con tu familiar');
@@ -295,7 +295,7 @@ class Admin extends CI_Controller {
 
 		/*Coyote*/
 		$crud->display_as('coyote_guia', 'Contrató coyote o guía para cruzar');
-		$crud->field_type('coyote_guia', 'dropdown', array(1 => 'Si', 2 => 'No'));
+		$crud->field_type('coyote_guia', 'dropdown', array(0=>'Dato no disponible', 1 => 'Si', 2 => 'No'));
 		
 		$crud->display_as('lugar_contrato_coyote', 'Donde lo contrato');
 		$crud->field_type('lugar_contrato_coyote', 'dropdown', array(
@@ -340,7 +340,7 @@ class Admin extends CI_Controller {
 		/*Antecedentes de autoridades*/
 		$crud->display_as('autoridades_viaje', 'Durante el viaje con que autoridades te encontraste');
 		$crud->display_as('dano_autoridad', 'Alguna de las autoridades te causaron daño');
-		$crud->field_type('dano_autoridad', 'dropdown', array(1 => 'Si', 2 => 'No'));
+		$crud->field_type('dano_autoridad', 'dropdown', array((0 => 'Dato no disponible', 1 => 'Si', 2 => 'No'));
 		$crud->display_as('id_autoridad_dano', 'Que autoridad lo hizo');
 		$crud->set_relation('id_autoridad_dano', 'autoridades', 'nombre');
 		
@@ -439,7 +439,10 @@ class Admin extends CI_Controller {
 		$crud->set_relation('id_estado_caso', 'etados_casos', 'nombre');
 		
 		$crud->display_as('estado_seguimiento', 'Seguimiento');
-		$crud->field_type('estado_seguimiento', 'dropdown', array('Defensa' => 'Defensa', 'Canalización a una instancia' => 'Canalización a una instancia'));
+		$crud->field_type('estado_seguimiento', 'dropdown', array(
+			'Defensa' => 'Defensa', 
+			'Canalización a una instancia' => 'Canalización a una instancia'
+		));
 		
 		$crud->display_as('notas_seguimiento', 'Notas sobre el seguimiento');
 		$crud->display_as('nombre_persona_atendio_seguimiento', 'Nombre de la persona que atendio el caso');
@@ -551,7 +554,7 @@ class Admin extends CI_Controller {
 			'Secundaria inconclusa' => 'Secundaria inconclusa', 
 			'Preparatoria inconclusa' => 'Preparatoria inconclusa', 
 			'Licenciatura inconclusa' => 'Licenciatura inconclusa', 
-			'Sin instrucción' => 'Sin instrucción' 
+			'Sin instrucción' => 'Sin instrucción'
 		));
 
 		$crud->field_type('ocupacion_homologada', 
