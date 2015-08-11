@@ -267,7 +267,7 @@ class Admin extends CI_Controller {
 		$crud->field_type('momento_deportado', 'dropdown', array('Al cruzar la frontera' => 'Al cruzar la frontera', 'Vivías en USA' => 'Vivías en USA', 'Otro' => 'Otro'));
 		/*Separacion familiar*/
 		$crud->display_as('separacion_familiar', 'Te separaron de algún familiar durante la deportación');
-		$crud->field_type('separacion_familiar', 'dropdown', array((0 => 'Dato no disponible',1 => 'Si', 2 => 'No', 3 => 'No aplica'));
+		$crud->field_type('separacion_familiar', 'dropdown', array(0 => 'Dato no disponible',1 => 'Si', 2 => 'No', 3 => 'No aplica'));
 		$crud->display_as('familiar_separado', 'Que familiar');
 
 		$crud->display_as('situacion_familiar', 'Sabes que paso con tu familiar');
@@ -340,7 +340,7 @@ class Admin extends CI_Controller {
 		/*Antecedentes de autoridades*/
 		$crud->display_as('autoridades_viaje', 'Durante el viaje con que autoridades te encontraste');
 		$crud->display_as('dano_autoridad', 'Alguna de las autoridades te causaron daño');
-		$crud->field_type('dano_autoridad', 'dropdown', array((0 => 'Dato no disponible', 1 => 'Si', 2 => 'No'));
+		$crud->field_type('dano_autoridad', 'dropdown', array(0 => 'Dato no disponible', 1 => 'Si', 2 => 'No'));
 		$crud->display_as('id_autoridad_dano', 'Que autoridad lo hizo');
 		$crud->set_relation('id_autoridad_dano', 'autoridades', 'nombre');
 		
