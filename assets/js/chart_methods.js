@@ -134,6 +134,22 @@ var actualizar_histograma = function(histograma){
   histograma.deportado[1][0] = "Dato no disponible"; // 0 como tag original
   histograma.deportado[2][0] = "No"; // 2 como tag original
 
+
+
+  var ocupacion_co = {
+    '1': 'Al hogar', '2': 'Albañil','3': 'Campesino',
+    '4': 'Comerciante', '5': 'Empleado', '6': 'Empleado de gobierno', 
+    '7': 'Jornalero', '8': 'Obrero', '': 'Dato no disponible'
+  }
+
+  var ocupaciones = histograma.ocupacion
+  for(var i = 0 in ocupaciones){
+    if(ocupaciones[i][0] in ocupacion_co)
+      ocupaciones[i][0] = ocupacion_co[ ocupaciones[i][0] ]
+  }
+   
+  console.log( histograma.ocupacion)
+
   /* Reducir a dos (SI/NO) categorias la pregunta algun_nombre_responsables */
   var n_topico_algun_nombre_responsables = [ 
     { name: "Si", visible:true, y:0 },
