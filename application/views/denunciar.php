@@ -390,14 +390,14 @@
 						<div class='form-input-box' id="ocupacion_homologada_input_box">
 							<select id='field-ocupacion_homologada' name='ocupacion_homologada'  ng-model="ocupacion_homologada_migrante" class='chosen-select' data-placeholder='¿En que categoría ubica esta ocupación?'>
 								<option value=''  ></option>
-								<option value='1'  >Al hogar</option>
-								<option value='2'  >Albañil</option>
-								<option value='3'  >Campesino</option>
-								<option value='4'  >Comerciante</option>
-								<option value='5'  >Empleado</option>
-								<option value='6'  >Empleado de gobierno</option>
-								<option value='7'  >Jornalero</option>
-								<option value='8'  >Peón</option>
+								<option value='Al hogar'  >Al hogar</option>
+								<option value='Albañil'  >Albañil</option>
+								<option value='Campesino'  >Campesino</option>
+								<option value='Comerciante'  >Comerciante</option>
+								<option value='Empleado'  >Empleado</option>
+								<option value='Empleado de gobierno'  >Empleado de gobierno</option>
+								<option value='Jornalero'  >Jornalero</option>
+								<option value='Obrero'  >Obrero</option>
 							</select>				
 						</div>
 						<div class='clear'></div>

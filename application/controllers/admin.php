@@ -202,11 +202,15 @@ class Admin extends CI_Controller {
 
 		if($state == 'insert') { // si se trata de solo una insercion se devuelve un json
 			$crud->callback_after_insert(array($this, 'denuncia_after_insert'));
-    	}
+    }else
 
-    	if($state == "edit") {
+    if($state == "edit") {
 			$crud->field_type('folio', 'hidden', '');
 			$crud->field_type('id_denuncia', 'hidden', '');
+		}else
+
+		if($state == "export") {
+			$this->export_to_csv($state_info);
 		}
 
 		$output = $crud->render();
@@ -559,14 +563,14 @@ class Admin extends CI_Controller {
 
 		$crud->field_type('ocupacion_homologada', 
 			'dropdown', array(
-				1 => 'Al hogar', 
-				2 => 'Albañil',
-				3 => 'Campesino',
-				4 => 'Comerciante',
-				5 => 'Empleado',
-				6 => 'Empleado de gobierno',
-				7 => 'Jornalero',
-				8 => 'Obrero'
+				'Al hogar' => 'Al hogar', 
+				'Albañil' => 'Albañil',
+				'Campesino' => 'Campesino',
+				'Comerciante' => 'Comerciante',
+				'Empleado' => 'Empleado',
+				'Empleado de gobierno' => 'Empleado de gobierno',
+				'Jornalero' => 'Jornalero',
+				'Obrero' => 'Obrero'
 			)
 		);
 		
@@ -588,17 +592,21 @@ class Admin extends CI_Controller {
 		//$crud->unset_export();
 
 		$state = $crud->getState();
-    	$state_info = $crud->getStateInfo();
+    $state_info = $crud->getStateInfo();
 
+    $crud->display_as('folio', 'Folio');
+		
 		if($state == 'insert') { // si se trata de solo una insercion se devuelve un json
 			$crud->callback_after_insert(array($this, 'migrante_after_insert'));
-    	}
-
-    	$crud->display_as('folio', 'Folio');
-
-    	if($state == "edit") {
+    }else
+    
+    if($state == "edit") {
 			$crud->field_type('folio', 'hidden', '');
 			$crud->field_type('id_migrante', 'hidden', '');
+		}else
+
+		if($state == "export") {
+			$this->export_to_csv($state_info);
 		}
 
     	/* No mostrar opción de agregar en el listado */
@@ -624,6 +632,52 @@ class Admin extends CI_Controller {
 			return site_url('admin/denuncias') . '/read/' . $row->denuncia;
 		}
 		return "#";
+	}
+
+	public function export_to_csv($state_info = null){
+		$data = $this->get_common_data();
+		 
+		$data->order_by = $this->order_by;
+		$data->types = $this->get_field_types();
+		 
+		$data->list = $this->get_list();
+		$data->list = $this->change_list($data->list , $data->types);
+		$data->list = $this->change_list_add_actions($data->list);
+		 
+		$data->total_results = $this->get_total_results();
+		 
+		$data->columns = $this->get_columns();
+		$data->primary_key = $this->get_primary_key();
+		 
+		@ob_end_clean();
+		$this->_export_to_csv($data);
+	}
+	 
+	 
+	protected function _export_to_csv($data){
+		$string_to_export = "";
+		foreach($data->columns as $column){ 
+			$string_to_export .= $column->display_as."\t";
+		}
+		$string_to_export .= "\n";
+		 
+		foreach($data->list as $num_row => $row){
+			foreach($data->columns as $column){
+				$string_to_export .= $this->_trim_export_string($row->{$column->field_name})."\t";
+			}
+			$string_to_export .= "\n";
+		}
+		 
+		// Convert to UTF-16LE and Prepend BOM
+		$string_to_export = "\xFF\xFE" .mb_convert_encoding($string_to_export, 'UTF-16LE', 'UTF-8');
+		 
+		$filename = "export-".date("Y-m-d_H:i:s").".csv";
+		 
+		header('Content-type: application/vnd.ms-excel;charset=UTF-16LE');
+		header('Content-Disposition: attachment; filename='.$filename);
+		header("Cache-Control: no-cache");
+		echo $string_to_export;
+		die();
 	}
 
 	
