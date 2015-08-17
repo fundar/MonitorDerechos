@@ -83,6 +83,19 @@ foreach($css_files as $file): ?>
 		float: left;
 		margin: 20px auto;
 	}
+/*
+	table.dataTable td{
+		max-height: 30px;
+		min-height: 30px;
+  	overflow: hidden;
+  	height: 30px;
+	}
+*/
+	.dataTable tbody tr {
+    min-height: 35px; 
+    max-height: 35px; 
+    height: 35px; 
+	}
 </style>
 </head>
 <body>
@@ -417,6 +430,15 @@ foreach($css_files as $file): ?>
 				}
 			<?php } ?>
 		});
+
+		/* Limitar el ancho y alto de las celdas 49 de todos los registros */
+		/* En este caso se trata de la columna de Descripción del Evento*/
+
+			$('tr td:nth-child(49)').each(function(){
+			  $(this)
+			    .html('<div>' + $(this).html() + '</div>')
+			    .css('min-width', '350px');
+			})
     </script>
 </body>
 </html>
