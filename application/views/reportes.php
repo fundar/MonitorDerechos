@@ -356,7 +356,6 @@
 			var i = $("#l7").val();
 			var topico = $("#l8").val();
 			graficar_por_subtema(denuncias, "autoridad", autoridades[i], topico)
-			console.log(topico)
 			/*
 			*/
 			return false;
@@ -365,12 +364,14 @@
 		$("#periodo").on("submit", function(){
 			var start = $("#start").val().split("-");
 			var end = $("#end").val().split("-");
+
 			$.ajax({
 				type:"GET",
 			  url: "http://ddhh.fundarlabs.org.mx/admin/graficas_migrantes",
 			  data:{
 			  	"start": [start[2], start[1], start[0]].join("-"), 
-			  	"end": [end[2], end[1], end[0]].join("-")
+			  	"end": [end[2], end[1], end[0]].join("-"),
+			  	"location": $("#location").val()
 			  },
 			  async: false
 			}).done(function() {});
