@@ -1,7 +1,7 @@
 var tags_denuncias = {
     pais_origen: "País de Origen",
     /**/estado_origen: "Estado",
-    /**/municipio_origen: "Municipio",
+    //municipio_origen: "Municipio",
     genero: "Género",
     derechos: "Derechos Violentados en la Denuncia",
     violaciones_derechos: "Violaciones a los Derechos",
@@ -43,31 +43,31 @@ var crear_select = function(topics, target_id){
 }
 
 var generar_histograma = function (data){
-    var histograma = {}
-    var tags = {}
+  var histograma = {}
+  var tags = {}
 
-    for(var key in data[0]){ 
-        histograma[key] = [] 
-        tags[key] = [] 
-    }
+  for(var key in data[0]){ 
+      histograma[key] = [] 
+      tags[key] = [] 
+  }
 
-    //console.log(tags)
-    for(var i in data){
-        for(var key in data[i] ){
-            var tag = (data[i][key] == null) ? "0" : data[i][key];
-            var topico = histograma[key];
+  //console.log(tags)
+  for(var i in data){
+      for(var key in data[i] ){
+          var tag = (data[i][key] == null) ? "0" : data[i][key];
+          var topico = histograma[key];
 
-            var pos = tags[key].indexOf(tag); 
-            if( pos > -1 ) { 
-                topico[pos][1]++
-            } else {
-                topico.push([tag, 1])
-                tags[key].push(tag)
-            }
-        }
-    }
+          var pos = tags[key].indexOf(tag); 
+          if( pos > -1 ) { 
+              topico[pos][1]++
+          } else {
+              topico.push([tag, 1])
+              tags[key].push(tag)
+          }
+      }
+  }
 
-    return histograma;
+  return histograma;
 }
 
 var actualizar_histograma = function(histograma){
@@ -95,6 +95,8 @@ var actualizar_histograma = function(histograma){
     { name: "95 a 99 años", visible:true, y:0 },
     { name: "100 o más años", visible:true, y:0 }
   ]
+
+  console.log(histograma)
 
   var topico_edad = histograma.edad
   /* Crear rangos de edad */
@@ -159,9 +161,12 @@ var graficar = function(content_tag, data, text, text2){
   var total = 0;
 
   for(var i in data) {
+    if( data[i][0] === null) data[i][0] = 'Dato no disponible'
     categories.push(data[i][0])
     total += parseInt(data[i][1])
   }
+
+
   if(!text2) text2 = ''
   $("#grafica").highcharts({
     title: { text: text + " ( Total: " + total + " )" + "<br>" + text2 , style:{"fontSize": "24px"} },
@@ -183,7 +188,14 @@ var graficar = function(content_tag, data, text, text2){
       name: 'Migrantes', 
       data: data 
     }],
-    exporting: { filename: content_tag}
+    exporting: { 
+      filename: content_tag,
+      chartOptions:{
+        plotBackgroundColor: "#ccc",
+        backgroundColor: "#ccc",
+        type: "line"
+      }
+    }
   });
 }
 
@@ -249,6 +261,7 @@ var graficar_l2 = function(content_tag, histograma, title, l1_label, l2_label){
   var total = 0;
   for(var i in histograma.categories){
     categories.push(histograma.categories[i].name)
+    if( histograma.categories[i].name === null) histograma.categories[i].name = 'Dato no disponible'
     total += parseInt( histograma.categories[i].y )
   }
 
@@ -307,7 +320,9 @@ var graficar_l2 = function(content_tag, histograma, title, l1_label, l2_label){
           }
       }
     }],
-    exporting: { filename: content_tag }
+    exporting: { 
+      filename: content_tag
+    }
 
   });
 }
@@ -316,13 +331,18 @@ var graficar_por_subtema = function(denuncias, tema, subtema, tema2){
   var topic_data = [], tags = [];
   for(var i in denuncias){
     if(denuncias[i][tema] == subtema){
+      
+      if( denuncias[i][tema2] === null){
+        denuncias[i][tema2] = 'Dato no disponible'
+      }
+
       var pos = tags.indexOf(denuncias[i][tema2]); 
       if( pos > -1 ) { 
-                topic_data[pos][1]++
-            } else {
-                topic_data.push( [denuncias[i][tema2], 1] )
+        topic_data[pos][1]++
+      } else {
+        topic_data.push( [denuncias[i][tema2], 1] )
         tags.push(denuncias[i][tema2])
-            }
+      }
     }
   }
 
@@ -331,6 +351,9 @@ var graficar_por_subtema = function(denuncias, tema, subtema, tema2){
       text2 = tags_denuncias[tema2]
               //+ subtema.split(" - ").join(", ")
     , filename = subtema + "_x_" + tags_denuncias[tema2] 
+    
+    //console.log(tags)
+    //console.log(topic_data)
 
   graficar(filename, topic_data, text, text2)
 }
