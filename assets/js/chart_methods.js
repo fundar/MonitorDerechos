@@ -206,6 +206,7 @@ var generar_histograma_l2 = function (data, l1, l2){
   h.data = []
 
   for( var i in data ){ 
+    if( data[i][l1] === null) data[i][0] = 'Dato no disponible'
     var pos_l1 = h.categories.indexOf(data[i][l1]);
     if( pos_l1 > -1 ){
       var pos_l2 = h.data[pos_l1].drilldown.categories.indexOf(data[i][l2])

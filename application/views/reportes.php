@@ -181,8 +181,8 @@
 			<ul class="menu_graficas">
 				<li> | <a href="#graficar_1_var" style="color:#000"> Un criterio </a> | </li>
 				<li> | <a href="#graficar_2_var"> Dos criterios </a> | </li>
-				<li> | <a href="#graficar_derechos"> Derechos Violentados </a> | </li>
-				<li> | <a href="#graficar_violaciones_derechos">  Violaciones a los Derechos </a> | </li>
+				<li> | <a href="#graficar_derechos"> Derechos Violentados [Patrones] </a> | </li>
+				<li> | <a href="#graficar_violaciones_derechos">  Violaciones a los Derechos [Patrones] </a> | </li>
 				<li> | <a href="#graficar_autoridades"> Autoridades que cometieron las Violaciones a los Derechos </a> </li>
 			</ul>
 		</nav>
