@@ -109,24 +109,24 @@
 	   }
 
 
-	#_tooltip{
-		font-weight: bolder;
-		color:#fff;
-		//background: rgb(148, 185, 217);
-		background: rgba(120, 166, 225, 0.9);
-		padding: 6px 3px 3px 6px;
-		display: none;
-		position: absolute;
-		max-width: 70%;
-		min-height: 40px;
-		overflow:visible;
-	}
-	a.menu_item {
-		font-weight: bolder;
-    color: #555;
-    text-decoration: none;
-    font-size: 16px;
-	}
+		#_tooltip{
+			font-weight: bolder;
+			color:#fff;
+			//background: rgb(148, 185, 217);
+			background: rgba(120, 166, 225, 0.9);
+			padding: 6px 3px 3px 6px;
+			display: none;
+			position: absolute;
+			max-width: 70%;
+			min-height: 40px;
+			overflow:visible;
+		}
+		a.menu_item {
+			font-weight: bolder;
+	    color: #555;
+	    text-decoration: none;
+	    font-size: 16px;
+		}
 	</style>
 </head>
 
@@ -181,9 +181,15 @@
 			<ul class="menu_graficas">
 				<li> | <a href="#graficar_1_var" style="color:#000"> Un criterio </a> | </li>
 				<li> | <a href="#graficar_2_var"> Dos criterios </a> | </li>
+
+				<li> | <a href="#graficar_derechos_individual"> Derechos Violentados </a> | </li>
 				<li> | <a href="#graficar_derechos"> Derechos Violentados [Patrones] </a> | </li>
+
+				<li> | <a href="#graficar_violaciones_derechos_individual">  Violaciones a los Derechos</a> | </li>
 				<li> | <a href="#graficar_violaciones_derechos">  Violaciones a los Derechos [Patrones] </a> | </li>
-				<li> | <a href="#graficar_autoridades"> Autoridades que cometieron las Violaciones a los Derechos </a> </li>
+
+				<li> | <a href="#graficar_autoridades_individual"> Autoridades que cometieron las Violaciones a los Derechos </a> </li>
+				<li> | <a href="#graficar_autoridades"> Autoridades que cometieron las Violaciones a los Derechos [Patrones] </a> </li>
 			</ul>
 		</nav>
 
@@ -223,6 +229,20 @@
 			<br>
 			<input type="submit" value="Graficar">
 		</form>
+
+		<form id="graficar_derechos_individual" class="non-printable graficar" style="display:none;">
+			<div class="field">
+				<label> Elige el Derecho: </label>
+				<select id="l3i"> </select>
+			</div>
+			<div class="field">
+				<label> Elige el segundo criterio: </label>
+				<select id="l4i"></select>
+			</div>
+
+			<br>
+			<input type="submit" value="Graficar">
+		</form>
 		
 		<form id="graficar_violaciones_derechos" class="non-printable graficar" style="display:none;">
 			<div class="field">
@@ -232,6 +252,19 @@
 			<div class="field">
 				<label> Elige el segundo criterio: </label>
 				<select id="l6"></select>
+			</div>
+			<br> <br>
+			<input type="submit" value="Graficar">
+		</form>
+
+		<form id="graficar_violaciones_derechos_individual" class="non-printable graficar" style="display:none;">
+			<div class="field">
+				<label> Elige el tipo de Violación a los Derechos: </label>
+				<select id="l5i"> </select>
+			</div>
+			<div class="field">
+				<label> Elige el segundo criterio: </label>
+				<select id="l6i"></select>
 			</div>
 			<br> <br>
 			<input type="submit" value="Graficar">
@@ -249,6 +282,20 @@
 			<br> <br>
 			<input type="submit" value="Graficar">
 		</form>
+
+		<form id="graficar_autoridades_individual" class="non-printable graficar" style="display:none;">
+			<div class="field">
+				<label> Elige la autoridad que cometio la Violación a los Derechos: </label>
+				<select id="l7i"> </select>
+			</div>
+			<div class="field">
+				<label> Elige el segundo criterio: </label>
+				<select id="l8i"></select>
+			</div>
+			<br> <br>
+			<input type="submit" value="Graficar">
+		</form>
+
 	</div>
  
 	<section id="grafica">
@@ -270,10 +317,26 @@
 		var histograma_denuncias = actualizar_histograma( generar_histograma(denuncias) )
 
 		var derechos = []
+			, derechos_individual = []
 		  , violaciones_derechos = []
+		  , violaciones_derechos_individual = []
 		  , autoridades = []
+		  , autoridades_individual = []
 		  , lugares = []
 		  , pos;
+
+		
+		for(var i = 0 in histograma_denuncias.derechos_individual){
+			derechos_individual.push( histograma_denuncias.derechos_individual[i][0] )
+		}
+
+		for(var i = 0 in histograma_denuncias.derechos_individual){
+			violaciones_derechos_individual.push( histograma_denuncias.violaciones_derechos_individual[i][0] )
+		}
+
+		for(var i = 0 in histograma_denuncias.autoridad_individual){
+			autoridades_individual.push( histograma_denuncias.autoridad_individual[i][0] )
+		}
 
 		for(var i in denuncias) {
 			pos = derechos.indexOf(denuncias[i]["derechos"]); 
@@ -288,7 +351,7 @@
 			pos = lugares.indexOf(denuncias[i]["lugar_denuncia"]); 
 			if( pos < 0 ) lugares.push(denuncias[i]["lugar_denuncia"])
 		}
-		/* crear_select(<datos>, <id_tag>)*/
+
 		crear_select(lugares, "select_lugar_denuncia")
 
 		crear_select(tags_denuncias, "l")
@@ -298,11 +361,20 @@
 		crear_select(derechos, "l3")
 		crear_select(tags_denuncias, "l4")
 
+		crear_select(derechos_individual, "l3i")
+		crear_select(tags_denuncias, "l4i")
+
 		crear_select(violaciones_derechos, "l5")
 		crear_select(tags_denuncias, "l6")
 
+		crear_select(violaciones_derechos_individual, "l5i")
+		crear_select(tags_denuncias, "l6i")
+
 		crear_select(autoridades, "l7")
 		crear_select(tags_denuncias, "l8")
+
+		crear_select(autoridades_individual, "l7i")
+		crear_select(tags_denuncias, "l8i")
 
 		graficar_por_subtema(denuncias, "violaciones_derechos", violaciones_derechos[1], "autoridad")
 		
@@ -356,11 +428,32 @@
 			var i = $("#l7").val();
 			var topico = $("#l8").val();
 			graficar_por_subtema(denuncias, "autoridad", autoridades[i], topico)
-			/*
-			*/
 			return false;
 		})
 
+		/*
+		$("#graficar_derechos_individual").on("submit", function(){
+			var i = $("#l3").val();
+			var topico = $("#l4").val();
+			graficar_por_subtema(denuncias, "derechos_individual", derechos[i], topico)
+			return false;
+		})
+
+		$("#graficar_violaciones_derechos_individual").on("submit", function(){
+			var i = $("#l5").val();
+			var topico = $("#l6").val();
+			graficar_por_subtema(denuncias, "violaciones_derechos_individual", violaciones_derechos[i], topico)
+			return false;
+		})
+
+		$("#graficar_autoridades_individual").on("submit", function(){
+			var i = $("#l7").val();
+			var topico = $("#l8").val();
+			graficar_por_subtema(denuncias, "autoridad_individual", autoridades[i], topico)
+			return false;
+		})
+		*/
+		
 		$("#periodo").on("submit", function(){
 			var start = $("#start").val().split("-");
 			var end = $("#end").val().split("-");

@@ -116,7 +116,7 @@ var generar_histograma = function(data){
 
 var actualizar_histograma = function(histograma){
 
-  console.log(histograma)
+  
 
   var n_topico_edad = [ 
     { name: "0 a 4 años", visible:true, y:0 },
@@ -198,6 +198,8 @@ var actualizar_histograma = function(histograma){
   }
 
   histograma.algun_nombre_responsables = n_topico_algun_nombre_responsables
+
+  console.log(histograma)
   return histograma
 }
 
@@ -383,9 +385,8 @@ var graficar_por_subtema = function(denuncias, tema, subtema, tema2){
       }
 
       var pos = tags.indexOf(denuncias[i][tema2]); 
-      if( pos > -1 ) { 
-        topic_data[pos][1]++
-      } else {
+      if( pos > -1 ) { topic_data[pos][1]++ } 
+      else {
         topic_data.push( [denuncias[i][tema2], 1] )
         tags.push(denuncias[i][tema2])
       }
