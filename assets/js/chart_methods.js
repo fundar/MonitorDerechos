@@ -1,34 +1,47 @@
 var tags_denuncias = {
-    pais_origen: "País de Origen",
-    /**/estado_origen: "Estado",
-    //municipio_origen: "Municipio",
-    genero: "Género",
-    derechos: "Derechos Violentados en la Denuncia",
-    violaciones_derechos: "Violaciones a los Derechos",
-    edad: "Edad",
-    ocupacion: "Ocupación",
-    estado_civil: "Estado Civil",
-    escolaridad: "Escolaridad",
-    nombre_pueblo_indigena: "Pueblo Indígena",
-    espanol: "Habla Español",
-    lugar_denuncia: "Lugar de Denuncia",
-    queja: "Motivos de queja", 
-    intentos: "Cantidad de Intentos de cruzar la frontera", 
-    motivo_migracion: "Motivos de Migracion", 
-    coyote_guia: "Usó Coyote", 
-    //lugar_de_usa: "Lugar de E.U.A al que se dirigía", 
-    viaja_solo: "Viaja Solo", 
-    deportado: "Fue deportado", 
-    autoridad: "Autoridad que cometio la violación a Derechos Humanos", 
-    /**/pais_injusticia: "País donde se cometio la violación a Derechos Humanos", 
-    estado_injusticia: "Estado donde se cometio la violación a Derechos Humanos", 
-    espacio_fisico_injusticia: "Espacio físico donde se cometio la violación a Derechos Humanos", 
-    detonante_injusticia: "Situación que detona la violación a Derechos Humanos", 
-    numero_migrantes_injusticia: "Número de victimas directas durante la violación a Derechos Humanos", 
-    algun_nombre_responsables: "Conoce algún nombre de los responsables", 
-    uniformado_responsables: "Usaban uniforme los responsables", 
-    responsables_abordo_vehiculos: "Los responsables estaban a bordo de algún vehículo", 
-  }
+  pais_origen: "País de Origen",
+  /**/estado_origen: "Estado",
+  //municipio_origen: "Municipio",
+  genero: "Género",
+
+  derechos_individual: "Derechos violentados en la denuncia",
+  derechos: "Derechos violentados en la denuncia [Patrones]",
+  violaciones_derechos_individual: "Violaciones a los derechos",
+  violaciones_derechos: "Violaciones a los derechos [Patrones]",
+
+  edad: "Edad",
+  ocupacion: "Ocupación",
+  estado_civil: "Estado Civil",
+  escolaridad: "Escolaridad",
+  nombre_pueblo_indigena: "Pueblo Indígena",
+  espanol: "Habla Español",
+  lugar_denuncia: "Lugar de Denuncia",
+  queja: "Motivos de queja", 
+  intentos: "Cantidad de Intentos de cruzar la frontera", 
+  motivo_migracion: "Motivos de Migracion", 
+  coyote_guia: "Usó Coyote", 
+  //lugar_de_usa: "Lugar de E.U.A al que se dirigía", 
+  viaja_solo: "Viaja Solo", 
+  deportado: "Fue deportado", 
+
+  autoridad_individual: "Autoridad que cometio la violación a derechos humanos", 
+  autoridad: "Autoridad que cometio la violación a derechos humanos [Patrones]", 
+
+  pais_injusticia: "País donde se cometio la violación a Derechos Humanos", 
+  estado_injusticia: "Estado donde se cometio la violación a Derechos Humanos", 
+  espacio_fisico_injusticia: "Espacio físico donde se cometio la violación a Derechos Humanos", 
+  detonante_injusticia: "Situación que detona la violación a Derechos Humanos", 
+  numero_migrantes_injusticia: "Número de victimas directas durante la violación a Derechos Humanos", 
+  algun_nombre_responsables: "Conoce algún nombre de los responsables", 
+  uniformado_responsables: "Usaban uniforme los responsables", 
+  responsables_abordo_vehiculos: "Los responsables estaban a bordo de algún vehículo", 
+}
+
+/*
+tags_denuncias['derechos_individual'] = "Derechos violentados en la denuncia"
+tags_denuncias['violaciones_individual'] = "Violaciones a los derechos"
+tags_denuncias['autoridad_individual'] = "Autoridad que cometio la violación a derechos humanos"
+*/
 
 var crear_select = function(topics, target_id){
   var html = ""
@@ -42,7 +55,7 @@ var crear_select = function(topics, target_id){
   //return html 
 }
 
-var generar_histograma = function (data){
+var generar_histograma = function(data){
   var histograma = {}
   var tags = {}
 
@@ -51,26 +64,59 @@ var generar_histograma = function (data){
       tags[key] = [] 
   }
 
-  //console.log(tags)
-  for(var i in data){
-      for(var key in data[i] ){
-          var tag = (data[i][key] == null) ? "0" : data[i][key];
-          var topico = histograma[key];
+  var ind = ['autoridad', 'derechos', 'violaciones_derechos'];
 
-          var pos = tags[key].indexOf(tag); 
-          if( pos > -1 ) { 
-              topico[pos][1]++
-          } else {
-              topico.push([tag, 1])
-              tags[key].push(tag)
-          }
+  histograma['derechos_individual'] = []
+  histograma['violaciones_derechos_individual'] = []
+  histograma['autoridad_individual'] = []
+
+  tags['derechos_individual'] = [] 
+  tags['violaciones_derechos_individual'] = [] 
+  tags['autoridad_individual'] = [] 
+
+
+  for(var i in data){
+    for(var key in data[i] ){
+      var tag = (data[i][key] == null) ? "0" : data[i][key];
+      var topico = histograma[key];
+
+      var pos = tags[key].indexOf(tag); 
+      if( pos > -1 ) { 
+          topico[pos][1]++
+      } else {
+          topico.push([tag, 1])
+          tags[key].push(tag)
       }
+        // Object.keys(obj)
+      var pind = ind.indexOf(key);
+      //console.log()
+
+      if( pind > -1){
+        var k = ind[pind] + '_individual';
+        var _tags = tag.split(' - ')
+
+        for(var j in _tags){
+          var t = _tags[j];
+          pos = tags[k].indexOf(t); 
+          if( pos > -1 ) {  histograma[k][pos][1]++ } 
+          else {
+            histograma[k].push([t,1])
+            tags[k].push(t)
+          }
+        } 
+
+      }
+
+    }
   }
+
 
   return histograma;
 }
 
 var actualizar_histograma = function(histograma){
+
+  console.log(histograma)
 
   var n_topico_edad = [ 
     { name: "0 a 4 años", visible:true, y:0 },
@@ -96,7 +142,6 @@ var actualizar_histograma = function(histograma){
     { name: "100 o más años", visible:true, y:0 }
   ]
 
-  console.log(histograma)
 
   var topico_edad = histograma.edad
   /* Crear rangos de edad */
