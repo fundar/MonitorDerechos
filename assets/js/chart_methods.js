@@ -89,7 +89,6 @@ var generar_histograma = function(data){
       }
         // Object.keys(obj)
       var pind = ind.indexOf(key);
-      //console.log()
 
       if( pind > -1){
         var k = ind[pind] + '_individual';
@@ -199,7 +198,6 @@ var actualizar_histograma = function(histograma){
 
   histograma.algun_nombre_responsables = n_topico_algun_nombre_responsables
 
-  console.log(histograma)
   return histograma
 }
 
@@ -334,7 +332,6 @@ var graficar_l2 = function(content_tag, histograma, title, l1_label, l2_label){
     tooltip: { 
       valueSuffix: '%',
       formatter: function() {
-        console.log(this)
         return this.series.name + ': <b>' + this.key + '</b> <br>' + 'Total de migrantes: <b>' + this.y + '</b>';
         //return 'The value for <b>' + this.key + '</b> is <b>' + this.y + '</b>, in series '+ this.series.name;
       }
@@ -375,32 +372,46 @@ var graficar_l2 = function(content_tag, histograma, title, l1_label, l2_label){
   });
 }
 
-var graficar_por_subtema = function(denuncias, tema, subtema, tema2){
+var graficar_por_subtema = function(denuncias, tema, indiv, subtema, tema2){
   var topic_data = [], tags = [];
+  var ind = ["derechos_individual", "violaciones_derechos_individual", "autoridad_individual"]
   for(var i in denuncias){
-    if(denuncias[i][tema] == subtema){
-      
-      if( denuncias[i][tema2] === null){
-        denuncias[i][tema2] = 'Dato no disponible'
+    if( denuncias[i][tema] && denuncias[i][tema].indexOf(subtema) > -1 ){
+      var p = ind.indexOf(tema2);
+    
+      if( p > -1 ){
+        __tema2 = tema2.substr(0, tema2.indexOf("_individual"))
+        if( denuncias[i][__tema2] === null) denuncias[i][__tema2] = 'Dato no disponible'
+
+        t = denuncias[i][__tema2].split(" - ")
+
+        for( var j = 0 in t ){
+          var pos = tags.indexOf( t[j] ); 
+          if( pos > -1 ) { topic_data[pos][1]++ } 
+          else {
+            topic_data.push( [t[j], 1] )
+            tags.push(t[j])
+          }
+        }
+      }else{
+        if( denuncias[i][tema2] === null) denuncias[i][tema2] = 'Dato no disponible'
+        var pos = tags.indexOf(denuncias[i][tema2]); 
+        if( pos > -1 ) { topic_data[pos][1]++ } 
+        else {
+          topic_data.push( [denuncias[i][tema2], 1] )
+          tags.push(denuncias[i][tema2])
+        }
+        
       }
 
-      var pos = tags.indexOf(denuncias[i][tema2]); 
-      if( pos > -1 ) { topic_data[pos][1]++ } 
-      else {
-        topic_data.push( [denuncias[i][tema2], 1] )
-        tags.push(denuncias[i][tema2])
-      }
     }
   }
 
-  //var title = "<b>" + tags_denuncias[tema] + "</b> <br>" +
+  if(indiv) tema += "_individual"
   var text  = tags_denuncias[tema] +  ": <b>" + subtema + "</b> ",
       text2 = tags_denuncias[tema2]
-              //+ subtema.split(" - ").join(", ")
     , filename = subtema + "_x_" + tags_denuncias[tema2] 
     
-    //console.log(tags)
-    //console.log(topic_data)
-
   graficar(filename, topic_data, text, text2)
 }
+
