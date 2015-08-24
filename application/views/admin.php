@@ -437,6 +437,7 @@ foreach($css_files as $file): ?>
 			$('tr td:nth-child(49)').each(function(){
 			  $(this)
 			    .html('<div>' + $(this).html() + '</div>')
+			    .css('min-height', '120px')
 			    .css('min-width', '350px');
 			})
     </script>

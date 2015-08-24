@@ -22,8 +22,15 @@ table.dataTable tfoot th {
 	font-weight: bold;
 }
 
-table.dataTable td {
+table.dataTable td{
 	padding: 3px 10px;
+}
+
+td div {
+   height: 120px;
+   min-height: 120px;
+   overflow-y: scroll;
+   vertical-align: middle;
 }
 
 table.dataTable td.center,
