@@ -352,29 +352,30 @@
 			if( pos < 0 ) lugares.push(denuncias[i]["lugar_denuncia"])
 		}
 
-		crear_select(lugares, "select_lugar_denuncia")
+		crear_select(lugares, null, "select_lugar_denuncia")
 
-		crear_select(tags_denuncias, "l")
-		crear_select(tags_denuncias, "l1")
-		crear_select(tags_denuncias, "l2")
+		crear_select(tags_denuncias, null, "l")
 
-		crear_select(derechos, "l3")
-		crear_select(tags_denuncias, "l4")
+		crear_select(tags_denuncias, ['derechos_individual', 'violaciones_derechos_individual', 'autoridad_individual'], "l1")
+		crear_select(tags_denuncias, ['derechos_individual', 'violaciones_derechos_individual', 'autoridad_individual'], "l2")
 
-		crear_select(derechos_individual, "l3i")
-		crear_select(tags_denuncias, "l4i")
+		crear_select(derechos, null, "l3")
+		crear_select(tags_denuncias, null, "l4")
 
-		crear_select(violaciones_derechos, "l5")
-		crear_select(tags_denuncias, "l6")
+		crear_select(derechos_individual, null, "l3i")
+		crear_select(tags_denuncias, null, "l4i")
 
-		crear_select(violaciones_derechos_individual, "l5i")
-		crear_select(tags_denuncias, "l6i")
+		crear_select(violaciones_derechos, null, "l5")
+		crear_select(tags_denuncias, null, "l6")
 
-		crear_select(autoridades, "l7")
-		crear_select(tags_denuncias, "l8")
+		crear_select(violaciones_derechos_individual, null, "l5i")
+		crear_select(tags_denuncias, null, "l6i")
 
-		crear_select(autoridades_individual, "l7i")
-		crear_select(tags_denuncias, "l8i")
+		crear_select(autoridades, null, "l7")
+		crear_select(tags_denuncias, null, "l8")
+
+		crear_select(autoridades_individual, null, "l7i")
+		crear_select(tags_denuncias, null, "l8i")
 
 		graficar_por_subtema(denuncias, "violaciones_derechos", true, "Tratos crueles Inhumanos y degradantes", "autoridad_individual")
 		//graficar_por_subtema(denuncias, "derechos", true, derechos_individual[0], "autoridad_individual")

@@ -383,13 +383,16 @@ var graficar_por_subtema = function(denuncias, tema, indiv, subtema, tema2){
   var ind = ["derechos_individual", "violaciones_derechos_individual", "autoridad_individual"]
   for(var i in denuncias){
     if( denuncias[i][tema] && denuncias[i][tema].indexOf(subtema) > -1 ){
-      var p = ind.indexOf(tema2);
-    
-      if( p > -1 ){
-        __tema2 = tema2.substr(0, tema2.indexOf("_individual"))
-        if( denuncias[i][__tema2] === null) denuncias[i][__tema2] = 'Dato no disponible'
+      var p = ind.indexOf(tema2)
+        , __tema2;
+      
+      if( p > -1 ) __tema2 = tema2.substr(0, tema2.indexOf("_individual"))
+      else __tema2 = tema2
 
-        t = denuncias[i][__tema2].split(" - ")
+      if( denuncias[i][__tema2] === null) denuncias[i][__tema2] = 'Dato no disponible'
+
+      if(indiv){
+        var t = denuncias[i][__tema2].split(" - ")
 
         for( var j = 0 in t ){
           var pos = tags.indexOf( t[j] ); 
@@ -400,14 +403,13 @@ var graficar_por_subtema = function(denuncias, tema, indiv, subtema, tema2){
           }
         }
       }else{
-        if( denuncias[i][tema2] === null) denuncias[i][tema2] = 'Dato no disponible'
-        var pos = tags.indexOf(denuncias[i][tema2]); 
+        var t = denuncias[i][__tema2]
+        var pos = tags.indexOf(t); 
         if( pos > -1 ) { topic_data[pos][1]++ } 
         else {
-          topic_data.push( [denuncias[i][tema2], 1] )
-          tags.push(denuncias[i][tema2])
-        }
-        
+          topic_data.push( [t, 1] )
+          tags.push(t)
+        }          
       }
 
     }
