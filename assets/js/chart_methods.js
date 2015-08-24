@@ -43,11 +43,15 @@ tags_denuncias['violaciones_individual'] = "Violaciones a los derechos"
 tags_denuncias['autoridad_individual'] = "Autoridad que cometio la violación a derechos humanos"
 */
 
-var crear_select = function(topics, target_id){
+var crear_select = function(topics, exceptions, target_id){
   var html = ""
   for(var i in topics){
-    if(topics[i] != null){
-      html += "<option value=" + i + ">" + topics[i] + "</option>"
+    if(topics[i] != null ){
+      if( !exceptions ){
+        html += "<option value=" + i + ">" + topics[i] + "</option>"
+      }else if( exceptions.indexOf(i) < 0 ){
+        html += "<option value=" + i + ">" + topics[i] + "</option>"
+      }
     }
   }
 
