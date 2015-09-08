@@ -216,9 +216,8 @@ foreach($css_files as $file): ?>
 			  var filtro = $(this).children("input")
 			  filtro.attr("title", filtro.attr("placeholder") )
 			})
-			/**/
-
-			crear_select(topicos, "l")
+			
+			crear_select(topicos, null, "l")
 
 			$("#graficar").on("submit", function(e){
 				e.preventDefault()
