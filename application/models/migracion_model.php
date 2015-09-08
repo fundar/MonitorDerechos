@@ -89,7 +89,7 @@ class migracion_Model extends CI_Model  {
 		$sq .= " , derechos.todos AS derechos, violaciones.todas as violaciones_derechos ";
 		$sq .= " , autoridades.todas AS autoridad, migrantes.pais AS pais_origen, migrantes.estado AS estado_origen ";
 		$sq .= " , migrantes.escolaridad, migrantes.edad, migrantes.ocupacion_homologada AS ocupacion, migrantes.nombre_pueblo_indigena, migrantes.espanol ";
-		$sq .= " , migrantes.lugar_denuncia AS lugar_denuncia, migrantes.genero AS genero, migrantes.estado_civil AS estado_civil ";
+		$sq .= " , migrantes.lugar_denuncia AS lugar_denuncia, migrantes.genero AS genero, migrantes.estado_civil AS estado_civil, migrantes.municipio ";
 		$sq .= " , tipos_quejas.nombre AS queja, estados.nombre AS estado_injusticia  ";
 		$sq .= " FROM denuncias ";
 		$sq .= " LEFT JOIN (  ";
@@ -108,7 +108,7 @@ class migracion_Model extends CI_Model  {
 		$sq .= " ) AS violaciones ON denuncias.id_denuncia = violaciones.id_denuncia ";
 		$sq .= " LEFT JOIN (  ";
 		$sq .= " 	SELECT id_denuncia, p.nombre pais, e.nombre estado, l.nombre lugar_denuncia, g.nombre genero, ec.nombre estado_civil, escolaridad, edad ";
-		$sq .= " 	, ocupacion_homologada, nombre_pueblo_indigena, espanol ";
+		$sq .= " 	, ocupacion_homologada, nombre_pueblo_indigena, espanol, municipio ";
 		$sq .= " 	FROM migrantes2denuncias m2d ";
 		$sq .= " 	LEFT JOIN migrantes m ON m2d.id_migrante = m.id_migrante  ";
 		$sq .= " 	LEFT JOIN paises p ON m.id_pais = p.id_pais  ";
@@ -130,9 +130,9 @@ class migracion_Model extends CI_Model  {
 		$sq .= " LEFT JOIN tipos_quejas ON denuncias.id_tipo_queja = tipos_quejas.id_tipo_queja ";
 		$sq .= " LEFT JOIN estados ON denuncias.id_estado_injusticia = estados.id_estado  ";
 
-		if($start != "" && $end != "" && $location != "")	{
+		if($start != "" && $end != "" )	{
 			$sq .= " WHERE (fecha_creada BETWEEN '" . $start . "' AND '" . $end . "') ";
-			$sq .= " AND id_lugar_denuncia = " . $location;
+			if( $location != "") 	$sq .= " AND id_lugar_denuncia = " . $location;
 		} else if($location != "")	{
 			$sq .= " WHERE id_lugar_denuncia = " . $location;
 		}
