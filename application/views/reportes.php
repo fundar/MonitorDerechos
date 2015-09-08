@@ -356,8 +356,8 @@
 
 		crear_select(tags_denuncias, null, "l")
 
-		crear_select(tags_denuncias, ['derechos_individual', 'violaciones_derechos_individual', 'autoridad_individual'], "l1")
-		crear_select(tags_denuncias, ['derechos_individual', 'violaciones_derechos_individual', 'autoridad_individual'], "l2")
+		crear_select(tags_denuncias, ['derechos_individual', 'violaciones_derechos_individual', 'autoridad_individual','derechos','violaciones_derechos','autoridad'], "l1")
+		crear_select(tags_denuncias, ['derechos_individual', 'violaciones_derechos_individual', 'autoridad_individual','derechos','violaciones_derechos','autoridad'], "l2")
 
 		crear_select(derechos, null, "l3")
 		crear_select(tags_denuncias, null, "l4")
