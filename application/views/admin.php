@@ -433,7 +433,7 @@ foreach($css_files as $file): ?>
 		/* Limitar el ancho y alto de las celdas 49 de todos los registros */
 		/* En este caso se trata de la columna de Descripción del Evento*/
 
-			$('tr td:nth-child(49)').each(function(){
+			$('tr td:nth-child(50)').each(function(){
 			  $(this)
 			    .html('<div>' + $(this).html() + '</div>')
 			    .css('min-height', '120px')

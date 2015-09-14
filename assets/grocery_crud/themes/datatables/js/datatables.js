@@ -252,6 +252,7 @@ function loadDataTable(this_datatables, site) {
 	table = $(this_datatables).dataTable({
 		"bJQueryUI": true,
 		"sPaginationType": "full_numbers",
+		//"sScrollY": "800px",
 		"bStateSave": use_storage,
         "fnStateSave": function (oSettings, oData) {
             localStorage.setItem( 'DataTables_' + unique_hash, JSON.stringify(oData) );
@@ -288,16 +289,23 @@ function loadDataTable(this_datatables, site) {
 			});
 			add_edit_button_listener();
 		},
+		//"sScrollY": "200px",
 		"sDom": 'T<"clear"><"H"lfr>t<"F"ip>',
-	    "oTableTools": {
-	    	"aButtons": aButtons,
-	        "sSwfPath": base_url+"assets/grocery_crud/themes/datatables/extras/TableTools/media/swf/copy_csv_xls_pdf.swf"
-	    }
+    "oTableTools": {
+    	"aButtons": aButtons,
+        "sSwfPath": base_url+"assets/grocery_crud/themes/datatables/extras/TableTools/media/swf/copy_csv_xls_pdf.swf"
+    },
+    "bDeferRender": true,
+    "scroller": true,
+    "oScroller": {
+      height: { row: 150 }
+    }
+
 	});
 	
 	var columns = [  0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 
-									26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41     , 44, 45, 46, 47   , 49, 
-									50, 51, 52, 53 ]
+									26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42   , 45, 46, 47, 48   , 50, 
+									51, 52, 53, 54 ]
 
 
 	

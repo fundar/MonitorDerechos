@@ -124,6 +124,8 @@ class Admin extends CI_Controller {
 	/*Metodo de denuncias*/
 	public function denuncias() {
 		$user = $this->isUser();
+		$config['max_size']	= '100';
+
 		$crud = new grocery_CRUD();
 		
 		/*Tabla, Título y Orden*/
@@ -154,7 +156,7 @@ class Admin extends CI_Controller {
 			/*'folio',*/ 'id_denuncia', 'nombre_persona_atendio_seguimiento', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes', 'intentos', 'motivo_migracion', 
 			'coyote_guia', 'lugar_contrato_coyote', 'monto_coyote', 'paquete_pago', 'nombre_punto_fronterizo', 'viaja_solo', 
 			'con_quien_viaja', 'deportado', 'momento_deportado', 'separacion_familiar', 'familiar_separado', 'situacion_familiar',/*'acto_siguiente', */
-			'acto_siguiente_homologada','autoridades_viaje', 'dano_autoridad', 'fecha_injusticia', 'id_pais_injusticia', 'id_estado_injusticia', 
+			'acto_siguiente_homologada','autoridades_viaje', 'dano_autoridad', 'fecha_injusticia', 'id_autoridad_dano','id_pais_injusticia', 'id_estado_injusticia', 
 			'municipio_injusticia', 'espacio_fisico_injusticia', 'espacio_fisico_injusticia_homologada', 'id_transporte_viaje_injusticia', 
 			'detonante_injusticia', 'detonante_injusticia_homologada','numero_migrantes_injusticia', 'lugar_abordaje_transporte', 'destino_transporte', 
 			'autoridades_responables', 'numero_oficiales_responsables', 'algun_nombre_responsables', 'carcteristicas_ficias_policia_responsable', 
