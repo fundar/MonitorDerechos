@@ -188,8 +188,10 @@
 				<li> | <a href="#graficar_violaciones_derechos_individual">  Violaciones a los Derechos</a> | </li>
 				<li> | <a href="#graficar_violaciones_derechos">  Violaciones a los Derechos [Patrones] </a> | </li>
 
-				<li> | <a href="#graficar_autoridades_individual"> Autoridades que cometieron las Violaciones a los Derechos </a> </li>
-				<li> | <a href="#graficar_autoridades"> Autoridades que cometieron las Violaciones a los Derechos [Patrones] </a> </li>
+				<li> | <a href="#graficar_autoridades_individual"> Autoridad involucrada </a> </li>
+				<li> | <a href="#graficar_autoridades"> Autoridad involucrada [Patrones] </a> </li>
+
+				<li> | <a href="#graficar_autoridad_responsable"> Autoridad responsable </a> </li>
 			</ul>
 		</nav>
 
@@ -272,7 +274,7 @@
 
 		<form id="graficar_autoridades" class="non-printable graficar" style="display:none;">
 			<div class="field">
-				<label> Elige la autoridad que cometio la Violación a los Derechos: </label>
+				<label> Elige el patron de autoridades involucradas: </label>
 				<select id="l7"> </select>
 			</div>
 			<div class="field">
@@ -285,12 +287,25 @@
 
 		<form id="graficar_autoridades_individual" class="non-printable graficar" style="display:none;">
 			<div class="field">
-				<label> Elige la autoridad que cometio la Violación a los Derechos: </label>
+				<label> Elige la autoridad involucrada: </label>
 				<select id="l7i"> </select>
 			</div>
 			<div class="field">
 				<label> Elige el segundo criterio: </label>
 				<select id="l8i"></select>
+			</div>
+			<br> <br>
+			<input type="submit" value="Graficar">
+		</form>
+
+		<form id="graficar_autoridad_responsable" class="non-printable graficar" style="display:none;">
+			<div class="field">
+				<label> Elige la autoridad que cometio la Violación a los Derechos: </label>
+				<select id="l9"></select>
+			</div>
+			<div class="field">
+				<label> Elige el segundo criterio: </label>
+				<select id="l10"></select>
 			</div>
 			<br> <br>
 			<input type="submit" value="Graficar">
@@ -323,6 +338,7 @@
 		  , autoridades = []
 		  , autoridades_individual = []
 		  , lugares = []
+		  , autoridad_responsable = []
 		  , pos;
 
 		
@@ -336,6 +352,10 @@
 
 		for(var i = 0 in histograma_denuncias.autoridad_individual){
 			autoridades_individual.push( histograma_denuncias.autoridad_individual[i][0] )
+		}
+
+		for(var i = 0 in histograma_denuncias.autoridad_responsable){
+			autoridad_responsable.push( histograma_denuncias.autoridad_responsable[i][0] )
 		}
 
 		for(var i in denuncias) {
@@ -376,6 +396,10 @@
 
 		crear_select(autoridades_individual, null, "l7i")
 		crear_select(tags_denuncias, null, "l8i")
+
+		crear_select(autoridad_responsable, null, "l9")
+		crear_select(tags_denuncias, null, "l10")
+
 
 		graficar_por_subtema(denuncias, "violaciones_derechos", true, "Tratos crueles Inhumanos y degradantes", "autoridad_individual")
 		//graficar_por_subtema(denuncias, "derechos", true, derechos_individual[0], "autoridad_individual")
@@ -456,6 +480,14 @@
 			graficar_por_subtema(denuncias, "autoridad", true, autoridades_individual[i], topico)
 			return false;
 		})
+
+		$("#graficar_autoridad_responsable").on("submit", function(){
+			var i = $("#l9").val();
+			var topico = $("#l10").val();
+			graficar_por_subtema(denuncias, "autoridad", true, autoridad_responsable[i], topico)
+			return false;
+		})
+
 		/*
 		/**/
 		

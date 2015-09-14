@@ -86,7 +86,7 @@ class migracion_Model extends CI_Model  {
 		$sq .= " , espacio_fisico_injusticia_homologada AS espacio_fisico_injusticia, numero_migrantes_injusticia ";
 		$sq .= " , detonante_injusticia_homologada as detonante_injusticia,algun_nombre_responsables, uniformado_responsables ";
 		$sq .= " , responsables_abordo_vehiculos_responsables AS responsables_abordo_vehiculos ";
-		$sq .= " , derechos.todos AS derechos, violaciones.todas as violaciones_derechos ";
+		$sq .= " , derechos.todos AS derechos, violaciones.todas as violaciones_derechos, autoridad_resp.nombre autoridad_responsable ";
 		$sq .= " , autoridades.todas AS autoridad, migrantes.pais AS pais_origen, migrantes.estado AS estado_origen ";
 		$sq .= " , migrantes.escolaridad, migrantes.edad, migrantes.ocupacion_homologada AS ocupacion, migrantes.nombre_pueblo_indigena, migrantes.espanol ";
 		$sq .= " , migrantes.lugar_denuncia AS lugar_denuncia, migrantes.genero AS genero, migrantes.estado_civil AS estado_civil, migrantes.municipio ";
@@ -129,7 +129,7 @@ class migracion_Model extends CI_Model  {
 		$sq .= " 	) AS autoridades ON denuncias.id_denuncia = autoridades.id_denuncia ";
 		$sq .= " LEFT JOIN tipos_quejas ON denuncias.id_tipo_queja = tipos_quejas.id_tipo_queja ";
 		$sq .= " LEFT JOIN estados ON denuncias.id_estado_injusticia = estados.id_estado  ";
-
+		$sq .= " LEFT JOIN autoridades autoridad_resp ON denuncias.id_autoridad_dano = autoridad_resp.id_autoridad"; 
 		if($start != "" && $end != "" )	{
 			$sq .= " WHERE (fecha_creada BETWEEN '" . $start . "' AND '" . $end . "') ";
 			if( $location != "") 	$sq .= " AND id_lugar_denuncia = " . $location;
