@@ -347,7 +347,7 @@ class Admin extends CI_Controller {
 		$crud->display_as('autoridades_viaje', 'Durante el viaje con que autoridades te encontraste');
 		$crud->display_as('dano_autoridad', 'Alguna de las autoridades te causaron daño');
 		$crud->field_type('dano_autoridad', 'dropdown', array(0 => 'Dato no disponible', 1 => 'Si', 2 => 'No'));
-		$crud->display_as('id_autoridad_dano', 'Autoridad señalada como responsable)');
+		$crud->display_as('id_autoridad_dano', 'Autoridad señalada como responsable');
 		//$crud->display_as('id_autoridad_dano', 'Que autoridad lo hizo (principal responsable)');
 		$crud->set_relation('id_autoridad_dano', 'autoridades', 'nombre');
 		
