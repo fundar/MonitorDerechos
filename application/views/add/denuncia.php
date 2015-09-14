@@ -653,10 +653,10 @@
 				
 					<div class='form-field-box odd' id="id_autoridad_dano_field_box">
 						<div class='form-display-as-box' id="id_autoridad_dano_display_as_box">
-							Que autoridad lo hizo :
+							Que autoridad lo hizo (principal responsable) :
 						</div>
 						<div class='form-input-box' id="id_autoridad_dano_input_box">
-							<select id='field-id_autoridad_dano'  name='id_autoridad_dano' ng-model='id_autoridad_dano' class='chosen-select' data-placeholder='Seleccionar Que autoridad lo hizo' style='width:300px'>
+							<select id='field-id_autoridad_dano'  name='id_autoridad_dano' ng-model='id_autoridad_dano' class='chosen-select' data-placeholder='Seleccionar Que autoridad lo hizo (principal responsable)' style='width:300px'>
 								<option value='Dato no disponible'></option>
 								<?php foreach ($autoridades->result_array() as $row) echo "<option value='" . $row['id_autoridad'] . "'>" . $row['nombre'] . "</option>"; ?>
 								
@@ -843,7 +843,7 @@
 
 					<div class='form-field-box odd' id="autoridades_responables_field_box">
 						<div class='form-display-as-box' id="autoridades_responables_display_as_box">
-							Nombre de las instituciones involucradas :
+							Nombre de las autoridades involucradas :
 						</div>
 						<div class='form-input-box' id="autoridades_responables_input_box">
 							<select id='field-autoridades_responables' name='autoridades_responables[]' ng-model='autoridades_responables' multiple='multiple' size='8' class='chosen-multiple-select' data-placeholder='Seleccionar Nombre de las instituciones involucradas' style='width:510px;' >

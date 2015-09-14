@@ -24,8 +24,8 @@ var tags_denuncias = {
   viaja_solo: "Viaja Solo", 
   deportado: "Fue deportado", 
 
-  autoridad_individual: "Autoridad que cometio la violación a derechos humanos", 
-  autoridad: "Autoridad que cometio la violación a derechos humanos [Patrones]", 
+  autoridad_individual: "Autoridad señalada como responsable", 
+  autoridad: "Autoridad señalada como responsable [Patrones]", 
 
   pais_injusticia: "País donde se cometio la violación a Derechos Humanos", 
   estado_injusticia: "Estado donde se cometio la violación a Derechos Humanos", 

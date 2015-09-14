@@ -347,7 +347,8 @@ class Admin extends CI_Controller {
 		$crud->display_as('autoridades_viaje', 'Durante el viaje con que autoridades te encontraste');
 		$crud->display_as('dano_autoridad', 'Alguna de las autoridades te causaron daño');
 		$crud->field_type('dano_autoridad', 'dropdown', array(0 => 'Dato no disponible', 1 => 'Si', 2 => 'No'));
-		$crud->display_as('id_autoridad_dano', 'Que autoridad lo hizo');
+		$crud->display_as('id_autoridad_dano', 'Autoridad señalada como responsable)');
+		//$crud->display_as('id_autoridad_dano', 'Que autoridad lo hizo (principal responsable)');
 		$crud->set_relation('id_autoridad_dano', 'autoridades', 'nombre');
 		
 		/*Hechos violatorios a derechos humanos*/
@@ -410,7 +411,7 @@ class Admin extends CI_Controller {
 		$crud->display_as('destino_transporte', 'Destino del transporte');
 		
 		/*Datos de la autoridad responsable*/
-		$crud->display_as('autoridades_responables', 'Autoridades señaladas como responsables');
+		$crud->display_as('autoridades_responables', 'Autoridades involucradas');
 		$crud->display_as('numero_oficiales_responsables', 'Número de oficiales responsables');
 		$crud->display_as('algun_nombre_responsables', 'Escucho o sabe algún nombre de  los oficiales involucrados');
 		$crud->display_as('carcteristicas_ficias_policia_responsable', 'Características fìsicas oficial 1');
