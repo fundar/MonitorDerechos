@@ -384,6 +384,8 @@ var graficar_por_subtema = function(denuncias, tema, indiv, subtema, tema2){
   var topic_data = [], tags = [];
   var ind = ["derechos_individual", "violaciones_derechos_individual", "autoridad_individual"]
   for(var i in denuncias){
+
+    
     if( denuncias[i][tema] && denuncias[i][tema].indexOf(subtema) > -1 ){
       var p = ind.indexOf(tema2)
         , __tema2;
@@ -417,7 +419,9 @@ var graficar_por_subtema = function(denuncias, tema, indiv, subtema, tema2){
     }
   }
 
+    
   if(indiv) tema += "_individual"
+
   var text  = tags_denuncias[tema] +  ": <b>" + subtema + "</b> ",
       text2 = tags_denuncias[tema2]
     , filename = subtema + "_x_" + tags_denuncias[tema2] 

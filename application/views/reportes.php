@@ -484,7 +484,7 @@
 		$("#graficar_autoridad_responsable").on("submit", function(){
 			var i = $("#l9").val();
 			var topico = $("#l10").val();
-			graficar_por_subtema(denuncias, "autoridad", true, autoridad_responsable[i], topico)
+			graficar_por_subtema(denuncias, "autoridad_responsable", false, autoridad_responsable[i], topico)
 			return false;
 		})
 
