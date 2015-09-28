@@ -209,7 +209,7 @@ console.log(histograma.espanol)
   return histograma
 }
 
-var graficar = function(content_tag, data, text, text2){
+var graficar = function(content_tag, data, text, text2, type){
   categories = []
   var total = 0;
 
@@ -221,6 +221,8 @@ var graficar = function(content_tag, data, text, text2){
 
 
   if(!text2) text2 = ''
+  if(!type) type = 'pie';
+
   $("#grafica").highcharts({
     title: { text: text + " ( Total: " + total + " )" + "<br>" + text2 , style:{"fontSize": "24px"} },
     xAxis: {
@@ -237,7 +239,7 @@ var graficar = function(content_tag, data, text, text2){
     },
     series: [{ 
       // areaspline line column bar scatter pie polar 
-      type: 'pie', 
+      type: type, 
       name: 'Migrantes', 
       data: data 
     }],
@@ -420,12 +422,12 @@ var graficar_por_subtema = function(denuncias, tema, indiv, subtema, tema2){
   }
 
     
-  if(indiv) tema += "_individual"
+  if(indiv)  tema += "_individual" 
 
   var text  = tags_denuncias[tema] +  ": <b>" + subtema + "</b> ",
       text2 = tags_denuncias[tema2]
     , filename = subtema + "_x_" + tags_denuncias[tema2] 
     
-  graficar(filename, topic_data, text, text2)
+  graficar(filename, topic_data, text, text2, null)
 }
 

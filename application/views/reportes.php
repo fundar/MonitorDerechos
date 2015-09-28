@@ -417,7 +417,7 @@
 
 		$("#graficar_1_var").on("submit", function(){
 			var l = $("#l").val();
-			graficar(l, histograma_denuncias[l], tags_denuncias[l])
+			graficar( l, histograma_denuncias[l], tags_denuncias[l], '', 'bar')
 			return false;
 		})
 
