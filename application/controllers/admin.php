@@ -190,8 +190,12 @@ class Admin extends CI_Controller {
 		);
 
 		/* Campos obligatorios */
-		$crud->required_fields('fecha_creada');
-		$crud->required_fields('migrantes');
+		$crud->required_fields( 'nombre_persona_atendio_seguimiento', 'fecha_creada', 'migrantes', 'motivo_migracion', 
+														'viaja_solo', 'deportado', 'acto_siguiente_homologada', 'fecha_injusticia', 
+														'id_transporte_viaje_injusticia', 'detonante_injusticia', 'derechos_violados', 
+														'violaciones_derechos' );
+
+							<span class='required'>*</span>:
 
 		/*Relaciones con tablas*/
 		/*Set displays campos*/
@@ -590,7 +594,7 @@ class Admin extends CI_Controller {
 		/* Agregar link a las fichas de migrantes*/
 		$crud->callback_column('denuncias',array($this,'_callback_denuncia_url'));
 
-		$crud->required_fields('nombre');
+		$crud->required_fields('nombre', 'id_pais', 'id_genero', 'edad');
 
 		//$crud->unset_export();
 

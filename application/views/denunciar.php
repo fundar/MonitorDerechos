@@ -309,7 +309,7 @@
 
 					<div class='form-field-box even' id="id_pais_field_box">
 						<div class='form-display-as-box' id="id_pais_display_as_box">
-							País :
+							País<span class='required'>*</span> :
 						</div>
 						<div class='form-input-box' id="id_pais_input_box">
 							<select id='field-id_pais' name='id_pais' ng-model="id_pais_migrante" class='chosen-select' data-placeholder='Seleccionar País' style='width:300px'>
@@ -345,7 +345,7 @@
 					
 					<div class='form-field-box odd' id="id_genero_field_box">
 						<div class='form-display-as-box' id="id_genero_display_as_box">
-							Género :
+							Género<span class='required'>*</span> :
 						</div>
 						<div class='form-input-box' id="id_genero_input_box">
 							<select id='field-id_genero'  name='id_genero' ng-model="id_genero_migrante" class='chosen-select' data-placeholder='Seleccionar Género' style='width:300px'>
@@ -359,7 +359,7 @@
 					
 					<div class='form-field-box even' id="edad_field_box">
 						<div class='form-display-as-box' id="edad_display_as_box">
-							Edad :
+							Edad<span class='required'>*</span> :
 						</div>
 						<div class='form-input-box' id="edad_input_box">
 							<input id='field-edad' name='edad' type='text' ng-model="edad_migrante" value='' min=1 class='numeric' maxlength='11' />				
@@ -540,7 +540,7 @@
 				<div class='form-content form-div'>
 					<div class='form-field-box odd' id="nombre_persona_atendio_seguimiento_field_box">
 						<div class='form-display-as-box' id="nombre_persona_atendio_seguimiento_display_as_box">
-							Nombre de la persona que atendio el caso :
+							Nombre de la persona que atendio el caso<span class='required'>*</span>:
 						</div>
 						<div class='form-input-box' id="nombre_persona_atendio_seguimiento_input_box">
 							<input id='field-nombre_persona_atendio_seguimiento' name='nombre_persona_atendio_seguimiento' ng-model='nombre_persona_atendio_seguimiento' type='text' value="" maxlength='255' />				
@@ -754,7 +754,7 @@
 					
 					<div class='form-field-box even' id="viaja_solo_field_box">
 						<div class='form-display-as-box' id="viaja_solo_display_as_box">
-							Viaja solo :
+							Viaja solo<span class='required'>*</span>:
 						</div>
 						<div class='form-input-box' id="viaja_solo_input_box">
 							<select id='field-viaja_solo' name='viaja_solo' ng-model='viaja_solo' class='chosen-select' data-placeholder='Seleccionar Viaja solo'>
@@ -797,7 +797,7 @@
 
 					<div class='form-field-box even' id="deportado_field_box">
 						<div class='form-display-as-box' id="deportado_display_as_box">
-							Deportado :
+							Deportado<span class='required'>*</span>:
 						</div>
 						<div class='form-input-box' id="deportado_input_box">
 							<select id='field-deportado' name='deportado' ng-model='deportado' class='chosen-select' data-placeholder='Seleccionar Deportado'>
@@ -865,7 +865,7 @@
 
 					<div class='form-field-box odd' id="acto_siguiente_homologada_field_box">
 						<div class='form-display-as-box' id="acto_siguiente_homologada_display_as_box">
-							Qué piensa hacer ahora (categoria):
+							Qué piensa hacer ahora (categoria)<span class='required'>*</span>:
 						</div>
 						<div class="form-input-box odd" id="acto_siguiente_homologada_input_box">
 							<select id="field-acto_siguiente_homologada" name="acto_siguiente_homologada" ng-model='acto_siguiente_homologada' class="chosen-select " data-placeholder="Seleccionar Qué piensa hacer ahora (categoría)" style="width:510px;">
@@ -906,7 +906,7 @@
 			
 					<div class='form-field-box even' id="fecha_injusticia_field_box">
 						<div class='form-display-as-box' id="fecha_injusticia_display_as_box">
-							Cuándo se cometió la injusticia:
+							Cuándo se cometió la injusticia<span class='required'>*</span>:
 						</div>
 						<div class='form-input-box' id="fecha_injusticia_input_box">
 							<input id='field-fecha_injusticia' name='fecha_injusticia' ng-model='fecha_injusticia' type='text' value='' maxlength='19' class='datetime-input' placeholder="dd/mm/aaaa hh:mm" />
@@ -1037,7 +1037,7 @@
 
 					<div class='form-field-box odd' id="id_transporte_viaje_injusticia_field_box">
 						<div class='form-display-as-box' id="id_transporte_viaje_injusticia_display_as_box">
-							En que viajaba :
+							En que viajaba<span class='required'>*</span>:
 						</div>
 						<div class='form-input-box' id="id_transporte_viaje_injusticia_input_box">
 							<select id='field-id_transporte_viaje_injusticia'  name='id_transporte_viaje_injusticia' ng-model='id_transporte_viaje_injusticia' class='chosen-select' data-placeholder='Seleccionar En que viajaba' style='width:300px'>
@@ -1050,7 +1050,7 @@
 
 					<div class='form-field-box even' id="detonante_injusticia_field_box">
 						<div class='form-display-as-box' id="detonante_injusticia_display_as_box">
-							Situación que detona la injusticia :
+							Situación que detona la injusticia<span class='required'>*</span>:
 						</div>
 						<div class='form-input-box' id="detonante_injusticia_input_box">
 							<input id='field-detonante_injusticia' name='detonante_injusticia' ng-model='detonante_injusticia' type='text' value="" maxlength='255' />				
@@ -1282,7 +1282,7 @@
 
 					<div class='form-field-box odd' id="derechos_violados_field_box">
 						<div class='form-display-as-box' id="derechos_violados_display_as_box">
-							Derechos violados :
+							Derechos violados<span class='required'>*</span>:
 						</div>
 						<div class='form-input-box' id="derechos_violados_input_box">
 							<select id='field-derechos_violados' name='derechos_violados[]' ng-model='derechos_violados' multiple='multiple' size='8' class='chosen-multiple-select' data-placeholder='Seleccionar Derechos violados' style='width:510px;' >
@@ -1299,7 +1299,7 @@
 
 					<div class='form-field-box even' id="violaciones_derechos_field_box">
 						<div class='form-display-as-box' id="violaciones_derechos_display_as_box">
-							Violaciones derechos :
+							Violaciones derechos<span class='required'>*</span>:
 						</div>
 						<div class='form-input-box' id="violaciones_derechos_input_box">
 							<select id='field-violaciones_derechos' name='violaciones_derechos[]' ng-model='violaciones_derechos' multiple='multiple' size='8' class='chosen-multiple-select' data-placeholder='Seleccionar Violaciones derechos' style='width:510px;' >
