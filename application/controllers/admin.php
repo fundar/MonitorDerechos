@@ -193,9 +193,8 @@ class Admin extends CI_Controller {
 		$crud->required_fields( 'nombre_persona_atendio_seguimiento', 'fecha_creada', 'migrantes', 'motivo_migracion', 
 														'viaja_solo', 'deportado', 'acto_siguiente_homologada', 'fecha_injusticia', 
 														'id_transporte_viaje_injusticia', 'detonante_injusticia', 'derechos_violados', 
-														'violaciones_derechos' );
+														'violaciones_derechos', 'autoridades_responables', 'descripcion_evento');
 
-							<span class='required'>*</span>:
 
 		/*Relaciones con tablas*/
 		/*Set displays campos*/
