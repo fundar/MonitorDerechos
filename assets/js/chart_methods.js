@@ -166,7 +166,6 @@ var actualizar_histograma = function(histograma){
     for(var i = 0 in topic ) if(topic[i][0] == "0") topic[i][0] = "Dato no disponible"
   }
 
-console.log(histograma.espanol)
 
   /* Modificar las etiquetas en el campo habla español */
   if( histograma.espanol[0] ) histograma.espanol[0][0] = "No Aplica";
@@ -261,7 +260,7 @@ var generar_histograma_l2 = function (data, l1, l2){
   h.data = []
 
   for( var i in data ){ 
-    if( data[i][l1] === null) data[i][0] = 'Dato no disponible'
+    if( data[i][l1] === null  ) data[i][0] = 'Dato no disponible'
     var pos_l1 = h.categories.indexOf(data[i][l1]);
     if( pos_l1 > -1 ){
       var pos_l2 = h.data[pos_l1].drilldown.categories.indexOf(data[i][l2])
@@ -279,7 +278,7 @@ var generar_histograma_l2 = function (data, l1, l2){
         y: 1,
         color: colors[nc],
         drilldown: {
-          name: data[i][l1],
+          name: ( data[i][l1] ) ? data[i][l1] : "Dato no disponible",
           categories: [ data[i][l2] ],
           data: [1]
         }
@@ -292,7 +291,7 @@ var generar_histograma_l2 = function (data, l1, l2){
 
   for (i = 0; i < h.data.length; i++) {
       histograma.categories.push({
-          name: h.categories[i],
+          name: ( h.categories[i] ) ? h.categories[i] : "Dato no disponible",
           y: h.data[i].y,
           color: h.data[i].color
       });
@@ -301,13 +300,12 @@ var generar_histograma_l2 = function (data, l1, l2){
       for (j = 0; j < drillDataLen; j += 1) {
           brightness = 0.2 - (j / drillDataLen) / 5;
           histograma.data.push({
-              name: h.data[i].drilldown.categories[j],
+              name: ( h.data[i].drilldown.categories[j] ) ? h.data[i].drilldown.categories[j] : "Dato no disponible" ,
               y: h.data[i].drilldown.data[j],
               color: Highcharts.Color(h.data[i].color).brighten(brightness).get()
           });
       }
   }
-
   return histograma
 }
 
@@ -316,8 +314,8 @@ var graficar_l2 = function(content_tag, histograma, title, l1_label, l2_label){
 
   var total = 0;
   for(var i in histograma.categories){
-    categories.push(histograma.categories[i].name)
     if( histograma.categories[i].name === null) histograma.categories[i].name = 'Dato no disponible'
+    categories.push(histograma.categories[i].name)
     total += parseInt( histograma.categories[i].y )
   }
 
