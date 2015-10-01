@@ -209,14 +209,18 @@ var actualizar_histograma = function(histograma){
 }
 
 var graficar = function(content_tag, data, text, text2, type){
-  categories = []
+  var categories = []
   var total = 0
     , total_text = '';
 
   for(var i in data) {
-    if( data[i][0] === null) data[i][0] = 'Dato no disponible'
-    categories.push(data[i][0])
-    total += ( data[i][1] ) ? parseInt( data[i][1] ) : parseInt( data[i].y )
+    if( parseInt( data[i][1] ) > 0 || parseInt( data[i].y ) > 0 ){
+      if( data[i][0] === null) data[i][0] = 'Dato no disponible'
+      categories.push(data[i][0])
+      total += ( data[i][1] ) ? parseInt( data[i][1] ) : parseInt( data[i].y )
+    }else{
+      data.splice(i, 1);
+    }
   }
 
 
