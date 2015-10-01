@@ -384,44 +384,48 @@ var graficar_l2 = function(content_tag, histograma, title, l1_label, l2_label){
   });
 }
 
-var graficar_por_subtema = function(denuncias, tema, subtema, tema2){
+var graficar_por_subtema = function(denuncias, tema, ind, subtema, tema2){
   var topic_data = []
     , tags = []
-    , ind = ["derechos_individual", "violaciones_derechos_individual", "autoridad_individual"]
     , type
-    , p = ind.indexOf(tema2)
+    , p = tema2.indexOf("_individual")
     , __tema2;
       
   if( p > -1 ){
-    __tema2 = tema2.substr(0, tema2.indexOf("_individual"))
+    __tema2 = tema2.substr(0, p)
     type = 'bar'
   }
   else __tema2 = tema2
 
-  for(var i in denuncias){
-    if( denuncias[i][tema] && denuncias[i][tema].indexOf(subtema) > -1 ){
-      if( denuncias[i][__tema2] === null) denuncias[i][__tema2] = 'Dato no disponible'
+  var add_item = function(){
+    if( denuncias[i][__tema2] === null) denuncias[i][__tema2] = 'Dato no disponible'
 
-      if( p > -1 ){
-        var t = denuncias[i][__tema2].split(" - ")
-        for( var j = 0 in t ){
-          var pos = tags.indexOf( t[j] ); 
-          if( pos > -1 ) { topic_data[pos][1]++ } 
-          else {
-            topic_data.push( [t[j], 1] )
-            tags.push(t[j])
-          }
-        }
-      }else{
-        var t = denuncias[i][__tema2]
-        var pos = tags.indexOf(t); 
+    if( p > -1 ){
+      var t = denuncias[i][__tema2].split(" - ")
+      for( var j = 0 in t ){
+        var pos = tags.indexOf( t[j] ); 
         if( pos > -1 ) { topic_data[pos][1]++ } 
         else {
-          topic_data.push( [t, 1] )
-          tags.push(t)
-        }          
+          topic_data.push( [t[j], 1] )
+          tags.push(t[j])
+        }
       }
+    }else{
+      var t = denuncias[i][__tema2]
+      var pos = tags.indexOf(t); 
+      if( pos > -1 ) { topic_data[pos][1]++ } 
+      else {
+        topic_data.push( [t, 1] )
+        tags.push(t)
+      }          
+    }
+  }
 
+  for(var i in denuncias){
+    if( ind && denuncias[i][tema] && denuncias[i][tema].indexOf(subtema) > -1 ){
+      add_item()
+    }else if( !ind && denuncias[i][tema] && denuncias[i][tema] == subtema ) {
+      add_item()
     }
   }
 
