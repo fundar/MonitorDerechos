@@ -401,7 +401,7 @@
 		crear_select(tags_denuncias, null, "l10")
 
 
-		graficar_por_subtema(denuncias, "violaciones_derechos", true, "Tratos crueles Inhumanos y degradantes", "autoridad_individual")
+		graficar_por_subtema(denuncias, "violaciones_derechos", "Tratos crueles Inhumanos y degradantes", "autoridad_individual")
 		//graficar_por_subtema(denuncias, "derechos", true, derechos_individual[0], "autoridad_individual")
 
 		$(".menu_graficas li a").on("click", function(){
@@ -416,8 +416,12 @@
 		})
 
 		$("#graficar_1_var").on("submit", function(){
-			var l = $("#l").val();
-			graficar( l, histograma_denuncias[l], tags_denuncias[l], '', 'bar')
+			var l = $("#l").val()
+			  , type;
+
+			if( l.indexOf("_individual") > -1 ) type = 'bar'
+
+			graficar( l, histograma_denuncias[l], tags_denuncias[l], '', type)
 			return false;
 		})
 
@@ -438,53 +442,53 @@
 		$("#graficar_derechos").on("submit", function(){
 			var i = $("#l3").val();
 			var topico = $("#l4").val();
-			graficar_por_subtema( denuncias, "derechos", false, derechos[i], topico)
+			graficar_por_subtema( denuncias, "derechos", derechos[i], topico)
 			return false;
 		})
 
 		$("#graficar_violaciones_derechos").on("submit", function(){
 			var i = $("#l5").val();
 			var topico = $("#l6").val();
-			graficar_por_subtema(denuncias, "violaciones_derechos", false, violaciones_derechos[i], topico)
+			graficar_por_subtema(denuncias, "violaciones_derechos", violaciones_derechos[i], topico)
 			return false;
 		})
 
 		$("#graficar_autoridades").on("submit", function(){
 			var i = $("#l7").val();
 			var topico = $("#l8").val();
-			graficar_por_subtema(denuncias, "autoridad", false, autoridades[i], topico)
+			graficar_por_subtema(denuncias, "autoridad", autoridades[i], topico)
 			return false;
 		})
 		/*
-		graficar_por_subtema(denuncias, "violaciones_derechos", true, "Tratos crueles Inhumanos y degradantes", "autoridad_individual")
+		graficar_por_subtema(denuncias, "violaciones_derechos", "Tratos crueles Inhumanos y degradantes", "autoridad_individual")
 
 		*/
 
 		$("#graficar_derechos_individual").on("submit", function(){
 			var i = $("#l3i").val();
 			var topico = $("#l4i").val();
-			graficar_por_subtema(denuncias, "derechos", true, derechos_individual[i], topico)
+			graficar_por_subtema(denuncias, "derechos", derechos_individual[i], topico)
 			return false;
 		})
 
 		$("#graficar_violaciones_derechos_individual").on("submit", function(){
 			var i = $("#l5i").val();
 			var topico = $("#l6i").val();
-			graficar_por_subtema(denuncias, "violaciones_derechos", true, violaciones_derechos_individual[i], topico)
+			graficar_por_subtema(denuncias, "violaciones_derechos", violaciones_derechos_individual[i], topico)
 			return false;
 		})
 
 		$("#graficar_autoridades_individual").on("submit", function(){
 			var i = $("#l7i").val();
 			var topico = $("#l8i").val();
-			graficar_por_subtema(denuncias, "autoridad", true, autoridades_individual[i], topico)
+			graficar_por_subtema(denuncias, "autoridad", autoridades_individual[i], topico)
 			return false;
 		})
 
 		$("#graficar_autoridad_responsable").on("submit", function(){
 			var i = $("#l9").val();
 			var topico = $("#l10").val();
-			graficar_por_subtema(denuncias, "autoridad_responsable", false, autoridad_responsable[i], topico)
+			graficar_por_subtema(denuncias, "autoridad_responsable", autoridad_responsable[i], topico)
 			return false;
 		})
 

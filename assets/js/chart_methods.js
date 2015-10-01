@@ -210,7 +210,8 @@ var actualizar_histograma = function(histograma){
 
 var graficar = function(content_tag, data, text, text2, type){
   categories = []
-  var total = 0;
+  var total = 0
+    , total_text = '';
 
   for(var i in data) {
     if( data[i][0] === null) data[i][0] = 'Dato no disponible'
@@ -219,11 +220,14 @@ var graficar = function(content_tag, data, text, text2, type){
   }
 
 
-  if(!text2) text2 = ''
-  if(!type) type = 'pie';
+  if(!text2) text2 = '';
+  if(!type) {
+    total_text =  " ( Total: " + total + " )" 
+    type = 'pie';
+  }
 
   $("#grafica").highcharts({
-    title: { text: text + " ( Total: " + total + " )" + "<br>" + text2 , style:{"fontSize": "24px"} },
+    title: { text: text + total_text +  "<br>" + text2 , style:{"fontSize": "24px"} },
     xAxis: {
       categories: categories
     },
@@ -380,24 +384,26 @@ var graficar_l2 = function(content_tag, histograma, title, l1_label, l2_label){
   });
 }
 
-var graficar_por_subtema = function(denuncias, tema, indiv, subtema, tema2){
-  var topic_data = [], tags = [];
-  var ind = ["derechos_individual", "violaciones_derechos_individual", "autoridad_individual"]
-  for(var i in denuncias){
-
-    
-    if( denuncias[i][tema] && denuncias[i][tema].indexOf(subtema) > -1 ){
-      var p = ind.indexOf(tema2)
-        , __tema2;
+var graficar_por_subtema = function(denuncias, tema, subtema, tema2){
+  var topic_data = []
+    , tags = []
+    , ind = ["derechos_individual", "violaciones_derechos_individual", "autoridad_individual"]
+    , type
+    , p = ind.indexOf(tema2)
+    , __tema2;
       
-      if( p > -1 ) __tema2 = tema2.substr(0, tema2.indexOf("_individual"))
-      else __tema2 = tema2
+  if( p > -1 ){
+    __tema2 = tema2.substr(0, tema2.indexOf("_individual"))
+    type = 'bar'
+  }
+  else __tema2 = tema2
 
+  for(var i in denuncias){
+    if( denuncias[i][tema] && denuncias[i][tema].indexOf(subtema) > -1 ){
       if( denuncias[i][__tema2] === null) denuncias[i][__tema2] = 'Dato no disponible'
 
-      if(indiv){
+      if( p > -1 ){
         var t = denuncias[i][__tema2].split(" - ")
-
         for( var j = 0 in t ){
           var pos = tags.indexOf( t[j] ); 
           if( pos > -1 ) { topic_data[pos][1]++ } 
@@ -419,13 +425,10 @@ var graficar_por_subtema = function(denuncias, tema, indiv, subtema, tema2){
     }
   }
 
-    
-  if(indiv)  tema += "_individual" 
-
   var text  = tags_denuncias[tema] +  ": <b>" + subtema + "</b> ",
       text2 = tags_denuncias[tema2]
     , filename = subtema + "_x_" + tags_denuncias[tema2] 
     
-  graficar(filename, topic_data, text, text2, null)
+  graficar(filename, topic_data, text, text2, type)
 }
 
