@@ -4,9 +4,9 @@ var tags_denuncias = {
   //municipio_origen: "Municipio",
   genero: "Género",
 
-  derechos_individual: "Derechos violentados en la denuncia",
+  derechos_individual: "Derecho violentado en la denuncia",
   derechos: "Derechos violentados en la denuncia [Patrones]",
-  violaciones_derechos_individual: "Violaciones a los derechos",
+  violaciones_derechos_individual: "Violación al derecho",
   violaciones_derechos: "Violaciones a los derechos [Patrones]",
 
   edad: "Edad",
@@ -26,7 +26,7 @@ var tags_denuncias = {
 
   autoridad_responsable: "Autoridad responsable",
 
-  autoridad_individual: "Autoridades involucradas", 
+  autoridad_individual: "Autoridad involucrada", 
   autoridad: "Autoridades involucradas [Patrones]", 
 
   pais_injusticia: "País donde se cometio la violación a Derechos Humanos", 
@@ -428,6 +428,8 @@ var graficar_por_subtema = function(denuncias, tema, ind, subtema, tema2){
       add_item()
     }
   }
+
+  tema += (ind)? '_individual' : '' 
 
   var text  = tags_denuncias[tema] +  ": <b>" + subtema + "</b> ",
       text2 = tags_denuncias[tema2]
