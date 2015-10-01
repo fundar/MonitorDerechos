@@ -216,7 +216,7 @@ var graficar = function(content_tag, data, text, text2, type){
   for(var i in data) {
     if( data[i][0] === null) data[i][0] = 'Dato no disponible'
     categories.push(data[i][0])
-    total += parseInt(data[i][1])
+    total += ( data[i][1] ) ? parseInt( data[i][1] ) : parseInt( data[i].y )
   }
 
 
