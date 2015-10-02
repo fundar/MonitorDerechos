@@ -654,7 +654,7 @@
 				
 					<div class='form-field-box odd' id="id_autoridad_dano_field_box">
 						<div class='form-display-as-box' id="id_autoridad_dano_display_as_box">
-							Que autoridad lo hizo (principal responsable) :
+							Que autoridad lo hizo (principal responsable)<span class='required'>*</span>:
 						</div>
 						<div class='form-input-box' id="id_autoridad_dano_input_box">
 							<select id='field-id_autoridad_dano'  name='id_autoridad_dano' ng-model='id_autoridad_dano' class='chosen-select' data-placeholder='Seleccionar Que autoridad lo hizo (principal responsable)' style='width:300px'>
@@ -752,7 +752,7 @@
 						</div>
 						<div class='clear'></div>
 						<div class='form-display-as-box' id="espacio_fisico_injusticia_homologada_display_as_box">
-							Espacio físico de la injusticia (Categoría) :
+							Espacio físico de la injusticia (Categoría)<span class='required'>*</span>:
 						</div>
 						<div class='form-input-box' id="espacio_fisico_injusticia_homologada_input_box">
 							<select id='field-espacio_fisico_injusticia_homologada' name='espacio_fisico_injusticia_homologada' ng-model='espacio_fisico_injusticia_homologada' class='chosen-select' data-placeholder='Seleccionar Espacio físico de la injusticia (Categoría)'>
@@ -787,14 +787,14 @@
 
 					<div class='form-field-box even' id="detonante_injusticia_field_box">
 						<div class='form-display-as-box' id="detonante_injusticia_display_as_box">
-							Situación que detona la injusticia<span class='required'>*</span>:
+							Situación que detona la injusticia
 						</div>
 						<div class='form-input-box' id="detonante_injusticia_input_box">
 							<input id='field-detonante_injusticia' name='detonante_injusticia' ng-model='detonante_injusticia' type='text' value="" maxlength='255' />				
 						</div>
 						<div class='clear'></div>
 						<div class='form-display-as-box' id="detonante_injusticia_homologada_display_as_box">
-							Situación que detona la injusticia (Categoría) :
+							Situación que detona la injusticia (Categoría)<span class='required'>*</span>:
 						</div>
 						<div class='form-input-box' id="detonante_injusticia_homologada_input_box">
 							<select id='field-detonante_injusticia_homologada' name='detonante_injusticia_homologada' ng-model='detonante_injusticia_homologada' class='chosen-select' data-placeholder='Seleccionar Situación que detona la injusticia (Categoría)'>
