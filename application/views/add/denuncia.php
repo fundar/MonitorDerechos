@@ -1546,8 +1546,9 @@
 							})
 
 				    	}else{
-				    		console.log(res)
 				  			alert("No se pudo insertar la Denuncia, verifique los campos")
+				  			$("#gray_screen").css("display", "none")
+
 				  		}
 				    }
 				});
