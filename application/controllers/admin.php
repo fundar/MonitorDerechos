@@ -190,13 +190,13 @@ class Admin extends CI_Controller {
 		);
 
 		/* Campos obligatorios */
+		/*
 		$crud->required_fields( 'nombre_persona_atendio_seguimiento', 'fecha_creada', 'migrantes', 'motivo_migracion', 
 														'espacio_fisico_injusticia_homologada', 'id_autoridad_dano', 'viaja_solo', 'deportado', 
 														'acto_siguiente_homologada', 'fecha_injusticia', 'id_transporte_viaje_injusticia', 
 														'detonante_injusticia_homologada', 'derechos_violados', 'violaciones_derechos', 
 														'autoridades_responables', 'descripcion_evento');
-
-
+		*/
 		/*Relaciones con tablas*/
 		/*Set displays campos*/
 		$this->display_as_denuncias($crud);
