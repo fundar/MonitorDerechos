@@ -188,7 +188,7 @@
 				<li> | <a href="#graficar_violaciones_derechos_individual">  Violación al Derecho </a> | </li>
 				<li> | <a href="#graficar_violaciones_derechos">  Violaciones a los Derechos [Patrones] </a> | </li>
 
-				<li> | <a href="#graficar_autoridades_individual"> Autoridad involucrada </a> | </li>
+				<li> | <a href="#graficar_autoridades_individual"> Autoridades involucradas </a> | </li>
 				<li> | <a href="#graficar_autoridades"> Autoridades involucradas [Patrones] </a> | </li>
 
 				<li> | <a href="#graficar_autoridad_responsable"> Autoridad responsable </a> </li>
@@ -489,7 +489,7 @@
 		$("#graficar_autoridad_responsable").on("submit", function(){
 			var i = $("#l9").val();
 			var topico = $("#l10").val();
-			graficar_por_subtema(denuncias, "autoridad_responsable", true, autoridad_responsable[i], topico)
+			graficar_por_subtema(denuncias, "autoridad_responsable", false, autoridad_responsable[i], topico)
 			return false;
 		})
 
