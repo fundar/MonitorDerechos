@@ -508,7 +508,7 @@ class Admin extends CI_Controller {
 		$links = array();
 		foreach ($ids as $id){             
 			$migrante = $this->migracion_model->getDenuncia($id);
-  		$link = "<a href='" . site_url('admin/denuncias/read/' . $migrante[0]) . "'>" . $migrante[0] . "</a>";
+  		$link = "<a href='" . site_url('admin/denuncias/read/' . $migrante[0]) . "'> Ir a denuncia </a>";
   		array_push($links, $link);
 		}
   		return implode(",", $links);
@@ -539,6 +539,7 @@ class Admin extends CI_Controller {
 		
 		/*Relaciones con tablas*/
 		$crud->display_as('id_migrante', 'Id');
+		
 		$crud->display_as('id_lugar_denuncia', 'Lugar de la organización');
 		$crud->display_as('id_pais', 'País');
 		$crud->display_as('id_estado', 'Estado/Departamento');
@@ -551,6 +552,7 @@ class Admin extends CI_Controller {
 
 		
 		$crud->set_relation('id_lugar_denuncia', 'lugares_denuncia', 'nombre');
+		//$crud->set_relation('id_migrante', 'migrantes2denuncias', 'id_denuncia');
 		$crud->set_relation('id_pais', 'paises', 'nombre');
 		$crud->set_relation('id_estado', 'estados', 'nombre');
 		$crud->set_relation('id_genero', 'generos', 'nombre');
@@ -581,6 +583,10 @@ class Admin extends CI_Controller {
 			)
 		);
 		
+
+		$crud->display_as('id_migrante', 'Número de denuncia');
+		$crud->display_as('folio', 'Denuncia');
+
 		$crud->field_type('pueblo_indigena', 'dropdown', array(1 => 'Si', 2 => 'No'));
 		$crud->field_type('espanol', 'dropdown', array( 0 =>'No aplica', 1 => 'Si', 2 => 'No'));
 		
@@ -589,10 +595,12 @@ class Admin extends CI_Controller {
 
 		//$crud->unset_columns('folio');
 		// AL AGREGAR O QUITAR COLUMNAS, ASEGURARCE DE EDITAR EL ARREGLO 'columns' PARA ACTUALIZAR LOS FILTROS EN EL ARCHIVO assets/grocery_crud/themes/datatables/js/datatables.js
-		$crud->columns(/*'folio',*/ 'id_migrante', 'nombre', /*'denuncias', */ 'edad', 'municipio', 'id_lugar_denuncia', 'id_pais', 'id_estado', 'id_genero', 'fecha_nacimiento',/* 'ocupacion',*/ 'ocupacion_homologada', 'id_estado_civil', 'escolaridad', 'pueblo_indigena', 'espanol');
+		$crud->columns( 'id_migrante', 'nombre', 'folio', 'edad', 'municipio', 
+										'id_lugar_denuncia', 'id_pais', 'id_estado', 'id_genero', 'fecha_nacimiento',/* 'ocupacion',*/ 
+										'ocupacion_homologada', 'id_estado_civil', 'escolaridad', 'pueblo_indigena', 'espanol' );
 
 		/* Agregar link a las fichas de migrantes*/
-		$crud->callback_column('denuncias',array($this,'_callback_denuncia_url'));
+		$crud->callback_column('folio',array($this,'_callback_denuncia_url'));
 
 		$crud->required_fields('nombre', 'id_pais', 'id_genero', 'edad');
 
