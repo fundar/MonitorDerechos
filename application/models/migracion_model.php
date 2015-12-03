@@ -90,7 +90,7 @@ class migracion_Model extends CI_Model  {
 		$sq .= " , autoridades.todas AS autoridad, migrantes.pais AS pais_origen, migrantes.estado AS estado_origen ";
 		$sq .= " , migrantes.escolaridad, migrantes.edad, migrantes.ocupacion_homologada AS ocupacion, migrantes.nombre_pueblo_indigena, migrantes.espanol ";
 		$sq .= " , migrantes.lugar_denuncia AS lugar_denuncia, migrantes.genero AS genero, migrantes.estado_civil AS estado_civil, migrantes.municipio ";
-		$sq .= " , tipos_quejas.nombre AS queja, estados.nombre AS estado_injusticia  ";
+		$sq .= " , tipos_quejas.nombre AS queja, estados.nombre AS estado_injusticia, estado_seguimiento  ";
 		$sq .= " FROM denuncias ";
 		$sq .= " LEFT JOIN (  ";
 		//$sq .= " 	 SELECT id_denuncia, GROUP_CONCAT(d.nombre SEPARATOR ' - ') AS todos ";
@@ -150,8 +150,8 @@ class migracion_Model extends CI_Model  {
 		foreach ($query->result() as $row) return array($row->id_migrante, $row->nombre) ;
 	}
 
-	public function getDenuncia($id_denuncia = -1){
-		$query = $this->db->get_where('denuncias', array('id_denuncia' => $id_denuncia), 1);
+	public function getDenuncia($id_migrante = -1){
+		$query = $this->db->get_where('migrantes2denuncias', array('id_migrante' => $id_migrante), 1);
 		foreach ($query->result() as $row) return array($row->id_denuncia) ;
 	}
 

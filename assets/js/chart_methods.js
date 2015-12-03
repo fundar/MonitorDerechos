@@ -37,6 +37,7 @@ var tags_denuncias = {
   algun_nombre_responsables: "Conoce algún nombre de los responsables", 
   uniformado_responsables: "Usaban uniforme los responsables", 
   responsables_abordo_vehiculos: "Los responsables estaban a bordo de algún vehículo", 
+  estado_seguimiento: "Estado actual de sguimiento del caso"
 }
 
 /*
