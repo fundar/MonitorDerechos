@@ -101,9 +101,9 @@ foreach($css_files as $file): ?>
 <body>
 	<div >
 		<a class="menu_item" id="menu_denunciar" href="<?php echo site_url('admin/denunciar')?>" >
-			<?php if($this->uri->segment(2) == "denunciar") { ?><strong> Levantar denuncia completa </strong><?php } else { ?> Levantar denuncia completa <?php } ?>
+			<?php if($this->uri->segment(2) == "denunciar") { ?><strong> Registrar Nuevo migrante </strong><?php } else { ?> Registrar Nuevo migrante <?php } ?>
 		</a> |
-		<a class="menu_item" id="menu_crea_denuncia" href="<?php echo site_url('admin/crea/denuncia');?>"> Agregar denuncia a migrante </a> |
+		<a class="menu_item" id="menu_crea_denuncia" href="<?php echo site_url('admin/crea/denuncia');?>"> Agregar denuncia a un migrante ya registrado </a> |
 
 		<a class="menu_item" id="menu_migrantes" href="<?php echo site_url('admin/migrantes')?>" >
 			<?php if($this->uri->segment(2) == "migrantes") { ?><strong>Migrantes</strong><?php } else { ?>Migrantes<?php } ?>
@@ -182,7 +182,7 @@ foreach($css_files as $file): ?>
 			    	msg = 'Con esta opción podrá capturar uno o más migrantes, así como los datos del caso en el que estan involucrados.'
 		        break;
 			    case "menu_crea_denuncia":
-			    	msg = 'En esta sección sólo se pueden agregar denuncias relacionadas a migrantes que <u> ya existan en el sistema. </u> <br>Para ingresar un migrante desde cero, use la opción "Levantar denuncia completa"'
+			    	msg = 'En esta sección sólo se pueden agregar denuncias relacionadas a migrantes que <u> ya existan en el sistema. </u> <br>Para ingresar un migrante desde cero, use la opción "Registrar Nuevo migrante"'
 		        break;
 			    case "menu_migrantes":
 			    	msg = 'Aquí se pueden ver a todos los migrantes caṕturados, con opciones de filtrado y búsqueda así como de la posibilidad de gráficar el contenido filtrado por algún criterio.'

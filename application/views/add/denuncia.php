@@ -144,8 +144,8 @@
 </head>
 <body>
 	<div>
-		<a class="menu_item" id="menu_denunciar" href="<?php echo site_url('admin/denunciar');?>"> Levantar denuncia completa </a> |
-		<a class="menu_item" id="menu_crea_denuncia" href="#"> <strong> Agregar denuncia a migrante </strong> </a> |
+		<a class="menu_item" id="menu_denunciar" href="<?php echo site_url('admin/denunciar');?>"> Registrar Nuevo migrante </a> |
+		<a class="menu_item" id="menu_crea_denuncia" href="#"> <strong> Agregar denuncia a un migrante ya registrado </strong> </a> |
 		<a class="menu_item" id="menu_migrantes" href="<?php echo site_url();?>/admin/migrantes"> Migrantes </a> |
 		<a class="menu_item" id="menu_denuncias" href="<?php echo site_url();?>/admin/denuncias"> Denuncias </a> |
 		<a class="menu_item" id="menu_reportes" href="<?php echo site_url();?>/admin/reportes"> Reportes </a> |
@@ -253,7 +253,7 @@
 	<h1> Añadir nueva denuncia a un migrante</h1>
 	<h3 id="aviso"> 
 		En esta sección sólo se pueden agregar denuncias relacionadas a migrantes que <u> ya existan en el sistema </u> <br>
-		Para ingresar un migrante desde cero, use la opción "Levantar denuncia completa"
+		Para ingresar un migrante desde cero, use la opción "Registrar Nuevo migrante"
 	</h3>
 </head>
 
@@ -1469,13 +1469,13 @@
 		console.log(window.migrantes_data)
 		$('body').scrollTop(0) 
 		$("#gray_screen").css("display", "block")
-		alert('En esta sección sólo se pueden agregar denuncias relacionadas a migrantes que ya existan en el sistema. \n \n Para ingresar un migrante desde cero, use la opción "Levantar denuncia completa"')
+		alert('En esta sección sólo se pueden agregar denuncias relacionadas a migrantes que ya existan en el sistema. \n \n Para ingresar un migrante desde cero, use la opción "Registrar Nuevo migrante"')
 		$("#gray_screen").css("display", "none")
 
 		if( window.migrantes_data ) {
 			$("#gray_screen").css("display", "block")
 			$(".container").css("display", "none");
-			alert('No se puede mostrar esta pantalla, debido a que no haz completado una captura en la sección \n "Levantar denuncia completa". ')
+			alert('No se puede mostrar esta pantalla, debido a que no haz completado una captura en la sección \n "Registrar Nuevo migrante". ')
 		}
 
 		// convertir un decimal a otra base
@@ -1766,7 +1766,7 @@
 			    	msg = 'Con esta opción podrá capturar uno o más migrantes, así como los datos del caso en el que estan involucrados.'
 		        break;
 			    case "menu_crea_denuncia":
-			    	msg = 'En esta sección sólo se pueden agregar denuncias relacionadas a migrantes que <u> ya existan en el sistema. </u> <br>Para ingresar un migrante desde cero, use la opción "Levantar denuncia completa"'
+			    	msg = 'En esta sección sólo se pueden agregar denuncias relacionadas a migrantes que <u> ya existan en el sistema. </u> <br>Para ingresar un migrante desde cero, use la opción "Registrar Nuevo migrante"'
 		        break;
 			    case "menu_migrantes":
 			    	msg = 'Aquí se pueden ver a todos los migrantes caṕturados, con opciones de filtrado y búsqueda así como de la posibilidad de gráficar el contenido filtrado por algún criterio.'

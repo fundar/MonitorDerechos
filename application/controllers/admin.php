@@ -224,6 +224,27 @@ class Admin extends CI_Controller {
 		$this->_example_output($output);
 	}
 
+	public function allMigrantesCSV(){
+		$this->load->helper('download');
+		$this->load->model('migracion_model');
+
+		$data =  $this->migracion_model->allMigrantesCSV();
+		$file = './migrantes.csv';
+
+   	force_download($file, $data);
+	}
+
+	public function allDenunciasCSV(){
+		$this->load->helper('download');
+		$this->load->model('migracion_model');
+		
+		$data =  $this->migracion_model->allDenunciasCSV(null, null, null);
+		$file = './denuncias.csv';
+
+   	force_download($file, $data);
+	}
+
+
 	public function add_denuncia(){
 		$this->load->model('migracion_model');
 		$user = $this->isUser();
@@ -912,16 +933,17 @@ class Admin extends CI_Controller {
 	public function reportes(){
 		$user = $this->isUser();
 		$this->load->model('migracion_model');
-		//$this->load->helper('assets');
 
 		$start = $this->input->get("start")? $this->input->get("start") : "";
 		$end = $this->input->get("end")? $this->input->get("end") : "";
 		$location = $this->input->get("location")? $this->input->get("location") : "";
-        
-        $data['start'] = $start;
-        $data['end'] = $end;
+ 	  
+ 	  $data = array(
+    	'start' => $start,
+    	'end' => $end,
+    	'denuncias' => $this->migracion_model->allDenuncias($start, $end, $location)
+ 	  ); 
 
-        $data['denuncias'] = $this->migracion_model->allDenuncias($start, $end, $location);
 		$this->load->view('reportes.php', $data);
 	}
 

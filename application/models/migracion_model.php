@@ -64,7 +64,7 @@ class migracion_Model extends CI_Model  {
 		exit;
 	}
 
-	public function allMigrantes() {
+	public function Migrantes() {
 		$sq  = " SELECT paises.nombre AS pais_origen, estados.nombre AS estado_origen, migrantes.municipio AS municipio_origen,"; 
 		$sq	.= "   generos.nombre AS genero, migrantes.edad, migrantes.ocupacion_homologada AS ocupacion, estado_civil.nombre AS estado_civil,";
 		$sq	.= "   migrantes.escolaridad, migrantes.nombre_pueblo_indigena, migrantes.espanol,";
@@ -76,12 +76,27 @@ class migracion_Model extends CI_Model  {
 		$sq .= "   AND migrantes.id_genero = generos.id_genero";
 		$sq .= "   AND migrantes.id_estado_civil = estado_civil.id_estado_civil";
 
-		$query = $this->db->query($sq);
+		return $this->db->query($sq);
+	}
 
-        return $query->result();
+	public function allMigrantes() {
+		$query = $this->Migrantes();
+    return $query->result();
+	}
+
+	public function allMigrantesCSV() {
+		$this->load->dbutil();
+		$query = $this->Migrantes();
+
+		$delimiter = ",";
+		$newline = "\r\n";
+
+		$data = $this->dbutil->csv_from_result($query, $delimiter, $newline);
+		//echo $this->dbutil->csv_from_result($query);
+		return $data;
 	}
 	
-	public function allDenuncias($start, $end, $location) {
+	public function Denuncias($start, $end, $location) {
   	$sq  = "	SELECT intentos, motivo_migracion, coyote_guia, lugar_de_usa, viaja_solo, deportado ";
 		$sq .= " , espacio_fisico_injusticia_homologada AS espacio_fisico_injusticia, numero_migrantes_injusticia ";
 		$sq .= " , detonante_injusticia_homologada as detonante_injusticia,algun_nombre_responsables, uniformado_responsables ";
@@ -137,10 +152,24 @@ class migracion_Model extends CI_Model  {
 		} else if($location != "")	{
 			$sq .= " WHERE id_lugar_denuncia = " . $location;
 		}
-
 		
-		$query = $this->db->query($sq);
+		return $this->db->query($sq);
+	}
+
+	public function allDenuncias($start, $end, $location) {
+		$query = $this->Denuncias($start, $end, $location);
     return $query->result();
+	}
+
+	public function allDenunciasCSV($start, $end, $location) {
+		$this->load->dbutil();
+		$query = $this->Denuncias($start, $end, $location);
+
+		$delimiter = ",";
+		$newline = "\r\n";
+
+		$data = $this->dbutil->csv_from_result($query, $delimiter, $newline);
+		return $data;
 	}
 
 	public function deleteMigrante($id = -1){
