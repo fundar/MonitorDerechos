@@ -1999,11 +1999,22 @@
 			}
 		}
 
-		var hs_fields = function(el, on_id, off_id, input_fields, select_fields, multi_select){
+		var hs_fields = function(el, on_id, off_id, input_fields, select_fields, multi_select, clean){
 			if( $("li#field_" + el + "_chzn_o_" + on_id ).hasClass("result-selected" ) ){
-				for(var key in input_fields ) $("#" + key + "_field_box").show() 
-				for(var key in select_fields) $("#" + key + "_field_box").show() 
-				for(var key in multi_select) $("#" + key + "_field_box").show() 
+				for(var key in input_fields ) {
+					if(clean) $("#field-" + key ).val('')
+					$("#" + key + "_field_box").show() 
+				}
+				
+				for(var key in select_fields) {
+					if(clean) $("#field-" + key ).val('').trigger("liszt:updated")
+					$("#" + key + "_field_box").show() 
+				}
+
+				for(var key in multi_select) {
+					if(clean) $("#field-" + key ).val('').trigger("liszt:updated")
+					$("#" + key + "_field_box").show() 
+				}
 			}else if( $("li#field_" + el + "_chzn_o_" + off_id ).hasClass("result-selected" ) ){
 				var f1 = $("#addReport-step1")
 				var f2 = $("#addReport-step2")
@@ -2075,13 +2086,15 @@
 			hs_fields(  "coyote_guia", 2, 3, 
 						{"monto_coyote": "No Aplica" }, 
 						{"lugar_contrato_coyote": "3-No Aplica"},
-						{"paquete_pago": "8-No Aplica"}
+						{"paquete_pago": "8-No Aplica"},
+						true
 					)
 		});
 			hs_fields(  "coyote_guia", 2, 3, 
 						{"monto_coyote": "No Aplica" }, 
 						{"lugar_contrato_coyote": "3-No Aplica"},
-						{"paquete_pago": "8-No Aplica"}
+						{"paquete_pago": "8-No Aplica"},
+						false
 					)
 
 		/*Viajaba solo*/
@@ -2092,10 +2105,10 @@
 		$("#situacion_familiar_field_box").hide();
 
 		$("#field-viaja_solo").change( function () { 
-			hs_fields(  "viaja_solo", 3, 2, {"con_quien_viaja": "No Aplica", "situacion_familiar": "No Aplica" }, {},{} )
+			hs_fields(  "viaja_solo", 3, 2, {"con_quien_viaja": "No Aplica", "situacion_familiar": "No Aplica" }, {},{}, true )
 		});
 		
-		hs_fields(  "viaja_solo", 3, 2, {"con_quien_viaja": "No Aplica", "situacion_familiar": "No Aplica" }, {},{} )
+		hs_fields(  "viaja_solo", 3, 2, {"con_quien_viaja": "No Aplica", "situacion_familiar": "No Aplica" }, {},{}, false )
 
 		/*Momento de deportado*/
 		$("#momento_deportado_field_box").css("margin-left", "50px");
@@ -2106,21 +2119,21 @@
 
 		$("#field-deportado").change( function () { 
 			hs_fields(  "deportado", 2, 3, 
-						{}, {"momento_deportado": "4-No Aplica", "separacion_familiar": "3-No Aplica-familiar_separado" }, {} )
+						{}, {"momento_deportado": "4-No Aplica", "separacion_familiar": "3-No Aplica-familiar_separado" }, {}, true)
 		});
 		
 		hs_fields(  "deportado", 2, 3, 
-					{}, {"momento_deportado": "4-No Aplica", "separacion_familiar": "3-No Aplica-familiar_separado" },  {} )
+					{}, {"momento_deportado": "4-No Aplica", "separacion_familiar": "3-No Aplica-familiar_separado" },  {}, false )
 
 		/*Familiar separacion*/
 		$("#familiar_separado_field_box").css("margin-left", "70px");
 		$("#familiar_separado_field_box").hide();
 
 		$("#field-separacion_familiar").change( function () { 
-			hs_fields(  "separacion_familiar", 2, 3, {"familiar_separado": "No Aplica"}, {}, {})
+			hs_fields(  "separacion_familiar", 2, 3, {"familiar_separado": "No Aplica"}, {}, {}, true)
 		});
 		
-		hs_fields(  "separacion_familiar", 2, 3, {"familiar_separado": "No Aplica"}, {}, {})
+		hs_fields(  "separacion_familiar", 2, 3, {"familiar_separado": "No Aplica"}, {}, {}, false)
 		
 		
 		/*Color uniforme responsables*/
@@ -2133,11 +2146,11 @@
 
 		$("#field-uniformado_responsables").change( function () { 
 			hs_fields(  "uniformado_responsables", 2, 3,
-						{"color_uniforme_responsables": "No Aplica", "insignias_responsables": "No Aplica"}, {}, {})
+						{"color_uniforme_responsables": "No Aplica", "insignias_responsables": "No Aplica"}, {}, {}, true)
 		});
 		
 		hs_fields(  "uniformado_responsables", 2, 3,
-						{"color_uniforme_responsables": "No Aplica", "insignias_responsables": "No Aplica"}, {}, {})
+						{"color_uniforme_responsables": "No Aplica", "insignias_responsables": "No Aplica"}, {}, {}, false)
 
 
 		/*Color uniforme responsables*/
@@ -2158,12 +2171,12 @@
 		$("#field-responsables_abordo_vehiculos_responsables").change( function () { 
 			hs_fields(  "responsables_abordo_vehiculos_responsables", 2, 3,
 						{"numero_vehiculos_responsables": "No Aplica", "placas_vehiculos_responsables": "No Aplica"}, 
-						{"id_tipo_transporte_responsables": pos + "-No Aplica"}, {})
+						{"id_tipo_transporte_responsables": pos + "-No Aplica"}, {}, true)
 		});
 		
 		hs_fields(  "responsables_abordo_vehiculos_responsables", 2, 3,
 						{"numero_vehiculos_responsables": "No Aplica", "placas_vehiculos_responsables": "No Aplica"}, 
-						{"id_tipo_transporte_responsables": pos + "-No Aplica"}, {})
+						{"id_tipo_transporte_responsables": pos + "-No Aplica"}, {}, false)
 
 
 		/*Migrante - Pueblo indigena*/
@@ -2176,12 +2189,12 @@
 		$("#field-pueblo_indigena").change( function () { 					
 			hs_fields( "pueblo_indigena", 2, 3,
 					   {"nombre_pueblo_indigena": "No Aplica"}, 
-					   {"espanol": "2-No Aplica"}, {} )			 
+					   {"espanol": "2-No Aplica"}, {}, true )			 
 		});
 		
 		hs_fields(  "pueblo_indigena", 2, 3, 
 					{"nombre_pueblo_indigena": "No Aplica"}, 
-					{"espanol": "2-No Aplica"}, {} )			 
+					{"espanol": "2-No Aplica"}, {}, false )			 
 
 		$(".search-choice-close").on("click", function(e){
 			e.preventDefault()
