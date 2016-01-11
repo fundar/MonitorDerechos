@@ -775,26 +775,7 @@
 						<div class='clear'></div>
 					</div>
 
-					<div class='form-field-box even' id="situacion_familiar_field_box">
-						<div class='form-display-as-box' id="situacion_familiar_display_as_box">
-							Sabes que paso con tu familiar :
-						</div>
-						<div class='form-input-box' id="situacion_familiar_input_box">
-							<select id='field-situacion_familiar' name='situacion_familiar' ng-model='situacion_familiar' class='chosen-select' data-placeholder='Selecciona la situación del familiar'>
-								<option value=''  ></option>
-								<option value='Dato no disponible'  ></option>
-								<option value='Deportado'>Deportado</option>
-								<option value='Repatriado'>Repatriado</option>
-								<option value='Detenido'>Detenido</option>
-								<option value='Está en Estados Unidos'>Está en Estados Unidos</option>
-								<option value='Otro'>Otro</option>
-							</select>	
-						</div>
-						<div class='clear'></div>
-					</div>
-
-
-
+					
 					<div class='form-field-box even' id="deportado_field_box">
 						<div class='form-display-as-box' id="deportado_display_as_box">
 							Deportado<span class='required'>*</span>:
@@ -849,6 +830,24 @@
 						</div>
 						<div class='form-input-box' id="familiar_separado_input_box">
 							<input id='field-familiar_separado' name='familiar_separado' ng-model='familiar_separado' type='text' value="" maxlength='255' />				
+						</div>
+						<div class='clear'></div>
+					</div>
+
+					<div class='form-field-box even' id="situacion_familiar_field_box">
+						<div class='form-display-as-box' id="situacion_familiar_display_as_box">
+							Sabes que paso con tu familiar :
+						</div>
+						<div class='form-input-box' id="situacion_familiar_input_box">
+							<select id='field-situacion_familiar' name='situacion_familiar' ng-model='situacion_familiar' class='chosen-select' data-placeholder='Selecciona la situación del familiar'>
+								<option value=''  ></option>
+								<option value='Dato no disponible'  ></option>
+								<option value='Deportado'>Deportado</option>
+								<option value='Repatriado'>Repatriado</option>
+								<option value='Detenido'>Detenido</option>
+								<option value='Está en Estados Unidos'>Está en Estados Unidos</option>
+								<option value='Otro'>Otro</option>
+							</select>	
 						</div>
 						<div class='clear'></div>
 					</div>
@@ -2099,42 +2098,48 @@
 
 		/*Viajaba solo*/
 		$("#con_quien_viaja_field_box").css("margin-left", "50px");
-		$("#situacion_familiar_field_box").css("margin-left", "50px");
+		$("#situacion_familiar_field_box").css("margin-left", "70px");
 
 		$("#con_quien_viaja_field_box").hide();
 		$("#situacion_familiar_field_box").hide();
 
 		$("#field-viaja_solo").change( function () { 
-			hs_fields(  "viaja_solo", 3, 2, {"con_quien_viaja": "No Aplica", "situacion_familiar": "No Aplica" }, {},{}, true )
+			hs_fields(  "viaja_solo", 3, 2, {"con_quien_viaja": "No Aplica" }, {},{}, true )
 		});
 		
-		hs_fields(  "viaja_solo", 3, 2, {"con_quien_viaja": "No Aplica", "situacion_familiar": "No Aplica" }, {},{}, false )
+		hs_fields(  "viaja_solo", 3, 2, {"con_quien_viaja": "No Aplica"}, {},{}, false )
 
+		
 		/*Momento de deportado*/
 		$("#momento_deportado_field_box").css("margin-left", "50px");
 		$("#separacion_familiar_field_box").css("margin-left", "50px");
+		$("#acto_siguiente_field_box").css("margin-left", "50px");
+		$("#acto_siguiente_homologado_field_box").css("margin-left", "50px");
 
 		$("#momento_deportado_field_box").hide();
 		$("#separacion_familiar_field_box").hide();
+		$("#acto_siguiente_field_box").hide();
 
 		$("#field-deportado").change( function () { 
-			hs_fields(  "deportado", 2, 3, 
-						{}, {"momento_deportado": "4-No Aplica", "separacion_familiar": "3-No Aplica-familiar_separado" }, {}, true)
+			hs_fields(  "deportado", 2, 3,  
+				{"momento_deportado": "4-No Aplica", "separacion_familiar": "3-No Aplica-familiar_separado", "acto_siguiente": "No Aplica" }, 
+				{"acto_siguiente_homologado": "No Aplica-No Aplica"}, {}, true);
 		});
 		
-		hs_fields(  "deportado", 2, 3, 
-					{}, {"momento_deportado": "4-No Aplica", "separacion_familiar": "3-No Aplica-familiar_separado" },  {}, false )
+		hs_fields(  "deportado", 2, 3,
+				{"momento_deportado": "4-No Aplica", "separacion_familiar": "3-No Aplica-familiar_separado", "acto_siguiente": "No Aplica" }, 
+				{"acto_siguiente_homologado": "No Aplica-No Aplica"}, {}, true);
 
 		/*Familiar separacion*/
 		$("#familiar_separado_field_box").css("margin-left", "70px");
 		$("#familiar_separado_field_box").hide();
 
 		$("#field-separacion_familiar").change( function () { 
-			hs_fields(  "separacion_familiar", 2, 3, {"familiar_separado": "No Aplica"}, {}, {}, true)
+			hs_fields(  "separacion_familiar", 2, 3, {"familiar_separado": "No Aplica", "situacion_familiar": "No Aplica"}, {}, {}, true)
 		});
 		
-		hs_fields(  "separacion_familiar", 2, 3, {"familiar_separado": "No Aplica"}, {}, {}, false)
-		
+		hs_fields(  "separacion_familiar", 2, 3, {"familiar_separado": "No Aplica", "situacion_familiar": "No Aplica"}, {}, {}, false)
+				
 		
 		/*Color uniforme responsables*/
 		$("#color_uniforme_responsables_field_box").css("margin-left", "50px");
