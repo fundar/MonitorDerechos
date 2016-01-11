@@ -356,7 +356,7 @@
 						</div>
 					</div-->
 
-					<div class='form-field-box even' id="intentos_field_box">
+					<!--div class='form-field-box even' id="intentos_field_box">
 						<div class='form-display-as-box' id="intentos_display_as_box">
 							Cuántas veces has intentado cruzar la frontera :
 						</div>
@@ -364,7 +364,7 @@
 							<input id='field-intentos' name='intentos' ng-model='intentos' type='text' value='' class='numeric' maxlength='11' />				
 						</div>
 						<div class='clear'></div>
-					</div>
+					</div-->
 				
 					<div class='form-field-box odd' id="motivo_migracion_field_box">
 						<div class='form-display-as-box' id="motivo_migracion_display_as_box">
@@ -446,12 +446,11 @@
 						</div>
 					</div>
 
-					<div class='form-field-box even' id="nombre_punto_fronterizo_field_box">
+					<!--div class='form-field-box even' id="nombre_punto_fronterizo_field_box">
 						<div class='form-display-as-box' id="nombre_punto_fronterizo_display_as_box">
 							Porque punto fronterizo cruzaste o vas a cruzar a USA :
 						</div>
 						<div class='form-input-box' id="nombre_punto_fronterizo_input_box">
-							<!--input id='field-nombre_punto_fronterizo' name='nombre_punto_fronterizo' ng-model='nombre_punto_fronterizo' type='text' value="" maxlength='255' /-->
 							<select id='field-nombre_punto_fronterizo' name='nombre_punto_fronterizo' ng-model='nombre_punto_fronterizo' class='chosen-select' data-placeholder='Seleccionar el punto fronterizo'>
 								<option value=''></option>
 								<option value='Dato no disponible'></option>
@@ -476,9 +475,9 @@
 							</select>					
 						</div>
 						<div class='clear'></div>
-					</div>
+					</div-->
 
-					<div class='form-field-box odd' id="lugar_de_usa_field_box">
+					<!--div class='form-field-box odd' id="lugar_de_usa_field_box">
 						<div class='form-display-as-box' id="lugar_de_usa_display_as_box">
 							A que lugar de USA vas :
 						</div>
@@ -486,7 +485,7 @@
 							<input id='field-lugar_de_usa' name='lugar_de_usa' ng-model='lugar_de_usa' type='text' value="" maxlength='255' />				
 						</div>
 						<div class='clear'></div>
-					</div>
+					</div-->
 					
 					<div class='form-field-box even' id="viaja_solo_field_box">
 						<div class='form-display-as-box' id="viaja_solo_display_as_box">
@@ -820,7 +819,7 @@
 						<div class='clear'></div>
 					</div>
 
-					<div class='form-field-box odd' id="lugar_abordaje_transporte_field_box">
+					<!--div class='form-field-box odd' id="lugar_abordaje_transporte_field_box">
 						<div class='form-display-as-box' id="lugar_abordaje_transporte_display_as_box">
 							Donde abordo el transporte :
 						</div>
@@ -828,9 +827,9 @@
 							<input id='field-lugar_abordaje_transporte' name='lugar_abordaje_transporte' ng-model='lugar_abordaje_transporte' type='text' value="" maxlength='255' />				
 						</div>
 						<div class='clear'></div>
-					</div>
+					</div-->
 
-					<div class='form-field-box even' id="destino_transporte_field_box">
+					<!--div class='form-field-box even' id="destino_transporte_field_box">
 						<div class='form-display-as-box' id="destino_transporte_display_as_box">
 							Destino del transporte :
 						</div>
@@ -838,9 +837,9 @@
 							<input id='field-destino_transporte' name='destino_transporte'  ng-model='destino_transporte' type='text' value="" maxlength='255' />				
 						</div>
 						<div class='clear'></div>
-					</div>
+					</div-->
 
-					<div class='form-field-box odd' id="autoridades_responables_field_box">
+					<!--div class='form-field-box odd' id="autoridades_responables_field_box">
 						<div class='form-display-as-box' id="autoridades_responables_display_as_box">
 							Nombre de las autoridades involucradas<span class='required'>*</span>:
 						</div>
@@ -851,7 +850,7 @@
 							</select>				
 						</div>
 						<div class='clear'></div>
-					</div>
+					</div-->
 					
 					<div class='form-field-box even' id="numero_oficiales_responsables_field_box">
 						<div class='form-display-as-box' id="numero_oficiales_responsables_display_as_box">
