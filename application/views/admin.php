@@ -22,7 +22,11 @@ foreach($css_files as $file): ?>
 		font-family: Arial;
 		font-size: 14px;
 	}
-
+	
+	.datatables-add-button{
+		display: none;
+	}
+	
 	a.menu_item {
 		font-weight: bolder;
     color: #555;
@@ -40,9 +44,6 @@ foreach($css_files as $file): ?>
 	.link { cursor:pointer; color:blue; font-size:14px; }
 	#catalogos { display:none; padding:0;}
 
-	.datatables-add-button{
-		display:none;
-	}
 
 	#_tooltip{
 		font-weight: bolder;
@@ -83,20 +84,21 @@ foreach($css_files as $file): ?>
 		float: left;
 		margin: 20px auto;
 	}
-/*
-	table.dataTable td{
-		max-height: 30px;
-		min-height: 30px;
-  	overflow: hidden;
-  	height: 30px;
-	}
-*/
+	/*
+		table.dataTable td{
+			max-height: 30px;
+			min-height: 30px;
+	  	overflow: hidden;
+	  	height: 30px;
+		}
+	*/
 	.dataTable tbody tr {
     min-height: 35px; 
     max-height: 35px; 
     height: 35px; 
 	}
 </style>
+
 </head>
 <body>
 	<div >
@@ -162,8 +164,12 @@ foreach($css_files as $file): ?>
     <script type="text/javascript">
 		$(document).ready( function () {
 
-			/* Quitar la opción de agregar en el listado*/
-			$(".datatables-add-button").remove()
+			var url = window.location.href;
+			if( url.indexOf('denuncias') == -1 && url.indexOf('migrantes') == -1 ){
+				$(".datatables-add-button").css("display", "inline-flex ");
+			}else{
+				$(".datatables-add-button").remove()
+			}
 
 			$("#clear_memo").on("click", function(e){
 				e.preventDefault()
