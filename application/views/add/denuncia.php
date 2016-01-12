@@ -1725,6 +1725,8 @@
 		$("#momento_deportado_field_box").hide();
 		$("#separacion_familiar_field_box").hide();
 		$("#acto_siguiente_field_box").hide();
+		$("#acto_siguiente_homologada_field_box").hide();
+		
 
 		$("#field-deportado").change( function () { 
 			hs_fields(  "deportado", 2, 3,  s
