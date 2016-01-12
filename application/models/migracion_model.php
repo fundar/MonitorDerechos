@@ -223,7 +223,7 @@ class migracion_Model extends CI_Model  {
 	}
 
 	public function getEstadosCasos() {
-		$data = $this->db->query("SELECT nombre, id_estado_caso FROM etados_casos");
+		$data = $this->db->query("SELECT nombre, id_estado_caso FROM etados_casos ORDER BY nombre ASC");
 		return $data;
 	}
 
