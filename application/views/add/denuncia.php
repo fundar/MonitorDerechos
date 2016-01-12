@@ -1726,10 +1726,10 @@
 		$("#separacion_familiar_field_box").hide();
 		$("#acto_siguiente_field_box").hide();
 		$("#acto_siguiente_homologada_field_box").hide();
-		
+
 
 		$("#field-deportado").change( function () { 
-			hs_fields(  "deportado", 2, 3,  s
+			hs_fields(  "deportado", 2, 3,
 				{"acto_siguiente": "No Aplica" }, 
 				{"momento_deportado": "4-No Aplica", "separacion_familiar": "3-No Aplica-familiar_separado", "acto_siguiente_homologada": "No Aplica-No Aplica"}, {}, true);
 		});
