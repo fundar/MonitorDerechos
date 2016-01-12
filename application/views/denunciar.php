@@ -1271,7 +1271,7 @@
 			
 					<div class='form-field-box even' id="monto_extorsion_field_box">
 						<div class='form-display-as-box' id="monto_extorsion_display_as_box">
-							En caso de extorsión mencione el monto :
+							En caso de robo/extorsión mencione el monto:
 						</div>
 						<div class='form-input-box' id="monto_extorsion_input_box">
 							<input id='field-monto_extorsion' name='monto_extorsion' ng-model='monto_extorsion' type='text' value="" maxlength='255' />				</div>
