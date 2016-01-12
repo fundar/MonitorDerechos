@@ -878,7 +878,7 @@
 
 					<div class='form-field-box even' id="autoridades_viaje_field_box">
 						<div class='form-display-as-box' id="autoridades_viaje_display_as_box">
-							Durante el viaje con que autoridades te encontraste :
+							Durante el viaje con que actores te encontraste :
 						</div>
 						<div class='form-input-box' id="autoridades_viaje_input_box">
 							<select id='field-autoridades_viaje' name='autoridades_viaje[]' ng-model='autoridades_viaje' multiple='multiple' size='8' class='chosen-multiple-select' data-placeholder='Seleccionar Durante el viaje con que autoridades te encontraste' style='width:510px;' >
@@ -891,7 +891,7 @@
 
 					<div class='form-field-box odd' id="dano_autoridad_field_box">
 						<div class='form-display-as-box' id="dano_autoridad_display_as_box">
-							Alguna de las autoridades te causaron daño :
+							Alguno de los actores te causaron daño :
 						</div>
 						<div class='form-input-box' id="dano_autoridad_input_box">
 							<select id='field-dano_autoridad' name='dano_autoridad' ng-model='dano_autoridad' class='chosen-select' data-placeholder='Seleccionar Alguna de las autoridades te causaron daño'>
@@ -902,6 +902,20 @@
 						<div class='clear'></div>
 					</div>
 			
+					<div class='form-field-box odd' id="id_autoridad_dano_field_box">
+						<div class='form-display-as-box' id="id_autoridad_dano_display_as_box">
+							Quien es el responsable<span class='required'>*</span>:
+						</div>
+						<div class='form-input-box' id="id_autoridad	_dano_input_box">
+							<select id='field-id_autoridad_dano'  name='id_autoridad_dano' ng-model='id_autoridad_dano' class='chosen-select' data-placeholder='Seleccionar Que autoridad lo hizo (principal responsable)' style='width:300px'>
+								<option value='Dato no disponible'></option>
+								<?php foreach ($autoridades->result_array() as $row) echo "<option value='" . $row['id_autoridad'] . "'>" . $row['nombre'] . "</option>"; ?>
+								
+							</select>				
+						</div>
+						<div class='clear'></div>
+					</div>
+					
 					<div class='form-field-box even' id="fecha_injusticia_field_box">
 						<div class='form-display-as-box' id="fecha_injusticia_display_as_box">
 							Cuándo se cometió la injusticia<span class='required'>*</span>:
@@ -913,19 +927,6 @@
 						<div class='clear'></div>
 					</div>
 				
-					<div class='form-field-box odd' id="id_autoridad_dano_field_box">
-						<div class='form-display-as-box' id="id_autoridad_dano_display_as_box">
-							Que autoridad lo hizo (principal responsable)<span class='required'>*</span>:
-						</div>
-						<div class='form-input-box' id="id_autoridad_dano_input_box">
-							<select id='field-id_autoridad_dano'  name='id_autoridad_dano' ng-model='id_autoridad_dano' class='chosen-select' data-placeholder='Seleccionar Que autoridad lo hizo (principal responsable)' style='width:300px'>
-								<option value='Dato no disponible'></option>
-								<?php foreach ($autoridades->result_array() as $row) echo "<option value='" . $row['id_autoridad'] . "'>" . $row['nombre'] . "</option>"; ?>
-								
-							</select>				
-						</div>
-						<div class='clear'></div>
-					</div>
 					
 					<div class='form-field-box even' id="id_pais_injusticia_field_box">
 						<div class='form-display-as-box' id="id_pais_injusticia_display_as_box">
