@@ -864,6 +864,16 @@
 
 					<div class='form-field-box odd' id="algun_nombre_responsables_field_box">
 						<div class='form-display-as-box' id="algun_nombre_responsables_display_as_box">
+							Anote todos los datos que recuerde de los oficiales involucrados (nombres, apodos, características físicas, etc.) :
+						</div>
+						<div class='form-input-box' id="algun_nombre_responsables_input_box">
+							<textarea id='field-algun_nombre_responsables' name='algun_nombre_responsables' ng-model='algun_nombre_responsables'  class='texteditor' ></textarea>				
+						</div>
+						<div class='clear'></div>
+					</div>
+
+					<!--div class='form-field-box odd' id="algun_nombre_responsables_field_box">
+						<div class='form-display-as-box' id="algun_nombre_responsables_display_as_box">
 							Escucho o sabe algún nombre de  los oficiales involucrados :
 						</div>
 						<div class='form-input-box' id="algun_nombre_responsables_input_box">
@@ -909,7 +919,7 @@
 						<div class='form-input-box' id="apodos_responsables_input_box">
 							<input id='field-apodos_responsables' name='apodos_responsables' ng-model='apodos_responsables' type='text' value="" maxlength='255' />				</div>
 						<div class='clear'></div>
-					</div>
+					</div-->
 
 					<div class='form-field-box even' id="uniformado_responsables_field_box">
 						<div class='form-display-as-box' id="uniformado_responsables_display_as_box">
