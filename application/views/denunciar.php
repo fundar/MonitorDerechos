@@ -2018,6 +2018,14 @@
 				for(var key in select_fields) {
 					if(clean) $("#field-" + key ).val('').trigger("liszt:updated")
 					$("#" + key + "_field_box").show() 
+
+					$("#" + key + "_field_box .chzn-results li").each(function( index ) {
+						if( $(this).text() === "No Aplica" ) {
+							$(this).css("display", "none")
+							return false
+						}
+
+					})
 				}
 
 				for(var key in multi_select) {
@@ -2124,7 +2132,7 @@
 		$("#momento_deportado_field_box").css("margin-left", "50px");
 		$("#separacion_familiar_field_box").css("margin-left", "50px");
 		$("#acto_siguiente_field_box").css("margin-left", "50px");
-		$("#acto_siguiente_homologado_field_box").css("margin-left", "50px");
+		$("#acto_siguiente_homologada_field_box").css("margin-left", "50px");
 
 		$("#momento_deportado_field_box").hide();
 		$("#separacion_familiar_field_box").hide();
@@ -2132,13 +2140,13 @@
 
 		$("#field-deportado").change( function () { 
 			hs_fields(  "deportado", 2, 3,  
-				{"momento_deportado": "4-No Aplica", "separacion_familiar": "3-No Aplica-familiar_separado", "acto_siguiente": "No Aplica" }, 
-				{"acto_siguiente_homologado": "No Aplica-No Aplica"}, {}, true);
+				{"acto_siguiente": "No Aplica" }, 
+				{"momento_deportado": "4-No Aplica", "separacion_familiar": "3-No Aplica-familiar_separado", "acto_siguiente_homologada": "No Aplica-No Aplica"}, {}, true);
 		});
 		
 		hs_fields(  "deportado", 2, 3,
-				{"momento_deportado": "4-No Aplica", "separacion_familiar": "3-No Aplica-familiar_separado", "acto_siguiente": "No Aplica" }, 
-				{"acto_siguiente_homologado": "No Aplica-No Aplica"}, {}, true);
+				{"acto_siguiente": "No Aplica" }, 
+				{"momento_deportado": "4-No Aplica", "separacion_familiar": "3-No Aplica-familiar_separado","acto_siguiente_homologada": "No Aplica-No Aplica"}, {}, true);
 
 		/*Familiar separacion*/
 		$("#familiar_separado_field_box").css("margin-left", "70px");
