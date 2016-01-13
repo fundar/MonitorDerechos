@@ -2016,7 +2016,7 @@
 				}
 				
 				for(var key in select_fields) {
-					if(clean) $("#field-" + key ).val('').trigger("liszt:updated")
+					//if(clean) $("#field-" + key ).val('').trigger("liszt:updated")
 					$("#" + key + "_field_box").show() 
 
 					$("#" + key + "_field_box .chzn-results li").each(function( index ) {

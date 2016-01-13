@@ -195,7 +195,7 @@ class Admin extends CI_Controller {
 														'espacio_fisico_injusticia_homologada', 'id_autoridad_dano', 'viaja_solo', 'deportado', 
 														'acto_siguiente_homologada', 'fecha_injusticia', 'id_transporte_viaje_injusticia', 
 														'detonante_injusticia_homologada', 'derechos_violados', 'violaciones_derechos', 
-														'autoridades_responables', 'descripcion_evento');
+														/*'autoridades_responables',*/ 'descripcion_evento');
 		/**/
 		/*Relaciones con tablas*/
 		/*Set displays campos*/
