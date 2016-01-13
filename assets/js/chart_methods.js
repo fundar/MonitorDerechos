@@ -24,10 +24,10 @@ var tags_denuncias = {
   viaja_solo: "Viaja Solo", 
   deportado: "Fue deportado", 
 
-  autoridad_responsable: "Autoridad responsable",
+  autoridad_responsable: "Actor responsable",
 
-  autoridad_individual: "Autoridad involucrada", 
-  autoridad: "Autoridades involucradas [Patrones]", 
+  autoridad_individual: "Actor involucrado", 
+  autoridad: "Actores involucrados [Patrones]", 
 
   pais_injusticia: "País donde se cometio la violación a Derechos Humanos", 
   estado_injusticia: "Estado donde se cometio la violación a Derechos Humanos", 
@@ -44,7 +44,7 @@ var tags_denuncias = {
 /*
 tags_denuncias['derechos_individual'] = "Derechos violentados en la denuncia"
 tags_denuncias['violaciones_individual'] = "Violaciones a los derechos"
-tags_denuncias['autoridad_individual'] = "Autoridad que cometio la violación a derechos humanos"
+tags_denuncias['autoridad_individual'] = "Actor que cometio la violación a derechos humanos"
 */
 
 var crear_select = function(topics, exceptions, target_id){
@@ -253,7 +253,9 @@ var graficar = function(content_tag, data, text, text2, type){
       data: data 
     }],
     exporting: { 
+      enabled: false,
       filename: content_tag,
+      type: "image/png",
       chartOptions:{
         plotBackgroundColor: "#ccc",
         backgroundColor: "#ccc",
@@ -384,6 +386,8 @@ var graficar_l2 = function(content_tag, histograma, title, l1_label, l2_label){
       }
     }],
     exporting: { 
+      enabled: false,
+      type: "image/png",
       filename: content_tag
     }
 
