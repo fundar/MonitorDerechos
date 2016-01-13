@@ -278,7 +278,7 @@
 		
 </script>
 <head>
-	<h1> Añadir Denuncia Completa </h1>
+	<h1> Registrar Nuevo migrante </h1>
 	
 </head>
 

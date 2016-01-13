@@ -250,7 +250,7 @@
 		
 </script>
 <head>
-	<h1> Añadir nueva denuncia a un migrante</h1>
+	<h1> Agregar denuncia a un migrante ya registrado </h1>
 	<h3 id="aviso"> 
 		En esta sección sólo se pueden agregar denuncias relacionadas a migrantes que <u> ya existan en el sistema </u> <br>
 		Para ingresar un migrante desde cero, use la opción "Registrar Nuevo migrante"
