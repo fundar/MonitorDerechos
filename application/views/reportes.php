@@ -188,8 +188,8 @@
 				<li> | <a href="#graficar_violaciones_derechos_individual">  Violación al Derecho </a> | </li>
 				<li> | <a href="#graficar_violaciones_derechos">  Violaciones a los Derechos [Patrones] </a> | </li>
 
-				<li> | <a href="#graficar_autoridades_individual"> Actores involucrados </a> | </li>
-				<li> | <a href="#graficar_autoridades"> Actores involucrados [Patrones] </a> | </li>
+				<!--li> | <a href="#graficar_autoridades_individual"> Actores involucrados </a> | </li>
+				<li> | <a href="#graficar_autoridades"> Actores involucrados [Patrones] </a> | </li-->
 
 				<li> | <a href="#graficar_autoridad_responsable"> Actor responsable </a> </li>
 			</ul>

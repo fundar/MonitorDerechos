@@ -26,8 +26,8 @@ var tags_denuncias = {
 
   autoridad_responsable: "Actor responsable",
 
-  autoridad_individual: "Actor involucrado", 
-  autoridad: "Actores involucrados [Patrones]", 
+  //autoridad_individual: "Actor involucrado", 
+  //autoridad: "Actores involucrados [Patrones]", 
 
   pais_injusticia: "País donde se cometio la violación a Derechos Humanos", 
   estado_injusticia: "Estado donde se cometio la violación a Derechos Humanos", 
