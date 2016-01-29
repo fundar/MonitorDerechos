@@ -436,7 +436,6 @@ class Admin extends CI_Controller {
 		$crud->display_as('detonante_injusticia_homologada', 'Situación que detona la injusticia (Categoría)');
 		$crud->field_type('detonante_injusticia_homologada', 
 			'dropdown', array(
-				1 => 'Atención a migrantes', 
 				2 => 'Detectaron su aspecto de migrante',
 				3 => 'Falta administrativa',
 				4 => 'Falta de documentos',

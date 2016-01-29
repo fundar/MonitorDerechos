@@ -1063,7 +1063,6 @@
 							<select id='field-detonante_injusticia_homologada' name='detonante_injusticia_homologada' ng-model='detonante_injusticia_homologada' class='chosen-select' data-placeholder='Seleccionar Situación que detona la injusticia (Categoría)'>
 								<option value=''  ></option>
 								<option value='Dato no disponible'  ></option>
-								<option value='1'  >Atención a migrantes</option>
 								<option value='2'  >Detectaron su aspecto de migrante</option>
 								<option value='3'  >Falta administrativa</option>
 								<option value='4'  >Falta de documentos</option>
