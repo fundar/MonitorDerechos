@@ -274,7 +274,7 @@
 
 		<form id="graficar_autoridades" class="non-printable graficar" style="display:none;">
 			<div class="field">
-				<label> Elige el patron de autoridades involucradas: </label>
+				<label> Elige el patron de actores involucradas: </label>
 				<select id="l7"> </select>
 			</div>
 			<div class="field">
@@ -287,7 +287,7 @@
 
 		<form id="graficar_autoridades_individual" class="non-printable graficar" style="display:none;">
 			<div class="field">
-				<label> Elige la autoridad involucrada: </label>
+				<label> Elige el actor involucrada: </label>
 				<select id="l7i"> </select>
 			</div>
 			<div class="field">
@@ -300,7 +300,7 @@
 
 		<form id="graficar_autoridad_responsable" class="non-printable graficar" style="display:none;">
 			<div class="field">
-				<label> Elige la autoridad que cometio la Violación a los Derechos: </label>
+				<label> Elige el actor que cometio la Violación a los Derechos: </label>
 				<select id="l9"></select>
 			</div>
 			<div class="field">

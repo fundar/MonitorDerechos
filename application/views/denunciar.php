@@ -881,7 +881,7 @@
 							Durante el viaje con que actores te encontraste :
 						</div>
 						<div class='form-input-box' id="autoridades_viaje_input_box">
-							<select id='field-autoridades_viaje' name='autoridades_viaje[]' ng-model='autoridades_viaje' multiple='multiple' size='8' class='chosen-multiple-select' data-placeholder='Seleccionar Durante el viaje con que autoridades te encontraste' style='width:510px;' >
+							<select id='field-autoridades_viaje' name='autoridades_viaje[]' ng-model='autoridades_viaje' multiple='multiple' size='8' class='chosen-multiple-select' data-placeholder='Seleccionar Durante el viaje con que actores te encontraste' style='width:510px;' >
 								<option value='Dato no disponible'></option>
 								<?php foreach ($autoridades->result_array() as $row) echo "<option value='" . $row['id_autoridad'] . "'>" . $row['nombre'] . "</option>"; ?>
 							</select>				
@@ -894,7 +894,7 @@
 							Alguno de los actores te causaron daño :
 						</div>
 						<div class='form-input-box' id="dano_autoridad_input_box">
-							<select id='field-dano_autoridad' name='dano_autoridad' ng-model='dano_autoridad' class='chosen-select' data-placeholder='Seleccionar Alguna de las autoridades te causaron daño'>
+							<select id='field-dano_autoridad' name='dano_autoridad' ng-model='dano_autoridad' class='chosen-select' data-placeholder='Seleccionar Alguna de las autores te causaron daño'>
 								<option value=''  ></option>
 								<option value='Dato no disponible'  ></option><option value='1'  >Si</option><option value='2'  >No</option>
 							</select>				
@@ -907,7 +907,7 @@
 							Quien es el responsable<span class='required'>*</span>:
 						</div>
 						<div class='form-input-box' id="id_autoridad	_dano_input_box">
-							<select id='field-id_autoridad_dano'  name='id_autoridad_dano' ng-model='id_autoridad_dano' class='chosen-select' data-placeholder='Seleccionar Que autoridad lo hizo (principal responsable)' style='width:300px'>
+							<select id='field-id_autoridad_dano'  name='id_autoridad_dano' ng-model='id_autoridad_dano' class='chosen-select' data-placeholder='Seleccionar Que actor lo hizo (principal responsable)' style='width:300px'>
 								<option value='Dato no disponible'></option>
 								<?php foreach ($autoridades->result_array() as $row) echo "<option value='" . $row['id_autoridad'] . "'>" . $row['nombre'] . "</option>"; ?>
 								

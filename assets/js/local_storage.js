@@ -8,6 +8,64 @@ app.config(['localStorageServiceProvider', function(localStorageServiceProvider)
 }])
 
 
+var hs_fields = function(el, on_id, off_id, input_fields, select_fields, multi_select){
+      if( $("li#field_" + el + "_chzn_o_" + on_id ).hasClass("result-selected" ) ){
+        for(var key in input_fields ) $("#" + key + "_field_box").show() 
+        for(var key in select_fields) $("#" + key + "_field_box").show() 
+        for(var key in multi_select) $("#" + key + "_field_box").show() 
+      }else if( $("li#field_" + el + "_chzn_o_" + off_id ).hasClass("result-selected" ) ){
+        var f2 = $("#addReport-step2")
+
+        for(var key in input_fields ) {
+          $("#field-" + key ).val(input_fields[key]);
+          $("#" + key + "_field_box").hide();
+        }
+
+        console.log("ola k ase?, debugueando o ke ase?")
+
+        for(var key in select_fields) {
+          var d = select_fields[key].split("-");
+          /* d[0] -> id en el select del texto a mostrar */
+          /* d[1] -> texto a mostrar cuando se oculten los campos */
+          /* d[2..] -> campos hijos a ocultar */
+
+          $("#field_" + key + "_chzn .chzn-single span").addClass("chzn-default chzn-single-with-drop")
+          $("#field_" + key + "_chzn .chzn-single span").text( d[1] )
+          $("#field_" + key + "_chzn .chzn-single").append('<abbr class="search-choice-close"></abbr>')
+          
+          $("#field_" + key + "_chzn .chzn-results li").removeClass("result-selected")
+          $("#field_" + key + "_chzn .chzn-results li:eq(" + d[0] + ")").addClass("result-selected")
+
+          $("#" + key + "_field_box").hide() 
+          for(var i = 2 in d) $("#" + d[i] + "_field_box").hide() 
+        }
+
+        for(var key in multi_select ) {
+          $("#" + key + "_field_box").hide();
+
+          var na_el  = '<li class="search-choice" id="field_paquete_pago_chzn_c_8">'
+            na_el += '  <span>No Aplica</span>' 
+            na_el += '  <a href="javascript:void(0)" class="search-choice-close" rel="8"></a>'
+            na_el += '</li>'
+            
+          $("#field_" + "paquete_pago" + "_chzn ul.chzn-choices li.search-choice").remove()
+          $("#field_" + "paquete_pago" + "_chzn ul.chzn-choices").prepend(na_el)
+
+          $("#field_" + "paquete_pago" + "_chzn .chzn-drop ul li.result-selected")
+            .removeClass("result-selected")
+            .addClass("active-result")
+
+          $("#field_" + "paquete_pago" + "_chzn .chzn-drop ul li#field_" + "paquete_pago" + "_chzn_o_" + "8")
+            .removeClass("active-result")
+            .addClass("result-selected")
+        }
+
+        angular.element(f2).scope().clear_theses(input_fields)
+        angular.element(f2).scope().clear_theses(select_fields)
+        angular.element(f2).scope().clear_theses(multi_select)
+      }
+    }
+
 var StorageMethods = function(ls, $scope){
   this.ls = ls
   this.scope = $scope

@@ -153,13 +153,13 @@ class Admin extends CI_Controller {
 		/* Columnas en la Vista */ 
 		// AL AGREGAR O QUITAR COLUMNAS, ASEGURARCE DE EDITAR EL ARREGLO 'columns' PARA ACTUALIZAR LOS FILTROS EN EL ARCHIVO assets/grocery_crud/themes/datatables/js/datatables.js
 		$crud->columns(
-			/*'folio',*/ 'id_denuncia', 'nombre_persona_atendio_seguimiento', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes', 'intentos', 'motivo_migracion', 
-			'coyote_guia', 'lugar_contrato_coyote', 'monto_coyote', 'paquete_pago', 'nombre_punto_fronterizo', 'viaja_solo', 
+			/*'folio',*/ 'id_denuncia', 'nombre_persona_atendio_seguimiento', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes', /*'intentos',*/ 'motivo_migracion', 
+			'coyote_guia', 'lugar_contrato_coyote', 'monto_coyote', 'paquete_pago', /*'nombre_punto_fronterizo'*/ 'viaja_solo', 
 			'con_quien_viaja', 'deportado', 'momento_deportado', 'separacion_familiar', 'familiar_separado', 'situacion_familiar',/*'acto_siguiente', */
 			'acto_siguiente_homologada','autoridades_viaje', 'dano_autoridad', 'fecha_injusticia', 'id_autoridad_dano','id_pais_injusticia', 'id_estado_injusticia', 
-			'municipio_injusticia', 'espacio_fisico_injusticia', 'espacio_fisico_injusticia_homologada', 'id_transporte_viaje_injusticia', 
-			'detonante_injusticia', 'detonante_injusticia_homologada','numero_migrantes_injusticia', 'lugar_abordaje_transporte', 'destino_transporte', 
-			'autoridades_responables', 'numero_oficiales_responsables', 'algun_nombre_responsables', 'carcteristicas_ficias_policia_responsable', 
+			'municipio_injusticia', /*'espacio_fisico_injusticia',*/ 'espacio_fisico_injusticia_homologada', 'id_transporte_viaje_injusticia', 
+			/*'detonante_injusticia',*/ 'detonante_injusticia_homologada','numero_migrantes_injusticia', /*'lugar_abordaje_transporte'*/ /*'destino_transporte'*/ 
+			/*'autoridades_responables'*/ 'numero_oficiales_responsables', 'algun_nombre_responsables', 'carcteristicas_ficias_policia_responsable', 
 			'carcteristicas_ficias_policia_responsable2', 'carcteristicas_ficias_policia_responsable3', 'uniformado_responsables', 
 			'color_uniforme_responsables', 'insignias_responsables', 'responsables_abordo_vehiculos_responsables', 'id_tipo_transporte_responsables', 
 			'numero_vehiculos_responsables', 'placas_vehiculos_responsables', 'descripcion_evento', 'monto_extorsion', 'derechos_violados', 
@@ -174,13 +174,13 @@ class Admin extends CI_Controller {
 
 		/* Campos */
 		$crud->fields(
-			'folio', 'id_denuncia', 'nombre_persona_atendio_seguimiento', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes', 'intentos', 'motivo_migracion', 
-			'coyote_guia', 'lugar_contrato_coyote', 'monto_coyote', 'paquete_pago', 'nombre_punto_fronterizo', 'lugar_de_usa', 'viaja_solo', 
-			'con_quien_viaja', 'deportado', 'momento_deportado', 'separacion_familiar', 'familiar_separado', 'situacion_familiar','acto_siguiente', 
+			'folio', 'id_denuncia', 'nombre_persona_atendio_seguimiento', 'fecha_creada', 'id_lugar_denuncia', 'id_tipo_queja', 'migrantes', /*'intentos',*/ 'motivo_migracion', 
+			'coyote_guia', 'lugar_contrato_coyote', 'monto_coyote', 'paquete_pago', /*'nombre_punto_fronterizo'*/ /*'lugar_de_usa'*/ 'viaja_solo', 
+			'con_quien_viaja', 'deportado', 'momento_deportado', 'separacion_familiar', 'familiar_separado', 'situacion_familiar',/*'acto_siguiente', */
 			'acto_siguiente_homologada','autoridades_viaje', 'dano_autoridad', 'fecha_injusticia', 'id_autoridad_dano', 'id_pais_injusticia', 'id_estado_injusticia', 
-			'municipio_injusticia', 'espacio_fisico_injusticia', 'espacio_fisico_injusticia_homologada', 'id_transporte_viaje_injusticia', 
-			'detonante_injusticia', 'detonante_injusticia_homologada','numero_migrantes_injusticia', 'lugar_abordaje_transporte', 'destino_transporte', 
-			'autoridades_responables', 'numero_oficiales_responsables', 'algun_nombre_responsables', 'carcteristicas_ficias_policia_responsable', 
+			'municipio_injusticia', /*'espacio_fisico_injusticia',*/ 'espacio_fisico_injusticia_homologada', 'id_transporte_viaje_injusticia', 
+			/*'detonante_injusticia',*/ 'detonante_injusticia_homologada','numero_migrantes_injusticia', /*'lugar_abordaje_transporte'*/ /*'destino_transporte'*/ 
+			/*'autoridades_responables'*/ 'numero_oficiales_responsables', 'algun_nombre_responsables', 'carcteristicas_ficias_policia_responsable', 
 			'carcteristicas_ficias_policia_responsable2', 'carcteristicas_ficias_policia_responsable3', 'apodos_responsables', 'uniformado_responsables', 
 			'color_uniforme_responsables', 'insignias_responsables', 'responsables_abordo_vehiculos_responsables', 'id_tipo_transporte_responsables', 
 			'numero_vehiculos_responsables', 'placas_vehiculos_responsables', 'descripcion_evento', 'monto_extorsion', 'derechos_violados', 
@@ -388,11 +388,11 @@ class Admin extends CI_Controller {
 		$crud->display_as('lugar_de_usa', 'A que lugar de USA vas');
 		
 		/*Antecedentes de autoridades*/
-		$crud->display_as('autoridades_viaje', 'Durante el viaje con que autoridades te encontraste');
-		$crud->display_as('dano_autoridad', 'Alguna de las autoridades te causaron daño');
+		$crud->display_as('autoridades_viaje', 'Durante el viaje con que actores te encontraste');
+		$crud->display_as('dano_autoridad', 'Alguno de los actores te causaron daño');
 		$crud->field_type('dano_autoridad', 'dropdown', array(0 => 'Dato no disponible', 1 => 'Si', 2 => 'No'));
-		$crud->display_as('id_autoridad_dano', 'Autoridad señalada como responsable');
-		//$crud->display_as('id_autoridad_dano', 'Que autoridad lo hizo (principal responsable)');
+		$crud->display_as('id_autoridad_dano', 'Actor señalado como responsable');
+		//$crud->display_as('id_autoridad_dano', 'Que actor lo hizo (principal responsable)');
 		$crud->set_relation('id_autoridad_dano', 'autoridades', 'nombre');
 		
 		/*Hechos violatorios a derechos humanos*/
@@ -455,7 +455,7 @@ class Admin extends CI_Controller {
 		$crud->display_as('destino_transporte', 'Destino del transporte');
 		
 		/*Datos de la autoridad responsable*/
-		$crud->display_as('autoridades_responables', 'Autoridades involucradas');
+		$crud->display_as('autoridades_responables', 'Actores involucrados');
 		$crud->display_as('numero_oficiales_responsables', 'Número de oficiales responsables');
 		$crud->display_as('algun_nombre_responsables', 'Escucho o sabe algún nombre de  los oficiales involucrados');
 		$crud->display_as('carcteristicas_ficias_policia_responsable', 'Características fìsicas oficial 1');

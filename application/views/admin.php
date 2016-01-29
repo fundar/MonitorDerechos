@@ -130,7 +130,7 @@ foreach($css_files as $file): ?>
 				<?php if($this->uri->segment(2) == "estados") { ?><strong>Estados/Departamentos</strong><?php } else { ?>Estados/Departamentos<?php } ?>
 			</a> |
 			<a href="<?php echo site_url('admin/autoridades')?>" >
-				<?php if($this->uri->segment(2) == "autoridades") { ?><strong>Autoridades</strong><?php } else { ?>Autoridades<?php } ?>
+				<?php if($this->uri->segment(2) == "autoridades") { ?><strong>Actores</strong><?php } else { ?>Actores<?php } ?>
 			</a> |
 			<a href="<?php echo site_url('admin/paises')?>" >
 				<?php if($this->uri->segment(2) == "paises") { ?><strong>Paises</strong><?php } else { ?>Paises<?php } ?>
@@ -222,6 +222,8 @@ foreach($css_files as $file): ?>
 			  var filtro = $(this).children("input")
 			  filtro.attr("title", filtro.attr("placeholder") )
 			})
+
+
 			
 			crear_select(topicos, null, "l")
 
