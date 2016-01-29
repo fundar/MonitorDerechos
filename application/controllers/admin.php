@@ -329,9 +329,10 @@ class Admin extends CI_Controller {
 		/*¿Qué piensa hacer ahora?*/
 		$crud->display_as('acto_siguiente_homologada', '¿Qué piensa hacer ahora?');
 		$crud->field_type('acto_siguiente_homologada', 'dropdown', array(
-			'Intentar cruzar otra vez' => 'Intentar cruzar otra vez',
+			'Cruzar otra vez' => 'Cruzar otra vez',
 			'Regresar a mi comunidad de origen' => 'Regresar a mi comunidad de origen',
-			'Esperar en la frontera' => 'Esperar en la frontera',
+			'Regularizarse' => 'Regularizarse',
+			'Buscar trabajo en México' => 'Buscar trabajo en México',
 			'Otro' => 'Otro',
 			'No sabe' => 'No sabe',
 			'No Aplica' => 'No Aplica'

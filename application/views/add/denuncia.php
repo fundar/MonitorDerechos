@@ -605,10 +605,13 @@
 						<div class="form-input-box odd" id="acto_siguiente_homologada_input_box">
 							<select id="field-acto_siguiente_homologada" name="acto_siguiente_homologada" ng-model='acto_siguiente_homologada' class="chosen-select " data-placeholder="Seleccionar Qué piensa hacer ahora (categoría)" style="width:510px;">
 								<option value=""></option>
-								<option value="Intentar cruzar otra vez">Intentar cruzar otra vez</option>
+								<option value="Cruzar otra vez">Cruzar otra vez</option>
 								<option value="Regresar a mi comunidad de origen">Regresar a mi comunidad de origen</option>
-								<option value="Esperar en la frontera">Esperar en la frontera</option>
+								<option value="Regularizarse">Regularizarse</option>
+								<option value="Buscar trabajo en México">Buscar trabajo en México</option>
+								<option value="Otro">Otro</option>
 								<option value="No sabe">No sabe</option>
+								<option value="No aplica">No aplica</option>
 							</select>
 						</div>
 					</div>
