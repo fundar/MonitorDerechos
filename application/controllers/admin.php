@@ -283,7 +283,7 @@ class Admin extends CI_Controller {
 		$crud->display_as('motivo_migracion', 'Cuál es el motivo de migración');
 		$crud->field_type('motivo_migracion', 'dropdown', array(
 			'Dato no disponible' => '', 
-			'Falta de trabajo' => 'Falta de trabajo', 
+			'Razones económicas' => 'Razones económicas', 
 			'Violencia/Seguridad' => 'Violencia/Seguridad', 
 			'Reunificación familiar' => 'Reunificación familiar', 
 			'Dato no disponible' => 'Dato no disponible', 
