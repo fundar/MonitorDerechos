@@ -351,6 +351,7 @@ class Admin extends CI_Controller {
 			'Cuando salió de su comunidad' => 'Cuando salió de su comunidad', 
 			'En  la frontera' => 'En  la frontera', 
 			'Otro' => 'Otro',
+			'En el trayecto' => 'En el trayecto',
 			'Dato no disponible' => 'Dato no disponible', 
 			'No aplica' => 'No aplica'
 		));

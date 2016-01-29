@@ -638,7 +638,7 @@
 							<select id='field-motivo_migracion' name='motivo_migracion' ng-model='motivo_migracion' class='chosen-select' data-placeholder='Seleccionar Cuál es el motivo de migración' style='width:300px'>
 								<option value=''  ></option>
 								<option value='Dato no disponible'></option>
-								<option value='Falta de trabajo'>Falta de trabajo</option>
+								<option value='Razones económicas'>Razones económicas</option>
 								<option value='Violencia/Seguridad'>Violencia/Seguridad</option>
 								<option value='Reunificación familiar'>Reunificación familiar</option>
 								<option value='Dato no disponible'  ></option>
@@ -673,6 +673,7 @@
 								<option value='Dato no disponible'  ></option>
 								<option value='Cuando salió de su comunidad'> Cuando salió de su comunidad</option>
 								<option value='En  la frontera'  >En  la frontera</option>
+								<option value='En el trayecto'  >En el trayecto</option>
 								<option value='Otro'  >Otro</option>
 								<option value='No Aplica'  >No Aplica</option>
 							</select>				
