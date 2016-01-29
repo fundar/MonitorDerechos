@@ -587,7 +587,7 @@
 						<div class='clear'></div>
 					</div>
 
-					<div class='form-field-box odd' id="acto_siguiente_field_box">
+					<!--div class='form-field-box odd' id="acto_siguiente_field_box">
 						<div class='form-display-as-box' id="acto_siguiente_display_as_box">
 							Qué piensa hacer ahora :
 						</div>
@@ -595,7 +595,7 @@
 							<input id='field-acto_siguiente' name='acto_siguiente' ng-model='acto_siguiente' type='text' value="" maxlength='255' />				
 						</div>
 						<div class='clear'></div>
-					</div>
+					</div-->
 
 					<div class='form-field-box odd' id="acto_siguiente_homologada_field_box">
 						<div class='form-display-as-box' id="acto_siguiente_homologada_display_as_box">
@@ -741,12 +741,12 @@
 					</div>
 
 					<div class='form-field-box odd' id="espacio_fisico_injusticia_field_box">
-						<div class='form-display-as-box' id="espacio_fisico_injusticia_display_as_box">
+						<!--div class='form-display-as-box' id="espacio_fisico_injusticia_display_as_box">
 							Espacio físico de la injusticia :
 						</div>
 						<div class='form-input-box' id="espacio_fisico_injusticia_input_box">
 								<input id='field-espacio_fisico_injusticia' name='espacio_fisico_injusticia' ng-model='espacio_fisico_injusticia' type='text' value="" maxlength='255' />				
-						</div>
+						</div-->
 						<div class='clear'></div>
 						<div class='form-display-as-box' id="espacio_fisico_injusticia_homologada_display_as_box">
 							Espacio físico de la injusticia (Categoría)<span class='required'>*</span>:
@@ -782,13 +782,13 @@
 						<div class='clear'></div>
 					</div>
 
-					<div class='form-field-box even' id="detonante_injusticia_field_box">
+					<!--div class='form-field-box even' id="detonante_injusticia_field_box">
 						<div class='form-display-as-box' id="detonante_injusticia_display_as_box">
 							Situación que detona la injusticia
 						</div>
 						<div class='form-input-box' id="detonante_injusticia_input_box">
 							<input id='field-detonante_injusticia' name='detonante_injusticia' ng-model='detonante_injusticia' type='text' value="" maxlength='255' />				
-						</div>
+						</div-->
 						<div class='clear'></div>
 						<div class='form-display-as-box' id="detonante_injusticia_homologada_display_as_box">
 							Situación que detona la injusticia (Categoría)<span class='required'>*</span>:
@@ -1719,23 +1719,23 @@
 		/*Momento de deportado*/
 		$("#momento_deportado_field_box").css("margin-left", "50px");
 		$("#separacion_familiar_field_box").css("margin-left", "50px");
-		$("#acto_siguiente_field_box").css("margin-left", "50px");
+		//$("#acto_siguiente_field_box").css("margin-left", "50px");
 		$("#acto_siguiente_homologada_field_box").css("margin-left", "50px");
 
 		$("#momento_deportado_field_box").hide();
 		$("#separacion_familiar_field_box").hide();
-		$("#acto_siguiente_field_box").hide();
+		//$("#acto_siguiente_field_box").hide();
 		$("#acto_siguiente_homologada_field_box").hide();
 
 
 		$("#field-deportado").change( function () { 
 			hs_fields(  "deportado", 2, 3,
-				{"acto_siguiente": "No Aplica" }, 
+				{}, 
 				{"momento_deportado": "4-No Aplica", "separacion_familiar": "3-No Aplica-familiar_separado", "acto_siguiente_homologada": "No Aplica-No Aplica"}, {}, true);
 		});
 		
 		hs_fields(  "deportado", 2, 3,
-				{"acto_siguiente": "No Aplica" }, 
+				{}, 
 				{"momento_deportado": "4-No Aplica", "separacion_familiar": "3-No Aplica-familiar_separado","acto_siguiente_homologada": "No Aplica-No Aplica"}, {}, true);
 		/*Familiar separacion*/
 		$("#familiar_separado_field_box").css("margin-left", "70px");
