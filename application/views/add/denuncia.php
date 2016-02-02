@@ -1096,6 +1096,21 @@
 						</div>
 						<div class='clear'></div>
 					</div>
+
+					<div class='form-field-box odd' id="motivo_cerrado_field_box">
+						<div class='form-display-as-box' id="motivo_cerrado_display_as_box">
+							Motivo por el que se cerro el caso:
+						</div>
+						<div class='form-input-box' id="motivo_cerrado_input_box">
+							<select id='field-motivo_cerrado'  name='motivo_cerrado' ng-model='motivo_cerrado' class='chosen-select' data-placeholder='Seleccionar motivo por el que se cerro el caso' style='width:300px'>
+								<option value=''  ></option>
+								<option value='Dato no disponible'></option>
+								<option value='Por temor a represalias'  >Por temor a represalias</option>
+								<option value='Por estar en tránsito'  >Por estar en tránsito</option>
+							</select>				
+						</div>
+						<div class='clear'></div>
+					</div>
 				
 					<div class='form-field-box even' id="estado_seguimiento_field_box">
 						<div class='form-display-as-box' id="estado_seguimiento_display_as_box">
@@ -1801,7 +1816,22 @@
 						{"numero_vehiculos_responsables": "No Aplica", "placas_vehiculos_responsables": "No Aplica"}, 
 						{"id_tipo_transporte_responsables": pos2 + "-No Aplica"}, {}, false)
 		 
+		
 
+
+		$("#motivo_cerrado_field_box").css("margin-left", "50px");
+
+		$("#field-id_estado_caso").change( function () { 
+			hs_fields(  "id_estado_caso", 2, 1,
+						{ }, 
+						{"motivo_cerrado": "0-No Aplica"}, {}, true)
+		})
+
+		hs_fields(  "id_estado_caso", 2, 1,
+						{ }, 
+						{"motivo_cerrado": "0-No Aplica"}, {}, false)
+
+		
 		$(".search-choice-close").on("click", function(e){
 			e.preventDefault()
 			var select = $(this).parents(".chzn-container-multi").siblings("select")

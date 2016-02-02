@@ -184,7 +184,7 @@ class Admin extends CI_Controller {
 			'carcteristicas_ficias_policia_responsable2', 'carcteristicas_ficias_policia_responsable3', 'apodos_responsables', 'uniformado_responsables', 
 			'color_uniforme_responsables', 'insignias_responsables', 'responsables_abordo_vehiculos_responsables', 'id_tipo_transporte_responsables', 
 			'numero_vehiculos_responsables', 'placas_vehiculos_responsables', 'descripcion_evento', 'monto_extorsion', 'derechos_violados', 
-			'violaciones_derechos', 'id_estado_caso', 'estado_seguimiento', 'notas_seguimiento', 'telefono_seguimiento', 'documento1_seguimiento', 
+			'violaciones_derechos', 'id_estado_caso', 'motivo_cerrado', 'estado_seguimiento', 'notas_seguimiento', 'telefono_seguimiento', 'documento1_seguimiento', 
 			'documento2_seguimiento', 'documento3_seguimiento', 'documento4_seguimiento', 'documento5_seguimiento', 'documento6_seguimiento', 
 			'documento7_seguimiento', 'documento8_seguimiento','documento9_seguimiento', 'documento10_seguimiento'
 		);
@@ -489,6 +489,12 @@ class Admin extends CI_Controller {
 		/*Estado actual del caso*/
 		$crud->display_as('id_estado_caso', 'Estado actual del caso');
 		$crud->set_relation('id_estado_caso', 'etados_casos', 'nombre');
+
+		$crud->display_as('motivo_cerrado', 'Motivo por el que se cerro el caso');
+		$crud->field_type('motivo_cerrado', 'dropdown', array(
+			'Por temor a represalias' => 'Por temor a represalias', 
+			'Por estar en tránsito' => 'Por estar en tránsito'
+		));
 		
 		/*
 		$crud->display_as('estado_seguimiento', 'Seguimiento');

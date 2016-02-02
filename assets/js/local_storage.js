@@ -324,7 +324,7 @@ app.controller('MigranteCtrl', [
                               'separacion_familiar', 'dano_autoridad', 'id_autoridad_dano','id_pais_injusticia',
                               'id_estado_injusticia', 'uniformado_responsables', 'espacio_fisico_injusticia_homologada',
                               'id_transporte_viaje_injusticia', 'estado_seguimiento','responsables_abordo_vehiculos_responsables',
-                              'id_tipo_transporte_responsables', 'id_estado_caso', 'detonante_injusticia_homologada' ]     
+                              'id_tipo_transporte_responsables', 'id_estado_caso', 'motivo_cerrado', 'detonante_injusticia_homologada' ]     
 
     var topics_of_multiselects = [ 'paquete_pago', 'autoridades_viaje', 'autoridades_responables', 
                                    'derechos_violados', 'violaciones_derechos' ]
