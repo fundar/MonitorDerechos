@@ -490,10 +490,45 @@ class Admin extends CI_Controller {
 		$crud->display_as('id_estado_caso', 'Estado actual del caso');
 		$crud->set_relation('id_estado_caso', 'etados_casos', 'nombre');
 		
+		/*
 		$crud->display_as('estado_seguimiento', 'Seguimiento');
 		$crud->field_type('estado_seguimiento', 'dropdown', array(
 			'Defensa' => 'Defensa', 
 			'Canalización a una instancia' => 'Canalización a una instancia'
+		));
+		*/
+		$crud->display_as('estado_seguimiento', 'Acciones realizadas por la organización:');
+		$crud->field_type('estado_seguimiento', 'dropdown', array(
+			'Asesoría' => 'Asesoría', 
+			'Dato no disponible' => 'Dato no disponible', 
+			'Defensa – Denuncia PGJE' => 'Defensa – Denuncia PGJE', 
+			'Defensa – Denuncia PGR' => 'Defensa – Denuncia PGR', 
+			'Defensa – Queja CEDH' => 'Defensa – Queja CEDH', 
+			'Defensa – Queja CNDH' => 'Defensa – Queja CNDH', 
+			'Defensa – Juicio de Amparo' => 'Defensa – Juicio de Amparo', 
+			'Defensa – Asilo en EUA' => 'Defensa – Asilo en EUA', 
+			'Defensa – Asilo en México' => 'Defensa – Asilo en México', 
+			'Defensa – Visa humanitaria' => 'Defensa – Visa humanitaria', 
+			'Defensa – Otro trámite de regularización' => 'Defensa – Otro trámite de regularización', 
+			'Integral – Medios' => 'Integral – Medios', 
+			'Integral – Organismos Internacionales' => 'Integral – Organismos Internacionales'
+		));
+		
+
+		$crud->display_as('estado_seguimiento', 'Seguimiento');
+		$crud->field_type('estado_seguimiento', 'dropdown', array(
+			'Asesoría' => 'Asesoría', 
+			'Defensa – Denuncia PGJE' => 'Defensa – Denuncia PGJE', 
+			'Defensa – Denuncia PGR' => 'Defensa – Denuncia PGR', 
+			'Defensa – Queja CEDH' => 'Defensa – Queja CEDH', 
+			'Defensa – Queja CNDH' => 'Defensa – Queja CNDH', 
+			'Defensa – Juicio de Amparo' => 'Defensa – Juicio de Amparo', 
+			'Defensa – Asilo en EUA' => 'Defensa – Asilo en EUA', 
+			'Defensa – Asilo en México' => 'Defensa – Asilo en México', 
+			'Defensa – Visa humanitaria' => 'Defensa – Visa humanitaria', 
+			'Defensa – Otro trámite de regularización' => 'Defensa – Otro trámite de regularización', 
+			'Integral – Medios' => 'Integral – Medios', 
+			'Integral – Organismos Internacionales' => 'Integral – Organismos Internacionales'
 		));
 		
 		$crud->display_as('notas_seguimiento', 'Notas sobre el seguimiento');

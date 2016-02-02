@@ -1364,15 +1364,24 @@
 				
 					<div class='form-field-box even' id="estado_seguimiento_field_box">
 						<div class='form-display-as-box' id="estado_seguimiento_display_as_box">
-							Seguimiento :
+							Acciones realizadas por la organización: 
 						</div>
 						<div class='form-input-box' id="estado_seguimiento_input_box">
 							<select id='field-estado_seguimiento' name='estado_seguimiento' ng-model='estado_seguimiento' class='chosen-select' data-placeholder='Seleccionar Seguimiento'>
 								<option value=''  ></option>
-								<option value='Dato no disponible'  ></option>
-								<option value='Defensa'  >Defensa</option>
-								<option value='Canalización a una instancia'  >Canalización a una instancia</option>
-								<option value='Asesoría'>Asesoría</option>
+								<option value='Asesoría'> Asesoría </option>
+								<option value='Dato no disponible'> Dato no disponible </option>
+								<option value='Defensa – Denuncia PGJE'> Defensa – Denuncia PGJE </option>
+								<option value='Defensa – Denuncia PGR'> Defensa – Denuncia PGR </option>
+								<option value='Defensa – Queja CEDH'> Defensa – Queja CEDH </option>
+								<option value='Defensa – Queja CNDH'> Defensa – Queja CNDH </option>
+								<option value='Defensa – Juicio de Amparo'> Defensa – Juicio de Amparo </option>
+								<option value='Defensa – Asilo en EUA'> Defensa – Asilo en EUA </option>
+								<option value='Defensa – Asilo en México'> Defensa – Asilo en México </option>
+								<option value='Defensa – Visa humanitaria'> Defensa – Visa humanitaria </option>
+								<option value='Defensa – Otro trámite de regularización'> Defensa – Otro trámite de regularización </option>
+								<option value='Integral – Medios'> Integral – Medios </option>
+								<option value='Integral – Organismos Internacionales'> Integral – Organismos Internacionales </option>
 							</select>				
 						</div>
 						<div class='clear'></div>
