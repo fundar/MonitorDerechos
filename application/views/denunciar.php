@@ -784,8 +784,9 @@
 							<select id='field-deportado' name='deportado' ng-model='deportado' class='chosen-select' data-placeholder='Seleccionar Deportado'>
 								<option value=''  ></option>
 								<option value='Dato no disponible'  ></option>
-								<option value='1'  >Si</option>
-								<option value='2'  >No</option>
+								<option value='1'  >Deportado</option>
+								<option value='2'  >En tránsito a EUA</option>
+								<option value='3'  >Migrante interno/jornalero</option>
 							</select>				
 						</div>
 						<div class='clear'></div>

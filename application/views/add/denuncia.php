@@ -514,18 +514,19 @@
 					<div class='form-field-box even' id="deportado_field_box">
 						<div class='form-display-as-box' id="deportado_display_as_box">
 							Deportado<span class='required'>*</span>:
-
 						</div>
 						<div class='form-input-box' id="deportado_input_box">
 							<select id='field-deportado' name='deportado' ng-model='deportado' class='chosen-select' data-placeholder='Seleccionar Deportado'>
 								<option value=''  ></option>
 								<option value='Dato no disponible'  ></option>
-								<option value='1'  >Si</option>
-								<option value='2'  >No</option>
+								<option value='1'  >Deportado</option>
+								<option value='2'  >En tránsito a EUA</option>
+								<option value='3'  >Migrante interno/jornalero</option>
 							</select>				
 						</div>
 						<div class='clear'></div>
 					</div>
+
 
 					<div class='form-field-box odd' id="momento_deportado_field_box">
 						<div class='form-display-as-box' id="momento_deportado_display_as_box">

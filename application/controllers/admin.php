@@ -296,7 +296,12 @@ class Admin extends CI_Controller {
 
 
 		/* DEPORTADO */
-		$crud->field_type('deportado', 'dropdown', array(0 => 'Dato no disponible', 1 => 'Si', 2 => 'No'));
+		$crud->field_type('deportado', 'dropdown', array(
+			0 => 'Dato no disponible', 
+			1 => 'Deportado', 
+			2 => 'En tránsito a EUA',
+			3 => 'Migrante interno/jornalero'
+		));
 
 		/*Lugar deportado*/
 		$crud->display_as('momento_deportado', 'Donde fue deportado');
