@@ -778,7 +778,7 @@
 					
 					<div class='form-field-box even' id="deportado_field_box">
 						<div class='form-display-as-box' id="deportado_display_as_box">
-							Deportado<span class='required'>*</span>:
+							¿Cuál es su situación? <span class='required'>*</span>:
 						</div>
 						<div class='form-input-box' id="deportado_input_box">
 							<select id='field-deportado' name='deportado' ng-model='deportado' class='chosen-select' data-placeholder='Seleccionar Deportado'>
