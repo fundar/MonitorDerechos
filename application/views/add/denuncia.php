@@ -1118,7 +1118,8 @@
 							Acciones realizadas por la organización:
 						</div>
 						<div class='form-input-box' id="estado_seguimiento_input_box">
-							<select id='field-estado_seguimiento' name='estado_seguimiento' ng-model='estado_seguimiento' class='chosen-select' data-placeholder='Seleccionar Seguimiento'>
+							<!--select id='field-estado_seguimiento' name='estado_seguimiento' ng-model='estado_seguimiento' class='chosen-select' data-placeholder='Seleccionar Seguimiento'-->
+							<select id='field-estado_seguimiento' name='estado_seguimiento' ng-model='estado_seguimiento' multiple='multiple' size='8' class='chosen-multiple-select' data-placeholder='Seleccionar Seguimiento'>
 								<option value=''  ></option>
 								<option value='Asesoría'> Asesoría </option>
 								<option value='Dato no disponible'> Dato no disponible </option>
