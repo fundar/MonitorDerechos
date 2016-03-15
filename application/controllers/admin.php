@@ -162,7 +162,7 @@ class Admin extends CI_Controller {
 			/*'autoridades_responables'*/ 'numero_oficiales_responsables', 'algun_nombre_responsables', 'carcteristicas_ficias_policia_responsable', 
 			'carcteristicas_ficias_policia_responsable2', 'carcteristicas_ficias_policia_responsable3', 'uniformado_responsables', 
 			'color_uniforme_responsables', 'insignias_responsables', 'responsables_abordo_vehiculos_responsables', 'id_tipo_transporte_responsables', 
-			'numero_vehiculos_responsables', 'placas_vehiculos_responsables', 'descripcion_evento', 'monto_extorsion', 'derechos_violados', 
+			'numero_vehiculos_responsables', 'placas_vehiculos_responsables', /*'descripcion_evento',*/ 'monto_extorsion', 'derechos_violados', 
 			'violaciones_derechos', 'id_estado_caso', 'estado_seguimiento'
 		);
 
@@ -220,7 +220,6 @@ class Admin extends CI_Controller {
 		}
 
 		$output = $crud->render();
-		
 		$this->_example_output($output);
 	}
 
@@ -463,7 +462,7 @@ class Admin extends CI_Controller {
 		/*Datos de la autoridad responsable*/
 		$crud->display_as('autoridades_responables', 'Actores involucrados');
 		$crud->display_as('numero_oficiales_responsables', 'Número de oficiales responsables');
-		$crud->display_as('algun_nombre_responsables', 'Escucho o sabe algún nombre de  los oficiales involucrados');
+		$crud->display_as('algun_nombre_responsables', 'Datos de los oficiales involucrados (nombres, apodos, características físicas, etc.) ');
 		$crud->display_as('carcteristicas_ficias_policia_responsable', 'Características fìsicas oficial 1');
 		$crud->display_as('carcteristicas_ficias_policia_responsable2', 'Características fìsicas oficial 2');
 		$crud->display_as('carcteristicas_ficias_policia_responsable3', 'Características fìsicas oficial 3');
