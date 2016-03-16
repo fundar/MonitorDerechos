@@ -162,7 +162,7 @@ class Admin extends CI_Controller {
 			/*'autoridades_responables'*/ 'numero_oficiales_responsables', 'algun_nombre_responsables', 'carcteristicas_ficias_policia_responsable', 
 			'carcteristicas_ficias_policia_responsable2', 'carcteristicas_ficias_policia_responsable3', 'uniformado_responsables', 
 			'color_uniforme_responsables', 'insignias_responsables', 'responsables_abordo_vehiculos_responsables', 'id_tipo_transporte_responsables', 
-			'numero_vehiculos_responsables', 'placas_vehiculos_responsables', /*'descripcion_evento',*/ 'monto_extorsion', 'derechos_violados', 
+			'numero_vehiculos_responsables', 'placas_vehiculos_responsables', 'descripcion_evento', 'monto_extorsion', 'derechos_violados', 
 			'violaciones_derechos', 'id_estado_caso', 'estado_seguimiento'
 		);
 
