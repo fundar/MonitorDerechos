@@ -434,15 +434,19 @@ foreach($css_files as $file): ?>
 				<?php } ?>
 			});
 
-				/* Limitar el ancho y alto de las celdas 49 de todos los registros */
-				/* En este caso se trata de la columna de Descripción del Evento*/
+				/* Limitar el ancho y alto de las celdas 43 y 32 de todos los registros */
 
-				$('tr td:nth-child(50), tr td:nth-child(39)').each(function(){
+				/* En este caso se trata de las columnass 
+					 "Descripción del Evento" y
+					 "Datos de los oficiales involucrados (nombres, apodos, características físicas, etc.) 
+					 respectivamente*/
+				$('tr td:nth-child(43), tr td:nth-child(32)').each(function(){
 				  $(this)
 				    .html('<div>' + $(this).html() + '</div>')
 				    .css('min-height', '120px')
 				    .css('min-width', '350px');
 				})
+
     </script>
 </body>
 </html>
