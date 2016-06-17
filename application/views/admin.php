@@ -117,6 +117,11 @@ foreach($css_files as $file): ?>
 		<a class="menu_item" id="menu_reportes" href="<?php echo site_url('admin/reportes')?>" >
 			<?php if($this->uri->segment(2) == "reportes") { ?><strong>Reportes</strong><?php } else { ?>Reportes<?php } ?>
 		</a> |
+
+		<a class="menu_item" id="menu_tutoriales" href="<?php echo site_url();?>/admin/tutoriales"> 
+			<?php if($this->uri->segment(2) == "tutoriales") { ?><strong>Tutoriales</strong><?php } else { ?>Tutoriales<?php } ?>  
+		</a> |
+
 		
 		<?php if(isset($_SESSION['user_id'])) { ?>
 			<a class="menu_item"  href="<?php echo site_url('admin/logout')?>" >Cerrar sesión</a> | 

@@ -137,6 +137,7 @@
 		<a class="menu_item" id="menu_migrantes" href="<?php echo site_url('admin/migrantes');?>"> Migrantes </a> |
 		<a class="menu_item" id="menu_denuncias" href="<?php echo site_url('admin/denuncias');?>"> Denuncias </a> |
 		<a class="menu_item" id="menu_reportes" href="#"> <strong> Reportes </strong> </a> |
+		<a class="menu_item" id="menu_tutoriales" href="<?php echo site_url();?>/admin/tutoriales"> Tutoriales </a> |
 		<?php if(isset($_SESSION['user_id'])) ?>
 			<a class="menu_item" href="<?php echo site_url('admin/logout');?>">Cerrar sesión</a> | 
 		<?php ?>

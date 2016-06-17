@@ -753,6 +753,10 @@ class Admin extends CI_Controller {
 		@ob_end_clean();
 		$this->_export_to_csv($data);
 	}
+
+	public function tutoriales() {
+		$this->load->view('tutoriales.php');
+	}
 	 
 	 
 	protected function _export_to_csv($data){
