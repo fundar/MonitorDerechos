@@ -1848,8 +1848,7 @@
 
 			  //scope.clear_all();  /*
 			var _send_data = function(){
-		  	$.post(url, data, function(res){
-		  			
+		  	$.post(url, data, function(res, err){
 					//proceso para guardar 
 					var res = JSON.parse(res)
 		  		if(res.status){
