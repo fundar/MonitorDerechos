@@ -255,7 +255,7 @@ foreach($css_files as $file): ?>
 					  , data = that.serialize()
 					  , url = that.attr("action");
 
-				  	$.post(url, data, function(res){
+				  	$.post(url, data, function(res, err){
 							//proceso para guardar 
 							var res = JSON.parse(res)
 				  		if(res.status){
