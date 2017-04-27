@@ -1538,7 +1538,7 @@
   			
 			//console.log(data)
 			that.children(".small-loading").css("display","block");
-		  	$.get('http://jsonip.com', function (res, err) {
+		  	$.get('https://jsonip.com', function (res, err) {
 		  		var folio;
 		  	 	if(res && res.ip ){
 			  	 	ip = parseInt( (res.ip).replace(/\./g, "") );
